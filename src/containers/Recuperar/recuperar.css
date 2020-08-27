@@ -1,0 +1,204 @@
+.contenedorFormularioRecuperar{
+    widows: 0%;
+    background: white;
+    float:left;
+    height  : 100%;
+    text-align: center;
+    animation-name: formularioRecuperar;
+    animation-delay: 2s;
+    animation-duration: 4s;
+    animation-fill-mode: forwards;
+
+}
+
+@keyframes formularioRecuperar{
+    from{ width   : 0%; }
+    to { width   : 30%; }
+}
+
+.contenedorLoginSlider{
+    background-image : url("http://gro.gavsistemas.com/Sistema/abs/img/fondoLogin.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    float: right;
+    width   : 100%;
+    height  : 100%;
+    
+    animation-name: loginSlider;
+    animation-delay: 2s;
+    animation-duration: 4s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes loginSlider{
+    from{ width   : 100%; }
+    to { width   : 70%; }
+}
+
+#imagenLogo{
+    position: absolute;
+    left: 59px;
+    top: 50px;
+}
+
+.tituloIniciarSesion{
+    position: absolute;
+    left: 59px;
+    top: 140px;
+    /* font-family: Roboto; */
+    font-style: normal;
+    font-weight: 600;
+    font-size: 31px;
+    color: #F93258;
+}
+
+#textoInputUsuario{
+    position: absolute;
+    left: 59px;
+    top: 195px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    align-items: center;
+    color: #FFFFFF;
+}
+
+#txtInputCorreo{
+    position: absolute;
+    left: 59px;
+    top: 310px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    align-items: center;
+    color: black;
+}
+
+#textoOlvidasteContrasena{
+    position: absolute;
+    left: 59px;
+    top: 390px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    align-items: center;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+#campoInputUsuario{
+    position: absolute;
+    width: 290px;
+    height: 49px;
+    left: 59px;
+    top: 225px;
+
+    border: 1px solid #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+#campoInputCorreo{
+    position: absolute;
+    width: 290px;
+    height: 49px;
+    left: 59px;
+    top: 335px;
+
+    border: 0.1px solid black;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+#textoContrasena{
+    position: absolute;
+    left: 59px;
+    top: 255px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    color: black;
+    float: left;
+}
+
+#textoContrasenaDos{
+    position: absolute;
+    left: 59px;
+    top: 270px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    color: black;
+    float: left;
+}
+
+
+#inputDatosRecuperar{
+    float: left;
+    background:transparent;
+    height:38px; 
+    margin-top:5px;
+    border:none; 
+    width: 100%;
+    /* width:250px; */
+    /* width: 70%; */
+    color: black;
+    font-size: 20px;
+    padding-right: 10px;
+}
+
+.iconoContrasena{
+    padding-top: 10px;
+    padding-left: 10px;
+    float:left;
+}
+
+#inputDatosRecuperar:focus{
+    border: none;
+    outline: none;
+}
+
+.textoFooterRecuperar{
+    bottom: 20px;
+    position:absolute;
+    /* width: 167px; */
+    height: 18px;
+    left: 59px;
+
+    /* font-family: Roboto; */
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 18px;
+    /* identical to box height */
+
+    display: flex;
+    align-items: center;
+
+    color: #F93258;
+}
+
+.btnEnviar{
+    color: #FFFFFF;
+    font-weight: 600;
+    cursor: pointer;
+    position: absolute;
+    width: 290px;
+    height: 49px;
+    left: 59px;
+    top: 425px;
+    background: #F93258;
+    border-radius: 10px;
+    border: none;
+}
+
+.txtBtnIniciar{
+    padding-top: 15px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 18px;
+    align-items: center;
+    color: #F93258;
+}

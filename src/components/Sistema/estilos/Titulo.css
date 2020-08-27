@@ -1,0 +1,30 @@
+.dark-theme .titulo-subrayado:before {
+  background-color: #13c2c2 !important;
+}
+.titulo-subrayado {
+  /* border-bottom: solid 1px #d9d9d9; */
+  padding-bottom: 2px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  position: relative;
+}
+.titulo-subrayado:before {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  z-index: 1;
+  height: 3px;
+  width: 42px;
+  background-color: #038fde;
+}
+.ant-card .titulo-subrayado:before,
+.gx-card .titulo-subrayado:before {
+  display: none;
+}
+.ant-card .titulo-subrayado,
+.gx-card .titulo-subrayado {
+  border-bottom: 0 none;
+  margin-bottom: 15px;
+  padding-bottom: 0;
+}

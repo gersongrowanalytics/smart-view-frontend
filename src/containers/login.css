@@ -1,0 +1,181 @@
+.contenedorFormularioLogin{
+    widows: 0%;
+    background: #F93258;
+    float:left;
+    height  : 100%;
+    text-align: center;
+    animation-name: formularioLogin;
+    animation-delay: 2s;
+    animation-duration: 4s;
+    animation-fill-mode: forwards;
+
+}
+
+@keyframes formularioLogin{
+    from{ width   : 0%; }
+    to { width   : 30%; }
+}
+
+.contenedorLoginSlider{
+    background-image : url("http://gro.gavsistemas.com/Sistema/abs/img/fondoLogin.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    float: right;
+    width   : 100%;
+    height  : 100%;
+    
+    animation-name: loginSlider;
+    animation-delay: 2s;
+    animation-duration: 4s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes loginSlider{
+    from{ width   : 100%; }
+    to { width   : 70%; }
+}
+
+#imagenLogo{
+    position: absolute;
+    left: 59px;
+    top: 50px;
+}
+
+.tituloIniciarSesion{
+    position: absolute;
+    left: 59px;
+    top: 140px;
+    /* font-family: Roboto; */
+    font-style: normal;
+    font-weight: 600;
+    font-size: 31px;
+    color: #FFFFFF;
+}
+
+#textoInputUsuario{
+    position: absolute;
+    left: 59px;
+    top: 195px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    align-items: center;
+    color: #FFFFFF;
+}
+
+#textoInputClave{
+    position: absolute;
+    left: 59px;
+    top: 300px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    align-items: center;
+    color: #FFFFFF;
+}
+
+#textoOlvidasteContrasena{
+    position: absolute;
+    left: 59px;
+    top: 390px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    align-items: center;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+#campoInputUsuario{
+    position: absolute;
+    width: 290px;
+    height: 49px;
+    left: 59px;
+    top: 225px;
+
+    border: 1px solid #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+#campoInputClave{
+    position: absolute;
+    width: 290px;
+    height: 49px;
+    left: 59px;
+    top: 325px;
+
+    border: 1px solid #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+#inputDatos{
+    float: right;
+    background:transparent;
+    height:38px; 
+    margin-top:5px;
+    margin-left: 5px;
+    border:none; 
+    /* width:250px; */
+    /* width: 70%; */
+    color: white;
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.iconoContrasena{
+    padding-top: 10px;
+    padding-left: 10px;
+    float:left;
+}
+
+#inputDatos:focus{
+    border: none;
+    outline: none;
+}
+
+.textoFooterLogin{
+    bottom: 20px;
+    position:absolute;
+    /* width: 167px; */
+    height: 18px;
+    left: 59px;
+
+    /* font-family: Roboto; */
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 18px;
+    /* identical to box height */
+
+    display: flex;
+    align-items: center;
+
+    color: #FFFFFF;
+}
+
+.btnIniciar{
+    color: #F93258;
+    font-weight: 600;
+    cursor: pointer;
+    position: absolute;
+    width: 290px;
+    height: 49px;
+    left: 59px;
+    top: 425px;
+    background: #FFFFFF;
+    border-radius: 10px;
+    border: none;
+}
+
+.txtBtnIniciar{
+    padding-top: 15px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 18px;
+    align-items: center;
+    color: #F93258;
+}
