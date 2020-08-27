@@ -1,9 +1,16 @@
 import React from 'react'
 import {Col, Row, Card, Button, InputNumber} from "antd";
 import PromocionesCarousel from './PromocionesCarousel'
+import {useDispatch} from "react-redux";
+import {editarPromocionReducer} from 'appRedux/actions/Promociones'
 
 const CanalPromociones = (props) => {
-    const {nombreCanal, promociones} = props
+    const {posicionCanal, cscid, nombreCanal, promociones} = props
+    const dispatch = useDispatch();
+
+    const editarPromocion = async (posicionPromocion) =>  {
+        dispatch(editarPromocionReducer(posicionCanal, posicionPromocion))
+    }
 
     return (
         <Col xl={24} md={24} sm={24} xs={24}>
@@ -12,13 +19,16 @@ const CanalPromociones = (props) => {
                     position: 'relative',
                     boxSizing: 'border-box',
                     padding: '0',
-                    margin: '0'
+                    marginBottom:'20px',
+                    marginLeft:'10px'
                 }}
             >
                 <PromocionesCarousel 
-                    heading ="Example Slider"   
-                    slides  ={promociones} 
-                    seleccionarCategoria = {() => {}}
+                    heading         = "Example Slider"
+                    posicionCanal   = {posicionCanal}
+                    cscid           = {cscid}
+                    slides          = {promociones} 
+                    editarPromocion = {editarPromocion}
                 />
                 {/* {
                     promociones.map((item, posicion) => {
@@ -87,20 +97,29 @@ const CanalPromociones = (props) => {
                 className   = "minorista"
                 style       = {{ 
                     display:'inline-block',
-                    letterSpacing:'3px',
+                    // letterSpacing:'3px',
                     position:'absolute', 
                     left:-20, 
                     background:'#2ABEE0', 
-                    width:'50px', 
+                    width:'60px', 
                     height:'300px', 
-                    top:'25px', 
+                    top:'50px', 
                     writingMode:'vertical-lr',
                     textOrientation:'upright',
-                    lineHeight: '50px',
+                    // lineHeight: '50px',
                     textAlign: 'center',
                     color: '#fff',
                     textTransform: 'uppercase',
                     borderRadius: '0 20px 20px 0',
+                    // fontWeight:'600',
+                    fontSize:'20px',
+                    textAlign:'center',
+                    paddingLeft:'10px',
+                    fontFamily: 'Roboto',
+                    fontStyle: 'normal',
+                    fontWeight: '900',
+                    // fontSize: '47px',
+                    lineHeight: '55px',
                 }}
             >
                 {nombreCanal}

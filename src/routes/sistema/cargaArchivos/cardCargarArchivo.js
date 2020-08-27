@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Button, Card, message, Upload, Row, Col} from "antd";
-import { PlusOutlined, StarOutlined } from '@ant-design/icons';
+import { PlusOutlined } from '@ant-design/icons';
 
 class CardCargarArchivo extends Component {
     constructor(){

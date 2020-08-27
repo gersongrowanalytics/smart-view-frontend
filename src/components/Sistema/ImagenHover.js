@@ -22,7 +22,7 @@ const ImagenHover = (props) => {
                                             <img alt="Remy Sharp" src={icono}/> 
                                         </span>
                                     </div>
-                                    <strong className="gx-text-black">{nombre}</strong>
+                                    <span className="gx-text-black nombreCategoria">{nombre}</span>
                                 </div>
                             </Col>
                         </Row>

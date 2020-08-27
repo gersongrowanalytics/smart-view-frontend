@@ -1,8 +1,10 @@
 import {
-    SELECCIONAR_TUTORIAL
+    SELECCIONAR_TUTORIAL,
+    SELECCIONAR_VIDEO_TUTORIAL
 } from "constants/SistemaTypes";
 const INIT_STATE = {
     tutorialSeleccionado : false,
+    videoTutorialSeleccionado : false
 };
 
 export default (state = INIT_STATE, action) => {
@@ -11,6 +13,12 @@ export default (state = INIT_STATE, action) => {
             return {
                 ...state,
                 tutorialSeleccionado: action.payload,
+            }
+        }
+        case SELECCIONAR_VIDEO_TUTORIAL: {
+            return {
+                ...state,
+                videoTutorialSeleccionado: action.payload,
             }
         }
     default:

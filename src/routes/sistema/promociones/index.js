@@ -20,8 +20,9 @@ const Promociones = () => {
         <Auxiliary>
             <Row>
                 <Col xl={24} md={24} sm={24} xs={24}>
-                    <div style={{background:'#F93258', width:'100%', padding:'10px', marginBottom:'20px'}} className="gx-text-center" >
-                        <h1 className="gx-text-white">PROMOCIONES</h1>
+                    <div style={{background:'transparent', width:'100%', marginBottom:'20px'}} className="gx-text-center" >
+                        {/* <h1 className="gx-text-white" style={{fontFamily}}>PROMOCIONES</h1> */}
+                        <img alt="" src={require("assets/images/bannerPromociones.png")} width="100%" height="100%"/>
                     </div>
                 </Col>
                 <Col xl={24} md={24} sm={24} xs={24} style={{marginBottom:'10px'}}  >
@@ -58,9 +59,11 @@ const Promociones = () => {
                 {
                     canalesPromociones.map((item, posicion) => {
                         return (
-                            <CanalPromociones 
-                                nombreCanal = {item.cannombre}
-                                promociones = {item.promociones}
+                            <CanalPromociones
+                                posicionCanal   = {posicion}
+                                cscid           = {item.cscid}
+                                nombreCanal     = {item.cannombre}
+                                promociones     = {item.promociones}
                             />
                         )
                     })

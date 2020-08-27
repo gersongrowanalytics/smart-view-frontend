@@ -1,5 +1,5 @@
 import React from "react";
-import {Layout, Row, Col} from "antd";
+import {Layout, Row, Col, Button} from "antd";
 
 import Sidebar from "../Sidebar/index";
 import HorizontalDefault from "../Topbar/HorizontalDefault/index";
@@ -12,6 +12,7 @@ import Topbar from "../Topbar/index";
 import {footerText} from "util/config";
 import App from "routes/index";
 import {useSelector, useDispatch} from "react-redux";
+import {seleccionarVideoTutorialReducer} from "appRedux/actions/Tutorial"
 import {
   NAV_STYLE_ABOVE_HEADER,
   NAV_STYLE_BELOW_HEADER,
@@ -28,7 +29,7 @@ import {
 import NoHeaderNotification from "../Topbar/NoHeaderNotification/index";
 import {useRouteMatch} from "react-router-dom";
 import Customizer from "../Customizer";
-
+import { CloseOutlined } from '@ant-design/icons';
 
 const {Content, Footer} = Layout;
 
@@ -36,10 +37,10 @@ const MainApp = () => {
 
   const {width, navStyle} = useSelector(({settings}) => settings);
   const {cargaArchivosSeleccionado} = useSelector(({cargaArchivos}) => cargaArchivos);
-  const {tutorialSeleccionado} = useSelector(({tutorial}) => tutorial);
+  const {tutorialSeleccionado, videoTutorialSeleccionado} = useSelector(({tutorial}) => tutorial);
   
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   // if(cargaArchivosSeleccionado == false){
   //   dispatch(seleccionarCargaArchivosReducer())
   // }
@@ -111,48 +112,62 @@ const MainApp = () => {
 
 
   return (
-    <Layout className="gx-app-layout">
-      {getSidebar(navStyle, width)}
-      <Layout>
-        {getNavStyles(navStyle)}
-        <Content className={`gx-layout-content ${getContainerClass(navStyle)} `} 
-          style={ 
-            cargaArchivosSeleccionado == true 
-            ?{
-              width:'100%', height:'100%', 
-              backgroundImage: `url(${config.api}Sistema/abs/img/fondoCargaArchivo.png)`, 
-              backgroundSize: '100% 100%', backgroundRepeat:'no-repeat'
-            } 
-            : tutorialSeleccionado == true
+    videoTutorialSeleccionado == true
+      ?<div style={{width:'100%', height:'100%'}}>
+        <div style={{float:'right', marginRight:'10px'}}>
+            <Button
+              style={{background:'#F93258', border:'none', marginTop:'10px', marginRight:'5px'}}
+              shape="circle" 
+              icon={<CloseOutlined style={{"color" : 'white'}} />} 
+              onClick={() => dispatch(seleccionarVideoTutorialReducer(false))}
+            >
+            </Button>
+        </div>
+        <iframe width="100%" height="100%" src="http://www.youtube.com/embed/XGSy3_Czz8k?autoplay=1">
+        </iframe>
+      </div>
+      :<Layout className="gx-app-layout">
+        {getSidebar(navStyle, width)}
+        <Layout>
+          {getNavStyles(navStyle)}
+          <Content className={`gx-layout-content ${getContainerClass(navStyle)} `} 
+            style={ 
+              cargaArchivosSeleccionado == true 
               ?{
                 width:'100%', height:'100%', 
-                backgroundImage: `url(${config.api}Sistema/abs/img/fondoTutorial1.png)`, 
+                backgroundImage: `url(${config.api}Sistema/abs/img/fondoCargaArchivo.png)`, 
                 backgroundSize: '100% 100%', backgroundRepeat:'no-repeat'
               } 
-              :null
-          }
-        >
-          <App match={match}/>
-          <Footer style={{background:'transparent', marginLeft:'50px', marginRight:'50px'}}>
-            <div className="gx-layout-footer-content">
-              {/* {footerText} */}
-              <Row>
-                <Col xl={10} style={{ marginTop:'30px'}}>
-                  © Lead Smart View 2020
-                </Col>
-                <Col xl={10}>
-                  <img alt="" src={require("assets/images/logoSmart.png")} />
-                </Col>
-                <Col xl={4} style={{marginTop:'30px'}}>
-                  Políticas de privacidad
-                </Col>
-              </Row>
-            </div>
-          </Footer>
-        </Content>
-        <Customizer/>
+              : tutorialSeleccionado == true
+                ?{
+                  width:'100%', height:'100%', 
+                  backgroundImage: `url(${config.api}Sistema/abs/img/fondoTutorial1.png)`, 
+                  backgroundSize: '100% 100%', backgroundRepeat:'no-repeat'
+                } 
+                :null
+            }
+          >
+            <App match={match}/>
+            <Footer style={{background:'transparent', marginLeft:'50px', marginRight:'50px'}}>
+              <div className="gx-layout-footer-content">
+                {/* {footerText} */}
+                <Row>
+                  <Col xl={10} style={{ marginTop:'30px'}}>
+                    © Lead Smart View 2020
+                  </Col>
+                  <Col xl={10}>
+                    <img alt="" src={require("assets/images/logoSmart.png")} />
+                  </Col>
+                  <Col xl={4} style={{marginTop:'30px'}}>
+                    Políticas de privacidad
+                  </Col>
+                </Row>
+              </div>
+            </Footer>
+          </Content>
+          <Customizer/>
+        </Layout>
       </Layout>
-    </Layout>
   )
 };
 export default MainApp;

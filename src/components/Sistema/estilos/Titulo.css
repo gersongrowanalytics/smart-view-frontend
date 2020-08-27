@@ -28,3 +28,34 @@
   margin-bottom: 15px;
   padding-bottom: 0;
 }
+
+.ultimaActualizacion{
+  font-family: Roboto;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 23px;
+}
+
+.btnDescargar{
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 23px;
+  border: none;
+  background:#F93258; 
+  color:white;
+  border-radius: 10px;
+}
+
+.btnDescargar:hover{
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 23px;
+
+  background:#F93258; 
+  color:white;
+  border-radius: 10px;
+}

@@ -108,7 +108,7 @@
   // =========================
   
   .sliderPromocion{
-    --slide-size: 70vmin;
+    --slide-size: 90vmin;
     // --slide-size: 100vmin;
     --slide-margin: 1vmin;
     
@@ -263,7 +263,96 @@
   
   }
   
+  .txtGratis{
+    color:#F93258;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 17px;
+    line-height: 20px;
+  }
+
+  #txtProducto{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 17px;
+    line-height: 20px;
+  }
+
+  #tituloValorizado{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 17px;
+    line-height: 20px;
+  }
+
+  #precioValorizado{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 22px;
+    line-height: 26px;
+  }
+
+  #txtPlanchas{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 17px;
+    line-height: 20px;
+  }
+
+  #txtBtnEditar{
+    border:1px solid #2ABEE0;
+    color: #ffff;
+    border-radius: 25px;
+    background: #2BBEE0;
+    padding-left: 35px;
+    padding-right: 35px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 17px;
+    line-height: 20px;
+  }
+
+  #felicidades{
+    // style={{color:'white', fontWeight:'500', fontSize:'38px'}}
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 48px;
+    line-height: 56px;
+    color: white;
+  }
   
+  #decripcionFelicidades{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 42px;
+    color: white;
+  }
+
+  #tituloConfirmacion{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 23px;
+    color: white;
+  }
+
+  #descripcionConfirmacion{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 18px;
+  }
   // =========================
   // Animations
   // =========================

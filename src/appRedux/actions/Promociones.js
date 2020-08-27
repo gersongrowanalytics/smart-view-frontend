@@ -130,6 +130,16 @@ export const seleccionarCategoriaReducer = (scaid, posicion) => async (dispatch,
             payload: []
         })
     });
+}
 
+export const editarPromocionReducer = (posicionCanal, posicionPromocion) => async (dispatch, getState) => {
+
+    let {canalesPromociones} = getState().promociones
+
+    canalesPromociones[posicionCanal]['promociones'][posicionPromocion]['guardando'] = !canalesPromociones[posicionCanal]['promociones'][posicionPromocion]['guardando']
+    dispatch({
+        type: OBTENER_CANALES_DE_PROMOCIONES_EXITO,
+        payload: canalesPromociones
+    })
 
 }

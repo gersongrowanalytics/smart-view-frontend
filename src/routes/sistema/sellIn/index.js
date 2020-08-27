@@ -15,8 +15,9 @@ const SellIn = () => {
         <Auxiliary>
             <Row>
                 <Col xl={24} md={24} sm={24} xs={24}>
-                    <div style={{background:'#E5E5E5', width:'100%', padding:'50px', marginBottom:'20px',borderRadius: '12px' }} className="gx-text-center" >
-                        
+                    {/* <div style={{background:'transparent', width:'100%', padding:'50px', marginBottom:'20px',borderRadius: '12px' }} className="gx-text-center" > */}
+                    <div style={{background:'transparent', width:'100%', marginBottom:'20px'}} className="gx-text-center" >
+                        <img alt="" src={require("assets/images/bannerVentas.png")} width="100%" height="100%"/>
                     </div>
                 </Col>
                 <Col xl={24} md={24} sm={24} xs={24}>
