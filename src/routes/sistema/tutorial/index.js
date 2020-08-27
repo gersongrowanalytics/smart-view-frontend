@@ -21,8 +21,8 @@ const Tutorial = () => {
     return (
         <Auxiliary>
             <Row style={{  height:'100%' }}>
-                <Col xl={24} md={24} style={{marginTop:'50px', float:'left', marginLeft:'-45px'}}>
-                    <img src={require('assets/images/logoLeadSmartView.png')} alt=''  id="imagenLogo" />
+                <Col xl={24} md={24} style={{marginTop:'100px', }}>
+                    <img src={require('assets/images/logoLeadSmartView.png')} alt=''  style={{height:'100%',}} />
                 </Col>
                 <Col xl={10} md={10} style={{marginTop:'10px'}}>
                     <span style={{ color:'#4D4D4D'}}>
@@ -30,7 +30,10 @@ const Tutorial = () => {
                     </span>
                 </Col>
                 <Col xl={14} md={14} />
-                
+                <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />asdas
             </Row>
         </Auxiliary>
     )
