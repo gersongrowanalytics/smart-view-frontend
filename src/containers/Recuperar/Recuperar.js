@@ -1,4 +1,5 @@
 import React, {useEffect} from "react";
+import {Link} from "react-router-dom";
 import {message,Form} from "antd";
 import {useDispatch, useSelector} from "react-redux";
 import {useHistory} from "react-router-dom"
@@ -69,7 +70,11 @@ const Recuperar =()=> {
                     
                 </Form.Item>
               </div>
-
+              <Link to="/Sign">
+                <span id="regresarLogin">
+                  Iniciar sesión
+                </span>
+              </Link>
               <button
                 className="btnEnviar"
               >

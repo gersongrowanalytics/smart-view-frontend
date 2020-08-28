@@ -42,14 +42,15 @@
     top: 50px;
 }
 
-.tituloIniciarSesion{
+.tituloIniciarSesionLogin{
     position: absolute;
     left: 59px;
     top: 140px;
-    /* font-family: Roboto; */
+    font-family: Roboto;
     font-style: normal;
-    font-weight: 600;
+    font-weight: 900;
     font-size: 31px;
+    line-height: 29px;
     color: #FFFFFF;
 }
 
@@ -57,34 +58,39 @@
     position: absolute;
     left: 59px;
     top: 195px;
-    font-style: normal;
-    font-weight: 600;
     font-size: 15px;
     align-items: center;
     color: #FFFFFF;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 16px;
 }
 
 #textoInputClave{
     position: absolute;
     left: 59px;
     top: 300px;
-    font-style: normal;
-    font-weight: 600;
     font-size: 15px;
     align-items: center;
     color: #FFFFFF;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 16px;
 }
 
 #textoOlvidasteContrasena{
     position: absolute;
     left: 59px;
     top: 390px;
-    font-style: normal;
-    font-weight: 400;
     font-size: 13px;
     align-items: center;
     color: #FFFFFF;
     cursor: pointer;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
 }
 
 #campoInputUsuario{
@@ -125,10 +131,12 @@
     margin-right: 10px;
 }
 
-.iconoContrasena{
-    padding-top: 10px;
+#iconoContrasena{
+    /* padding-top: 10px; */
     padding-left: 10px;
+    margin-left: -5px;
     float:left;
+    width:50px
 }
 
 #inputDatos:focus{
@@ -139,26 +147,20 @@
 .textoFooterLogin{
     bottom: 20px;
     position:absolute;
-    /* width: 167px; */
     height: 18px;
     left: 59px;
-
-    /* font-family: Roboto; */
+    font-family: Roboto;
     font-style: normal;
     font-weight: normal;
     font-size: 15px;
     line-height: 18px;
-    /* identical to box height */
-
     display: flex;
     align-items: center;
-
     color: #FFFFFF;
 }
 
 .btnIniciar{
     color: #F93258;
-    font-weight: 600;
     cursor: pointer;
     position: absolute;
     width: 290px;
@@ -168,6 +170,11 @@
     background: #FFFFFF;
     border-radius: 10px;
     border: none;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 18px;
+
 }
 
 .txtBtnIniciar{

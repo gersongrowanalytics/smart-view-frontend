@@ -59,3 +59,11 @@
   color:white;
   border-radius: 10px;
 }
+
+#tituloModuloVentas{
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 23px;
+}

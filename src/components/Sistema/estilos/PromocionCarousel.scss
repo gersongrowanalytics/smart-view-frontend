@@ -305,10 +305,9 @@
   }
 
   #txtBtnEditar{
-    border:1px solid #2ABEE0;
+    // border:1px solid #2ABEE0;
     color: #ffff;
     border-radius: 25px;
-    background: #2BBEE0;
     padding-left: 35px;
     padding-right: 35px;
     font-family: Roboto;
@@ -316,6 +315,10 @@
     font-weight: 900;
     font-size: 17px;
     line-height: 20px;
+  }
+
+  #txtBtnEditar:hover{
+    border: none;
   }
 
   #felicidades{

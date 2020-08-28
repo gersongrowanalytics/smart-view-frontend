@@ -5,15 +5,16 @@ import Slide from './carousel'
 import Titulo from 'components/Sistema/Titulo'
 import CanalPromociones from 'components/Sistema/CanalPromociones'
 import {useDispatch, useSelector} from "react-redux";
-import {seleccionarCategoriaReducer} from 'appRedux/actions/Promociones'
+import {seleccionarCategoriaReducer, seleccionarPromocionReducer} from 'appRedux/actions/Promociones'
 
 const Promociones = () => {
     const dispatch = useDispatch();
-    const {categoriasPromociones, canalesPromociones} = useSelector(({promociones}) => promociones);
+    const {categoriasPromociones, canalesPromociones, seleccionoPromocion, colorSeleciconadoPromo} = useSelector(({promociones}) => promociones);
     // const canalesPromociones = []
 
     const seleccionarCategoria = async (scaid, posicion) =>  {
         dispatch(seleccionarCategoriaReducer(scaid, posicion))
+        dispatch(seleccionarPromocionReducer(true))
     }
 
     return (
@@ -38,6 +39,7 @@ const Promociones = () => {
                     heading="Example Slider"   
                     slides={categoriasPromociones} 
                     seleccionarCategoria = {seleccionarCategoria}
+                    seleccionoPromocion = {seleccionoPromocion}
                 />
                 <div style={{marginBottom:'160px', height:'200px'}} />
                 {/* {
@@ -64,12 +66,16 @@ const Promociones = () => {
                                 cscid           = {item.cscid}
                                 nombreCanal     = {item.cannombre}
                                 promociones     = {item.promociones}
+                                colorSeleciconadoPromo = {colorSeleciconadoPromo}
                             />
                         )
                     })
                 }
-                
-                <div style={{marginBottom:'200px', height:'200px'}} />
+                {
+                    seleccionoPromocion == true
+                    ?<div style={{marginBottom:'200px', height:'200px'}} />
+                    :null
+                }
             </Row>
         </Auxiliary>
     )

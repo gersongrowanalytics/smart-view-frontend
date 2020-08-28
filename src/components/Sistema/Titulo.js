@@ -29,7 +29,7 @@ const Titulo = (props) => {
                     }
                     {
                         tieneTitulo
-                        ?titulo
+                        ?<span id="tituloModuloVentas"> {titulo}</span>
                         :null
                     }
                     {

@@ -109,13 +109,41 @@
 
 .slider {
   // --slide-size: 70vmin;
-  --slide-size: 40vmin;
-  --slide-margin: 4vmin;
+  // --slide-size: 60vmin;
+  --slide-margin: 2vmin;
   
-  height: var(--slide-size);
+  height: 60vmin;
   margin: 0 ;
   position: relative;
-  width: var(--slide-size);
+  width: 60vmin;
+  animation-delay: 4s;
+}
+
+.sliderPequeno{
+  // --slide-size:60vmin;
+  --slide-margin: 2vmin;
+  
+  height: 40vmin;
+  margin: 0 ;
+  position: relative;
+  width: 40vmin;
+  animation-name: animacionSlider;
+  // animation-delay: 2s;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes animacionSlider{
+  from{
+    width: 60vmin;
+    height: 60vmin;
+  }
+  to{
+    width: 40vmin;
+    height: 40vmin;
+  }
+  // from{ width   : 0%; }
+  // to { width   : 30%; }
 }
 
 .slider__wrapper {
@@ -136,7 +164,7 @@
   display: flex;
   // flex: 1;
   // flex-direction: column;
-  height: var(--slide-size);
+  height: 60vmin;
   // justify-content: center;
   margin: 0 var(--slide-margin);
   // opacity: 0.25;
@@ -145,7 +173,7 @@
   transition: 
     opacity calc(var(--base-duration) / 2) var(--base-ease),
     transform calc(var(--base-duration) / 2) var(--base-ease);
-  width: var(--slide-size);
+  width: 60vmin;
   z-index: 1;
   
   // &--previous,
@@ -170,6 +198,51 @@
       transform: translateX(-2%);
     }
   }
+}
+
+
+.slidePequeno {
+  display: flex;
+  height: 60vmin;
+  margin: 0 var(--slide-margin);
+  position: relative;
+  transition: 
+    opacity calc(var(--base-duration) / 2) var(--base-ease),
+    transform calc(var(--base-duration) / 2) var(--base-ease);
+  width: 60vmin;
+  z-index: 1;
+  animation-name: animacionSlide;
+  // animation-delay: 2s;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+
+  &--previous {
+    cursor: w-resize;
+    &:hover {
+      transform: translateX(2%);
+    }
+  }
+  
+  &--next {
+    cursor: e-resize;
+    
+    &:hover {
+      transform: translateX(-2%);
+    }
+  }
+}
+
+@keyframes animacionSlide{
+  from{
+    width: 60vmin;
+    height: 60vmin;
+  }
+  to{
+    width: 40vmin;
+    height: 40vmin;
+  }
+  // from{ width   : 0%; }
+  // to { width   : 30%; }
 }
 
 .slide--current {

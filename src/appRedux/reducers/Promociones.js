@@ -3,13 +3,17 @@ import {
     OBTENER_PROMOCIONES_FAIL,
     ACTUALIZAR_CATEGORIAS_DE_PROMOCIONES,
     OBTENER_CANALES_DE_PROMOCIONES_EXITO,
-    OBTENER_CANALES_DE_PROMOCIONES_FAIL
+    OBTENER_CANALES_DE_PROMOCIONES_FAIL,
+    SELECCIONAR_PROMOCION,
+    ACTUALIZAR_COLOR_SELECCIONADO_PROMOCION
 } from "constants/SistemaTypes";
 
 const INIT_STATE = {
-    categoriasPromociones : [],
-    obtuvoPromociones     : false,
-    canalesPromociones    : []
+    categoriasPromociones   : [],
+    obtuvoPromociones       : false,
+    canalesPromociones      : [],
+    seleccionoPromocion     : false,
+    colorSeleciconadoPromo  : 'transparent'
 };
 
 export default (state = INIT_STATE, action) => {
@@ -44,6 +48,18 @@ export default (state = INIT_STATE, action) => {
             return {
                 ...state,
                 canalesPromociones : action.payload,
+            }
+        }
+        case SELECCIONAR_PROMOCION: {
+            return {
+                ...state,
+                seleccionoPromocion : action.payload,
+            }
+        }
+        case ACTUALIZAR_COLOR_SELECCIONADO_PROMOCION: {
+            return {
+                ...state,
+                colorSeleciconadoPromo : action.payload,
             }
         }
         default:{

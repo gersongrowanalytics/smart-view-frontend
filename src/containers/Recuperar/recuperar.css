@@ -46,9 +46,10 @@
     position: absolute;
     left: 59px;
     top: 140px;
-    /* font-family: Roboto; */
+    font-family: Roboto;
     font-style: normal;
-    font-weight: 600;
+    font-weight: 900;
+    line-height: 29px;
     font-size: 31px;
     color: #F93258;
 }
@@ -68,11 +69,28 @@
     position: absolute;
     left: 59px;
     top: 310px;
-    font-style: normal;
-    font-weight: 400;
     font-size: 15px;
     align-items: center;
     color: black;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 16px;
+}
+
+#regresarLogin{
+    position: absolute;
+    left: 59px;
+    top: 400px;
+    font-size: 15px;
+    align-items: center;
+    color: black;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 16px;
+    color: #F93258;
+    cursor: pointer;
 }
 
 #textoOlvidasteContrasena{
@@ -115,22 +133,26 @@
     position: absolute;
     left: 59px;
     top: 255px;
-    font-style: normal;
-    font-weight: 400;
     font-size: 13px;
     color: black;
     float: left;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 18px;
 }
 
 #textoContrasenaDos{
     position: absolute;
     left: 59px;
     top: 270px;
-    font-style: normal;
-    font-weight: 400;
     font-size: 13px;
     color: black;
     float: left;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 18px;
 }
 
 

@@ -45,9 +45,19 @@ class Slide extends React.Component {
         catnombre,
         catimagenfondo,
         caticono,
-        catcolorhover, index } = this.props.slide
+        catcolorhover, 
+        caticonoseleccionado,
+        catcolor,
+        index } = this.props.slide
     const current = this.props.current
-    let classNames = 'slide'
+    const seleccionoPromocion  = this.props.seleccionoPromocion
+
+    let classNames
+    if(seleccionoPromocion == true){
+      classNames = 'slidePequeno'
+    }else{
+      classNames = 'slide'
+    }
     
     if (current === index) classNames += ' slide--current'
     else if (current - 1 === index) classNames += ' slide--previous'
@@ -67,6 +77,8 @@ class Slide extends React.Component {
                 nombre        = {catnombre}
                 fondo         = {catimagenfondo}
                 icono         = {caticono}
+                iconoSeleccionado = {caticonoseleccionado}
+                color         = {catcolor}
                 colorhover    = {catcolorhover}
             />
         </div>
@@ -132,14 +144,21 @@ class Slider extends React.Component {
 
   render() {
     const { current, direction } = this.state
-    const { slides, heading, seleccionarCategoria } = this.props 
+    const { slides, heading, seleccionarCategoria, seleccionoPromocion } = this.props 
     const headingId = `slider-heading__${heading.replace(/\s+/g, '-').toLowerCase()}`
     const wrapperTransform = {
       'transform': `translateX(-${current * (100 / slides.length)}%)`
     }
     
     return (
-      <div className='slider' aria-labelledby={headingId}>
+      <div 
+        className={
+          seleccionoPromocion == true
+          ?'sliderPequeno'
+          :'slider'
+        } 
+        aria-labelledby={headingId}
+      >
         <ul className="slider__wrapper" style={wrapperTransform}>
           <h3 id={headingId} class="visuallyhidden">{heading}</h3>
           
@@ -202,7 +221,10 @@ class Slider extends React.Component {
                     nombre        = {slide.catnombre}
                     fondo         = {slide.catimagenfondo}
                     icono         = {slide.caticono}
+                    caticonoseleccionado = {slide.caticonoseleccionado}
+                    catcolor      = {slide.catcolor}
                     colorhover    = {slide.catcolorhover}
+                    seleccionoPromocion = {seleccionoPromocion}
                 />
               </div>
             )

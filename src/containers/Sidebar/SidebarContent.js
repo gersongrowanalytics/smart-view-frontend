@@ -57,37 +57,44 @@ const SidebarContent = () => {
                   <span>VENTAS</span>
               </Menu.Item> */}
               <Menu.Item key="#">
-                  <i className="icon icon-user-o"/>
+                  {/* <i className="icon icon-user-o"/> */}
+                  <img alt="" src={require("assets/images/nombreEjecutivo.png")} style={{ marginRight:'15px' }} width="25px" />
                   <span>{localStorage.getItem('usuusuario')}</span>
               </Menu.Item>
               <Menu.Item key="#">
-                  <i className="icon icon-user-o"/>
+                  {/* <i className="icon icon-user-o"/> */}
+                  <img alt="" src={require("assets/images/nombreEjecutivo.png")} style={{ marginRight:'15px' }} width="25px" />
                   <span>Nombre de Ejecutivo</span>
               </Menu.Item>
               <Menu.Item key="#">
-                  <i className="icon icon-user-o"/>
+                  {/* <i className="icon icon-user-o"/> */}
+                  <img alt="" src={require("assets/images/nombreEjecutivo.png")} style={{ marginRight:'15px' }} width="25px" />
                   <span>Nombre de Distribuidora</span>
               </Menu.Item>
-
-
               <Menu.Item key="sistema/ventas">
-                <Link to="/sistema/ventas"><i className="icon icon-shopping-cart"/>
+                <Link to="/sistema/ventas">
+                  {/* <i className="icon icon-shopping-cart"/> */}
+                  <img alt="" src={require("assets/images/menuVentas.png")} style={{ marginRight:'15px' }} width="25px" />
                   <span>VENTAS</span></Link>
               </Menu.Item>
               <Menu.Item key="sistema/promociones">
-                <Link to="/sistema/promociones"><i className="icon icon-navigation"/>
+                <Link to="/sistema/promociones">
+                  <img alt="" src={require("assets/images/menuPromociones.png")} style={{ marginRight:'15px' }} width="25px" />
                   <span>PROMOCIONES</span></Link>
               </Menu.Item>
               <Menu.Item key="sistema/tutorial">
-                <Link to="/sistema/tutorial"><i className="icon icon-data-display"/>
+                <Link to="/sistema/tutorial">
+                  <img alt="" src={require("assets/images/menuGuia.png")} style={{ marginRight:'15px' }} width="25px" />
                   <span>Guía Grow Smart View</span></Link>
               </Menu.Item>
               <Menu.Item key="sistema/cargaArchivos/promociones">
-                <Link to="/sistema/cargaArchivos/promociones"><i className="icon icon-files"/>
+                <Link to="/sistema/cargaArchivos/promociones">
+                  <img alt="" src={require("assets/images/menuCargaArchivo.png")} style={{ marginRight:'15px' }} width="25px" />
                   <span>Carga de archivo</span></Link>
               </Menu.Item>
               <Menu.Item key="sistema/widgets">
-                <Link to="/sistema/widgets"><i className="icon icon-setting"/>
+                <Link to="/sistema/widgets">
+                  <img alt="" src={require("assets/images/menuConfiguracion.png")} style={{ marginRight:'15px' }} width="25px" />
                   <span>Configuración</span></Link>
               </Menu.Item>
 
@@ -102,4 +109,3 @@ const SidebarContent = () => {
 
 SidebarContent.propTypes = {};
 export default SidebarContent;
-

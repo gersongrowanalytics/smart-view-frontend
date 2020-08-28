@@ -46,7 +46,7 @@ const SignIn =()=> {
       >
         <div style={{width : '100%', height : '100%', alignItems: 'center', display:'flex'}}>
           <img src={require('assets/images/kimberly.png')} alt=''  id="imagenLogo" />
-          <h1 className="tituloIniciarSesion">Iniciar Sesión</h1>
+          <h1 className="tituloIniciarSesionLogin">Iniciar Sesión</h1>
           <Form
             initialValues={{ remember: true }}
             name="basic"
@@ -55,7 +55,7 @@ const SignIn =()=> {
             className="gx-signin-form gx-form-row0">
               <span id="textoInputUsuario">Usuario</span>
               <div id="campoInputUsuario">
-                <img className="iconoContrasena"  alt="" src={require("assets/images/iconUsuario.png")} style={{paddingBottom:'7px'}}/>
+                <img id="iconoContrasena"  alt="" src={require("assets/images/iconUsuario.png")}/>
                 <Form.Item
                   initialValue=""
                   // rules={[{ required: true, message: 'Es necesario un usuario'}]}
@@ -69,7 +69,7 @@ const SignIn =()=> {
 
               <span id="textoInputClave">Clave</span>
               <div id="campoInputClave">
-                <img className="iconoContrasena" alt="" src={require("assets/images/iconCandado.png")} style={{paddingBottom:'7px'}}/> 
+                <img id="iconoContrasena" alt="" src={require("assets/images/iconCandado.png")} /> 
                 <Form.Item
                   initialValue=""
                   rules= {[{required: true}]}

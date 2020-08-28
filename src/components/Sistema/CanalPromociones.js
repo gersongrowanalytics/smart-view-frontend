@@ -5,7 +5,9 @@ import {useDispatch} from "react-redux";
 import {editarPromocionReducer} from 'appRedux/actions/Promociones'
 
 const CanalPromociones = (props) => {
-    const {posicionCanal, cscid, nombreCanal, promociones} = props
+    const {posicionCanal, cscid, nombreCanal, promociones, colorSeleciconadoPromo} = props
+
+    
     const dispatch = useDispatch();
 
     const editarPromocion = async (posicionPromocion) =>  {
@@ -29,6 +31,7 @@ const CanalPromociones = (props) => {
                     cscid           = {cscid}
                     slides          = {promociones} 
                     editarPromocion = {editarPromocion}
+                    colorSeleciconadoPromo = {colorSeleciconadoPromo}
                 />
                 {/* {
                     promociones.map((item, posicion) => {
@@ -100,7 +103,7 @@ const CanalPromociones = (props) => {
                     // letterSpacing:'3px',
                     position:'absolute', 
                     left:-20, 
-                    background:'#2ABEE0', 
+                    background:colorSeleciconadoPromo, 
                     width:'60px', 
                     height:'300px', 
                     top:'50px', 
@@ -114,7 +117,7 @@ const CanalPromociones = (props) => {
                     // fontWeight:'600',
                     fontSize:'20px',
                     textAlign:'center',
-                    paddingLeft:'10px',
+                    paddingLeft:'5px',
                     fontFamily: 'Roboto',
                     fontStyle: 'normal',
                     fontWeight: '900',

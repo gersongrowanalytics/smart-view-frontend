@@ -14,13 +14,13 @@ const CardRebate = (props) => {
                 <Col xl={20} md={16} sm={20} xs={12}>
                     <Row>
                         <Col xl={24} md={24} sm={24} xs={24}>
-                            <h2 className="gx-text-white">Rebate Sell In</h2>
+                            <h2 className="gx-text-white" id="tituloRebate">Rebate Sell In</h2>
                         </Col>
                         <Col xl={8} md={24} sm={8} xs={24} style={{ borderRightStyle:'solid', borderRightColor:'white', paddingRight:'20px', alignSelf:'center'}}>
-                            <h2 className="gx-text-center gx-text-white">S/100.0</h2>
+                            <h2 className="gx-text-center gx-text-white" id="textoRebate">S/100.0</h2>
                         </Col>
                         <Col xl={16} md={24} sm={16} xs={24}>
-                            <p className="gx-text-white">El pago de Rebate se ejecutara, de llegar a la cuota establecida</p>
+                            <p className="gx-text-white" id="textoRebate">El pago de Rebate se ejecutara, de llegar a la cuota establecida</p>
                         </Col>
                         
                     </Row>

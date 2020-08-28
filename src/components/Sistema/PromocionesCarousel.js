@@ -64,6 +64,7 @@ class Slide extends React.Component {
 
     const posicionPromocion = this.props.posicion
     const editarPromocion = this.props.editarPromocion
+    const colorSeleciconadoPromo = this.props.colorSeleciconadoPromo
 
     const current = this.props.current
     let classNames = 'slidePromocion'
@@ -81,7 +82,7 @@ class Slide extends React.Component {
         onMouseLeave={this.handleMouseLeave}
       >
         <div className="slide__image-wrapperPromocion">
-            <Card style={{borderRadius:'20px', border:'1px solid #2ABEE0', }}>
+            <Card style={{borderRadius:'20px', border:'1px solid '+colorSeleciconadoPromo, }}>
                 <div style={{ 
                     position:'absolute', 
                     right:0, 
@@ -108,7 +109,7 @@ class Slide extends React.Component {
                     <Col xl={24} md={24} sm={24} xs={24} className="gx-text-center" style={{marginBottom:'20px', marginTop:'25px'}} >
                         <span 
                           style={{
-                            color:'#2ABEE0', 
+                            color:colorSeleciconadoPromo, 
                             fontFamily:'Roboto',
                             fontWeight:'900',
                             fontStyle:'normal',
@@ -184,6 +185,7 @@ class Slide extends React.Component {
                 <Col xl={24} md={24} sm={24} xs={24} className="gx-text-center" style={{marginTop:'10px'}}>
                   <Button 
                     id="txtBtnEditar"
+                    style={{background: colorSeleciconadoPromo}}
                     onClick={() => editarPromocion(posicionPromocion)}
                   >
                     Editar
@@ -280,7 +282,7 @@ class PromocionesCarousel extends React.Component {
 
   render() {
     const { current, direction } = this.state
-    const { slides, heading, editarPromocion } = this.props 
+    const { slides, heading, editarPromocion, colorSeleciconadoPromo } = this.props 
     const headingId = `slider-heading__${heading.replace(/\s+/g, '-').toLowerCase()}`
     const wrapperTransform = {
       'transform': `translateX(-${current * (100 / slides.length)}%)`
@@ -342,13 +344,14 @@ class PromocionesCarousel extends React.Component {
                 }}
               >
                 <Slide
-                    key={posicion}
-                    posicion = {posicion}
-                    slide={slide}
-                    current={current}
-                    handleSlideClick={this.handleSlideClick}
-                    seleccionado    = {slide.seleccionado}
-                    editarPromocion = {editarPromocion}
+                    key                    = {posicion}
+                    posicion               = {posicion}
+                    slide                  = {slide}
+                    current                = {current}
+                    handleSlideClick       = {this.handleSlideClick}
+                    seleccionado           = {slide.seleccionado}
+                    editarPromocion        = {editarPromocion}
+                    colorSeleciconadoPromo = {colorSeleciconadoPromo}
                 />
               </div>
             )

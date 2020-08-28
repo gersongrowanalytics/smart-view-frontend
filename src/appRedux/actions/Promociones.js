@@ -4,7 +4,9 @@ import {
     OBTENER_PROMOCIONES_FAIL,
     ACTUALIZAR_CATEGORIAS_DE_PROMOCIONES,
     OBTENER_CANALES_DE_PROMOCIONES_EXITO,
-    OBTENER_CANALES_DE_PROMOCIONES_FAIL
+    OBTENER_CANALES_DE_PROMOCIONES_FAIL,
+    SELECCIONAR_PROMOCION,
+    ACTUALIZAR_COLOR_SELECCIONADO_PROMOCION
 } from "constants/SistemaTypes";
 import {obtenerVentasTprReducer} from 'appRedux/actions/VentasTpr'
 import config from 'config'
@@ -77,9 +79,11 @@ export const obtenerPromocionesReducer = () =>async (dispatch, getState) => {
 export const seleccionarCategoriaReducer = (scaid, posicion) => async (dispatch, getState) => {
     let {categoriasPromociones} = getState().promociones
 
+    let colorSeleccionado = '';
     categoriasPromociones.map((categoria, nuevaposicion) => {
         if(categoria.scaid == scaid){
             categoriasPromociones[nuevaposicion]['seleccionado'] = true
+            colorSeleccionado = categoria.catcolor
         }else{
             categoriasPromociones[nuevaposicion]['seleccionado'] = false
         }
@@ -88,6 +92,11 @@ export const seleccionarCategoriaReducer = (scaid, posicion) => async (dispatch,
     dispatch({
         type: ACTUALIZAR_CATEGORIAS_DE_PROMOCIONES,
         payload: categoriasPromociones
+    })
+
+    dispatch({
+        type: ACTUALIZAR_COLOR_SELECCIONADO_PROMOCION,
+        payload: colorSeleccionado
     })
 
     await fetch(config.api+'promociones/mostrar/promociones',
@@ -142,4 +151,11 @@ export const editarPromocionReducer = (posicionCanal, posicionPromocion) => asyn
         payload: canalesPromociones
     })
 
+}
+
+export const seleccionarPromocionReducer = (accion) => {
+    return {
+        type: SELECCIONAR_PROMOCION,
+        payload: accion
+    }
 }

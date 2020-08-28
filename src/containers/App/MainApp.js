@@ -123,8 +123,10 @@ const MainApp = () => {
             >
             </Button>
         </div>
-        <iframe width="100%" height="100%" src="http://www.youtube.com/embed/XGSy3_Czz8k?autoplay=1">
-        </iframe>
+        <div style={{height:'90%'}}>
+          <iframe width="100%" height="100%" src="http://www.youtube.com/embed/XGSy3_Czz8k?autoplay=1">
+          </iframe>
+        </div>
       </div>
       :<Layout className="gx-app-layout">
         {getSidebar(navStyle, width)}
