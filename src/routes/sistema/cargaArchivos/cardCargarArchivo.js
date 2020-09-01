@@ -1,15 +1,19 @@
 import React, {Component} from 'react';
-import {Button, Card, message, Upload, Row, Col} from "antd";
+import {Button, Card, message, Spin, Row, Col} from "antd";
 import { PlusOutlined } from '@ant-design/icons';
+import config from 'config'
+import axios from 'axios'
 
 class CardCargarArchivo extends Component {
     constructor(){
         super();
         this.state = {
-            subioArchivo  : false,
-            guardarCambios : false,
-            enviarCambios : false,
-            nombreArchivo : ''
+            subioArchivo     : false,
+            guardarCambios   : false,
+            enviarCambios    : false,
+            nombreArchivo    : '',
+            fileSeleccionado : null,
+            cargando         : false
         }   
         this.seleccionarFile = this.seleccionarFile.bind(this)
         this.guardarCambios = this.guardarCambios.bind(this)
@@ -26,20 +30,22 @@ class CardCargarArchivo extends Component {
         this.refs.subirArchivoInput.click();
     }
 
-    cambioInputFile(event){
+    async cambioInputFile(event){
         event.stopPropagation();
         event.preventDefault();
-        var file = event.target.files[0];
+        this.state.fileSeleccionado = event.target.files[0];
+
         this.setState({
             subioArchivo  : true,
-            nombreArchivo : file['name']
+            nombreArchivo : this.state.fileSeleccionado['name']
         })
     }
 
     eliminarArchivo(){
         this.setState({
-            subioArchivo  : false,
-            nombreArchivo : ''
+            subioArchivo     : false,
+            nombreArchivo    : '',
+            fileSeleccionado : null
         })
     }
 
@@ -53,10 +59,42 @@ class CardCargarArchivo extends Component {
         }
     }
 
-    enviarCambios(){
+    async enviarCambios(){
         this.setState({
-            enviarCambios : true,
-            guardarCambios : false
+            cargando : true
+        })
+
+        const formData = new FormData();
+        formData.append('file',this.state.fileSeleccionado)
+        
+        let url = config.api+'cargarArchivo/promociones'
+        await axios.post(url, formData,{
+            mode:'cors',
+            headers: {
+                'Accept' : 'application/json',
+                'content-type': 'multipart/form-data',
+                'api_token': localStorage.getItem('usutoken')
+            }
+        }).then(rpta => {
+            let datos = rpta.data
+            if(datos.respuesta == true){
+                
+            }else{
+
+            }
+        })
+        .catch((error)=> {
+            this.setState({
+                cargando : false,
+            })
+        });
+        
+
+        this.setState({
+            enviarCambios   : true,
+            guardarCambios  : false,
+            cargando        : false,
+            fileSeleccionado: null
         })
     }
 
@@ -79,119 +117,121 @@ class CardCargarArchivo extends Component {
 
     render() {
         return (
-            <Card 
-                className="gx-card"
-                style={{
-                    filter: 'drop-shadow(-6px 6px 10px rgba(0, 0, 0, 0.25))',
-                    borderRadius:'30px'
-                }}
-            >
-                {
-                    this.state.guardarCambios == true
-                    ?<Row>
-                        <Col xl={24} md={24} className="gx-text-center">
-                            <b>Verificar</b>
-                            <div style={{borderBottom: '0.1px solid #CCCCCC', width:'100%', marginTop:'10px', marginBottom:'10px'}} />
-                            <span style={{paddingLeft:'15px', paddingRight:'15px', paddingBottom:'5px'}}>¿Está seguro que desea guardar el archivo? <br/></span>
-                            <span onClick={this.cancelarCambios} style={{color: '#A8A6A6', textDecoration:'underline', cursor:'pointer'}}>Aún no mandar</span>
-                        </Col>
-                        <Col xl={24} md={24} className="gx-text-center" style={{marginTop:'10px'}}>
-                            <Button
-                                style={{background:'#409FFF', borderRadius:'20px', color:'white'}}
-                                onClick={this.enviarCambios}
-                            >
-                                Guardar
-                            </Button>
-                        </Col>
-                    </Row>
-                    : this.state.enviarCambios == true
+            <Spin tip="Enviando..." spinning={this.state.cargando}>
+                <Card 
+                    className="gx-card"
+                    style={{
+                        filter: 'drop-shadow(-6px 6px 10px rgba(0, 0, 0, 0.25))',
+                        borderRadius:'30px'
+                    }}
+                >
+                    {
+                        this.state.guardarCambios == true
                         ?<Row>
-                            <Col 
-                                xl={24} 
-                                md={24} 
-                                className="gx-text-center"
-                                style={{
-                                    "fontStyle": "normal",
-                                    "fontWeight": "600",
-                                    "fontSize": "14px",
-                                    "lineHeight": "27px",
-                                    "color": "#4D4D4D",
-                                }}
-                            >
-                                {this.props.titulo}
-                                <div style={{borderBottom: '0.1px solid #CCCCCC', width:'100%'}} />
+                            <Col xl={24} md={24} className="gx-text-center">
+                                <b>Verificar</b>
+                                <div style={{borderBottom: '0.1px solid #CCCCCC', width:'100%', marginTop:'10px', marginBottom:'10px'}} />
+                                <span style={{paddingLeft:'15px', paddingRight:'15px', paddingBottom:'5px'}}>¿Está seguro que desea guardar el archivo? <br/></span>
+                                <span onClick={this.cancelarCambios} style={{color: '#A8A6A6', textDecoration:'underline', cursor:'pointer'}}>Aún no mandar</span>
                             </Col>
-                            <Col xl={24} md={24} className="gx-text-center" style={{marginTop:'10px'}}>
-                                <b>¡Listo!<br/></b>
-                                <span>El archivo se subió con éxito</span>
-                            </Col>
-                                
                             <Col xl={24} md={24} className="gx-text-center" style={{marginTop:'10px'}}>
                                 <Button
                                     style={{background:'#409FFF', borderRadius:'20px', color:'white'}}
-                                    onClick={this.subirOtroArchivo}
-                                >
-                                    ¿Subir Otro?
-                                </Button>
-                            </Col>
-                        </Row>
-                        :<Row>
-                            <Col 
-                                xl={24} 
-                                md={24} 
-                                className="gx-text-center"
-                                style={{
-                                    "fontStyle": "normal",
-                                    "fontWeight": "600",
-                                    "fontSize": "14px",
-                                    "lineHeight": "27px",
-                                    "color": "#4D4D4D",
-                                }}
-                            >
-                                <input type="file" id="file" ref="subirArchivoInput" style={{display: "none"}} onChange={(e) => this.cambioInputFile(e)} />
-                                <Button
-                                    style={{background:'#F93258', border:'none', marginTop:'10px', marginRight:'5px'}}
-                                    shape="circle" 
-                                    icon={<PlusOutlined style={{"color" : 'white'}} />} 
-                                    onClick={this.seleccionarFile}
-                                >
-                                </Button>
-                                    {this.props.titulo}
-                                <div style={{borderBottom: '0.1px solid #CCCCCC', width:'100%'}} />
-                            </Col>
-                                
-                            {
-                                this.state.subioArchivo == true
-                                ?<Col
-                                    xl={24} 
-                                    md={24}
-                                    style={{marginTop:'10px'}}
-                                >
-                                    <Row>
-                                        <Col
-                                            xl={20} 
-                                            md={20}
-                                        >
-                                            <span>{this.state.nombreArchivo}</span>
-                                        </Col>
-                                        <Col xl={4} md={4}>
-                                            <img style={{cursor:'pointer'}} onClick={this.eliminarArchivo} src={require('assets/images/equis.png')} alt=''  />
-                                        </Col>
-                                    </Row>
-                                </Col>
-                                :null
-                            }
-                            <Col xl={24} md={24} className="gx-text-center" style={{marginTop:'30px'}}>
-                                <Button
-                                    style={{background:'#C4C4C4', borderRadius:'20px', color:'white'}}
-                                    onClick={this.guardarCambios}
+                                    onClick={this.enviarCambios}
                                 >
                                     Guardar
                                 </Button>
                             </Col>
                         </Row>
-                }
-            </Card>
+                        : this.state.enviarCambios == true
+                            ?<Row>
+                                <Col 
+                                    xl={24} 
+                                    md={24} 
+                                    className="gx-text-center"
+                                    style={{
+                                        "fontStyle": "normal",
+                                        "fontWeight": "600",
+                                        "fontSize": "14px",
+                                        "lineHeight": "27px",
+                                        "color": "#4D4D4D",
+                                    }}
+                                >
+                                    {this.props.titulo}
+                                    <div style={{borderBottom: '0.1px solid #CCCCCC', width:'100%'}} />
+                                </Col>
+                                <Col xl={24} md={24} className="gx-text-center" style={{marginTop:'10px'}}>
+                                    <b>¡Listo!<br/></b>
+                                    <span>El archivo se subió con éxito</span>
+                                </Col>
+                                    
+                                <Col xl={24} md={24} className="gx-text-center" style={{marginTop:'10px'}}>
+                                    <Button
+                                        style={{background:'#409FFF', borderRadius:'20px', color:'white'}}
+                                        onClick={this.subirOtroArchivo}
+                                    >
+                                        ¿Subir Otro?
+                                    </Button>
+                                </Col>
+                            </Row>
+                            :<Row>
+                                <Col 
+                                    xl={24} 
+                                    md={24} 
+                                    className="gx-text-center"
+                                    style={{
+                                        "fontStyle": "normal",
+                                        "fontWeight": "600",
+                                        "fontSize": "14px",
+                                        "lineHeight": "27px",
+                                        "color": "#4D4D4D",
+                                    }}
+                                >
+                                    <input type="file" id="file" ref="subirArchivoInput" style={{display: "none"}} onChange={(e) => this.cambioInputFile(e)} />
+                                    <Button
+                                        style={{background:'#F93258', border:'none', marginTop:'10px', marginRight:'5px'}}
+                                        shape="circle" 
+                                        icon={<PlusOutlined style={{"color" : 'white'}} />} 
+                                        onClick={this.seleccionarFile}
+                                    >
+                                    </Button>
+                                        {this.props.titulo}
+                                    <div style={{borderBottom: '0.1px solid #CCCCCC', width:'100%'}} />
+                                </Col>
+                                    
+                                {
+                                    this.state.subioArchivo == true
+                                    ?<Col
+                                        xl={24} 
+                                        md={24}
+                                        style={{marginTop:'10px'}}
+                                    >
+                                        <Row>
+                                            <Col
+                                                xl={20} 
+                                                md={20}
+                                            >
+                                                <span>{this.state.nombreArchivo}</span>
+                                            </Col>
+                                            <Col xl={4} md={4}>
+                                                <img style={{cursor:'pointer'}} onClick={this.eliminarArchivo} src={require('assets/images/equis.png')} alt=''  />
+                                            </Col>
+                                        </Row>
+                                    </Col>
+                                    :null
+                                }
+                                <Col xl={24} md={24} className="gx-text-center" style={{marginTop:'30px'}}>
+                                    <Button
+                                        style={{background:'#C4C4C4', borderRadius:'20px', color:'white'}}
+                                        onClick={this.guardarCambios}
+                                    >
+                                        Guardar
+                                    </Button>
+                                </Col>
+                            </Row>
+                    }
+                </Card>
+            </Spin>
         );
     }
 }

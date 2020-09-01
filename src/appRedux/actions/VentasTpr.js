@@ -1,7 +1,8 @@
 import { estadoRequestReducer } from "appRedux/actions/EstadoRequest"
 import {
     OBTENER_VENTAS_TPR_EXITO,
-    OBTENER_VENTAS_TPR_FAIL
+    OBTENER_VENTAS_TPR_FAIL,
+    SELECCIONAR_VISTA_VENTAS,
 } from "constants/SistemaTypes";
 import config from 'config'
 
@@ -60,4 +61,11 @@ export const obtenerVentasTprReducer = () =>async (dispatch, getState) => {
             payload: []
         })
     });
+}
+
+export const seleccionarVistaVentasReducer = (accion) => {
+  return {
+      type: SELECCIONAR_VISTA_VENTAS,
+      payload: accion
+  }
 }

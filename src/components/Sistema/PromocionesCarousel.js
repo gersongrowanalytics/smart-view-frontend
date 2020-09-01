@@ -12,11 +12,16 @@ const confirm = Modal.confirm;
 class Slide extends React.Component {
   constructor(props) {
     super(props)
-
+    this.state = {
+      editando : false,
+      inputPlanchas : this.props.slide.cspplanchas,
+      txtValorizado : this.props.slide.cspvalorizado
+    }
     this.handleMouseMove = this.handleMouseMove.bind(this)
     this.handleMouseLeave = this.handleMouseLeave.bind(this)
     this.handleSlideClick = this.handleSlideClick.bind(this)
     this.imageLoaded = this.imageLoaded.bind(this)
+    this.obtenerValorizado = this.obtenerValorizado.bind(this)
     this.slide = React.createRef()
   }
   
@@ -58,14 +63,38 @@ class Slide extends React.Component {
     });
   }
 
+  obtenerValorizado(e){
+    let nuevoValor = parseInt(e.target.value)
+    this.setState({
+      inputPlanchas : nuevoValor
+    })
+
+    if(nuevoValor <= this.props.slide.prmcantidadplancha){
+      let nuevoValorizado = nuevoValor*this.props.slide.prmtotalplancha
+      this.setState({
+        txtValorizado : nuevoValorizado
+      })
+    }else{
+      let nuevoValorizado = this.props.slide.prmcantidadplancha*this.props.slide.prmtotalplancha
+      this.setState({
+        txtValorizado : nuevoValorizado
+      })
+    }
+
+  }
+
   render() {
     const { 
-        guardando, productos, productosbonificados, index } = this.props.slide
+      guardando, productos, productosbonificados, index,
+      prmcantidadcombo,
+      cspcompletado,
+      cspplanchas,
+      cspvalorizado
+    } = this.props.slide
 
     const posicionPromocion = this.props.posicion
     const editarPromocion = this.props.editarPromocion
     const colorSeleciconadoPromo = this.props.colorSeleciconadoPromo
-
     const current = this.props.current
     let classNames = 'slidePromocion'
     
@@ -82,62 +111,41 @@ class Slide extends React.Component {
         onMouseLeave={this.handleMouseLeave}
       >
         <div className="slide__image-wrapperPromocion">
-            <Card style={{borderRadius:'20px', border:'1px solid '+colorSeleciconadoPromo, }}>
-                <div style={{ 
-                    position:'absolute', 
-                    right:0, 
-                    top:0,
-                    marginRight:'20px', 
-                    marginTop:'10px', 
-                    background:'#FBB03B', 
-                    paddingTop:'3px', 
-                    paddingBottom:'3px', 
-                    paddingLeft:'15px', 
-                    paddingRight:'15px', 
-                    borderRadius:'20px', 
-                    color:'white', 
-                    fontFamily:'roboto',
-                    fontStyle:'normal',
-                    fontWeight:'900',
-                    lineHeight:'20px',
-                    fontSize: '17px'
-                  }}>
+            <Card style={{
+              borderRadius:'20px',
+              width:'385px',
+              height: '250px',
+              border:'1px solid '+colorSeleciconadoPromo, 
+            }}>
+              {
+                cspcompletado == true
+                ?<div id="insigniaCompletado">
                   Completado
-                  <img alt="" src={require("assets/images/estrellaCompletado.png")} width="30px" height="30px"/>
+                  <img alt="" src={require("assets/images/estrellaCompletado.png")} width="25px" height="25px"/>
                 </div>
+                :null
+              }
                 <Row>
-                    <Col xl={24} md={24} sm={24} xs={24} className="gx-text-center" style={{marginBottom:'20px', marginTop:'25px'}} >
+                    <Col xl={24} md={24} sm={24} xs={24} className="gx-text-center" style={{marginBottom:'20px', marginTop:'10px'}} >
                         <span 
+                          id="tituloCombos"
                           style={{
                             color:colorSeleciconadoPromo, 
-                            fontFamily:'Roboto',
-                            fontWeight:'900',
-                            fontStyle:'normal',
-                            fontSize:'47px',
-                            lineHeight:'55px'
                           }}>
-                              50 Combos
+                            {prmcantidadcombo} Combos
                               <br/>
                         </span>
                         <span 
-                          style={{
-                            color:'#FDA019',
-                            fontFamily:'Roboto',
-                            fontWeight:'900',
-                            fontSize:'17px',
-                            lineHeight:'20px',
-                            fontStyle:'normal'
-                          }}>
+                          id="tituloVenta">
                         Sell In Bonificación</span>
                     </Col>
                     {
                         productos.map((producto, posicion) => {
                             return (
-                                <Col xl={6} md={6}>
+                                <Col xl={11} md={11}>
                                     <Row>
                                         <Col xl={24} md={24}>
-                                          <br/>
-                                          <img src={producto.proimagen} width="90%" height="100px"/>
+                                          <img src={producto.proimagen} width="105px" height="59px"/>
                                           
                                         </Col>
                                         <Col xl={24} md={24} className="gx-text-center">
@@ -149,17 +157,17 @@ class Slide extends React.Component {
                         })
                     }
                     <Col xl={2} md={2} sm={2} xs={2} />
-                    <Col xl={16} md={16}>
+                    <Col xl={11} md={11}>
                         <Row>
                             {
                                 productosbonificados.map((productoBonificado, posicion) => {
                                     return(
-                                        <Col xl={8} md={8} className="gx-text-center">
+                                        <Col xl={24} md={24} className="gx-text-center" style={{marginTop:'-20px'}}>
                                             <span 
                                               className="txtGratis">
                                                 Gratis</span>
                                             <div 
-                                                style={{width:"90%", height:"100px", backgroundImage: "url("+productoBonificado.proimagen+")", backgroundSize: '100% 100%', backgroundRepeat:'no-repeat', backgroundPosition:'center'}} 
+                                                style={{'width':"105px", 'height':"59px", backgroundImage: "url("+productoBonificado.proimagen+")", backgroundSize: '100% 100%', backgroundRepeat:'no-repeat', backgroundPosition:'center'}} 
                                             />
                                             <span id="txtProducto">{productoBonificado.pronombre}</span>
                                         </Col>           
@@ -170,23 +178,48 @@ class Slide extends React.Component {
                     </Col>
                 </Row>
                 <Row>
-                <Col xl={6} md={6} className="gx-text-center" style={{marginTop:'10px'}}>      
-                  <span  id="txtPlanchas">Planchas</span>
-                  <InputNumber 
+                <Col xl={11} md={11} className="gx-text-center" style={{marginTop:'8px'}}>      
+                  <span 
+                    id="txtPlanchas"
+                  >
+                    Planchas<br/>
+                  </span>
+                  {
+                    this.state.editando == true
+                    ?<input 
+                      id="inputPlanchas" 
+                      type="number" 
+                      value={this.state.inputPlanchas}
+                      onChange={this.obtenerValorizado}
+                    />
+                    :<div id="inputPlanchasBloqueado">
+                      {cspplanchas}
+                    </div>
+                  }
+                  {/* <InputNumber 
                       style={{border:'none', borderBottom:'1px solid #000',   background: 'transparent', textAlign:'center'}}
                       className="gx-mb-3" 
                       size="small" 
-                      min={1} max={100000} defaultValue={0}/>
+                      min={1} max={100000} defaultValue={0}/> */}
                 </Col>
                 <Col xl={2} md={2} sm={2} xs={2} />
-                <Col xl={16} md={16} className="gx-text-center">
-                  <p style={{marginTop:'10px'}} id="tituloValorizado">Valorizado<br/><b id="precioValorizado">S/35</b></p>
+                <Col xl={11} md={11} className="gx-text-center" style={{marginTop:'10px'}}>
+                  <p  id="tituloValorizado">Valorizado<br/>
+                  <b id="precioValorizado">S/{this.state.txtValorizado}</b></p>
                 </Col>
-                <Col xl={24} md={24} sm={24} xs={24} className="gx-text-center" style={{marginTop:'10px'}}>
+                <Col xl={24} md={24} sm={24} xs={24} className="gx-text-center" style={{marginTop:'0'}}>
                   <Button 
                     id="txtBtnEditar"
                     style={{background: colorSeleciconadoPromo}}
-                    onClick={() => editarPromocion(posicionPromocion)}
+                    onClick={() => {
+                      if(this.state.editando == false){
+                        this.setState({
+                          editando : true
+                        })
+                      }else{
+                        editarPromocion(posicionPromocion)
+                      }
+                    }}
                   >
                     Editar
                   </Button>
@@ -197,12 +230,13 @@ class Slide extends React.Component {
                   ?<div style={{background:'rgba(102,102,102,0.7)', width:'100%', height:'100%', position:'absolute', left:0, top:0, borderRadius:'20px'}}>
                     <div style={{background:'transparent', width:'100%', height:'100%', position:'absolute', left:0, top:0, borderRadius:'20px'}} onClick={() => editarPromocion(posicionPromocion)} />
                     <Row style={{alignItems:'center', width:'105%', height:'100%', justifyContent:'center'}}>
-                      <Card style={{  background:'#2BBEE0', border:'none', width:'45%', borderRadius:'20px', textAlign:'center' }}>
-                        <span id="tituloConfirmacion" >¿Desea guardar los cambios?<br/></span>
-                        <div style={{marginTop:'15px'}} />
-                        <span style={{color:'white', fontSize:'14px'}} id="descripcionConfirmacion">Esta opción se activará al cierre del mes<br/></span>
+                      <Card style={{  background:'#2BBEE0', border:'none', width:'170px', height:'150px', borderRadius:'20px', textAlign:'center' }}>
+                        <span id="tituloConfirmacion" >¿Desea guardar los cambios?</span>
+                        <div style={{marginTop:'3px'}} />
+                        <span style={{color:'white'}} id="descripcionConfirmacion">Esta opción se activará al cierre del mes<br/></span>
                         <Button 
-                          style={{border:'1px solid #fff', color:'white', borderRadius:'25px', background:'transparent', marginTop:'15px'}} 
+                          id="btnEditar"
+                          style={{border:'1px solid #fff', color:'white', borderRadius:'25px', background:'transparent'}} 
                           onClick={() => editarPromocion(posicionPromocion)}
                         >
                           Aceptar
@@ -282,7 +316,7 @@ class PromocionesCarousel extends React.Component {
 
   render() {
     const { current, direction } = this.state
-    const { slides, heading, editarPromocion, colorSeleciconadoPromo } = this.props 
+    const { slides, heading, editarPromocion, colorSeleciconadoPromo, porcentaje } = this.props 
     const headingId = `slider-heading__${heading.replace(/\s+/g, '-').toLowerCase()}`
     const wrapperTransform = {
       'transform': `translateX(-${current * (100 / slides.length)}%)`
@@ -359,75 +393,75 @@ class PromocionesCarousel extends React.Component {
 
 
           {/* ----------------------------------- */}
-          
-          <div
-            onMouseEnter={() => {
-            }}
-          >
-             <li 
-              className={"slidePromocion"} 
+          {
+            porcentaje == 100
+            ?<div
+              onMouseEnter={() => {
+              }}
             >
-              <div className="slide__image-wrapperPromocion">
-                  <Card 
-                    style={{
-                      borderRadius:'20px', 
-                      backgroundImage: "url("+config.api+"Sistema/abs/img/cierreCompleto.png"+")", 
-                      backgroundSize: '100% 100%', 
-                      backgroundRepeat:'no-repeat', backgroundPosition:'center',
-                      widows:'100%',
-                      height:'77%'
-                    }}>
-                      <Row className="gx-text-center" style={{width:'100%', height:'100%', marginTop:'5%'}}>
-                        <Col xl={18} md={18}>
-                          <span id="felicidades">¡Felicidades!</span>
-                        </Col><Col xl={6} md={6} />
-                        <Col xl={18} md={18}>
-                          <img alt="" src={require("assets/images/estrellas.png")} />
-                        </Col><Col xl={6} md={6} />
-                        <Col xl={2} md={2} />
-                        <Col xl={15} md={15}>
-                          <span id="decripcionFelicidades">100%</span>
-                        </Col><Col xl={7} md={7} />
-                        <Col xl={1} md={1} />
-                        <Col xl={15} md={15}>
-                          <span id="decripcionFelicidades">Terminaste con éxito registrar tu cierre de mes</span>
-                        </Col><Col xl={7} md={7} />
-                      </Row>
-                  </Card>
-              </div>
-            </li>        
-          </div>
-
-          {/* <div
-            onMouseEnter={() => {
-            }}
-          >
-             <li 
-              className={"slidePromocion"} 
+              <li 
+                className={"slidePromocion"} 
+              >
+                <div className="slide__image-wrapperPromocion">
+                    <Card 
+                      style={{
+                        borderRadius:'20px', 
+                        backgroundImage: "url("+config.api+"Sistema/abs/img/cierreCompleto.png"+")", 
+                        backgroundSize: '100% 100%', 
+                        backgroundRepeat:'no-repeat', backgroundPosition:'center',
+                        width:'385px',
+                        height:'250px'
+                      }}>
+                        <Row className="gx-text-center" style={{width:'100%', height:'100%', marginTop:'5%'}}>
+                          <Col xl={18} md={18}>
+                            <span id="felicidades">¡Felicidades!</span>
+                          </Col><Col xl={6} md={6} />
+                          <Col xl={2} md={2} />
+                          <Col xl={15} md={15}>
+                            <span id="decripcionFelicidades">{porcentaje}%</span>
+                          </Col><Col xl={7} md={7} />
+                          <Col xl={18} md={18}>
+                            <img alt="" src={require("assets/images/estrellas.png")} />
+                          </Col><Col xl={6} md={6} />
+                          <Col xl={1} md={1} />
+                          <Col xl={15} md={15}>
+                            <span id="decripcionFelicidades">Terminaste con éxito registrar tu cierre de mes</span>
+                          </Col><Col xl={7} md={7} />
+                        </Row>
+                    </Card>
+                </div>
+              </li>        
+            </div>
+            :<div
+              onMouseEnter={() => {
+              }}
             >
-              <div className="slide__image-wrapperPromocion">
-                  <Card 
-                    style={{
-                      borderRadius:'20px', 
-                      backgroundImage: "url("+config.api+"Sistema/abs/img/cierreIncompleto.png"+")", 
-                      backgroundSize: '100% 100%', 
-                      backgroundRepeat:'no-repeat', backgroundPosition:'center',
-                      widows:'100%',
-                      height:'77%'
-                    }}>
-                      <Row className="gx-text-center" style={{width:'100%', height:'100%', marginTop:'20%'}}>
-                        <Col xl={18} md={18}>
-                          <span style={{color:'white', fontWeight:'500', fontSize:'38px'}}>¡Ups!</span>
-                        </Col><Col xl={6} md={6} />
-                        <Col xl={1} md={1} />
-                        <Col xl={14} md={14}>
-                          <span style={{color:'white', fontWeight:'500', fontSize:'24px'}}>Tu cierre está a un 70% al parecer no has terminado de registrar todo.</span>
-                        </Col><Col xl={7} md={7} />
-                      </Row>
-                  </Card>
-              </div>
-            </li>        
-          </div> */}
+              <li 
+                className={"slidePromocion"} 
+              >
+                <div className="slide__image-wrapperPromocion">
+                    <Card 
+                      style={{
+                        borderRadius:'20px', 
+                        backgroundImage: "url("+config.api+"Sistema/abs/img/cierreIncompleto.png"+")", 
+                        backgroundSize: '100% 100%', 
+                        backgroundRepeat:'no-repeat', backgroundPosition:'center',
+                        width:'385px',
+                        height:'250px'
+                      }}>
+                        <Row className="gx-text-center" style={{width:'100%', height:'100%', marginTop:'20%'}}>
+                          <Col xl={15} md={15}>
+                            <span id="upsPromocionHover" >¡Ups!</span>
+                          </Col><Col xl={9} md={9} />
+                          <Col xl={14} md={14} style={{marginTop:'10px'}}>
+                            <span id="tuCierrePromocionHover">Tu cierre está a un {porcentaje}% al parecer no has terminado de registrar todo.</span>
+                          </Col><Col xl={7} md={7} />
+                        </Row>
+                    </Card>
+                </div>
+              </li>        
+            </div>
+          }          
         </ul>
         
     

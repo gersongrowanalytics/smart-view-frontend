@@ -10,4 +10,5 @@ export * from './VentasTpr';
 export * from './Promociones';
 export * from './CargaArchivos';
 export * from './Tutorial';
+export * from './Configuracion/Usuarios';
 

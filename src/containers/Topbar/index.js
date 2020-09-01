@@ -92,10 +92,10 @@ const Topbar = () => {
           <Filtros
             sucursales          = {sucursalesUsuario}
             fechas              = {fechasFiltro}
-            seleccionarSucursal = {(e) => dispatch(filtroSeleccionarSucursalUsuario(parseInt(e.target.value)))}
-            seleccionarDia      = {(e) => dispatch(filtroSeleccionarDia(e.target.value))}
-            seleccionarMes      = {(e) => dispatch(filtroSeleccionarMes(e.target.value))}
-            seleccionarAno      = {(e) => dispatch(filtroSeleccionarAno(e.target.value))}
+            seleccionarSucursal = {(valor)  => dispatch(filtroSeleccionarSucursalUsuario(valor))}
+            seleccionarDia      = {(valor) => dispatch(filtroSeleccionarDia(valor))}
+            seleccionarMes      = {(valor) => dispatch(filtroSeleccionarMes(valor))}
+            seleccionarAno      = {(valor) => dispatch(filtroSeleccionarAno(valor))}
           />
           <span style={{ fontSize:'1px'}}>-</span>
         </h1>

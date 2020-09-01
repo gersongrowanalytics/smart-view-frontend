@@ -5,7 +5,7 @@ import {useDispatch} from "react-redux";
 import {editarPromocionReducer} from 'appRedux/actions/Promociones'
 
 const CanalPromociones = (props) => {
-    const {posicionCanal, cscid, nombreCanal, promociones, colorSeleciconadoPromo} = props
+    const {posicionCanal, cscid, nombreCanal, promociones, colorSeleciconadoPromo, porcentaje} = props
 
     
     const dispatch = useDispatch();
@@ -18,11 +18,11 @@ const CanalPromociones = (props) => {
         <Col xl={24} md={24} sm={24} xs={24}>
             <Row
                 style = {{
-                    position: 'relative',
-                    boxSizing: 'border-box',
-                    padding: '0',
-                    marginBottom:'20px',
-                    marginLeft:'10px'
+                    position     : 'relative',
+                    boxSizing    : 'border-box',
+                    padding      : '0',
+                    marginBottom : '20px',
+                    marginLeft   : '10px'
                 }}
             >
                 <PromocionesCarousel 
@@ -31,6 +31,7 @@ const CanalPromociones = (props) => {
                     cscid           = {cscid}
                     slides          = {promociones} 
                     editarPromocion = {editarPromocion}
+                    porcentaje      = {porcentaje}
                     colorSeleciconadoPromo = {colorSeleciconadoPromo}
                 />
                 {/* {
@@ -101,28 +102,25 @@ const CanalPromociones = (props) => {
                 style       = {{ 
                     display:'inline-block',
                     // letterSpacing:'3px',
+                    fontFamily: 'Roboto',
                     position:'absolute', 
                     left:-20, 
                     background:colorSeleciconadoPromo, 
-                    width:'60px', 
-                    height:'300px', 
-                    top:'50px', 
+                    width:'73px', 
+                    height:'250px', 
+                    top:'0px', 
                     writingMode:'vertical-lr',
                     textOrientation:'upright',
-                    // lineHeight: '50px',
                     textAlign: 'center',
                     color: '#fff',
                     textTransform: 'uppercase',
                     borderRadius: '0 20px 20px 0',
-                    // fontWeight:'600',
                     fontSize:'20px',
                     textAlign:'center',
-                    paddingLeft:'5px',
-                    fontFamily: 'Roboto',
+                    paddingLeft:'25px',
                     fontStyle: 'normal',
                     fontWeight: '900',
-                    // fontSize: '47px',
-                    lineHeight: '55px',
+                    lineHeight: '23px',
                 }}
             >
                 {nombreCanal}

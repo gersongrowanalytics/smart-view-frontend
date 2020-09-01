@@ -164,6 +164,7 @@
   display: flex;
   // flex: 1;
   // flex-direction: column;
+  width: 421px;
   height: 60vmin;
   // justify-content: center;
   margin: 0 var(--slide-margin);
@@ -173,7 +174,7 @@
   transition: 
     opacity calc(var(--base-duration) / 2) var(--base-ease),
     transform calc(var(--base-duration) / 2) var(--base-ease);
-  width: 60vmin;
+  // width: 60vmin;
   z-index: 1;
   
   // &--previous,

@@ -4,22 +4,39 @@ import Auxiliary from "util/Auxiliary";
 import Titulo from 'components/Sistema/Titulo'
 import CardAvance from 'components/Sistema/CardAvance';
 import CardRebate from 'components/Sistema/CardRebate';
-import {useSelector} from "react-redux";
+import {useSelector, useDispatch} from "react-redux";
 import CategoriasCarousel from './categoriasCarousel'
+import {seleccionarCargaArchivosReducer} from "appRedux/actions/CargaArchivos";
+import {seleccionarTutorialReducer} from "appRedux/actions/Tutorial";
+import {seleccionarVistaPromocionReducer} from 'appRedux/actions/Promociones'
+import {seleccionarVistaVentasReducer} from 'appRedux/actions/VentasTpr'
 
 const SellIn = () => {
+    const dispatch = useDispatch();
+    const {ventasTpr, vistaVentasSeleccionado}= useSelector(({ventasTpr}) => ventasTpr);
+    const {cargaArchivosSeleccionado} = useSelector(({cargaArchivos}) => cargaArchivos);
+    const {tutorialSeleccionado} = useSelector(({tutorial}) => tutorial);
+    const {vistaPromocionSeleccionado} = useSelector(({promociones}) => promociones);
 
-    const {ventasTpr}= useSelector(({ventasTpr}) => ventasTpr);
+    if(cargaArchivosSeleccionado == true){
+        dispatch(seleccionarCargaArchivosReducer(false))
+    }
+
+    if(tutorialSeleccionado == true){
+        dispatch(seleccionarTutorialReducer(false))
+    }
+
+    if(vistaPromocionSeleccionado == true){
+        dispatch(seleccionarVistaPromocionReducer(false))
+    }
+
+    if(vistaVentasSeleccionado == false){
+        dispatch(seleccionarVistaVentasReducer(true))
+    }
 
     return (
         <Auxiliary>
             <Row>
-                <Col xl={24} md={24} sm={24} xs={24}>
-                    {/* <div style={{background:'transparent', width:'100%', padding:'50px', marginBottom:'20px',borderRadius: '12px' }} className="gx-text-center" > */}
-                    <div style={{background:'transparent', width:'100%', marginBottom:'20px'}} className="gx-text-center" >
-                        <img alt="" src={require("assets/images/bannerVentas.png")} width="100%" height="100%"/>
-                    </div>
-                </Col>
                 <Col xl={24} md={24} sm={24} xs={24}>
                 {
                     ventasTpr.map((tipoPromocion, posicion) => {
@@ -31,6 +48,7 @@ const SellIn = () => {
                                         tieneTitulo = {true}
                                         tieneIcono  = {true}
                                         titulo      = {tipoPromocion.tprnombre}
+                                        tprid       = {tipoPromocion.tprid}
                                     />  
                                 </Col>
                                 <Col xl={24} md={24} sm={24} xs={24} />
@@ -53,6 +71,8 @@ const SellIn = () => {
                                     heading = "Example Slider"   
                                     slides  = {tipoPromocion.categorias} 
                                     seleccionarCategoria = {() => {}}
+                                    tprcolorbarra   = {tipoPromocion.tprcolorbarra}
+                                    tprcolortooltip = {tipoPromocion.tprcolortooltip}
                                 />
                                 {/* {
                                     tipoPromocion.categorias.map( function(categoria, posicion){

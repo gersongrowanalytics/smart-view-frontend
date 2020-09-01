@@ -1,0 +1,31 @@
+.nombreCategoriaCard{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 17px;
+    line-height: 20px;
+    color: #4D4D4D;
+}
+
+.txtCumplimiento{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 18px;
+    color: #666666;
+}
+
+.objetivoCategoria{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 15px;
+    line-height: 18px;
+    color: #666666;
+}
+
+.tooltip-default{
+    color: red;
+    background: red;
+}

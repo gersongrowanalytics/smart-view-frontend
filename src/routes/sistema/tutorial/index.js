@@ -4,11 +4,16 @@ import Auxiliary from "util/Auxiliary";
 import {useDispatch, useSelector} from "react-redux";
 import {seleccionarCargaArchivosReducer} from "appRedux/actions/CargaArchivos";
 import {seleccionarTutorialReducer, seleccionarVideoTutorialReducer} from "appRedux/actions/Tutorial";
+import {seleccionarVistaPromocionReducer} from 'appRedux/actions/Promociones'
+import {seleccionarVistaVentasReducer} from 'appRedux/actions/VentasTpr'
 
 const Tutorial = () => {
 
     const {cargaArchivosSeleccionado} = useSelector(({cargaArchivos}) => cargaArchivos);
     const {tutorialSeleccionado} = useSelector(({tutorial}) => tutorial);
+    const {vistaPromocionSeleccionado} = useSelector(({promociones}) => promociones);
+    const {vistaVentasSeleccionado}= useSelector(({ventasTpr}) => ventasTpr);
+
     const dispatch = useDispatch();
     if(cargaArchivosSeleccionado == true){
         dispatch(seleccionarCargaArchivosReducer(false))
@@ -16,6 +21,14 @@ const Tutorial = () => {
     
     if(tutorialSeleccionado == false){
         dispatch(seleccionarTutorialReducer(true))
+    }
+
+    if(vistaPromocionSeleccionado == true){
+        dispatch(seleccionarVistaPromocionReducer(false))
+    }
+
+    if(vistaVentasSeleccionado == true){
+        dispatch(seleccionarVistaVentasReducer(false))
     }
 
     return (

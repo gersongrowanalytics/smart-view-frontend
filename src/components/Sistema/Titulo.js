@@ -6,7 +6,7 @@ import config from 'config'
 
 const Titulo = (props) => {
 
-    const {tieneFecha, tieneTitulo, tieneBotonDescargar, tieneIcono, titulo} = props;
+    const {tieneFecha, tieneTitulo, tieneBotonDescargar, tieneIcono, titulo, tprid} = props;
 
     return (
         <Row>
@@ -19,7 +19,13 @@ const Titulo = (props) => {
                 :null
             }
             <Col xl={23} md={23} sm={23} xs={23}>
-                <h2 className={tieneTitulo ?`titulo-subrayado gx-flex-row` :`gx-flex-row`}>
+                <h2 className={
+                    tieneTitulo 
+                    ?tprid == 1
+                        ?`titulo-subrayado gx-flex-row` 
+                        :`titulo-subrayado gx-flex-row subrayado-verde` 
+                    :`gx-flex-row`
+                }>
                     {
                         tieneBotonDescargar == true
                         ?<button type="button" class="ant-btn ant-btn-lg btnDescargar">

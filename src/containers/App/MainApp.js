@@ -38,7 +38,8 @@ const MainApp = () => {
   const {width, navStyle} = useSelector(({settings}) => settings);
   const {cargaArchivosSeleccionado} = useSelector(({cargaArchivos}) => cargaArchivos);
   const {tutorialSeleccionado, videoTutorialSeleccionado} = useSelector(({tutorial}) => tutorial);
-  
+  const {vistaPromocionSeleccionado} = useSelector(({promociones}) => promociones);
+  const {vistaVentasSeleccionado}= useSelector(({ventasTpr}) => ventasTpr);
 
   const dispatch = useDispatch();
   // if(cargaArchivosSeleccionado == false){
@@ -149,18 +150,48 @@ const MainApp = () => {
                 :null
             }
           >
+            {
+              vistaPromocionSeleccionado == true
+              ?<div style={{background:'transparent', width:'100%', marginBottom:'20px', height:'462px'}} className="gx-text-center" >
+                <img alt="" src={require("assets/images/bannerPromociones.png")} width="100%" height="100%"/>
+              </div>
+              :vistaVentasSeleccionado == true
+                ?<div style={{background:'transparent', width:'100%', marginBottom:'20px', height:'462px'}} className="gx-text-center" >
+                  <img alt="" src={require("assets/images/bannerVentas.png")} width="100%" height="100%"/>
+                </div>
+                :null
+            }
             <App match={match}/>
             <Footer style={{background:'transparent', marginLeft:'50px', marginRight:'50px'}}>
               <div className="gx-layout-footer-content">
                 {/* {footerText} */}
                 <Row>
-                  <Col xl={10} style={{ marginTop:'30px'}}>
+                  <Col xl={10} 
+                    style={{ 
+                      marginTop:'30px',
+                      fontFamily:'Roboto',
+                      fontSize:'15px',
+                      fontStyle:'normal',
+                      lineHeight:'18px',
+                      fontWeight:'bold'
+                    }}
+                  >
                     © Lead Smart View 2020
                   </Col>
                   <Col xl={10}>
                     <img alt="" src={require("assets/images/logoSmart.png")} />
                   </Col>
-                  <Col xl={4} style={{marginTop:'30px'}}>
+                  <Col 
+                    xl={4} 
+                    style={{ 
+                      marginTop:'30px',
+                      fontFamily:'Roboto',
+                      fontSize:'15px',
+                      fontStyle:'normal',
+                      lineHeight:'18px',
+                      fontWeight:'bold'
+                    }}
+                  >
                     Políticas de privacidad
                   </Col>
                 </Row>

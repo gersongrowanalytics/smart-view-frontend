@@ -44,7 +44,7 @@
     margin-bottom: 15px;
 }
 .contenedorImgHover figure:hover > span{
-    transform: scale(1.3);
+    transform: scale(1.1);
 }
 .contenedorImgHover figure .capa h2{
     color: #fff;
@@ -67,6 +67,55 @@
     font-family: Roboto;
     font-style: normal;
     font-weight: 900;
+    font-size: 20px;
+    line-height: 23px;
+    color: #4D4D4D;
+}
+
+#iconoImagenHover{
+    width: 131.86px;
+    height: 131.86px;
+}
+
+#iconoImagenHoverSeleccionado{
+    width: 84.06px;
+    height: 84.06px;
+}
+
+
+#contenedorIcono{
+    height: 135px;
+    width: 135px;
+    margin-bottom: 20px;
+}
+
+#contenedorIconoSeleccionado{
+    width: 92.06px;
+    height: 92.06px;
+    margin-bottom: 5px;
+    margin-top: -30px;
+}
+
+#nombreCategoriaHover{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 26px;
+    line-height: 30px;
+}
+
+#textoPromocionHover{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 23px;
+}
+
+#saberMasHover{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
     font-size: 20px;
     line-height: 23px;
 }

@@ -39,13 +39,13 @@ const SidebarContent = () => {
   return (
     <>
       <SidebarLogo/>
-      <div className="gx-sidebar-content">
+      <div className="gx-sidebar-content" >
         {/* <div className={`gx-sidebar-notifications ${getNoHeaderClass(navStyle)}`}>
           <UserProfile/>  
           <AppsNavigation/>
         </div> */}
         
-        <CustomScrollbars className="gx-layout-sider-scrollbar">
+        <div className="gx-layout-sider-scrollbar">
           <Menu
             defaultOpenKeys={[defaultOpenKeys]}
             selectedKeys={[selectedKeys]}
@@ -92,16 +92,32 @@ const SidebarContent = () => {
                   <img alt="" src={require("assets/images/menuCargaArchivo.png")} style={{ marginRight:'15px' }} width="25px" />
                   <span>Carga de archivo</span></Link>
               </Menu.Item>
-              <Menu.Item key="sistema/widgets">
+
+              <SubMenu key="Configuracion" popupClassName={getNavStyleSubMenuClass(navStyle)}
+                       title={<span> <img alt="" src={require("assets/images/menuConfiguracion.png")} style={{ marginRight:'15px' }} width="30px" />
+                         <span>Configuración</span></span>}>
+                <Menu.Item key="sistema/configuracion/usuarios">
+                  <Link to="/sistema/configuracion/usuarios">
+                    <img alt="" src={require("assets/images/menuConfiguracion.png")} style={{ marginLeft:'-25px' }} width="25px" />
+                    <span>Usuarios</span>
+                  </Link>
+                </Menu.Item>
+              </SubMenu>
+
+              {/* <Menu.Item key="sistema/widgets">
                 <Link to="/sistema/widgets">
                   <img alt="" src={require("assets/images/menuConfiguracion.png")} style={{ marginRight:'15px' }} width="25px" />
                   <span>Configuración</span></Link>
               </Menu.Item>
-
+              <Menu.Item key="sistema/usuarios">
+                <Link to="/sistema/usuarios">
+                  <img alt="" src={require("assets/images/menuConfiguracion.png")} style={{ marginRight:'15px' }} width="25px" />
+                  <span>Usuarios</span></Link>
+              </Menu.Item> */}
             </MenuItemGroup>
             <AppsNavigation/>
           </Menu>
-        </CustomScrollbars>
+        </div>
       </div>
     </>
   );

@@ -3,6 +3,8 @@ import {Row, Col} from "antd";
 import {useDispatch, useSelector} from "react-redux";
 import CardCargarArchivo from './cardCargarArchivo'
 import {seleccionarCargaArchivosReducer} from "appRedux/actions/CargaArchivos";
+import {seleccionarVistaPromocionReducer} from 'appRedux/actions/Promociones'
+import {seleccionarVistaVentasReducer} from 'appRedux/actions/VentasTpr'
 
 const fileList = [
   // {
@@ -29,9 +31,19 @@ const props = {
 const CargaArchivosPromociones = () => {
   
   const {cargaArchivosSeleccionado} = useSelector(({cargaArchivos}) => cargaArchivos);
+  const {vistaPromocionSeleccionado} = useSelector(({promociones}) => promociones);
+  const {vistaVentasSeleccionado}= useSelector(({ventasTpr}) => ventasTpr);
   const dispatch = useDispatch();
   if(cargaArchivosSeleccionado == false){
     dispatch(seleccionarCargaArchivosReducer(true))
+  }
+
+  if(vistaPromocionSeleccionado == true){
+    dispatch(seleccionarVistaPromocionReducer(false))
+  }
+
+  if(vistaVentasSeleccionado == true){
+    dispatch(seleccionarVistaVentasReducer(false))
   }
 
   return (

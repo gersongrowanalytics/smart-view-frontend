@@ -108,9 +108,9 @@
   // =========================
   
   .sliderPromocion{
-    --slide-size: 90vmin;
+    --slide-size: 40vmin;
     // --slide-size: 100vmin;
-    --slide-margin: 1vmin;
+    --slide-margin: 0vmin;
     
     height: var(--slide-size);
     // margin: 0 ;
@@ -145,7 +145,8 @@
     transition: 
       opacity calc(var(--base-duration) / 2) var(--base-ease),
       transform calc(var(--base-duration) / 2) var(--base-ease);
-    width: var(--slide-size);
+    // width: var(--slide-size);
+    width: 400px;
     z-index: 1;
     
     // &--previous,
@@ -201,7 +202,7 @@
     // overflow: hidden;
     // position: absolute;
     // top: 0%;  
-    margin-left: -30px;
+    // margin-left: -30px; // MARGIN PARA ACERCARSE AL CANAL
     transition: transform calc(var(--base-duration) / 4) var(--base-ease);
     width: 100%;
   }
@@ -263,58 +264,87 @@
   
   }
   
-  .txtGratis{
-    color:#F93258;
+  #tituloCombos{
     font-family: Roboto;
     font-style: normal;
     font-weight: 900;
     font-size: 17px;
     line-height: 20px;
+  }
+
+  #tituloVenta{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 11px;
+    line-height: 13px;
+    color: #FDA019;
+  }
+
+  .txtGratis{
+    color:#F93258;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 9px;
+    line-height: 11px;
   }
 
   #txtProducto{
     font-family: Roboto;
     font-style: normal;
     font-weight: 900;
-    font-size: 17px;
-    line-height: 20px;
+    font-size: 11px;
+    line-height: 13px;
   }
 
   #tituloValorizado{
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
-    font-size: 17px;
-    line-height: 20px;
+    font-size: 11px;
+    line-height: 13px;
   }
 
   #precioValorizado{
     font-family: Roboto;
     font-style: normal;
     font-weight: 900;
-    font-size: 22px;
-    line-height: 26px;
+    font-size: 11px;
+    line-height: 13px;
   }
 
   #txtPlanchas{
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
-    font-size: 17px;
-    line-height: 20px;
+    font-size: 11px;
+    line-height: 13px;
+  }
+
+  #inputPlanchas{
+    width: 90px;
+    height: 20px;
+    border-style: solid;
+    outline: none;
+    border-top: thick dotted transparent;
+    border-left: thick dotted transparent;
+    border-right: thick dotted transparent;
+    border-bottom: 1px solid #101118;
+    text-align: center;
   }
 
   #txtBtnEditar{
     // border:1px solid #2ABEE0;
     color: #ffff;
     border-radius: 25px;
-    padding-left: 35px;
-    padding-right: 35px;
+    height: 21px;
+    width: 71px;
     font-family: Roboto;
     font-style: normal;
     font-weight: 900;
-    font-size: 17px;
-    line-height: 20px;
+    font-size: 11px;
+    line-height: 13px;
   }
 
   #txtBtnEditar:hover{
@@ -326,17 +356,17 @@
     font-family: Roboto;
     font-style: normal;
     font-weight: 900;
-    font-size: 48px;
-    line-height: 56px;
+    font-size: 20px;
+    line-height: 23px;
     color: white;
   }
   
   #decripcionFelicidades{
     font-family: Roboto;
     font-style: normal;
-    font-weight: bold;
-    font-size: 36px;
-    line-height: 42px;
+    font-weight: 900;
+    font-size: 14px;
+    line-height: 16px;
     color: white;
   }
 
@@ -344,8 +374,8 @@
     font-family: Roboto;
     font-style: normal;
     font-weight: bold;
-    font-size: 20px;
-    line-height: 23px;
+    font-size: 11px;
+    line-height: 13px;
     color: white;
   }
 
@@ -353,8 +383,20 @@
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
-    font-size: 15px;
-    line-height: 18px;
+    font-size: 11px;
+    line-height: 13px;
+  }
+
+  #btnEditar{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 11px;
+    line-height: 13px;
+    padding-left: 25px;
+    padding-right: 25px;
+    margin-top: 15px;
+    height: 25px;
   }
   // =========================
   // Animations
@@ -363,4 +405,42 @@
   @keyframes fade-in {
     from { opacity: 0 }
     to   { opacity: 1 }
+  }
+
+  #insigniaCompletado{
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin-right: 20px;
+    margin-top: 10px;
+    background: #FBB03B;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 20px;
+    color: white;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 11px;
+    font-size: 9px;
+  }
+
+  #upsPromocionHover{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 23px;
+    color: #FFFFFF;
+  }
+
+  #tuCierrePromocionHover{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    color: #FFFFFF;
   }

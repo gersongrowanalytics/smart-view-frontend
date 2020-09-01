@@ -6,7 +6,8 @@ import {
     OBTENER_CANALES_DE_PROMOCIONES_EXITO,
     OBTENER_CANALES_DE_PROMOCIONES_FAIL,
     SELECCIONAR_PROMOCION,
-    ACTUALIZAR_COLOR_SELECCIONADO_PROMOCION
+    ACTUALIZAR_COLOR_SELECCIONADO_PROMOCION,
+    SELECCIONAR_VISTA_PROMOCION
 } from "constants/SistemaTypes";
 import {obtenerVentasTprReducer} from 'appRedux/actions/VentasTpr'
 import config from 'config'
@@ -156,6 +157,13 @@ export const editarPromocionReducer = (posicionCanal, posicionPromocion) => asyn
 export const seleccionarPromocionReducer = (accion) => {
     return {
         type: SELECCIONAR_PROMOCION,
+        payload: accion
+    }
+}
+
+export const seleccionarVistaPromocionReducer = (accion) => {
+    return {
+        type: SELECCIONAR_VISTA_PROMOCION,
         payload: accion
     }
 }

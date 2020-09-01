@@ -12,6 +12,7 @@ import VentasTpr from "./VentasTpr";
 import Promociones from "./Promociones";
 import CargaArchivos from "./CargaArchivos";
 import Tutorial from "./Tutorial";
+import ConfiguracionUsuarios from "./Configuracion/Usuarios";
 
 const createRootReducer = (history) => combineReducers({
   router: connectRouter(history),
@@ -27,6 +28,7 @@ const createRootReducer = (history) => combineReducers({
   promociones : Promociones,
   cargaArchivos : CargaArchivos,
   tutorial : Tutorial,
+  configuracionUsuario : ConfiguracionUsuarios
 });
 
 export default createRootReducer

@@ -47,7 +47,7 @@ class Slide extends React.Component {
         scavalorizadoobjetivo,
         scavalorizadoreal,
         scavalorizadotogo,
-        index 
+        index
     } = this.props.slide
     const current = this.props.current
     let classNames = 'slideCategoria'
@@ -73,6 +73,8 @@ class Slide extends React.Component {
                 objetivoCategoria   = {scavalorizadoobjetivo}
                 realCategoria       = {scavalorizadoreal}
                 togoCategoria       = {scavalorizadotogo}
+                tprcolorbarra       = {this.props.tprcolorbarra}
+                tprcolortooltip     = {this.props.tprcolortooltip}
             />
             {/* </Col> */}
         </div>
@@ -138,7 +140,7 @@ class CategoriasCaoursel extends React.Component {
 
   render() {
     const { current, direction } = this.state
-    const { slides, heading, seleccionarCategoria } = this.props 
+    const { slides, heading, seleccionarCategoria, tprcolorbarra, tprcolortooltip } = this.props 
     const headingId = `slider-heading__${heading.replace(/\s+/g, '-').toLowerCase()}`
     const wrapperTransform = {
       'transform': `translateX(-${current * (100 / slides.length)}%)`
@@ -147,7 +149,7 @@ class CategoriasCaoursel extends React.Component {
     return (
       <div className='sliderCategoria' aria-labelledby={headingId} style={{marginBottom:'150px'}}>
         <ul className="slider__wrapper_Categoria" style={wrapperTransform}>
-          <h3 id={headingId} class="visuallyhiddenCategoria">{heading}</h3>
+          <h3 id={headingId} className="visuallyhiddenCategoria">{heading}</h3>
           
           {slides.map((slide, posicion) => {
             return (
@@ -209,6 +211,8 @@ class CategoriasCaoursel extends React.Component {
                     fondo         = {slide.catimagenfondo}
                     icono         = {slide.caticono}
                     colorhover    = {slide.catcolorhover}
+                    tprcolorbarra = {tprcolorbarra}
+                    tprcolortooltip = {tprcolortooltip}
                 />
               </div>
             )
