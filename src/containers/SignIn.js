@@ -5,7 +5,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {useHistory} from "react-router-dom"
 import {
   hideMessage,
-  loginReducer
+  loginReducer,
+  mostrarFormReducer
 } from "appRedux/actions/Auth";
 import CircularProgress from "components/CircularProgress/index";
 import './login.css'
@@ -14,7 +15,7 @@ import Login from './Login'
 const SignIn =()=> {
 
   const dispatch = useDispatch();
-  const {loader, alertMessage, showMessage,authUser}= useSelector(({auth}) => auth);
+  const {loader, alertMessage, showMessage,authUser, mostrarForm}= useSelector(({auth}) => auth);
   const history = useHistory();
 
   useEffect(() => {
@@ -27,6 +28,14 @@ const SignIn =()=> {
       history.push('/');
     }
   });
+
+  setTimeout(() => {
+    dispatch(mostrarFormReducer(true));
+  }, 9000);
+
+  // if(mostrarForm == true){
+  //   dispatch(mostrarFormReducer(false));
+  // }
 
   const onFinishFailed = errorInfo => {
     console.log('Failed:', errorInfo);
@@ -42,9 +51,20 @@ const SignIn =()=> {
       style={{width : '100%', height : '100%'}}
     >
       <div
-        className = "contenedorFormularioLogin"
+        className = {
+          mostrarForm == true
+          ?"contenedorFormularioLoginActivado"
+          :"contenedorFormularioLogin"
+        }
+        id="contenedorLoginForm"
       >
-        <div style={{width : '100%', height : '100%', alignItems: 'center', display:'flex'}}>
+        <div style={{width : '100%', height : '100%', alignItems: 'center', display:'flex',}} 
+          id={
+            mostrarForm == true
+            ?"contenidoFormActivado"
+            :"contenidoForm"
+          }
+        >
           <img src={require('assets/images/kimberly.png')} alt=''  id="imagenLogo" />
           <h1 className="tituloIniciarSesionLogin">Iniciar Sesión</h1>
           <Form
@@ -107,9 +127,20 @@ const SignIn =()=> {
         </div>
       </div>
       <div 
-        className="contenedorLoginSlider"
+        className={
+          mostrarForm == true
+          ?"contenedorLoginSlidersCarousel"
+          :"contenedorLoginSliders"
+        }
       >
-        <Login  />
+        {
+          mostrarForm == true
+          ?<Login  />
+          :<div>
+            <img src={require('assets/images/logoLeadBlanco.png')} alt='' id="logoCarousel" />
+            <img src={require('assets/images/logokkc.png')} alt='' id="logoKimberly" />
+          </div>
+        }
       </div>
       {
         loader 

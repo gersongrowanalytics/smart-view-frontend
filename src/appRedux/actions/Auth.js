@@ -19,7 +19,8 @@ import {
   SIGNOUT_USER,
   SIGNOUT_USER_SUCCESS,
   SIGNUP_USER,
-  SIGNUP_USER_SUCCESS
+  SIGNUP_USER_SUCCESS,
+  MOSTRAR_FORMULARIO_LOGIN
 } from "constants/ActionTypes";
 
 export const userSignUp = (user) => {
@@ -180,4 +181,11 @@ export const loginReducer = (usuario) => async ( dispatch, getState) => {
     }).catch((error)=> {
       dispatch(showAuthMessage(error))
     });
+}
+
+export const mostrarFormReducer = (accion) => {
+  return {
+    type: MOSTRAR_FORMULARIO_LOGIN,
+    payload: accion
+  }
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 import {Col, Row} from "antd";
+import './estilos/CardRebate.css'
 
 const CardRebate = (props) => {
 
@@ -22,7 +23,6 @@ const CardRebate = (props) => {
                         <Col xl={16} md={24} sm={16} xs={24}>
                             <p className="gx-text-white" id="textoRebate">El pago de Rebate se ejecutara, de llegar a la cuota establecida</p>
                         </Col>
-                        
                     </Row>
                 </Col>
             </Row>        

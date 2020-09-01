@@ -178,24 +178,24 @@ class Slide extends React.Component {
                     </Col>
                 </Row>
                 <Row>
-                <Col xl={11} md={11} className="gx-text-center" style={{marginTop:'8px'}}>      
-                  <span 
+                <Col xl={11} md={11} className="gx-text-center" >
+                  <p 
                     id="txtPlanchas"
                   >
                     Planchas<br/>
-                  </span>
-                  {
-                    this.state.editando == true
-                    ?<input 
-                      id="inputPlanchas" 
-                      type="number" 
-                      value={this.state.inputPlanchas}
-                      onChange={this.obtenerValorizado}
-                    />
-                    :<div id="inputPlanchasBloqueado">
-                      {cspplanchas}
-                    </div>
-                  }
+                    {
+                      this.state.editando == true
+                      ?<input 
+                        id="inputPlanchas" 
+                        type="number"
+                        value={this.state.inputPlanchas}
+                        onChange={this.obtenerValorizado}
+                      />
+                      :<div id="inputPlanchasBloqueado">
+                        {cspplanchas}
+                      </div>
+                    }
+                  </p>
                   {/* <InputNumber 
                       style={{border:'none', borderBottom:'1px solid #000',   background: 'transparent', textAlign:'center'}}
                       className="gx-mb-3" 
@@ -203,7 +203,7 @@ class Slide extends React.Component {
                       min={1} max={100000} defaultValue={0}/> */}
                 </Col>
                 <Col xl={2} md={2} sm={2} xs={2} />
-                <Col xl={11} md={11} className="gx-text-center" style={{marginTop:'10px'}}>
+                <Col xl={11} md={11} className="gx-text-center">
                   <p  id="tituloValorizado">Valorizado<br/>
                   <b id="precioValorizado">S/{this.state.txtValorizado}</b></p>
                 </Col>
@@ -430,7 +430,7 @@ class PromocionesCarousel extends React.Component {
                         </Row>
                     </Card>
                 </div>
-              </li>        
+              </li>
             </div>
             :<div
               onMouseEnter={() => {
@@ -459,9 +459,9 @@ class PromocionesCarousel extends React.Component {
                         </Row>
                     </Card>
                 </div>
-              </li>        
+              </li>
             </div>
-          }          
+          }
         </ul>
         
     

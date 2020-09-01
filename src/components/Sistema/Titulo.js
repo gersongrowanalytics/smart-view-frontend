@@ -12,20 +12,18 @@ const Titulo = (props) => {
         <Row>
             {
                 tieneIcono
-                ?<Col xl={1} md={1} sm={1} xs={1}>
-                    {/* <i className="icon icon-shopping-cart gx-fs-xxl gx-ml-2 gx-d-inline-flex gx-vertical-align-middle"/> */}
-                    <img src={config.api+'/Sistema/tiposPromociones/img/iconos/carrito.png'} className="gx-fs-xxl gx-ml-2 gx-d-inline-flex gx-vertical-align-middle"/>
-                </Col>
+                ?<img src={config.api+'/Sistema/tiposPromociones/img/iconos/carrito.png'} 
+                    className="iconoTipoPromocion"/>
                 :null
             }
-            <Col xl={23} md={23} sm={23} xs={23}>
-                <h2 className={
+            <Col xl={22} md={22} sm={22} xs={22}>
+                <span className={
                     tieneTitulo 
                     ?tprid == 1
                         ?`titulo-subrayado gx-flex-row` 
                         :`titulo-subrayado gx-flex-row subrayado-verde` 
                     :`gx-flex-row`
-                }>
+                }>                    
                     {
                         tieneBotonDescargar == true
                         ?<button type="button" class="ant-btn ant-btn-lg btnDescargar">
@@ -40,12 +38,12 @@ const Titulo = (props) => {
                     }
                     {
                         tieneFecha == true
-                        ?<span className="gx-text-black gx-fs-md gx-ml-auto  gx-d-sm-block">
-                            <span className="ultimaActualizacion">Actualización 10 de Agosto del 2020</span>
-                        </span>
+                        ?<div id="contenedorActualizacion" className="gx-fs-md gx-ml-auto">
+                            <p className="ultimaActualizacion">Actualización 10 de Agosto del 2020</p>
+                        </div>
                         :null
                     }
-                </h2>
+                </span>
             </Col>
         </Row>
     )

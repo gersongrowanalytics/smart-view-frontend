@@ -10,7 +10,8 @@ import {
   SIGNIN_TWITTER_USER_SUCCESS,
   SIGNIN_USER_SUCCESS,
   SIGNOUT_USER_SUCCESS,
-  SIGNUP_USER_SUCCESS
+  SIGNUP_USER_SUCCESS,
+  MOSTRAR_FORMULARIO_LOGIN
 } from "constants/ActionTypes";
 
 const INIT_STATE = {
@@ -20,7 +21,8 @@ const INIT_STATE = {
   initURL: '',
   authUser: localStorage.getItem('user_id'),
   datosUsuario : [],
-  ventastpr    : []
+  ventastpr    : [],
+  mostrarForm  : false
 };
 
 
@@ -118,6 +120,12 @@ export default (state = INIT_STATE, action) => {
       return {
         ...state,
         loader: false
+      }
+    }
+    case MOSTRAR_FORMULARIO_LOGIN:{
+      return{
+        ...state,
+        mostrarForm: action.payload,
       }
     }
     default:

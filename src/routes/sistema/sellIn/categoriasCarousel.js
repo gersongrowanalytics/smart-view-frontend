@@ -64,7 +64,7 @@ class Slide extends React.Component {
         onMouseMove={this.handleMouseMove}
         onMouseLeave={this.handleMouseLeave}
       >
-        <div className="slide__image-wrapperCategoria">
+        <div className="slide__image-wrapperCategoria" >
             {/* <Col xl={6} md={8} sm={12} xs={24}> */}
             <CardImagen 
                 nombreCategoria     = {catnombre}
@@ -154,6 +154,7 @@ class CategoriasCaoursel extends React.Component {
           {slides.map((slide, posicion) => {
             return (
               <div
+              style={{width:'20%'}}
                 onClick={() => seleccionarCategoria(slide.scaid, posicion)}
                 onMouseEnter={() => {
                     if(this.state.cambiando == true){

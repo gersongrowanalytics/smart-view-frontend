@@ -10,8 +10,8 @@ class Login extends React.Component {
     super(props);
     this.state = { 
       items: [
-        'http://gro.gavsistemas.com/Sistema/abs/img/fondoLogin.png',
-        'https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/2DQJJ9RLVD.jpg'
+        'http://gro.gavsistemas.com/Sistema/abs/img/sfondoLogin.png',
+        'http://gro.gavsistemas.com/Sistema/abs/img/sfondoLogin.png',
       ], 
       current: 0, 
       isNext: true 
@@ -70,6 +70,9 @@ class Login extends React.Component {
     return (
       <div className="app">
         <div className="carousel">
+          <div id="contenedorTextoCarousel">
+            <span id="textoCarousel">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euis</span>
+          </div>
          {/* <ReactCSSTransitionGroup
             transitionName={{
             enter: isnext ? 'enter-next' : 'enter-prev',

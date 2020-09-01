@@ -1,0 +1,11 @@
+#txtSidebarItem{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+}
+
+.txtSideberSubItem{
+    /* padding-top: 5px; */
+}

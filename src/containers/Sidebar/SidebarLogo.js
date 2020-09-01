@@ -1,7 +1,6 @@
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
-
 import {onNavStyleChange, toggleCollapsedSideNav} from "appRedux/actions/Setting";
 import {
   NAV_STYLE_DRAWER,
