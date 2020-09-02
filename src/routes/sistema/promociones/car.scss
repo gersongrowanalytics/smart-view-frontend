@@ -121,10 +121,10 @@
 
 .sliderPequeno{
   // --slide-size:60vmin;
-  --slide-margin: 2vmin;
+  --slide-margin: 1vmin;
   
   height: 40vmin;
-  margin: 0 ;
+  margin-bottom: 40px ;
   position: relative;
   width: 40vmin;
   animation-name: animacionSlider;
@@ -139,8 +139,10 @@
     height: 60vmin;
   }
   to{
-    width: 40vmin;
-    height: 40vmin;
+    // width: 40vmin;
+    // height: 40vmin;
+    width: 266px;
+    height: 165px;
   }
   // from{ width   : 0%; }
   // to { width   : 30%; }
@@ -239,8 +241,10 @@
     height: 60vmin;
   }
   to{
-    width: 40vmin;
-    height: 40vmin;
+    // width: 40vmin;
+    // height: 40vmin;
+    width: 266px;
+    height: 165px;
   }
   // from{ width   : 0%; }
   // to { width   : 30%; }

@@ -77,6 +77,7 @@ class Slide extends React.Component {
                 tprcolorbarra       = {this.props.tprcolorbarra}
                 tprcolortooltip     = {this.props.tprcolortooltip}
                 scaiconocategoria   = {scaiconocategoria}
+                catimagenfondoopaco = {this.props.catimagenfondoopaco}
             />
             {/* </Col> */}
         </div>
@@ -212,6 +213,7 @@ class CategoriasCaoursel extends React.Component {
                     seleccionado  = {slide.seleccionado}
                     nombre        = {slide.catnombre}
                     fondo         = {slide.catimagenfondo}
+                    catimagenfondoopaco = {slide.catimagenfondoopaco}
                     icono         = {slide.caticono}
                     colorhover    = {slide.catcolorhover}
                     tprcolorbarra = {tprcolorbarra}

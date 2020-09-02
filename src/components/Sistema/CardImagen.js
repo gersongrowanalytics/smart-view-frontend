@@ -3,7 +3,7 @@ import {Col, Row, Tooltip} from "antd";
 import './estilos/CardImagen.css'
 const CardImagen = (props) => {
 
-    const {nombreCategoria, iconoCategoria, fondoCategoria, objetivoCategoria, realCategoria, togoCategoria, tprcolorbarra, tprcolortooltip, scaiconocategoria} = props
+    const {nombreCategoria, iconoCategoria, fondoCategoria, objetivoCategoria, realCategoria, togoCategoria, tprcolorbarra, tprcolortooltip, scaiconocategoria, catimagenfondoopaco} = props
 
     return (
         <div className={`gx-product-item gx-product-vertical'`} style={{background:'transparent'}}>
@@ -11,8 +11,8 @@ const CardImagen = (props) => {
             <div className="">
                 <div className="gx-grid-thumb-equal" style={{height:'250px'}}>
                     <span className="gx-link gx-grid-thumb-cover" >
-                        <div style={{width:'100%', height:'100%', backgroundImage: "url("+fondoCategoria+")", backgroundSize: '100% 100%', backgroundRepeat:'no-repeat' }} >
-                            <Row style={{ paddingTop:'5%', background:'rgba(229,230,230,0.7)', height:'100%'}}>
+                        <div style={{width:'100%', height:'100%', backgroundImage: "url("+catimagenfondoopaco+")", backgroundSize: '100% 100%', backgroundRepeat:'no-repeat' }} >
+                            <Row style={{ paddingTop:'27px',  height:'100%'}}>
                                 <Col md={24} xl={24} sm={24} xs={24}>
                                     <div className="gx-text-center" >
                                         <div className="gx-flex-row gx-justify-content-center gx-mb-3 gx-mb-sm-1">
@@ -37,7 +37,7 @@ const CardImagen = (props) => {
                 {/* real=30; togo=70 --  70*100/30 */}
                 <div className={`gx-line-indi`} style={{background:'#F2F2F2', width: '100%', height: 18, margin: '10px', borderRadius: 50}}>
                     <Tooltip title={"Real S/ "+realCategoria} >
-                        <div className={``} style={{ background: 'linear-gradient('+tprcolorbarra+')', width: realCategoria+'%', height: 18, borderRadius: 50}} >
+                        <div className={``} style={{ background: 'linear-gradient('+tprcolorbarra+')', width: ((100*realCategoria)/objetivoCategoria)+'%', height: 18, borderRadius: 50}} >
                             <Tooltip title={"To Go S/ "+ togoCategoria} color={tprcolortooltip}>
                                 <div className={``} style={{ background:'transparent', width: (togoCategoria*100)/realCategoria+'%', height: 15, marginLeft:'100%'}} />
                             </Tooltip>

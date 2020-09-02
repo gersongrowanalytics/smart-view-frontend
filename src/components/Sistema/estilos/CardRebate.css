@@ -9,7 +9,8 @@
 #textoRebate{
     font-family: Roboto;
     font-style: normal;
-    font-weight: 900;
+    font-weight: bold;
     font-size: 15px;
     line-height: 18px;
+    padding-top: 10px;
 }

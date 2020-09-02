@@ -154,11 +154,11 @@ const MainApp = () => {
           >
             {
               vistaPromocionSeleccionado == true
-              ?<div style={{background:'transparent', width:'100%', marginBottom:'20px', height:'462px'}} className="gx-text-center" >
+              ?<div style={{background:'transparent', width:'100%', marginBottom:'20px'}} className="gx-text-center" >
                 <img alt="" src={require("assets/images/bannerPromociones.png")} width="100%" height="100%"/>
               </div>
               :vistaVentasSeleccionado == true
-                ?<div style={{background:'transparent', width:'100%', marginBottom:'20px', height:'462px'}} className="gx-text-center" >
+                ?<div style={{background:'transparent', width:'100%', marginBottom:'20px'}} className="gx-text-center" >
                   <img alt="" src={require("assets/images/bannerVentas.png")} width="100%" height="100%"/>
                 </div>
                 :null

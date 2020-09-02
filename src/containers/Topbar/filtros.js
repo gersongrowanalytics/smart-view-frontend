@@ -76,7 +76,7 @@ class Filtros extends Component {
                         }
                     </div>
                 </div>
-
+{/* 
                 <div class="dropdown">
                     <button class="dropbtn">{this.state.nombreDia}</button>
                     <div class="dropdown-content">
@@ -100,7 +100,7 @@ class Filtros extends Component {
                             :<a>Día</a>
                         }
                     </div>
-                </div>
+                </div> */}
 
                 <div class="dropdown">
                     <button class="dropbtn">{this.state.nombreMes}</button>

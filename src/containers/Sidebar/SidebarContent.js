@@ -75,12 +75,12 @@ const SidebarContent = () => {
                 <Link to="/sistema/ventas">
                   {/* <i className="icon icon-shopping-cart"/> */}
                   <img alt="" src={require("assets/images/menuVentas.png")} style={{ marginRight:'15px' }} width="25px" />
-                  <span id="txtSidebarItem">VENTAS</span></Link>
+                  <span id="txtSidebarItem">Ventas</span></Link>
               </Menu.Item>
               <Menu.Item key="sistema/promociones">
                 <Link to="/sistema/promociones">
                   <img alt="" src={require("assets/images/menuPromociones.png")} style={{ marginRight:'15px' }} width="25px" />
-                  <span id="txtSidebarItem">PROMOCIONES</span></Link>
+                  <span id="txtSidebarItem">Promociones</span></Link>
               </Menu.Item>
               <Menu.Item key="sistema/tutorial">
                 <Link to="/sistema/tutorial">
@@ -92,7 +92,7 @@ const SidebarContent = () => {
                   <img alt="" src={require("assets/images/menuCargaArchivo.png")} style={{ marginRight:'15px' }} width="25px" />
                   <span id="txtSidebarItem">Carga de archivo</span></Link>
               </Menu.Item>
-              <Divider />
+              {/* <Divider /> */}
               <Menu.Item key="sistema/cargaArchivos/promociones">
                 <Link to="/sistema/cargaArchivos/promociones">
                 <i className="icon icon-user-o"/>

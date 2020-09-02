@@ -48,6 +48,7 @@ class Slide extends React.Component {
         catcolorhover, 
         caticonoseleccionado,
         catcolor,
+        catimagenfondoseleccionado,
         index } = this.props.slide
     const current = this.props.current
     const seleccionoPromocion  = this.props.seleccionoPromocion
@@ -70,6 +71,11 @@ class Slide extends React.Component {
         // onClick={this.handleSlideClick}
         onMouseMove={this.handleMouseMove}
         onMouseLeave={this.handleMouseLeave}
+        style={
+          this.props.posicion == 0 && seleccionoPromocion == true
+          ?{marginLeft:'44px'}
+          :null
+        }
       >
         <div className="slide__image-wrapper">
             <ImagenHover 
@@ -80,6 +86,7 @@ class Slide extends React.Component {
                 iconoSeleccionado = {caticonoseleccionado}
                 color         = {catcolor}
                 colorhover    = {catcolorhover}
+                catimagenfondoseleccionado = {catimagenfondoseleccionado}
             />
         </div>
       </li>
@@ -213,6 +220,7 @@ class Slider extends React.Component {
               >
                 <Slide
                     key={posicion}
+                    posicion = {posicion}
                     slide={slide}
                     current={current}
                     handleSlideClick={this.handleSlideClick}
@@ -225,6 +233,7 @@ class Slider extends React.Component {
                     catcolor      = {slide.catcolor}
                     colorhover    = {slide.catcolorhover}
                     seleccionoPromocion = {seleccionoPromocion}
+                    catimagenfondoseleccionado = {slide.catimagenfondoseleccionado}
                 />
               </div>
             )

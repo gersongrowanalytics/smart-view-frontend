@@ -5,11 +5,17 @@ import {Col, Row} from "antd";
 import { useSelector} from "react-redux";
 
 const ImagenHover = (props) => {
-    const {seleccionado, nombre, icono, iconoSeleccionado, fondo, colorhover, color} = props
+    const {seleccionado, nombre, icono, iconoSeleccionado, fondo, colorhover, color, catimagenfondoseleccionado} = props
     const {seleccionoPromocion} = useSelector(({promociones}) => promociones);
 
     return (
-        <div className="contenedorImgHover">
+        <div className="contenedorImgHover" 
+            style={
+                seleccionado == true
+                ?{marginLeft: '-50px'}
+                :{marginLeft: '-50px'}
+            }
+        >
             <figure 
                 style={
                     seleccionado == true
@@ -24,47 +30,66 @@ const ImagenHover = (props) => {
                         :{height: '421px', marginTop:'15px'}
                 }>
                 <span className="gx-link gx-grid-thumb-cover">
-                    <div style={{ 
-                        backgroundImage: "url("+fondo+")", 
-                        backgroundSize: '100% 100%', 
-                        backgroundRepeat:'no-repeat',
-                        height:'100%'
-                    }} >
-                        <Row style={{ paddingTop:'15%'}}>
+                    <div style={
+                        seleccionoPromocion == true
+                        ?{ 
+                            backgroundImage: "url("+catimagenfondoseleccionado+")", 
+                            backgroundSize: '100% 100%', 
+                            backgroundRepeat:'no-repeat',
+                            height:'100%'
+                        }
+                        :{ 
+                            backgroundImage: "url("+fondo+")", 
+                            backgroundSize: '100% 100%', 
+                            backgroundRepeat:'no-repeat',
+                            height:'100%'
+                        }
+                    } >
+                        <Row style={
+                            seleccionoPromocion == true
+                            ?{ height:'100%', alignContent:'center', paddingTop:'30px' }
+                            :{ alignContent: 'flex-end', height:'100%', paddingBottom:'44px' }
+                        }>
                             <Col xl={24} md={24} sm={24} xs={24}>
                                 <div className="gx-text-center" >
-                                    <div className="gx-flex-row gx-justify-content-center gx-mb-3 gx-mb-sm-1">
-                                        <span
-                                            id={
-                                                seleccionoPromocion == true
-                                                ?"contenedorIconoSeleccionado"
-                                                :"contenedorIcono"
-                                            }
-                                            className={`gx-border  gx-text-red gx-flex-row gx-justify-content-center gx-align-items-center gx-rounded-circle`}
-                                            style={ seleccionado == true ?{background:color, padding:'10px'} :{background: '#fff', padding:'10px'}}
-                                        >
-                                            <img 
-                                                alt="Remy Sharp" 
+                                    {
+                                        seleccionoPromocion == true
+                                        ?<div className="gx-flex-row gx-justify-content-center gx-mb-3 gx-mb-sm-1">
+                                            <span
                                                 id={
                                                     seleccionoPromocion == true
-                                                    ?"iconoImagenHoverSeleccionado"
-                                                    :"iconoImagenHover"
+                                                    ?"contenedorIconoSeleccionado"
+                                                    :"contenedorIcono"
                                                 }
-                                                
-                                                src={
-                                                    seleccionado == true
-                                                    ?iconoSeleccionado
-                                                    :icono
-                                                }
-                                            /> 
-                                        </span>
-                                    </div>
+                                                className={`gx-border  gx-text-red gx-flex-row gx-justify-content-center gx-align-items-center gx-rounded-circle`}
+                                                style={ seleccionado == true ?{background:color, padding:'10px'} :{background: '#fff', padding:'10px'}}
+                                            >
+                                                <img 
+                                                    alt="Remy Sharp" 
+                                                    id={
+                                                        seleccionoPromocion == true
+                                                        ?"iconoImagenHoverSeleccionado"
+                                                        :"iconoImagenHover"
+                                                    }
+                                                    
+                                                    src={
+                                                        seleccionado == true
+                                                        ?iconoSeleccionado
+                                                        :icono
+                                                    }
+                                                /> 
+                                            </span>
+                                        </div>
+                                        :null
+                                    }
                                     {
                                         seleccionoPromocion == true
                                         ?<span 
-                                            className="gx-text-white nombreCategoria">{nombre}</span>
-                                        :<span 
-                                            className="gx-text-black nombreCategoria">{nombre}</span>
+                                            className="gx-text-white nombreCategoriaSeleccionado">{nombre}</span>
+                                        :<div className="contenedorNombreCategoria" style={{background: color}}>
+                                            <span 
+                                                className="nombreCategoria">{nombre}</span>
+                                        </div>
                                     }
                                 </div>
                             </Col>

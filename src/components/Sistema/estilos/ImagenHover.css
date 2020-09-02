@@ -66,10 +66,19 @@
 .nombreCategoria{
     font-family: Roboto;
     font-style: normal;
+    font-weight: bold;
+    font-size: 26px;
+    line-height: 30px;
+    color: white;
+}
+
+.nombreCategoriaSeleccionado{
+    font-family: Roboto;
+    font-style: normal;
     font-weight: 900;
-    font-size: 20px;
-    line-height: 23px;
-    color: #4D4D4D;
+    font-size: 15px;
+    line-height: 18px;
+    color: #FFFFFF;
 }
 
 #iconoImagenHover{
@@ -81,7 +90,6 @@
     width: 84.06px;
     height: 84.06px;
 }
-
 
 #contenedorIcono{
     height: 135px;
@@ -118,4 +126,12 @@
     font-weight: bold;
     font-size: 20px;
     line-height: 23px;
+}
+
+.contenedorNombreCategoria{
+    width: 181px;
+    height: 40px;
+    border-radius: 21px;
+    padding-top: 5px;
+    margin-left: 110px;
 }
