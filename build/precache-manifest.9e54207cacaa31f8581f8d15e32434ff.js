@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "5cbc6f050f403b77204f167f666e2ac4",
+    "revision": "d93afaa00fc7171bb917512a3f0a34aa",
     "url": "/index.html"
   },
   {
@@ -64,8 +64,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/css/66.e5853ba0.chunk.css"
   },
   {
-    "revision": "2c503a31df50623a2ce0",
-    "url": "/static/css/main.f985ecc8.chunk.css"
+    "revision": "36dc70ef16b67d69b922",
+    "url": "/static/css/main.60609fc0.chunk.css"
   },
   {
     "revision": "b5bbad22c47430d9048e",
@@ -744,8 +744,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/js/99.3bd4027a.chunk.js"
   },
   {
-    "revision": "2c503a31df50623a2ce0",
-    "url": "/static/js/main.da934c82.chunk.js"
+    "revision": "36dc70ef16b67d69b922",
+    "url": "/static/js/main.aed7ae79.chunk.js"
   },
   {
     "revision": "76ee5c8f6748823e4391",
@@ -828,8 +828,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/bannerPromociones.787eca1e.png"
   },
   {
-    "revision": "9d4c9a1a6d477a841e35103ac70a98f5",
-    "url": "/static/media/bannerVentas.9d4c9a1a.png"
+    "revision": "6cecfe59c32dc9a42423dff783ede2fe",
+    "url": "/static/media/bannerVentas.6cecfe59.png"
   },
   {
     "revision": "601c16cbb1425e785d22fb68741b0222",

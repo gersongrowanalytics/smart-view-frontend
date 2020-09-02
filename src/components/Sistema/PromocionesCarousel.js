@@ -449,7 +449,7 @@ class PromocionesCarousel extends React.Component {
                         width:'385px',
                         height:'250px'
                       }}>
-                        <Row className="gx-text-center" style={{width:'100%', height:'100%', marginTop:'20%'}}>
+                        <Row className="gx-text-center" style={{width:'100%', height:'100%', marginTop:'18%'}}>
                           <Col xl={15} md={15}>
                             <span id="upsPromocionHover" >¡Ups!</span>
                           </Col><Col xl={9} md={9} />

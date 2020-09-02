@@ -39717,3 +39717,8 @@ textarea.gx-chat-textarea {
     flex-direction: column;
   }
 }
+
+::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}

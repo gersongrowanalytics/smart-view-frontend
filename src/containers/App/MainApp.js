@@ -129,11 +129,11 @@ const MainApp = () => {
           </iframe>
         </div>
       </div>
-      :<Layout className="gx-app-layout">
+      :<Layout className="gx-app-layout"  >
         {getSidebar(navStyle, width)}
         <Layout>
           {getNavStyles(navStyle)}
-          <Content className={`gx-layout-content ${getContainerClass(navStyle)} `} 
+          <Content className={`gx-layout-content ${getContainerClass(navStyle)} ` } 
             style={ 
               cargaArchivosSeleccionado == true 
               ?{
@@ -147,7 +147,9 @@ const MainApp = () => {
                   backgroundImage: `url(${config.api}Sistema/abs/img/fondoTutorial1.png)`, 
                   backgroundSize: '100% 100%', backgroundRepeat:'no-repeat'
                 } 
-                :null
+                :{
+                  // overflowY:'none'
+                }
             }
           >
             {
@@ -161,7 +163,7 @@ const MainApp = () => {
                 </div>
                 :null
             }
-            <App match={match}/>
+            <App match={match} />
             <Footer style={{background:'transparent', marginLeft:'50px', marginRight:'50px'}}>
               <div className="gx-layout-footer-content">
                 {/* {footerText} */}

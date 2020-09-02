@@ -47,6 +47,7 @@ class Slide extends React.Component {
         scavalorizadoobjetivo,
         scavalorizadoreal,
         scavalorizadotogo,
+        scaiconocategoria,
         index
     } = this.props.slide
     const current = this.props.current
@@ -75,6 +76,7 @@ class Slide extends React.Component {
                 togoCategoria       = {scavalorizadotogo}
                 tprcolorbarra       = {this.props.tprcolorbarra}
                 tprcolortooltip     = {this.props.tprcolortooltip}
+                scaiconocategoria   = {scaiconocategoria}
             />
             {/* </Col> */}
         </div>
@@ -147,14 +149,14 @@ class CategoriasCaoursel extends React.Component {
     }
     
     return (
-      <div className='sliderCategoria' aria-labelledby={headingId} style={{marginBottom:'150px'}}>
+      <div className='sliderCategoria' aria-labelledby={headingId} style={{marginBottom:'150px', marginLeft:'20px'}}>
         <ul className="slider__wrapper_Categoria" style={wrapperTransform}>
           <h3 id={headingId} className="visuallyhiddenCategoria">{heading}</h3>
           
           {slides.map((slide, posicion) => {
             return (
               <div
-              style={{width:'20%'}}
+              
                 onClick={() => seleccionarCategoria(slide.scaid, posicion)}
                 onMouseEnter={() => {
                     if(this.state.cambiando == true){
@@ -214,6 +216,7 @@ class CategoriasCaoursel extends React.Component {
                     colorhover    = {slide.catcolorhover}
                     tprcolorbarra = {tprcolorbarra}
                     tprcolortooltip = {tprcolortooltip}
+                    scaiconocategoria = {slide.scaiconocategoria}
                 />
               </div>
             )

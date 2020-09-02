@@ -3,10 +3,10 @@ import {Col, Row, Tooltip} from "antd";
 import './estilos/CardImagen.css'
 const CardImagen = (props) => {
 
-    const {nombreCategoria, iconoCategoria, fondoCategoria, objetivoCategoria, realCategoria, togoCategoria, tprcolorbarra, tprcolortooltip} = props
+    const {nombreCategoria, iconoCategoria, fondoCategoria, objetivoCategoria, realCategoria, togoCategoria, tprcolorbarra, tprcolortooltip, scaiconocategoria} = props
 
     return (
-        <div className={`gx-product-item gx-product-vertical'`}>
+        <div className={`gx-product-item gx-product-vertical'`} style={{background:'transparent'}}>
             {/* <div className="gx-product-image"> */}
             <div className="">
                 <div className="gx-grid-thumb-equal" style={{height:'250px'}}>
@@ -20,7 +20,7 @@ const CardImagen = (props) => {
                                                 className={`gx-size-80 gx-border gx-border-white gx-text-red gx-flex-row gx-justify-content-center gx-align-items-center gx-rounded-circle`}
                                                 style={{background:'#fff'}}
                                             >
-                                                <img alt="Remy Sharp" src={iconoCategoria}/> 
+                                                <img alt="Remy Sharp" src={scaiconocategoria}/> 
                                             </span>
                                         </div>
                                         <span className="nombreCategoriaCard">{nombreCategoria}</span>
@@ -46,7 +46,7 @@ const CardImagen = (props) => {
                 </div>
             </div>
 
-            <div className="gx-product-body" style={{background:'#F8F8F8'}}>
+            <div className="gx-product-body" style={{background:'#F8F8F8', margin:'-15px'}}>
                 {/* <Row style={{'padding-bottom':'15px'}}>
                     <Col xl={12} sm={12} xl={12} xs={12}>
                         <div className="gx-text-center">

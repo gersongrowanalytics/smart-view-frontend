@@ -17,7 +17,7 @@ const CardRebate = (props) => {
                         <Col xl={24} md={24} sm={24} xs={24}>
                             <h2 className="gx-text-white" id="tituloRebate">Rebate Sell In</h2>
                         </Col>
-                        <Col xl={8} md={24} sm={8} xs={24} style={{ borderRightStyle:'solid', borderRightColor:'white', paddingRight:'20px', alignSelf:'center'}}>
+                        <Col xl={8} md={24} sm={8} xs={24} style={{ borderRightStyle:'solid', borderRightColor:'white', paddingRight:'20px', alignSelf:'center', textAlignLast: 'left'}}>
                             <h2 className="gx-text-center gx-text-white" id="textoRebate">S/100.0</h2>
                         </Col>
                         <Col xl={16} md={24} sm={16} xs={24}>
