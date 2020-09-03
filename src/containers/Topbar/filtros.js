@@ -45,7 +45,7 @@ class Filtros extends Component {
 
     render() {
         return (
-            <span className="gx-text-black gx-fs-md gx-pointer gx-ml-auto  " style={{paddingLeft: '10px'}}>
+            <span className="gx-text-black gx-fs-md gx-pointer gx-ml-auto  " >
                 <div class="dropdown">
                     <button class="dropbtn">{this.state.nombreSucursal}</button>
                     <div class="dropdown-content">

@@ -16,7 +16,7 @@ const Titulo = (props) => {
                     className="iconoTipoPromocion"/>
                 :null
             }
-            <Col xl={22} md={22} sm={22} xs={22}>
+            <Col xl={tieneIcono == true ?22 :24} md={tieneIcono == true ?22 :24} sm={tieneIcono == true ?22 :24} xs={tieneIcono == true ?22 :24}>
                 <span className={
                     tieneTitulo 
                     ?tprid == 1
@@ -27,7 +27,7 @@ const Titulo = (props) => {
                     {
                         tieneBotonDescargar == true
                         ?<button type="button" class="ant-btn ant-btn-lg btnDescargar">
-                            <span>Download</span> <DownloadOutlined /> 
+                            <span>Descargar</span> <img alt="" src={require("assets/images/iconoDescargar.png")} style={{marginLeft:'10px'}} width="26px" height="26px"/>
                         </button>
                         :null
                     }
@@ -38,7 +38,7 @@ const Titulo = (props) => {
                     }
                     {
                         tieneFecha == true
-                        ?<div id="contenedorActualizacion" className="gx-fs-md gx-ml-auto">
+                        ?<div id="contenedorActualizacion" className="gx-fs-md gx-ml-auto" style={tieneIcono==true?{marginRight:'-35px'}:{}}>
                             <p className="ultimaActualizacion">Actualización 10 de Agosto del 2020</p>
                         </div>
                         :null

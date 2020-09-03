@@ -49,15 +49,15 @@ export const obtenerPromocionesReducer = () =>async (dispatch, getState) => {
       const estadoRequest = getState().estadoRequest.init_request
       if(estadoRequest == true){
         if(data.respuesta == true){
-            data.datos.map(item => {
-                data.datos.push(item)
-            })
-            data.datos.map(item => {
-                data.datos.push(item)
-            })
-            data.datos.map(item => {
-                data.datos.push(item)
-            })
+            // data.datos.map(item => {
+            //     data.datos.push(item)
+            // })
+            // data.datos.map(item => {
+            //     data.datos.push(item)
+            // })
+            // data.datos.map(item => {
+            //     data.datos.push(item)
+            // })
             dispatch({
                 type: OBTENER_PROMOCIONES_EXITO,
                 payload: data.datos

@@ -8,17 +8,16 @@ const CardImagen = (props) => {
     return (
         <div className={`gx-product-item gx-product-vertical'`} style={{background:'transparent'}}>
             {/* <div className="gx-product-image"> */}
-            <div className="">
+            <div className="" style={{background:'#E8E8E8'}}>
                 <div className="gx-grid-thumb-equal" style={{height:'250px'}}>
                     <span className="gx-link gx-grid-thumb-cover" >
                         <div style={{width:'100%', height:'100%', backgroundImage: "url("+catimagenfondoopaco+")", backgroundSize: '100% 100%', backgroundRepeat:'no-repeat' }} >
-                            <Row style={{ paddingTop:'27px',  height:'100%'}}>
+                            <Row style={{   height:'100%'}}>
                                 <Col md={24} xl={24} sm={24} xs={24}>
                                     <div className="gx-text-center" >
                                         <div className="gx-flex-row gx-justify-content-center gx-mb-3 gx-mb-sm-1">
                                             <span
-                                                className={`gx-size-80 gx-border gx-border-white gx-text-red gx-flex-row gx-justify-content-center gx-align-items-center gx-rounded-circle`}
-                                                style={{background:'#fff'}}
+                                                className={` gx-text-red gx-flex-row gx-justify-content-center gx-align-items-center`}
                                             >
                                                 <img alt="Remy Sharp" src={scaiconocategoria}/> 
                                             </span>
@@ -33,7 +32,7 @@ const CardImagen = (props) => {
                 </div>
             </div>
 
-            <div className="gx-line-indi-info" style={{background:'#F8F8F8'}}> 
+            <div className="gx-line-indi-info" style={{background:'#E8E8E8'}}> 
                 {/* real=30; togo=70 --  70*100/30 */}
                 <div className={`gx-line-indi`} style={{background:'#F2F2F2', width: '100%', height: 18, margin: '10px', borderRadius: 50}}>
                     <Tooltip title={"Real S/ "+realCategoria} >
@@ -46,7 +45,7 @@ const CardImagen = (props) => {
                 </div>
             </div>
 
-            <div className="gx-product-body" style={{background:'#F8F8F8', margin:'-15px'}}>
+            <div className="gx-product-body" style={{background:'#E8E8E8', margin:'-15px'}}>
                 {/* <Row style={{'padding-bottom':'15px'}}>
                     <Col xl={12} sm={12} xl={12} xs={12}>
                         <div className="gx-text-center">

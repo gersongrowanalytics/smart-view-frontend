@@ -129,7 +129,7 @@ const MainApp = () => {
           </iframe>
         </div>
       </div>
-      :<Layout className="gx-app-layout"  >
+      :<Layout className="gx-app-layout" style={{background:'white'}}  >
         {getSidebar(navStyle, width)}
         <Layout>
           {getNavStyles(navStyle)}
@@ -148,7 +148,7 @@ const MainApp = () => {
                   backgroundSize: '100% 100%', backgroundRepeat:'no-repeat'
                 } 
                 :{
-                  // overflowY:'none'
+                  background:'white'
                 }
             }
           >

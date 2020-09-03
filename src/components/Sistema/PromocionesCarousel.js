@@ -271,7 +271,11 @@ class PromocionesCarousel extends React.Component {
     
     this.state = { 
         current: 0,
-        cambiando : false
+        cambiando : false,
+
+        activarCarouselAvanzar : false,
+        activarCarouselRetroceder : false,
+        actualizarPosicionCarouselPequeno : false
     }
     this.handlePreviousClick = this.handlePreviousClick.bind(this)
     this.handleNextClick = this.handleNextClick.bind(this)
@@ -314,14 +318,93 @@ class PromocionesCarousel extends React.Component {
     }
   }
 
+  funActivarCarouselAvanzar(){
+    if(this.state.activarCarouselAvanzar == false){
+      this.setState({
+        activarCarouselAvanzar : true
+      })
+    }
+  }
+
+  funActicarCarouselRetroceder(){
+    if(this.state.activarCarouselRetroceder == false){
+      this.setState({
+        activarCarouselRetroceder : true
+      })
+    }
+  }
+
+  funDesactivarCarousel(){
+    if(this.state.activarCarouselAvanzar == true){
+      this.setState({
+        activarCarouselAvanzar : false
+      })
+    }
+
+    if(this.state.activarCarouselRetroceder == true){
+      this.setState({
+        activarCarouselRetroceder : false
+      })
+    }
+  }
+
   render() {
-    const { current, direction } = this.state
+    const { current, direction, seleccionoPromocion } = this.state
     const { slides, heading, editarPromocion, colorSeleciconadoPromo, porcentaje } = this.props 
     const headingId = `slider-heading__${heading.replace(/\s+/g, '-').toLowerCase()}`
     const wrapperTransform = {
       'transform': `translateX(-${current * (100 / slides.length)}%)`
     }
     
+
+    if(this.state.activarCarouselAvanzar == true){
+      setTimeout(() => {
+        if(this.state.activarCarouselAvanzar == true){
+          if(seleccionoPromocion == true){
+            if(this.state.current <= 1.5){
+              this.setState({
+                current: this.state.current+0.1
+              })
+            }
+          }else{
+            if(this.state.current <= 3.1){
+              this.setState({
+                current: this.state.current+0.1
+              })
+            }
+          }
+
+          console.log(this.state.current)
+        }
+      }, 165);
+    }
+
+    if(this.state.activarCarouselRetroceder == true){
+      setTimeout(() => {
+        if(this.state.activarCarouselRetroceder == true){
+          if(this.state.current > -1){
+            this.setState({
+              current: this.state.current-0.1
+            })
+          }
+        }
+      }, 165);
+    }
+
+    
+    if(seleccionoPromocion == true){
+      if(this.state.actualizarPosicionCarouselPequeno == false){
+        if(this.state.current >= 1.5 ){
+          this.setState({
+            current : 1.5
+          })
+        }
+        this.setState({
+          actualizarPosicionCarouselPequeno : true
+        })
+      }
+    }
+
     return (
       <div className='sliderPromocion' aria-labelledby={headingId}>
         <ul className="slider__wrapper_promocion" style={wrapperTransform}>
@@ -336,44 +419,44 @@ class PromocionesCarousel extends React.Component {
                     if(this.state.cambiando == true){
 
                     }else{
-                        this.setState({
-                            cambiando : true
-                        })
+                        // this.setState({
+                        //     cambiando : true
+                        // })
 
-                        if(posicion == 0 && posicion == current){
-                            setTimeout(() => {
-                                this.setState({
-                                    cambiando : false
-                                })
-                            }, 500);
-                        }else if(posicion == current+1  ){
-                            this.seleccionarEspecifico(current)
-                            setTimeout(() => {
-                                this.setState({
-                                    cambiando : false
-                                })
-                            }, 500);
-                        }else if(posicion > current){
-                            setTimeout(() => {
-                                this.handleNextClick();
-                                this.setState({
-                                    cambiando : false
-                                })
-                            }, 500);
-                        }else if(posicion < current){
-                            setTimeout(() => {
-                                this.handlePreviousClick();
-                                this.setState({
-                                    cambiando : false
-                                })
-                            }, 500);
-                        }else{
-                            setTimeout(() => {
-                                this.setState({
-                                    cambiando : false
-                                })
-                            }, 500);
-                        }
+                        // if(posicion == 0 && posicion == current){
+                        //     setTimeout(() => {
+                        //         this.setState({
+                        //             cambiando : false
+                        //         })
+                        //     }, 500);
+                        // }else if(posicion == current+1  ){
+                        //     this.seleccionarEspecifico(current)
+                        //     setTimeout(() => {
+                        //         this.setState({
+                        //             cambiando : false
+                        //         })
+                        //     }, 500);
+                        // }else if(posicion > current){
+                        //     setTimeout(() => {
+                        //         this.handleNextClick();
+                        //         this.setState({
+                        //             cambiando : false
+                        //         })
+                        //     }, 500);
+                        // }else if(posicion < current){
+                        //     setTimeout(() => {
+                        //         this.handlePreviousClick();
+                        //         this.setState({
+                        //             cambiando : false
+                        //         })
+                        //     }, 500);
+                        // }else{
+                        //     setTimeout(() => {
+                        //         this.setState({
+                        //             cambiando : false
+                        //         })
+                        //     }, 500);
+                        // }
                     }
                 }}
               >
@@ -393,7 +476,7 @@ class PromocionesCarousel extends React.Component {
 
 
           {/* ----------------------------------- */}
-          {
+          {/* {
             porcentaje == 100
             ?<div
               onMouseEnter={() => {
@@ -461,9 +544,28 @@ class PromocionesCarousel extends React.Component {
                 </div>
               </li>
             </div>
-          }
+          } */}
         </ul>
-        
+        <div className='contenedorSliderPromocion'>
+            <div 
+              onMouseLeave={() =>{
+                this.funDesactivarCarousel()
+              }}
+              onMouseEnter={() => {
+                this.funActicarCarouselRetroceder()
+              }} 
+              id="primeraMitadSliderPromocion" ></div>
+            <div
+              onMouseLeave={() =>{
+                this.funDesactivarCarousel()
+              }}
+              onMouseEnter={() => {
+                this.funActivarCarouselAvanzar()
+              }} 
+              id="segundaMitadSliderPromocion" >
+
+              </div>
+          </div>
     
       </div>
     )

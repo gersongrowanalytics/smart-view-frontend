@@ -163,44 +163,44 @@ class CategoriasCaoursel extends React.Component {
                     if(this.state.cambiando == true){
 
                     }else{
-                        this.setState({
-                            cambiando : true
-                        })
+                        // this.setState({
+                        //     cambiando : true
+                        // })
 
-                        if(posicion == 0 && posicion == current){
-                            setTimeout(() => {
-                                this.setState({
-                                    cambiando : false
-                                })
-                            }, 500);
-                        }else if(posicion == current+1 || posicion == current+2 || posicion == current+3 ){
-                            this.seleccionarEspecifico(current)
-                            setTimeout(() => {
-                                this.setState({
-                                    cambiando : false
-                                })
-                            }, 500);
-                        }else if(posicion > current){
-                            setTimeout(() => {
-                                this.handleNextClick();
-                                this.setState({
-                                    cambiando : false
-                                })
-                            }, 500);
-                        }else if(posicion < current){
-                            setTimeout(() => {
-                                this.handlePreviousClick();
-                                this.setState({
-                                    cambiando : false
-                                })
-                            }, 500);
-                        }else{
-                            setTimeout(() => {
-                                this.setState({
-                                    cambiando : false
-                                })
-                            }, 500);
-                        }
+                        // if(posicion == 0 && posicion == current){
+                        //     setTimeout(() => {
+                        //         this.setState({
+                        //             cambiando : false
+                        //         })
+                        //     }, 500);
+                        // }else if(posicion == current+1 || posicion == current+2 || posicion == current+3 ){
+                        //     this.seleccionarEspecifico(current)
+                        //     setTimeout(() => {
+                        //         this.setState({
+                        //             cambiando : false
+                        //         })
+                        //     }, 500);
+                        // }else if(posicion > current){
+                        //     setTimeout(() => {
+                        //         this.handleNextClick();
+                        //         this.setState({
+                        //             cambiando : false
+                        //         })
+                        //     }, 500);
+                        // }else if(posicion < current){
+                        //     setTimeout(() => {
+                        //         this.handlePreviousClick();
+                        //         this.setState({
+                        //             cambiando : false
+                        //         })
+                        //     }, 500);
+                        // }else{
+                        //     setTimeout(() => {
+                        //         this.setState({
+                        //             cambiando : false
+                        //         })
+                        //     }, 500);
+                        // }
                     }
                 }}
               >

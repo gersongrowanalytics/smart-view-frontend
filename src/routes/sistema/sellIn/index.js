@@ -59,11 +59,13 @@ const SellIn = () => {
                                         realValorizado           = {tipoPromocion.tsuvalorizadoreal}
                                         togoValorizado           = {tipoPromocion.tsuvalorizadotogo}
                                         cumplimientoPorcentaje   = {tipoPromocion.tsuporcentajecumplimiento}
+                                        nombreTipoPromocion      = {tipoPromocion.tprnombre}
                                     />
                                 </Col>
                                 <Col xl={12} md={12} sm={24} xs={24}>
                                     <CardRebate 
                                         rebateValorizado = {tipoPromocion.tsuvalorizadorebate}
+                                        nombreTipoPromocion = {tipoPromocion.tprnombre}
                                     />
                                 </Col>
 

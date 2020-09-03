@@ -15,6 +15,7 @@ import {
 } from "appRedux/actions/Fechas"
 import {obtenerVentasTprReducer} from 'appRedux/actions/VentasTpr'
 import {obtenerPromocionesReducer} from 'appRedux/actions/Promociones'
+import './Topbar.css'
 
 const {Header} = Layout;
 
@@ -83,16 +84,17 @@ const Topbar = () => {
       <div className="gx-linebar gx-mr-24" >
         <h1>
           <i className=" icon icon-menu"
-            style={{cursor:'pointer', paddingRight: '10px'}}
+            id="iconoMenuTopbar"
+            style={{cursor:'pointer', }}
             onClick={() => {
               dispatch(toggleCollapsedSideNav(!navCollapsed));
             }}
           />
-          <img alt='' src={require('assets/images/logoCompletoKim.png')} />
+          <img alt='' src={require('assets/images/logoCompletoKim.png')} width='198px' height='24px' id="logoTopbar" />
           <Filtros
             sucursales          = {sucursalesUsuario}
             fechas              = {fechasFiltro}
-            seleccionarSucursal = {(valor)  => dispatch(filtroSeleccionarSucursalUsuario(valor))}
+            seleccionarSucursal = {(valor) => dispatch(filtroSeleccionarSucursalUsuario(valor))}
             seleccionarDia      = {(valor) => dispatch(filtroSeleccionarDia(valor))}
             seleccionarMes      = {(valor) => dispatch(filtroSeleccionarMes(valor))}
             seleccionarAno      = {(valor) => dispatch(filtroSeleccionarAno(valor))}
@@ -103,8 +105,8 @@ const Topbar = () => {
       </div>
       <div className="gx-linebar gx-mr-24">
         <Popover placement="bottomRight" content={userMenuOptions} trigger="click">
-          <span className="gx-avatar-name">{localStorage.getItem('usuusuario')} </span>
-          <Avatar src={"https://cdn.pixabay.com/photo/2017/01/30/23/52/female-2022387_1280.png"} //150*150
+          <span className="gx-avatar-name" id="nombreUsuarioLogeado">{localStorage.getItem('usuusuario')} </span>
+          <Avatar src={require('assets/images/iconoUsuario.png')} //150*150
             className="gx-size-35 gx-pointer gx-mr-3" alt=""/>
         </Popover>
       </div>

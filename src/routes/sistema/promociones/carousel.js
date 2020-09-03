@@ -49,7 +49,9 @@ class Slide extends React.Component {
         caticonoseleccionado,
         catcolor,
         catimagenfondoseleccionado,
-        index } = this.props.slide
+        index,
+        caticonohover
+       } = this.props.slide
     const current = this.props.current
     const seleccionoPromocion  = this.props.seleccionoPromocion
 
@@ -87,6 +89,7 @@ class Slide extends React.Component {
                 color         = {catcolor}
                 colorhover    = {catcolorhover}
                 catimagenfondoseleccionado = {catimagenfondoseleccionado}
+                caticonohover = {caticonohover}
             />
         </div>
       </li>
@@ -106,12 +109,18 @@ class Slider extends React.Component {
     
     this.state = { 
         current: 0,
-        cambiando : false
+        cambiando : false,
+
+        activarCarouselAvanzar : false,
+        activarCarouselRetroceder : false,
+        actualizarPosicionCarouselPequeno : false
     }
     this.handlePreviousClick = this.handlePreviousClick.bind(this)
     this.handleNextClick = this.handleNextClick.bind(this)
     this.handleSlideClick = this.handleSlideClick.bind(this)
     this.seleccionarEspecifico = this.seleccionarEspecifico.bind(this)
+
+    this.funActivarCarouselAvanzar = this.funActivarCarouselAvanzar.bind(this)
   }
   
   handlePreviousClick() {
@@ -149,14 +158,93 @@ class Slider extends React.Component {
     }
   }
 
+  funActivarCarouselAvanzar(){
+    if(this.state.activarCarouselAvanzar == false){
+      this.setState({
+        activarCarouselAvanzar : true
+      })
+    }
+  }
+
+  funActicarCarouselRetroceder(){
+    if(this.state.activarCarouselRetroceder == false){
+      this.setState({
+        activarCarouselRetroceder : true
+      })
+    }
+  }
+
+  funDesactivarCarousel(){
+    if(this.state.activarCarouselAvanzar == true){
+      this.setState({
+        activarCarouselAvanzar : false
+      })
+    }
+
+    if(this.state.activarCarouselRetroceder == true){
+      this.setState({
+        activarCarouselRetroceder : false
+      })
+    }
+  }
+
   render() {
-    const { current, direction } = this.state
+    const { current, direction, activarCarouselAvanzar} = this.state
     const { slides, heading, seleccionarCategoria, seleccionoPromocion } = this.props 
     const headingId = `slider-heading__${heading.replace(/\s+/g, '-').toLowerCase()}`
     const wrapperTransform = {
-      'transform': `translateX(-${current * (100 / slides.length)}%)`
+      'transform': `translateX(-${current * (100 / slides.length)}%)`,
+      // 'transitionDuration': '1s'
     }
+
+    if(this.state.activarCarouselAvanzar == true){
+      setTimeout(() => {
+        if(this.state.activarCarouselAvanzar == true){
+          if(seleccionoPromocion == true){
+            if(this.state.current <= 1.5){
+              this.setState({
+                current: this.state.current+0.1
+              })
+            }
+          }else{
+            if(this.state.current <= 3.1){
+              this.setState({
+                current: this.state.current+0.1
+              })
+            }
+          }
+
+          console.log(this.state.current)
+        }
+      }, 165);
+    }
+
+    if(this.state.activarCarouselRetroceder == true){
+      setTimeout(() => {
+        if(this.state.activarCarouselRetroceder == true){
+          if(this.state.current > -1){
+            this.setState({
+              current: this.state.current-0.1
+            })
+          }
+        }
+      }, 165);
+    }
+
     
+    if(seleccionoPromocion == true){
+      if(this.state.actualizarPosicionCarouselPequeno == false){
+        if(this.state.current >= 1.5 ){
+          this.setState({
+            current : 1.5
+          })
+        }
+        this.setState({
+          actualizarPosicionCarouselPequeno : true
+        })
+      }
+    }
+
     return (
       <div 
         className={
@@ -173,48 +261,54 @@ class Slider extends React.Component {
             return (
               <div
                 onClick={() => seleccionarCategoria(slide.scaid, posicion)}
+                onMouseLeave={() => {
+                  // this.seleccionarEspecifico(posicion-1)
+                }}
                 onMouseEnter={() => {
                     if(this.state.cambiando == true){
 
                     }else{
-                        this.setState({
-                            cambiando : true
-                        })
+                      console.log(posicion)
+                      console.log(current)
 
-                        if(posicion == 0 && posicion == current){
-                            setTimeout(() => {
-                                this.setState({
-                                    cambiando : false
-                                })
-                            }, 800);
-                        }else if(posicion == current+1 || posicion == current+2 || posicion == current+3 ){
-                            this.seleccionarEspecifico(current)
-                            setTimeout(() => {
-                                this.setState({
-                                    cambiando : false
-                                })
-                            }, 800);
-                        }else if(posicion > current){
-                            setTimeout(() => {
-                                this.handleNextClick();
-                                this.setState({
-                                    cambiando : false
-                                })
-                            }, 500);
-                        }else if(posicion < current){
-                            setTimeout(() => {
-                                this.handlePreviousClick();
-                                this.setState({
-                                    cambiando : false
-                                })
-                            }, 500);
-                        }else{
-                            setTimeout(() => {
-                                this.setState({
-                                    cambiando : false
-                                })
-                            }, 800);
-                        }
+                    //     this.setState({
+                    //         cambiando : true
+                    //     })
+
+                    //     if(posicion == 0 && posicion == current){
+                    //         setTimeout(() => {
+                    //             this.setState({
+                    //                 cambiando : false
+                    //             })
+                    //         }, 800);
+                    //     }else if(posicion == current+1 ){
+                    //         this.seleccionarEspecifico(current)
+                    //         setTimeout(() => {
+                    //             this.setState({
+                    //                 cambiando : false
+                    //             })
+                    //         }, 800);
+                    //     }else if(posicion > current){
+                    //         setTimeout(() => {
+                    //             this.handleNextClick();
+                    //             this.setState({
+                    //                 cambiando : false
+                    //             })
+                    //         }, 500);
+                    //     }else if(posicion < current){
+                    //         setTimeout(() => {
+                    //             this.handlePreviousClick();
+                    //             this.setState({
+                    //                 cambiando : false
+                    //             })
+                    //         }, 500);
+                    //     }else{
+                    //         setTimeout(() => {
+                    //             this.setState({
+                    //                 cambiando : false
+                    //             })
+                    //         }, 800);
+                    //     }
                     }
                 }}
               >
@@ -239,7 +333,26 @@ class Slider extends React.Component {
             )
           })}
         </ul>
-        
+        <div className='contenedorSliderCategoriasPromocion'>
+          <div 
+            onMouseLeave={() =>{
+              this.funDesactivarCarousel()
+            }}
+            onMouseEnter={() => {
+              this.funActicarCarouselRetroceder()
+            }} 
+            id="primeraMitadSliderCategoriasPromocion" ></div>
+          <div
+            onMouseLeave={() =>{
+              this.funDesactivarCarousel()
+            }}
+            onMouseEnter={() => {
+              this.funActivarCarouselAvanzar()
+            }} 
+            id="segundaMitadSliderCategoriasPromocion" >
+
+            </div>
+        </div>
     
       </div>
     )

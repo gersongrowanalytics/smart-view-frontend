@@ -5,7 +5,7 @@ import {Col, Row} from "antd";
 import { useSelector} from "react-redux";
 
 const ImagenHover = (props) => {
-    const {seleccionado, nombre, icono, iconoSeleccionado, fondo, colorhover, color, catimagenfondoseleccionado} = props
+    const {seleccionado, nombre, icono, iconoSeleccionado, fondo, colorhover, color, catimagenfondoseleccionado, caticonohover} = props
     const {seleccionoPromocion} = useSelector(({promociones}) => promociones);
 
     return (
@@ -22,7 +22,8 @@ const ImagenHover = (props) => {
                     ? {
                         marginTop:'15px',
                         height:'164px',
-                        background: 'rgba(0,0,0,0.15)',
+                        // background: 'rgba(0,0,0,0.15)',
+                        background: 'transparent',
                         boxShadow:'0px 4px 4px rgba(0, 0, 0, 0.25)'
                     }
                     : seleccionoPromocion == true
@@ -61,8 +62,8 @@ const ImagenHover = (props) => {
                                                     ?"contenedorIconoSeleccionado"
                                                     :"contenedorIcono"
                                                 }
-                                                className={`gx-border  gx-text-red gx-flex-row gx-justify-content-center gx-align-items-center gx-rounded-circle`}
-                                                style={ seleccionado == true ?{background:color, padding:'10px'} :{background: '#fff', padding:'10px'}}
+                                                className={`gx-text-red gx-flex-row gx-justify-content-center gx-align-items-center gx-rounded-circle`}
+                                                style={ seleccionado == true ?{background:color} :{background: '#fff',}}
                                             >
                                                 <img 
                                                     alt="Remy Sharp" 
@@ -103,27 +104,23 @@ const ImagenHover = (props) => {
                         {/* <div style={{height:'15%', width:'15%', backgroundImage: "url('https://cdn4.iconfinder.com/data/icons/kids-and-toys-1/32/Kids__Kids_Baby_Diaper_Childhood_Nappy-512.png')", backgroundSize: '100% 100%', backgroundRepeat:'no-repeat'}} /> */}
 
                         <div 
-                            className="gx-rounded-circle" 
+                            className="" 
                             style={
                                 seleccionado == true  
                                 ?{
                                     width:"20%", 
                                     height:"20%", 
-                                    borderStyle:'solid', 
-                                    borderColor:'white', 
                                     backgroundImage: "url("+iconoSeleccionado+")", 
                                     backgroundSize: '70% 70%', backgroundRepeat:'no-repeat', backgroundPosition:'center', padding:'10px'
                                 }
                                 :{
-                                    width:"20%", 
-                                    height:"20%", 
-                                    borderStyle:'solid', 
-                                    borderColor:'white', 
-                                    backgroundImage: "url("+icono+")", 
-                                    backgroundSize: '70% 70%', backgroundRepeat:'no-repeat', backgroundPosition:'center', padding:'10px'
+                                    width:"68px", 
+                                    height:"68px", 
+                                    backgroundImage: "url("+caticonohover+")", 
+                                    backgroundSize: '100% 100%', backgroundRepeat:'no-repeat', backgroundPosition:'center', padding:'10px'
                                 }
                             } />
-
+                        <br />
                         <h2>
                             <span style={{fontWeight:'500'}} id="nombreCategoriaHover">
                                 {nombre}<br/>
@@ -132,8 +129,10 @@ const ImagenHover = (props) => {
                         </h2>
                         
                         <span style={{color:'white'}} id="saberMasHover">
-                            {"Para saber más"}
-                            <i className="icon icon-arrow-right gx-fs-l gx-ml-1 gx-d-inline-flex gx-vertical-align-middle"/></span>
+                            Para saber más<img alt="" src={require("assets/images/iconoVerMas.png")} width="22px" height="18px" className="iconoFlecha"/>
+                            {/* <i className="icon icon-arrow-right gx-fs-l gx-ml-1 gx-d-inline-flex gx-vertical-align-middle"/> */}
+                            
+                        </span>
                     </div>
                 }
             </figure>
