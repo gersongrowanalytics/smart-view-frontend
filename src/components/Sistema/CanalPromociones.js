@@ -18,7 +18,7 @@ const CanalPromociones = (props) => {
         <Col xl={24} md={24} sm={24} xs={24}>
             <Row
                 style = {{
-                    position     : 'relative',
+                    // position     : 'relative',
                     boxSizing    : 'border-box',
                     padding      : '0',
                     marginBottom : '20px',
