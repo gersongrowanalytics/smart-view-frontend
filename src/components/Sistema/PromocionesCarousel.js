@@ -252,7 +252,8 @@ class Slide extends React.Component {
                       <div style={{}} />
                     </div>
                   </div> */}
-            </Card>
+                <div id="ultimaColumnaCarouselPromocion"></div>
+            </Card> 
         </div>
       </li>
     )
@@ -358,25 +359,17 @@ class PromocionesCarousel extends React.Component {
     
 
     if(this.state.activarCarouselAvanzar == true){
-      setTimeout(() => {
-        if(this.state.activarCarouselAvanzar == true){
-          if(seleccionoPromocion == true){
-            if(this.state.current <= 1.5){
-              this.setState({
-                current: this.state.current+0.1
-              })
-            }
-          }else{
-            if(this.state.current <= 3.1){
+      if(slides.length > 3){
+        setTimeout(() => {
+          if(this.state.activarCarouselAvanzar == true){
+            if(this.state.current <= slides.length - 3){
               this.setState({
                 current: this.state.current+0.1
               })
             }
           }
-
-          console.log(this.state.current)
-        }
-      }, 165);
+        }, 165);
+      }
     }
 
     if(this.state.activarCarouselRetroceder == true){
@@ -386,23 +379,13 @@ class PromocionesCarousel extends React.Component {
             this.setState({
               current: this.state.current-0.1
             })
+          }else{
+            this.setState({
+              current: 0
+            })
           }
         }
       }, 165);
-    }
-
-    
-    if(seleccionoPromocion == true){
-      if(this.state.actualizarPosicionCarouselPequeno == false){
-        if(this.state.current >= 1.5 ){
-          this.setState({
-            current : 1.5
-          })
-        }
-        this.setState({
-          actualizarPosicionCarouselPequeno : true
-        })
-      }
     }
 
     return (
@@ -546,6 +529,15 @@ class PromocionesCarousel extends React.Component {
             </div>
           } */}
         </ul>
+        <div 
+          className   = "minorista"
+          style       = {{ 
+            background: colorSeleciconadoPromo, 
+          }}
+        >
+          <div id="txtcanal"> {this.props.nombreCanal} </div>
+            
+        </div>
         <div className='contenedorSliderPromocion'>
             <div 
               onMouseLeave={() =>{

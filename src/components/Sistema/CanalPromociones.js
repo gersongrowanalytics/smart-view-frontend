@@ -33,6 +33,7 @@ const CanalPromociones = (props) => {
                     editarPromocion = {editarPromocion}
                     porcentaje      = {porcentaje}
                     colorSeleciconadoPromo = {colorSeleciconadoPromo}
+                    nombreCanal     = {nombreCanal}
                 />
                 {/* {
                     promociones.map((item, posicion) => {
@@ -97,7 +98,7 @@ const CanalPromociones = (props) => {
                     })
                 } */}
             </Row>
-            <div 
+            {/* <div 
                 className   = "minorista"
                 style       = {{ 
                     display:'inline-block',
@@ -124,7 +125,7 @@ const CanalPromociones = (props) => {
                 }}
             >
                 {nombreCanal}
-            </div>
+            </div> */}
         </Col>
     )
 }
