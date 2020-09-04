@@ -341,7 +341,12 @@ class Slider extends React.Component {
             onMouseEnter={() => {
               this.funActicarCarouselRetroceder()
             }} 
-            id="primeraMitadSliderCategoriasPromocion" ></div>
+            id={
+              seleccionoPromocion == true
+              ?"primeraMitadSliderCategoriasPromocionPequeno"
+              :"primeraMitadSliderCategoriasPromocion"
+            } 
+          ></div>
           <div
             onMouseLeave={() =>{
               this.funDesactivarCarousel()
@@ -349,7 +354,12 @@ class Slider extends React.Component {
             onMouseEnter={() => {
               this.funActivarCarouselAvanzar()
             }} 
-            id="segundaMitadSliderCategoriasPromocion" >
+            id={
+              seleccionoPromocion == true
+              ?"segundaMitadSliderCategoriasPromocionPequeno"
+              :"segundaMitadSliderCategoriasPromocion"
+            }
+           >
 
             </div>
         </div>

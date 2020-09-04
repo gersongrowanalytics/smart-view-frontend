@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './estilos/PromocionCarousel.scss'
-import ImagenHover from 'components/Sistema/ImagenHover'
-import config from 'config'
-import {Col, Row, Card, Button, InputNumber, Modal} from "antd";
+import {Col, Row, Card, Button, Modal} from "antd";
+import funFomratoDecimal from '../../funciones/funFormatoDecimal.js'
+
 
 // =========================
 // Slide
@@ -132,7 +132,7 @@ class Slide extends React.Component {
                           style={{
                             color:colorSeleciconadoPromo, 
                           }}>
-                            {prmcantidadcombo} Combos
+                            {funFomratoDecimal(prmcantidadcombo, 0)} Combos
                               <br/>
                         </span>
                         <span 
@@ -142,35 +142,42 @@ class Slide extends React.Component {
                     {
                         productos.map((producto, posicion) => {
                             return (
-                                <Col xl={11} md={11}>
+                                posicion == 0
+                                ?<Col xl={11} md={11} sm={11} xs={11}>
                                     <Row>
                                         <Col xl={24} md={24}>
                                           <img src={producto.proimagen} width="105px" height="59px"/>
                                           
                                         </Col>
                                         <Col xl={24} md={24} className="gx-text-center">
-                                            <span id="txtProducto" >11 HAF x120</span>
+                                            <div id="txtProducto" >{producto.prpproductoppt}<br/></div>
+                                            <div id="txtSubProducto">{producto.prpcomprappt}</div>
                                         </Col>
                                     </Row>
                                 </Col>
+                                :null
                             )
                         })
                     }
                     <Col xl={2} md={2} sm={2} xs={2} />
-                    <Col xl={11} md={11}>
+                    <Col xl={11} md={11} sm={11} xs={11}>
                         <Row>
                             {
                                 productosbonificados.map((productoBonificado, posicion) => {
                                     return(
-                                        <Col xl={24} md={24} className="gx-text-center" style={{marginTop:'-20px'}}>
+                                      posicion == 0
+                                        ?<Col xl={24} md={24} className="gx-text-center" style={{marginTop:'-20px'}}>
                                             <span 
                                               className="txtGratis">
-                                                Gratis</span>
-                                            <div 
+                                                Gratis</span><br/>
+                                            <img src={productoBonificado.proimagen} width="105px" height="59px"/>
+                                            {/* <div 
                                                 style={{'width':"105px", 'height':"59px", backgroundImage: "url("+productoBonificado.proimagen+")", backgroundSize: '100% 100%', backgroundRepeat:'no-repeat', backgroundPosition:'center'}} 
-                                            />
-                                            <span id="txtProducto">{productoBonificado.pronombre}</span>
-                                        </Col>           
+                                            /> */}
+                                            <div id="txtProducto" >{productoBonificado.prbproductoppt}<br/></div>
+                                            <div id="txtSubProducto">{productoBonificado.prbcomprappt}</div>
+                                          </Col>           
+                                        :null
                                     )
                                 })
                             }
@@ -178,7 +185,7 @@ class Slide extends React.Component {
                     </Col>
                 </Row>
                 <Row>
-                <Col xl={11} md={11} className="gx-text-center" >
+                <Col xl={11} md={11} sm={11} xs={11} className="gx-text-center" >
                   <p 
                     id="txtPlanchas"
                   >
@@ -203,9 +210,9 @@ class Slide extends React.Component {
                       min={1} max={100000} defaultValue={0}/> */}
                 </Col>
                 <Col xl={2} md={2} sm={2} xs={2} />
-                <Col xl={11} md={11} className="gx-text-center">
+                <Col xl={11} md={11} sm={11} xs={11} className="gx-text-center">
                   <p  id="tituloValorizado">Valorizado<br/>
-                  <b id="precioValorizado">S/{this.state.txtValorizado}</b></p>
+                  <b id="precioValorizado">S/{funFomratoDecimal(this.state.txtValorizado, 2)}</b></p>
                 </Col>
                 <Col xl={24} md={24} sm={24} xs={24} className="gx-text-center" style={{marginTop:'0'}}>
                   <Button 

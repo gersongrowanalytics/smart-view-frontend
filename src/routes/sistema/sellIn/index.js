@@ -10,6 +10,7 @@ import {seleccionarCargaArchivosReducer} from "appRedux/actions/CargaArchivos";
 import {seleccionarTutorialReducer} from "appRedux/actions/Tutorial";
 import {seleccionarVistaPromocionReducer} from 'appRedux/actions/Promociones'
 import {seleccionarVistaVentasReducer} from 'appRedux/actions/VentasTpr'
+import CardImagen from 'components/Sistema/CardImagen'
 
 const SellIn = () => {
     const dispatch = useDispatch();
@@ -69,17 +70,18 @@ const SellIn = () => {
                                     />
                                 </Col>
 
-                                <CategoriasCarousel
+                                {/* <CategoriasCarousel
                                     heading = "Example Slider"   
                                     slides  = {tipoPromocion.categorias} 
                                     seleccionarCategoria = {() => {}}
                                     tprcolorbarra   = {tipoPromocion.tprcolorbarra}
                                     tprcolortooltip = {tipoPromocion.tprcolortooltip}
-                                />
-                                {/* {
+                                /> */}
+                                {
                                     tipoPromocion.categorias.map( function(categoria, posicion){
                                         return (
-                                            <Col xl={6} md={8} sm={12} xs={24}>
+                                            // <Col xl={5} md={8} sm={12} xs={24}></div>
+                                            <div style={{width:'18%', marginLeft:'20px'}}>
                                                 <CardImagen 
                                                     nombreCategoria     = {categoria.catnombre}
                                                     iconoCategoria      = {categoria.caticono}
@@ -87,11 +89,17 @@ const SellIn = () => {
                                                     objetivoCategoria   = {categoria.scavalorizadoobjetivo}
                                                     realCategoria       = {categoria.scavalorizadoreal}
                                                     togoCategoria       = {categoria.scavalorizadotogo}
+
+                                                    tprcolorbarra       = {tipoPromocion.tprcolorbarra}
+                                                    tprcolortooltip     = {tipoPromocion.tprcolortooltip}
+                                                    scaiconocategoria   = {categoria.scaiconocategoria}
+                                                    catimagenfondoopaco = {categoria.catimagenfondoopaco}
                                                 />
-                                            </Col>
+                                            </div>
+                                            
                                         )
                                     })
-                                } */}
+                                }
                             </Row>
                         )
                     })
