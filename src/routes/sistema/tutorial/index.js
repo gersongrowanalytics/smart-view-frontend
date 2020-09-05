@@ -6,6 +6,7 @@ import {seleccionarCargaArchivosReducer} from "appRedux/actions/CargaArchivos";
 import {seleccionarTutorialReducer, seleccionarVideoTutorialReducer} from "appRedux/actions/Tutorial";
 import {seleccionarVistaPromocionReducer} from 'appRedux/actions/Promociones'
 import {seleccionarVistaVentasReducer} from 'appRedux/actions/VentasTpr'
+import './tutorial.css'
 
 const Tutorial = () => {
 
@@ -41,17 +42,18 @@ const Tutorial = () => {
                     <img src={require('assets/images/logoLeadSmartView.png')} alt=''/>
                 </Col>
                 <Col xl={10} md={10} >
-                    <span style={{ color:'#4D4D4D'}}>
+                    <span style={{ color:'#4D4D4D'}} id="txtTutorial">
                         Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam
                     </span>
                 </Col>
                 <Col xl={14} md={14} />
                 <Col xl={10} md={10} style={{marginTop:'10px'}}>
                     <span 
+                        id="playVideo"
                         style={{cursor:'pointer'}}
                         onClick={() => dispatch(seleccionarVideoTutorialReducer(true))}
                     >
-                            PLAY VIDEO <img src={require('assets/images/play.png')} alt='' width='70px' style={{marginLeft:'-20px'}} /></span>
+                            PLAY VIDEO <img src={require('assets/images/play.png')} alt='' width='108px' style={{marginLeft:'-20px'}} /></span>
                 </Col>
             </Row>
         </Auxiliary>

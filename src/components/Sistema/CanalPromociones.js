@@ -21,7 +21,7 @@ const CanalPromociones = (props) => {
                     // position     : 'relative',
                     boxSizing    : 'border-box',
                     padding      : '0',
-                    marginBottom : '20px',
+                    marginBottom : '35px',
                     marginLeft   : '10px'
                 }}
             >

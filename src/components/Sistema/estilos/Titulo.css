@@ -74,7 +74,19 @@
   font-size: 20px;
   line-height: 23px;
 
-  background:#F93258; 
+  background:#FF7B94; 
+  color:white;
+  border-radius: 10px;
+}
+
+.btnDescargar:focus{
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 23px;
+
+  background:#FF7B94; 
   color:white;
   border-radius: 10px;
 }

@@ -66,7 +66,7 @@ const Topbar = () => {
     <ul className="gx-user-popover">
       {/* <li>My Account</li>
       <li>Connections</li> */}
-      <li onClick={() => dispatch(userSignOut())}>Salir
+      <li onClick={() => dispatch(userSignOut())} style={{fontFamily:'Roboto', fontWeight:'bold'}}>Salir
       </li>
     </ul>
   );

@@ -1,0 +1,17 @@
+#txtTutorial{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 15px;
+    line-height: 18px;
+    color: #4D4D4D;
+}
+
+#playVideo{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 23px;
+    color: #4D4D4D;
+}

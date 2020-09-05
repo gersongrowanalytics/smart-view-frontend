@@ -19,7 +19,7 @@ const Titulo = (props) => {
             <Col xl={tieneIcono == true ?22 :24} md={tieneIcono == true ?22 :24} sm={tieneIcono == true ?22 :24} xs={tieneIcono == true ?22 :24}>
                 <span className={
                     tieneTitulo 
-                    ?tprid == 1
+                    ?tprid == 2
                         ?`titulo-subrayado gx-flex-row` 
                         :`titulo-subrayado gx-flex-row subrayado-verde` 
                     :`gx-flex-row`
@@ -27,7 +27,7 @@ const Titulo = (props) => {
                     {
                         tieneBotonDescargar == true
                         ?<button type="button" class="ant-btn ant-btn-lg btnDescargar">
-                            <span>Descargar</span> <img alt="" src={require("assets/images/iconoDescargar.png")} style={{marginLeft:'10px'}} width="26px" height="26px"/>
+                            <span>Descargar</span> <img alt="" src={require("assets/images/iconoDescargar.png")} style={{marginLeft:'10px'}} width="28px" height="26px"/>
                         </button>
                         :null
                     }

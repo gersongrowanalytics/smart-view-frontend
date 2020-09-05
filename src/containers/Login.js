@@ -71,7 +71,7 @@ class Login extends React.Component {
       <div className="app">
         <div className="carousel">
           <div id="contenedorTextoCarousel">
-            <span id="textoCarousel">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euis</span>
+            {/* <span id="textoCarousel">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euis</span> */}
           </div>
          {/* <ReactCSSTransitionGroup
             transitionName={{

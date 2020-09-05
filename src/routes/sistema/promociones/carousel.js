@@ -220,11 +220,20 @@ class Slider extends React.Component {
     }
 
     if(this.state.activarCarouselRetroceder == true){
+      if(this.state.current < -1){
+        this.setState({
+          current: 0
+        })
+      }
       setTimeout(() => {
         if(this.state.activarCarouselRetroceder == true){
           if(this.state.current > -1){
             this.setState({
               current: this.state.current-0.1
+            })
+          }else{
+            this.setState({
+              current: 0
             })
           }
         }
@@ -334,19 +343,24 @@ class Slider extends React.Component {
           })}
         </ul>
         <div className='contenedorSliderCategoriasPromocion'>
-          <div 
-            onMouseLeave={() =>{
-              this.funDesactivarCarousel()
-            }}
-            onMouseEnter={() => {
-              this.funActicarCarouselRetroceder()
-            }} 
-            id={
-              seleccionoPromocion == true
-              ?"primeraMitadSliderCategoriasPromocionPequeno"
-              :"primeraMitadSliderCategoriasPromocion"
-            } 
-          ></div>
+          {
+            current != 0
+            ?<div 
+              onMouseLeave={() =>{
+                this.funDesactivarCarousel()
+              }}
+              onMouseEnter={() => {
+                this.funActicarCarouselRetroceder()
+              }} 
+              id={
+                seleccionoPromocion == true
+                ?"primeraMitadSliderCategoriasPromocionPequeno"
+                :"primeraMitadSliderCategoriasPromocion"
+              } 
+            ></div>
+            :null
+          }
+          
           <div
             onMouseLeave={() =>{
               this.funDesactivarCarousel()

@@ -81,7 +81,7 @@ const SellIn = () => {
                                     tipoPromocion.categorias.map( function(categoria, posicion){
                                         return (
                                             // <Col xl={5} md={8} sm={12} xs={24}></div>
-                                            <div style={{width:'18%', marginLeft:'20px'}}>
+                                            <div style={{width:'18%', marginLeft:'21px'}}>
                                                 <CardImagen 
                                                     nombreCategoria     = {categoria.catnombre}
                                                     iconoCategoria      = {categoria.caticono}

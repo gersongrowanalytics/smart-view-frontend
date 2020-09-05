@@ -20,11 +20,12 @@ const ImagenHover = (props) => {
                 style={
                     seleccionado == true
                     ? {
-                        marginTop:'15px',
-                        height:'164px',
+                        marginTop:'2px',
+                        height:'181px',
                         // background: 'rgba(0,0,0,0.15)',
                         background: 'transparent',
-                        boxShadow:'0px 4px 4px rgba(0, 0, 0, 0.25)'
+                        boxShadow:'0px 4px 4px rgba(0, 0, 0, 0.25)',
+                        width:'294px'
                     }
                     : seleccionoPromocion == true
                         ?{height: '164px', marginTop:'15px', width:'264px'}
