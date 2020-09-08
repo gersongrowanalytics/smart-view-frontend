@@ -5,21 +5,27 @@ import Slide from './carousel'
 import Titulo from 'components/Sistema/Titulo'
 import CanalPromociones from 'components/Sistema/CanalPromociones'
 import {useDispatch, useSelector} from "react-redux";
-import {seleccionarCategoriaReducer, seleccionarPromocionReducer, seleccionarVistaPromocionReducer} from 'appRedux/actions/Promociones'
+import {seleccionarCategoriaReducer, seleccionarPromocionReducer, seleccionarVistaPromocionReducer, reiniciarPromocionesReducer, deseleccionarPromocionReducer} from 'appRedux/actions/Promociones'
 import {seleccionarCargaArchivosReducer} from "appRedux/actions/CargaArchivos";
 import {seleccionarTutorialReducer} from "appRedux/actions/Tutorial";
 import {seleccionarVistaVentasReducer} from 'appRedux/actions/VentasTpr'
 
 const Promociones = () => {
     const dispatch = useDispatch();
-    const {categoriasPromociones, canalesPromociones, seleccionoPromocion, colorSeleciconadoPromo, vistaPromocionSeleccionado} = useSelector(({promociones}) => promociones);
+    const {categoriasPromociones, canalesPromociones, seleccionoPromocion, colorSeleciconadoPromo, vistaPromocionSeleccionado, deseleccionarPromocion} = useSelector(({promociones}) => promociones);
     const {cargaArchivosSeleccionado} = useSelector(({cargaArchivos}) => cargaArchivos);
     const {tutorialSeleccionado} = useSelector(({tutorial}) => tutorial);
     const {vistaVentasSeleccionado}= useSelector(({ventasTpr}) => ventasTpr);
 
     const seleccionarCategoria = async (scaid, posicion) =>  {
-        dispatch(seleccionarCategoriaReducer(scaid, posicion))
-        dispatch(seleccionarPromocionReducer(true))
+        await dispatch(seleccionarPromocionReducer(true))
+        await dispatch(seleccionarCategoriaReducer(scaid, posicion))
+    }
+
+    const deseleccionarCategoria = async () => {
+        dispatch(deseleccionarPromocionReducer(true))
+        dispatch(seleccionarPromocionReducer(false))
+        dispatch(reiniciarPromocionesReducer())
     }
 
     if(cargaArchivosSeleccionado == true){
@@ -56,10 +62,11 @@ const Promociones = () => {
                     />
                 </Col>
                 <Slide 
-                    heading="Example Slider"   
-                    slides={categoriasPromociones} 
-                    seleccionarCategoria = {seleccionarCategoria}
-                    seleccionoPromocion = {seleccionoPromocion}
+                    heading                 = "Example Slider"   
+                    slides                  = {categoriasPromociones} 
+                    seleccionarCategoria    = {seleccionarCategoria}
+                    seleccionoPromocion     = {seleccionoPromocion}
+                    deseleccionarCategoria  = {deseleccionarCategoria}
                 />
                 {/* <div style={{marginBottom:'160px',}} /> */}
                 {/* {

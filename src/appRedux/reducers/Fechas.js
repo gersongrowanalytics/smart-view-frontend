@@ -3,7 +3,8 @@ import {
     OBTENER_FECHAS_FILTRO_FAIL,
     FILTRO_SELECCIONAR_FECHA_DIA,
     FILTRO_SELECCIONAR_FECHA_MES,
-    FILTRO_SELECCIONAR_FECHA_ANO
+    FILTRO_SELECCIONAR_FECHA_ANO,
+    REINICIAR_FECHAS
 } from "constants/SistemaTypes";
 const INIT_STATE = {
     fechasFiltro       : {"dias": [], "meses": [], "anos": []},
@@ -48,6 +49,16 @@ export default (state = INIT_STATE, action) => {
         return {
             ...state,
             anoFiltroSelec: action.payload
+        }
+    }
+    case REINICIAR_FECHAS: {
+        return {
+            ...state,
+            fechasFiltro       : {"dias": [], "meses": [], "anos": []},
+            obtuvoFechasFiltro : false,
+            diaFiltroSelec : '',
+            mesFiltroSelec : '',
+            anoFiltroSelec : ''
         }
     }
     default:

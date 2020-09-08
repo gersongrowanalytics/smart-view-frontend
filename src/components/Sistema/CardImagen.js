@@ -12,7 +12,7 @@ const CardImagen = (props) => {
                 <div className="gx-grid-thumb-equal" style={{height:'250px'}}>
                     <span className="gx-link gx-grid-thumb-cover" >
                         <div style={{width:'100%', height:'100%', backgroundImage: "url("+catimagenfondoopaco+")", backgroundSize: '100% 100%', backgroundRepeat:'no-repeat' }} >
-                            <Row style={{   height:'100%'}}>
+                            <Row style={{   height:'100%',  background:'rgba(229,230,230,0.5)'}}>
                                 <Col md={24} xl={24} sm={24} xs={24}>
                                     <div className="gx-text-center" >
                                         <div className="gx-flex-row gx-justify-content-center gx-mb-3 gx-mb-sm-1">

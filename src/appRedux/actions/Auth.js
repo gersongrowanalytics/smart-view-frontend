@@ -22,6 +22,10 @@ import {
   SIGNUP_USER_SUCCESS,
   MOSTRAR_FORMULARIO_LOGIN
 } from "constants/ActionTypes";
+import {reiniciarSucursalesReducer} from 'appRedux/actions/Sucursales'
+import {reiniciarFechasReducer} from 'appRedux/actions/Fechas'
+import {reiniciarVentasTprReducer} from 'appRedux/actions/VentasTpr'
+import {reiniciarPromocionesReducer} from 'appRedux/actions/Promociones'
 
 export const userSignUp = (user) => {
   return {
@@ -50,10 +54,12 @@ export const guardarVentasTpr = (ventastpr) => {
   };
 };
 
-export const userSignOut = () => {
-  return {
+export const userSignOut = () => async (dispatch) => {
+
+  await dispatch({
     type: SIGNOUT_USER
-  };
+  })
+  await dispatch(reiniciarSucursalesReducer())
 };
 export const userSignUpSuccess = (authUser) => {
   return {
@@ -150,6 +156,11 @@ export const hideAuthLoader = () => {
 };
 
 export const loginReducer = (usuario) => async ( dispatch, getState) => {
+  await dispatch(reiniciarSucursalesReducer())
+  await dispatch(reiniciarFechasReducer())
+  await dispatch(reiniciarVentasTprReducer())
+  await dispatch(reiniciarPromocionesReducer())
+
   dispatch(showAuthLoader());
   await fetch(config.api+'login',
       {

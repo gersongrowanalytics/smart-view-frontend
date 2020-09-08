@@ -1,7 +1,8 @@
 import {
     OBTENER_VENTAS_TPR_EXITO,
     OBTENER_VENTAS_TPR_FAIL,
-    SELECCIONAR_VISTA_VENTAS
+    SELECCIONAR_VISTA_VENTAS,
+    REINICIAR_VENTASTPR
 } from "constants/SistemaTypes";
 const INIT_STATE = {
     ventasTpr : [],
@@ -29,6 +30,14 @@ export default (state = INIT_STATE, action) => {
             return {
                 ...state,
                 vistaVentasSeleccionado: action.payload,
+            }
+        }
+        case REINICIAR_VENTASTPR: {
+            return {
+                ...state,
+                ventasTpr : [],
+                obtuvoVentasTpr : false,
+                vistaVentasSeleccionado  : false
             }
         }
         default:

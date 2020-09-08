@@ -190,7 +190,7 @@ class Slider extends React.Component {
 
   render() {
     const { current, direction, activarCarouselAvanzar} = this.state
-    const { slides, heading, seleccionarCategoria, seleccionoPromocion } = this.props 
+    const { slides, heading, seleccionarCategoria, seleccionoPromocion, deseleccionarCategoria } = this.props 
     const headingId = `slider-heading__${heading.replace(/\s+/g, '-').toLowerCase()}`
     const wrapperTransform = {
       'transform': `translateX(-${current * (100 / slides.length)}%)`,
@@ -213,21 +213,21 @@ class Slider extends React.Component {
               })
             }
           }
-
-          console.log(this.state.current)
         }
-      }, 165);
+        console.log(this.state.current)
+      }, 105);
     }
 
     if(this.state.activarCarouselRetroceder == true){
-      if(this.state.current < -1){
+      if(this.state.current < 0){
         this.setState({
-          current: 0
+          current: 0,
+          activarCarouselRetroceder : false
         })
       }
       setTimeout(() => {
         if(this.state.activarCarouselRetroceder == true){
-          if(this.state.current > -1){
+          if(this.state.current >= 0){
             this.setState({
               current: this.state.current-0.1
             })
@@ -237,7 +237,8 @@ class Slider extends React.Component {
             })
           }
         }
-      }, 165);
+        console.log(this.state.current)
+      }, 105);
     }
 
     
@@ -270,56 +271,7 @@ class Slider extends React.Component {
             return (
               <div
                 onClick={() => seleccionarCategoria(slide.scaid, posicion)}
-                onMouseLeave={() => {
-                  // this.seleccionarEspecifico(posicion-1)
-                }}
-                onMouseEnter={() => {
-                    if(this.state.cambiando == true){
-
-                    }else{
-                      console.log(posicion)
-                      console.log(current)
-
-                    //     this.setState({
-                    //         cambiando : true
-                    //     })
-
-                    //     if(posicion == 0 && posicion == current){
-                    //         setTimeout(() => {
-                    //             this.setState({
-                    //                 cambiando : false
-                    //             })
-                    //         }, 800);
-                    //     }else if(posicion == current+1 ){
-                    //         this.seleccionarEspecifico(current)
-                    //         setTimeout(() => {
-                    //             this.setState({
-                    //                 cambiando : false
-                    //             })
-                    //         }, 800);
-                    //     }else if(posicion > current){
-                    //         setTimeout(() => {
-                    //             this.handleNextClick();
-                    //             this.setState({
-                    //                 cambiando : false
-                    //             })
-                    //         }, 500);
-                    //     }else if(posicion < current){
-                    //         setTimeout(() => {
-                    //             this.handlePreviousClick();
-                    //             this.setState({
-                    //                 cambiando : false
-                    //             })
-                    //         }, 500);
-                    //     }else{
-                    //         setTimeout(() => {
-                    //             this.setState({
-                    //                 cambiando : false
-                    //             })
-                    //         }, 800);
-                    //     }
-                    }
-                }}
+                onDoubleClick = {() => deseleccionarCategoria()}
               >
                 <Slide
                     key={posicion}
@@ -344,7 +296,7 @@ class Slider extends React.Component {
         </ul>
         <div className='contenedorSliderCategoriasPromocion'>
           {
-            current != 0
+            this.state.current > 0
             ?<div 
               onMouseLeave={() =>{
                 this.funDesactivarCarousel()

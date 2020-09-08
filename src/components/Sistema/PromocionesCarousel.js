@@ -69,13 +69,13 @@ class Slide extends React.Component {
       inputPlanchas : nuevoValor
     })
 
-    if(nuevoValor <= this.props.slide.prmcantidadplancha){
-      let nuevoValorizado = nuevoValor*this.props.slide.prmtotalplancha
+    if(nuevoValor <= this.props.slide.cspcantidadplancha){
+      let nuevoValorizado = nuevoValor*this.props.slide.csptotalplancha
       this.setState({
         txtValorizado : nuevoValorizado
       })
     }else{
-      let nuevoValorizado = this.props.slide.prmcantidadplancha*this.props.slide.prmtotalplancha
+      let nuevoValorizado = this.props.slide.cspcantidadplancha*this.props.slide.csptotalplancha
       this.setState({
         txtValorizado : nuevoValorizado
       })
@@ -86,7 +86,7 @@ class Slide extends React.Component {
   render() {
     const { 
       guardando, productos, productosbonificados, index,
-      prmcantidadcombo,
+      cspcantidadcombo,
       cspcompletado,
       cspplanchas,
       cspvalorizado
@@ -126,13 +126,13 @@ class Slide extends React.Component {
                 :null
               }
                 <Row>
-                    <Col xl={24} md={24} sm={24} xs={24} className="gx-text-center" style={{marginBottom:'20px', marginTop:'10px'}} >
+                    <Col xl={24} md={24} sm={24} xs={24} className="gx-text-center" style={{marginBottom:'20px', marginTop:'0px'}} >
                         <span 
                           id="tituloCombos"
                           style={{
                             color:colorSeleciconadoPromo, 
                           }}>
-                            {funFomratoDecimal(prmcantidadcombo, 0)} Combos
+                            {funFomratoDecimal(cspcantidadcombo, 0)} Combos
                               <br/>
                         </span>
                         <span 
@@ -228,7 +228,7 @@ class Slide extends React.Component {
                       }
                     }}
                   >
-                    Editar
+                    Calcular
                   </Button>
                 </Col>
                 </Row>
@@ -375,14 +375,20 @@ class PromocionesCarousel extends React.Component {
               })
             }
           }
-        }, 165);
+        }, 105);
       }
     }
 
     if(this.state.activarCarouselRetroceder == true){
+      if(this.state.current < 0){
+        this.setState({
+          current: 0,
+          activarCarouselRetroceder : false
+        })
+      }
       setTimeout(() => {
         if(this.state.activarCarouselRetroceder == true){
-          if(this.state.current > -1){
+          if(this.state.current >= 0){
             this.setState({
               current: this.state.current-0.1
             })
@@ -392,7 +398,7 @@ class PromocionesCarousel extends React.Component {
             })
           }
         }
-      }, 165);
+      }, 105);
     }
 
     return (

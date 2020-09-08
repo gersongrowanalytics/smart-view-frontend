@@ -7,10 +7,20 @@ import {
     OBTENER_CANALES_DE_PROMOCIONES_FAIL,
     SELECCIONAR_PROMOCION,
     ACTUALIZAR_COLOR_SELECCIONADO_PROMOCION,
-    SELECCIONAR_VISTA_PROMOCION
+    SELECCIONAR_VISTA_PROMOCION,
+    REINICIAR_PROMOCIONES,
+    DESELECCIONAR_PROMOCION,
+    DESCARGAR_INFORMACION_PROMOCIONES
 } from "constants/SistemaTypes";
-import {obtenerVentasTprReducer} from 'appRedux/actions/VentasTpr'
 import config from 'config'
+import * as FileSaver from 'file-saver';
+import * as XLSX from 'xlsx';
+
+export const reiniciarPromocionesReducer = () => {
+    return {
+        type: REINICIAR_PROMOCIONES
+    }
+}
 
 export const obtenerPromocionesReducer = () =>async (dispatch, getState) => {
     const {
@@ -47,8 +57,8 @@ export const obtenerPromocionesReducer = () =>async (dispatch, getState) => {
     })
     .then(data => {
       const estadoRequest = getState().estadoRequest.init_request
-      if(estadoRequest == true){
-        if(data.respuesta == true){
+      if(estadoRequest === true){
+        if(data.respuesta === true){
             // data.datos.map(item => {
             //     data.datos.push(item)
             // })
@@ -78,11 +88,15 @@ export const obtenerPromocionesReducer = () =>async (dispatch, getState) => {
 }
 
 export const seleccionarCategoriaReducer = (scaid, posicion) => async (dispatch, getState) => {
-    let {categoriasPromociones} = getState().promociones
+    dispatch({
+        type: OBTENER_CANALES_DE_PROMOCIONES_FAIL,
+        payload: []
+    })
+    let {categoriasPromociones, deseleccionarPromocion} = getState().promociones
 
     let colorSeleccionado = '';
     categoriasPromociones.map((categoria, nuevaposicion) => {
-        if(categoria.scaid == scaid){
+        if(categoria.scaid === scaid){
             categoriasPromociones[nuevaposicion]['seleccionado'] = true
             colorSeleccionado = categoria.catcolor
         }else{
@@ -121,12 +135,14 @@ export const seleccionarCategoriaReducer = (scaid, posicion) => async (dispatch,
     })
     .then(data => {
       const estadoRequest = getState().estadoRequest.init_request
-      if(estadoRequest == true){
-        if(data.respuesta == true){
+      if(estadoRequest === true){
+        if(data.respuesta === true){
+            
             dispatch({
                 type: OBTENER_CANALES_DE_PROMOCIONES_EXITO,
                 payload: data.datos
             })
+            
         }else{
             dispatch({
                 type: OBTENER_CANALES_DE_PROMOCIONES_FAIL,
@@ -166,4 +182,77 @@ export const seleccionarVistaPromocionReducer = (accion) => {
         type: SELECCIONAR_VISTA_PROMOCION,
         payload: accion
     }
+}
+
+export const deseleccionarPromocionReducer = (accion) => {
+    return {
+        type: DESELECCIONAR_PROMOCION,
+        payload: accion
+    }
+}
+
+export const descargarInformacionPromocionesReducer = () => async (dispatch, getState) => {
+
+    const {
+        diaFiltroSelec,
+        mesFiltroSelec,
+        anoFiltroSelec
+    } = getState().fechas
+
+    const {
+        idSucursalUsuarioSelec,
+    } = getState().sucursales
+
+    let objetoArray = [];
+
+    await fetch(config.api+'promociones/descargar',
+      {
+        mode:'cors',
+        method: 'POST',
+        body: JSON.stringify({
+            usutoken : localStorage.getItem('usutoken'),
+            sucid    : idSucursalUsuarioSelec,
+            dia      : diaFiltroSelec,
+            mes      : mesFiltroSelec,
+            ano      : anoFiltroSelec,
+        }),
+        headers: {
+          'Accept' : 'application/json',
+          'Content-type' : 'application/json',
+          'api_token': localStorage.getItem('usutoken')
+        }
+      }
+    )
+    .then( async res => {
+      await dispatch(estadoRequestReducer(res.status))
+      return res.json()
+    })
+    .then(data => {
+      const estadoRequest = getState().estadoRequest.init_request
+      if(estadoRequest === true){
+        if(data.respuesta === true){
+            objetoArray = data.datos
+        }else{
+            
+        }
+      }
+    }).catch((error)=> {
+        
+    });   
+
+    
+
+    console.log(objetoArray)
+
+    // for(let contador = 0; contador < objetoArray.length; contador++ ){
+        const fileType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
+        const fileExtension = '.xlsx';
+
+        const ws = XLSX.utils.json_to_sheet(objetoArray);
+        const wb = { Sheets: { 'data': ws }, SheetNames: ['data'] };
+        const excelBuffer = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
+        const data = new Blob([excelBuffer], {type: fileType});
+        FileSaver.saveAs(data, 'PROMOCIONES-1'+ fileExtension);
+    // }
+
 }

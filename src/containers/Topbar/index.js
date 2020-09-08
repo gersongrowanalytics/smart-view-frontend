@@ -31,9 +31,6 @@ const Topbar = () => {
 
   if(obtuvoSucursalesUsuario == false){
     dispatch(obtenerSucursalesReducer())
-    // setTimeout(function () {
-    //   dispatch(obtenerSucursalesReducer())
-    // }, 5000);
   }else{
     if(obtuvoFechasFiltro == false){
       dispatch(obtenerFechasReducer())

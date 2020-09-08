@@ -4,11 +4,18 @@ import {
     OBTENER_FECHAS_FILTRO_FAIL,
     FILTRO_SELECCIONAR_FECHA_DIA,
     FILTRO_SELECCIONAR_FECHA_MES,
-    FILTRO_SELECCIONAR_FECHA_ANO
+    FILTRO_SELECCIONAR_FECHA_ANO,
+    REINICIAR_FECHAS
 } from "constants/SistemaTypes";
 import {obtenerVentasTprReducer} from 'appRedux/actions/VentasTpr'
 import {obtenerPromocionesReducer} from 'appRedux/actions/Promociones'
 import config from 'config'
+
+export const reiniciarFechasReducer = () => {
+  return {
+    type : REINICIAR_FECHAS
+  }
+}
 
 export const obtenerFechasReducer = () =>async (dispatch, getState) => {
     await fetch(config.api+'fechas/mostrar/fechas',

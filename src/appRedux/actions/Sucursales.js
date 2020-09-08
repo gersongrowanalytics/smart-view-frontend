@@ -2,11 +2,18 @@ import { estadoRequestReducer } from "appRedux/actions/EstadoRequest"
 import {
     OBTENER_SUCURSALES_USUARIO_EXITO,
     OBTENER_SUCURSALES_USUARIO_FAIL,
-    FILTRO_SELECCIONAR_SUCURSAL_USUARIO
+    FILTRO_SELECCIONAR_SUCURSAL_USUARIO,
+    REINICIAR_SUCURSALES_USUARIO
 } from "constants/SistemaTypes";
 import {obtenerVentasTprReducer} from 'appRedux/actions/VentasTpr'
 import {obtenerPromocionesReducer} from 'appRedux/actions/Promociones'
 import config from 'config'
+
+export const reiniciarSucursalesReducer = () => {
+  return {
+    type : REINICIAR_SUCURSALES_USUARIO
+  }
+}
 
 export const obtenerSucursalesReducer = () =>async (dispatch, getState) => {
     await fetch(config.api+'usuario/mostrar/sucursales',

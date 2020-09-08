@@ -1,12 +1,17 @@
 import React from 'react'
 import {Col, Row} from "antd";
-import { DownloadOutlined } from '@ant-design/icons';
 import './estilos/Titulo.css'
 import config from 'config'
+import {descargarInformacionPromocionesReducer} from 'appRedux/actions/Promociones'
+import {useDispatch, useSelector} from "react-redux";
 
 const Titulo = (props) => {
-
+    const dispatch = useDispatch();
     const {tieneFecha, tieneTitulo, tieneBotonDescargar, tieneIcono, titulo, tprid} = props;
+
+    const descargarPromociones = async () =>  {
+        await dispatch(descargarInformacionPromocionesReducer())
+    }
 
     return (
         <Row>
@@ -26,7 +31,12 @@ const Titulo = (props) => {
                 }>                    
                     {
                         tieneBotonDescargar == true
-                        ?<button type="button" class="ant-btn ant-btn-lg btnDescargar">
+                        ?<button 
+                            type="button" 
+                            class="ant-btn ant-btn-lg btnDescargar"
+                            onClick={() => {descargarPromociones()}}
+                            
+                        >
                             <span>Descargar</span> <img alt="" src={require("assets/images/iconoDescargar.png")} style={{marginLeft:'10px'}} width="28px" height="26px"/>
                         </button>
                         :null

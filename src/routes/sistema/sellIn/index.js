@@ -54,7 +54,7 @@ const SellIn = () => {
                                 </Col>
                                 <Col xl={24} md={24} sm={24} xs={24} />
 
-                                <Col xl={12} md={12} sm={24} xs={24}>
+                                <Col xl={12} md={24} sm={24} xs={24}>
                                     <CardAvance
                                         objetivoValorizado       = {tipoPromocion.tsuvalorizadoobjetivo}
                                         realValorizado           = {tipoPromocion.tsuvalorizadoreal}
@@ -63,7 +63,7 @@ const SellIn = () => {
                                         nombreTipoPromocion      = {tipoPromocion.tprnombre}
                                     />
                                 </Col>
-                                <Col xl={12} md={12} sm={24} xs={24}>
+                                <Col xl={12} md={24} sm={24} xs={24}>
                                     <CardRebate 
                                         rebateValorizado = {tipoPromocion.tsuvalorizadorebate}
                                         nombreTipoPromocion = {tipoPromocion.tprnombre}

@@ -18,16 +18,16 @@ const CardAvance = (props) => {
                         <Col xl={24} md={24} sm={24} xs={24}>
                             <h2 className="gx-text-white" id="tituloAvance">Avance de Venta {nombreTipoPromocion}</h2>
                         </Col>
-                        <Col xl={6} md={12} sm={6} xs={24} className="gx-text-center gx-text-white" style={{ borderRightStyle:'solid', borderRightColor:'white', paddingRight:'20px', alignSelf:'center'}}>
+                        <Col xl={6} md={6} sm={6} xs={24} className="gx-text-center gx-text-white" style={{ borderRightStyle:'solid', borderRightColor:'white', paddingRight:'20px', alignSelf:'center'}}>
                             <p id="datosAvance">OBJ<br/>S/. {objetivoValorizado}</p>
                         </Col>
-                        <Col xl={6} md={12} sm={6} xs={24} className="gx-text-center gx-text-white" style={{ borderRightStyle:'solid', borderRightColor:'white', paddingRight:'20px', alignSelf:'center'}}>
+                        <Col xl={6} md={6} sm={6} xs={24} className="gx-text-center gx-text-white" style={{ borderRightStyle:'solid', borderRightColor:'white', paddingRight:'20px', alignSelf:'center'}}>
                             <p id="datosAvance">REAL<br/>S/. {realValorizado}</p>
                         </Col>
-                        <Col xl={6} md={12} sm={6} xs={24} className="gx-text-center gx-text-white" style={{ borderRightStyle:'solid', borderRightColor:'white', paddingRight:'20px', alignSelf:'center'}}>
+                        <Col xl={6} md={6} sm={6} xs={24} className="gx-text-center gx-text-white" style={{ borderRightStyle:'solid', borderRightColor:'white', paddingRight:'20px', alignSelf:'center'}}>
                             <p id="datosAvance">TO GO<br/>S/. {togoValorizado}</p>
                         </Col>
-                        <Col xl={6} md={12} sm={6} xs={24} className="gx-text-center gx-text-white" >
+                        <Col xl={6} md={6} sm={6} xs={24} className="gx-text-center gx-text-white" >
                             <p id="datosAvance">CUMPLIMIENTO<br/>% {cumplimientoPorcentaje}</p>
                         </Col>
                     </Row>

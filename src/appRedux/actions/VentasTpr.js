@@ -3,8 +3,15 @@ import {
     OBTENER_VENTAS_TPR_EXITO,
     OBTENER_VENTAS_TPR_FAIL,
     SELECCIONAR_VISTA_VENTAS,
+    REINICIAR_VENTASTPR
 } from "constants/SistemaTypes";
 import config from 'config'
+
+export const reiniciarVentasTprReducer = () => {
+  return {
+    type: REINICIAR_VENTASTPR
+  }
+}
 
 export const obtenerVentasTprReducer = () =>async (dispatch, getState) => {
 
