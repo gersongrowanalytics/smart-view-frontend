@@ -2,6 +2,7 @@ import React from 'react'
 import {Col, Row} from "antd";
 import './estilos/CardAvance.css'
 import config from 'config'
+import funFomratoDecimal from '../../funciones/funFormatoDecimal.js'
 
 const CardAvance = (props) => {
 
@@ -19,16 +20,21 @@ const CardAvance = (props) => {
                             <h2 className="gx-text-white" id="tituloAvance">Avance de Venta {nombreTipoPromocion}</h2>
                         </Col>
                         <Col xl={6} md={6} sm={6} xs={24} className="gx-text-center gx-text-white" style={{ borderRightStyle:'solid', borderRightColor:'white', paddingRight:'20px', alignSelf:'center'}}>
-                            <p id="datosAvance">OBJ<br/>S/. {objetivoValorizado}</p>
+                            <p id="datosAvance">OBJ<br/>S/. {funFomratoDecimal(objetivoValorizado, 0)}</p>
                         </Col>
                         <Col xl={6} md={6} sm={6} xs={24} className="gx-text-center gx-text-white" style={{ borderRightStyle:'solid', borderRightColor:'white', paddingRight:'20px', alignSelf:'center'}}>
-                            <p id="datosAvance">REAL<br/>S/. {realValorizado}</p>
+                            <p id="datosAvance">REAL<br/>S/. {funFomratoDecimal(realValorizado, 0)}</p>
                         </Col>
                         <Col xl={6} md={6} sm={6} xs={24} className="gx-text-center gx-text-white" style={{ borderRightStyle:'solid', borderRightColor:'white', paddingRight:'20px', alignSelf:'center'}}>
-                            <p id="datosAvance">FACTURAR<br/>S/. {togoValorizado}</p>
+                            <p id="datosAvance">FACTURAR<br/>S/. {funFomratoDecimal(togoValorizado, 0)}</p>
                         </Col>
                         <Col xl={6} md={6} sm={6} xs={24} className="gx-text-center gx-text-white" >
-                            <p id="datosAvance">CUMPLIMIENTO<br/>% {cumplimientoPorcentaje}</p>
+                            <p id="datosAvance">CUMPLIMIENTO<br/>% 
+                                {
+                                    funFomratoDecimal( ((100*realValorizado)/objetivoValorizado), 0)
+                                }
+                            </p>
+                            {/* <p id="datosAvance">CUMPLIMIENTO<br/>% {funFomratoDecimal(cumplimientoPorcentaje, 0)}</p> */}
                         </Col>
                     </Row>
                 </Col>

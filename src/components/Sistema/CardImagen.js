@@ -1,13 +1,14 @@
 import React from 'react'
 import {Col, Row, Tooltip} from "antd";
 import './estilos/CardImagen.css'
+import funFomratoDecimal from '../../funciones/funFormatoDecimal.js'
 const CardImagen = (props) => {
 
-    // const {nombreCategoria, iconoCategoria, fondoCategoria, objetivoCategoria, realCategoria, togoCategoria, tprcolorbarra, tprcolortooltip, scaiconocategoria, catimagenfondoopaco} = props
-    const {nombreCategoria, iconoCategoria, fondoCategoria, tprcolorbarra, tprcolortooltip, scaiconocategoria, catimagenfondoopaco} = props
-    const objetivoCategoria = 100
-    const realCategoria = 0
-    const togoCategoria = 0
+    const {nombreCategoria, iconoCategoria, fondoCategoria, objetivoCategoria, realCategoria, togoCategoria, tprcolorbarra, tprcolortooltip, scaiconocategoria, catimagenfondoopaco} = props
+    // const {nombreCategoria, iconoCategoria, fondoCategoria, tprcolorbarra, tprcolortooltip, scaiconocategoria, catimagenfondoopaco} = props
+    // const objetivoCategoria = 100
+    // const realCategoria = 0
+    // const togoCategoria = 0
 
     return (
         <div className={`gx-product-item gx-product-vertical'`} style={{background:'transparent'}}>
@@ -31,7 +32,7 @@ const CardImagen = (props) => {
                                             Cumplimiento
                                             <br/>
                                             {
-                                                (100*realCategoria)/objetivoCategoria
+                                                funFomratoDecimal(((100*realCategoria)/objetivoCategoria), 0)
                                             }%
                                         </p>
                                     </div>
@@ -79,9 +80,11 @@ const CardImagen = (props) => {
                             <span className="objetivoCategoria" >
                                 Objetivo S/. 
                                 {
-                                    objetivoCategoria === 100 && realCategoria === 0 && togoCategoria === 0
+                                    objetivoCategoria == 0 && realCategoria == 0 && togoCategoria == 0
                                     ?0
-                                    :objetivoCategoria
+                                    :objetivoCategoria == 100 && realCategoria == 0 && togoCategoria == 0
+                                        ?0
+                                        :funFomratoDecimal(objetivoCategoria,2)
                                 }
                             </span>
                         </div>

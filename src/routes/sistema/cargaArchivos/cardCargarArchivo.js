@@ -67,7 +67,10 @@ class CardCargarArchivo extends Component {
         const formData = new FormData();
         formData.append('file',this.state.fileSeleccionado)
         
-        let url = config.api+'cargarArchivo/promociones'
+        let url = config.api+this.props.url
+        // cargarArchivo/promociones
+        // cargarArchivo/ventas/obejtivos
+        // cargarArchivo/ventas/sellin
         await axios.post(url, formData,{
             mode:'cors',
             headers: {

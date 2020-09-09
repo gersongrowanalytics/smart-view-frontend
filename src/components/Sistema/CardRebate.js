@@ -19,7 +19,7 @@ const CardRebate = (props) => {
                             <h2 className="gx-text-white" id="tituloRebate">Rebate {nombreTipoPromocion}</h2>
                         </Col>
                         <Col xl={8} md={8} sm={8} xs={24} style={{ borderRightStyle:'solid', borderRightColor:'white', paddingRight:'20px', alignSelf:'center', textAlignLast: 'left', height:'43px'}}>
-                            <h2 className="gx-text-center gx-text-white" id="textoRebate">S/. 100</h2>
+                            <h2 className="gx-text-center gx-text-white" id="textoRebate">S/. 0</h2>
                         </Col>
                         <Col xl={16} md={16} sm={16} xs={24}>
                             <p className="gx-text-white" id="textoRebate">El pago de Rebate se ejecutará, de llegar a la cuota establecida</p>
