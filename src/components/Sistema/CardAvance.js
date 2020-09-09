@@ -25,7 +25,7 @@ const CardAvance = (props) => {
                             <p id="datosAvance">REAL<br/>S/. {realValorizado}</p>
                         </Col>
                         <Col xl={6} md={6} sm={6} xs={24} className="gx-text-center gx-text-white" style={{ borderRightStyle:'solid', borderRightColor:'white', paddingRight:'20px', alignSelf:'center'}}>
-                            <p id="datosAvance">TO GO<br/>S/. {togoValorizado}</p>
+                            <p id="datosAvance">FACTURAR<br/>S/. {togoValorizado}</p>
                         </Col>
                         <Col xl={6} md={6} sm={6} xs={24} className="gx-text-center gx-text-white" >
                             <p id="datosAvance">CUMPLIMIENTO<br/>% {cumplimientoPorcentaje}</p>

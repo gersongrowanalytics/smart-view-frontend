@@ -164,15 +164,15 @@ const MainApp = () => {
                 :null
             }
             <App match={match} />
-            <Footer style={{background:'transparent', marginLeft:'50px', marginRight:'50px'}}>
+            <Footer style={{background:'transparent', marginLeft:'50px', marginRight:'50px', marginTop:'20px'}}>
               <div className="gx-layout-footer-content">
                 {/* {footerText} */}
-                <Row>
-                  <Col xl={10} 
+                <Row className="gx-text-center" style={{alignItems:'center'}}>
+                  <Col xl={4} 
                     style={{ 
-                      marginTop:'30px',
+                      marginTop:'5px',
                       fontFamily:'Roboto',
-                      fontSize:'15px',
+                      fontSize:'12px',
                       fontStyle:'normal',
                       lineHeight:'18px',
                       fontWeight:'bold'
@@ -180,15 +180,15 @@ const MainApp = () => {
                   >
                     © Lead Smart View 2020
                   </Col>
-                  <Col xl={10}>
-                    <img alt="" src={require("assets/images/logoSmart.png")} />
+                  <Col xl={16} >
+                    <img alt="" width="103px" height="50px" src={require("assets/images/logofooter.png")} />
                   </Col>
                   <Col 
                     xl={4} 
                     style={{ 
-                      marginTop:'30px',
+                      marginTop:'5px',
                       fontFamily:'Roboto',
-                      fontSize:'15px',
+                      fontSize:'12px',
                       fontStyle:'normal',
                       lineHeight:'18px',
                       fontWeight:'bold'

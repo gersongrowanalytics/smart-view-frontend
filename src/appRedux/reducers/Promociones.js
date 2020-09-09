@@ -53,7 +53,7 @@ export default (state = INIT_STATE, action) => {
         case OBTENER_CANALES_DE_PROMOCIONES_FAIL: {
             return {
                 ...state,
-                canalesPromociones : action.payload,
+                canalesPromociones : [],
             }
         }
         case SELECCIONAR_PROMOCION: {

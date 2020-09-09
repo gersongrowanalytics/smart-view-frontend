@@ -24,7 +24,7 @@ const Titulo = (props) => {
             <Col xl={tieneIcono == true ?22 :24} md={tieneIcono == true ?22 :24} sm={tieneIcono == true ?22 :24} xs={tieneIcono == true ?22 :24}>
                 <span className={
                     tieneTitulo 
-                    ?tprid == 2
+                    ?tprid == 1
                         ?`titulo-subrayado gx-flex-row` 
                         :`titulo-subrayado gx-flex-row subrayado-verde` 
                     :`gx-flex-row`

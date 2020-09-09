@@ -144,14 +144,18 @@ class Slide extends React.Component {
                             return (
                                 posicion == 0
                                 ?<Col xl={11} md={11} sm={11} xs={11}>
-                                    <Row>
+                                    <Row className="gx-text-center">
                                         <Col xl={24} md={24}>
                                           <img src={producto.proimagen} width="105px" height="59px"/>
                                           
                                         </Col>
                                         <Col xl={24} md={24} className="gx-text-center">
                                             <div id="txtProducto" >{producto.prpproductoppt}<br/></div>
-                                            <div id="txtSubProducto">{producto.prpcomprappt}</div>
+                                            <div id="txtSubProducto" title={producto.prpcomprappt}>
+                                              {
+                                                producto.prpcomprappt.substr(0, 25)
+                                              }
+                                            </div>
                                         </Col>
                                     </Row>
                                 </Col>
@@ -175,7 +179,9 @@ class Slide extends React.Component {
                                                 style={{'width':"105px", 'height':"59px", backgroundImage: "url("+productoBonificado.proimagen+")", backgroundSize: '100% 100%', backgroundRepeat:'no-repeat', backgroundPosition:'center'}} 
                                             /> */}
                                             <div id="txtProducto" >{productoBonificado.prbproductoppt}<br/></div>
-                                            <div id="txtSubProducto">{productoBonificado.prbcomprappt}</div>
+                                            <div id="txtSubProducto" title={productoBonificado.prbcomprappt}>
+                                              {productoBonificado.prbcomprappt.substr(0, 25)}
+                                            </div>
                                           </Col>           
                                         :null
                                     )

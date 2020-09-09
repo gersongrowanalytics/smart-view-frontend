@@ -3,7 +3,11 @@ import {Col, Row, Tooltip} from "antd";
 import './estilos/CardImagen.css'
 const CardImagen = (props) => {
 
-    const {nombreCategoria, iconoCategoria, fondoCategoria, objetivoCategoria, realCategoria, togoCategoria, tprcolorbarra, tprcolortooltip, scaiconocategoria, catimagenfondoopaco} = props
+    // const {nombreCategoria, iconoCategoria, fondoCategoria, objetivoCategoria, realCategoria, togoCategoria, tprcolorbarra, tprcolortooltip, scaiconocategoria, catimagenfondoopaco} = props
+    const {nombreCategoria, iconoCategoria, fondoCategoria, tprcolorbarra, tprcolortooltip, scaiconocategoria, catimagenfondoopaco} = props
+    const objetivoCategoria = 100
+    const realCategoria = 0
+    const togoCategoria = 0
 
     return (
         <div className={`gx-product-item gx-product-vertical'`} style={{background:'transparent'}}>
@@ -23,7 +27,13 @@ const CardImagen = (props) => {
                                             </span>
                                         </div>
                                         <span className="nombreCategoriaCard">{nombreCategoria}</span>
-                                        <p className="txtCumplimiento">Cumplimiento<br/>xxx%</p>
+                                        <p className="txtCumplimiento">
+                                            Cumplimiento
+                                            <br/>
+                                            {
+                                                (100*realCategoria)/objetivoCategoria
+                                            }%
+                                        </p>
                                     </div>
                                 </Col>
                             </Row>
@@ -36,8 +46,15 @@ const CardImagen = (props) => {
                 {/* real=30; togo=70 --  70*100/30 */}
                 <div className={`gx-line-indi`} style={{background:'#F2F2F2', width: '100%', height: 18, margin: '10px', borderRadius: 50}}>
                     <Tooltip title={"Real S/ "+realCategoria} >
-                        <div className={``} style={{ background: 'linear-gradient('+tprcolorbarra+')', width: ((100*realCategoria)/objetivoCategoria)+'%', height: 18, borderRadius: 50}} >
-                            <Tooltip title={"To Go S/ "+ togoCategoria} color={tprcolortooltip}>
+                        <div
+                            className={``}
+                            style={{
+                                background: 'linear-gradient('+tprcolorbarra+')',
+                                width: ((100*realCategoria)/objetivoCategoria)+'%',
+                                height: 18,
+                                borderRadius: 50}}
+                        >
+                            <Tooltip title={"FACTURAR S/ "+ togoCategoria} color={tprcolortooltip}>
                                 <div className={``} style={{ background:'transparent', width: (togoCategoria*100)/realCategoria+'%', height: 15, marginLeft:'100%'}} />
                             </Tooltip>
                         </div>
@@ -59,7 +76,14 @@ const CardImagen = (props) => {
                 <Row style={{'padding':'5px', borderRadius:'12px'}}>
                     <Col xl={24} sm={24} xl={24} xs={24}>
                         <div className="gx-text-center">
-                            <span className="objetivoCategoria" >{"Objetivo S/. "+objetivoCategoria}</span>
+                            <span className="objetivoCategoria" >
+                                Objetivo S/. 
+                                {
+                                    objetivoCategoria === 100 && realCategoria === 0 && togoCategoria === 0
+                                    ?0
+                                    :objetivoCategoria
+                                }
+                            </span>
                         </div>
                     </Col>
                     {/* <Col xl={18} sm={18} xl={18} xs={18}>

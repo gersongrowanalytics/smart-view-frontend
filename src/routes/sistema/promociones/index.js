@@ -101,7 +101,7 @@ const Promociones = () => {
                 }
                 {
                     seleccionoPromocion == true
-                    ?<div style={{marginBottom:'50px', height:'50px'}} />
+                    ?<div style={{marginBottom:'0px', height:'0px'}} />
                     :<div style={{marginBottom:'50px', height:'50px'}} />
                 }
             </Row>

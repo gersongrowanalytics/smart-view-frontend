@@ -11,7 +11,7 @@ const CardRebate = (props) => {
         <div style={{background:'#5A7DD5', width:'100%', marginBottom:'20px', paddingRight:'55px', borderRadius:'20px', boxShadow: '9px 6px 9px -1px rgba(0, 0, 0, 0.2)'}} >
             <Row>
                 <Col xl={6} md={8} sm={6} xs={12} >
-                    <div style={{width:'127px', height:'120px', backgroundImage: "url('"+config.api+"Sistema/abs/img/rebate.png')", backgroundSize: 'cover', backgroundPosition:'center', paddingTop:'120px'}} />
+                    <div style={{width:'127px', height:'120px', backgroundImage: "url('"+config.api+"Sistema/abs/img/rebate.png')", backgroundSize: 'cover', backgroundPosition:'center', }} />
                 </Col>
                 <Col xl={18} md={16} sm={18} xs={12}>
                     <Row style={{paddingTop:'20px',}}>
@@ -22,7 +22,7 @@ const CardRebate = (props) => {
                             <h2 className="gx-text-center gx-text-white" id="textoRebate">S/. 100</h2>
                         </Col>
                         <Col xl={16} md={16} sm={16} xs={24}>
-                            <p className="gx-text-white" id="textoRebate">El pago de Rebate se ejecutara, de llegar a la cuota establecida</p>
+                            <p className="gx-text-white" id="textoRebate">El pago de Rebate se ejecutará, de llegar a la cuota establecida</p>
                         </Col>
                     </Row>
                 </Col>
