@@ -171,9 +171,13 @@ class Slide extends React.Component {
                                     return(
                                       posicion == 0
                                         ?<Col xl={24} md={24} className="gx-text-center" style={{marginTop:'-20px'}}>
-                                            <span 
-                                              className="txtGratis">
-                                                Gratis</span><br/>
+                                          <div  style={{width:'100%'}} className="gx-text-center">
+                                            <div id="entornoGratis">
+                                              <img src={require('assets/images/regalo.png')} alt='' id="imggratis"/>
+                                              <span id="txtgratis"> Gratis </span>
+                                            </div>
+                                          </div>
+
                                             <img src={productoBonificado.proimagen} width="105px" height="59px"/>
                                             {/* <div 
                                                 style={{'width':"105px", 'height':"59px", backgroundImage: "url("+productoBonificado.proimagen+")", backgroundSize: '100% 100%', backgroundRepeat:'no-repeat', backgroundPosition:'center'}} 

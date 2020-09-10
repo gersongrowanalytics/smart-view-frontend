@@ -125,8 +125,12 @@ const MainApp = () => {
             </Button>
         </div>
         <div style={{height:'90%'}}>
-          <iframe width="100%" height="100%" src="http://www.youtube.com/embed/XGSy3_Czz8k?autoplay=1">
-          </iframe>
+          
+          {/* <iframe width="100%" height="100%" src="https://www.youtube.com/watch?v=cFKxzXXZIRs">
+          </iframe> */}
+          <video width="320" height="240" controls>
+            <source src="./yosoykim.mp4" type="video/mp4" />
+          </video>
         </div>
       </div>
       :<Layout className="gx-app-layout" style={{background:'white'}}  >

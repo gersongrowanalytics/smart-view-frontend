@@ -145,7 +145,7 @@ export const seleccionarCategoriaReducer = (scaid, posicion) => async (dispatch,
             
         }else{
             dispatch({
-                type: OBTENER_CANALES_DE_PROMOCIONES_FAIL,
+                type: editarPromocionReducer,
                 payload: data.datos
             })
         }
@@ -161,13 +161,63 @@ export const seleccionarCategoriaReducer = (scaid, posicion) => async (dispatch,
 export const editarPromocionReducer = (posicionCanal, posicionPromocion) => async (dispatch, getState) => {
 
     let {canalesPromociones} = getState().promociones
-
     canalesPromociones[posicionCanal]['promociones'][posicionPromocion]['guardando'] = !canalesPromociones[posicionCanal]['promociones'][posicionPromocion]['guardando']
     dispatch({
         type: OBTENER_CANALES_DE_PROMOCIONES_EXITO,
         payload: canalesPromociones
-    })
+    })    
+}
 
+export const aceptarEdicionPromocionReducer = () => async (dispatch, getState) => {
+    // let {canalesPromociones} = getState().promociones
+    // canalesPromociones[posicionCanal]['promociones'][posicionPromocion]['guardando'] = false
+    // dispatch({
+    //     type: OBTENER_CANALES_DE_PROMOCIONES_EXITO,
+    //     payload: canalesPromociones
+    // })
+
+    // await fetch(config.api+'promociones/editar',
+    //   {
+    //     mode:'cors',
+    //     method: 'POST',
+    //     body: JSON.stringify({
+    //         usutoken  : localStorage.getItem('usutoken'),
+    //         scaid     : scaid,
+    //     }),
+    //     headers: {
+    //       'Accept' : 'application/json',
+    //       'Content-type' : 'application/json',
+    //       'api_token': localStorage.getItem('usutoken')
+    //     }
+    //   }
+    // )
+    // .then( async res => {
+    //   await dispatch(estadoRequestReducer(res.status))
+    //   return res.json()
+    // })
+    // .then(data => {
+    //   const estadoRequest = getState().estadoRequest.init_request
+    //   if(estadoRequest === true){
+    //     if(data.respuesta === true){
+            
+    //         dispatch({
+    //             type: OBTENER_CANALES_DE_PROMOCIONES_EXITO,
+    //             payload: data.datos
+    //         })
+            
+    //     }else{
+    //         dispatch({
+    //             type: editarPromocionReducer,
+    //             payload: data.datos
+    //         })
+    //     }
+    //   }
+    // }).catch((error)=> {
+    //     dispatch({
+    //         type: OBTENER_CANALES_DE_PROMOCIONES_FAIL,
+    //         payload: []
+    //     })
+    // });
 }
 
 export const seleccionarPromocionReducer = (accion) => {

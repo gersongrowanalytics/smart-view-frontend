@@ -1,7 +1,9 @@
 import React from 'react'
 import {Col, Row, Tooltip} from "antd";
 import './estilos/CardImagen.css'
+import NumberFormat from 'react-number-format';
 import funFomratoDecimal from '../../funciones/funFormatoDecimal.js'
+
 const CardImagen = (props) => {
 
     const {nombreCategoria, iconoCategoria, fondoCategoria, objetivoCategoria, realCategoria, togoCategoria, tprcolorbarra, tprcolortooltip, scaiconocategoria, catimagenfondoopaco} = props
@@ -14,7 +16,7 @@ const CardImagen = (props) => {
         <div className={`gx-product-item gx-product-vertical'`} style={{background:'transparent'}}>
             {/* <div className="gx-product-image"> */}
             <div className="" style={{background:'#E8E8E8'}}>
-                <div className="gx-grid-thumb-equal" style={{height:'250px'}}>
+                <div className="gx-grid-thumb-equal" style={{height:'200px'}}>
                     <span className="gx-link gx-grid-thumb-cover" >
                         <div style={{width:'100%', height:'100%', backgroundImage: "url("+catimagenfondoopaco+")", backgroundSize: '100% 100%', backgroundRepeat:'no-repeat' }} >
                             <Row style={{   height:'100%',  background:'rgba(229,230,230,0.5)'}}>
@@ -31,9 +33,8 @@ const CardImagen = (props) => {
                                         <p className="txtCumplimiento">
                                             Cumplimiento
                                             <br/>
-                                            {
-                                                funFomratoDecimal(((100*realCategoria)/objetivoCategoria), 0)
-                                            }%
+                                            <NumberFormat value={funFomratoDecimal(((100*realCategoria)/objetivoCategoria), 0)} displayType={'text'} thousandSeparator={true} />
+                                            %
                                         </p>
                                     </div>
                                 </Col>
@@ -49,13 +50,23 @@ const CardImagen = (props) => {
                     <Tooltip title={"Real S/ "+realCategoria} >
                         <div
                             className={``}
-                            style={{
-                                background: 'linear-gradient('+tprcolorbarra+')',
-                                width: ((100*realCategoria)/objetivoCategoria)+'%',
-                                height: 18,
-                                borderRadius: 50}}
+                            style={
+                                objetivoCategoria <= realCategoria
+                                ?{
+                                    background: 'linear-gradient('+tprcolorbarra+')',
+                                    width: '100%',
+                                    height: 18,
+                                    borderRadius: 50
+                                }
+                                :{
+                                    background: 'linear-gradient('+tprcolorbarra+')',
+                                    width: ((100*realCategoria)/objetivoCategoria)+'%',
+                                    height: 18,
+                                    borderRadius: 50
+                                }
+                            }
                         >
-                            <Tooltip title={"FACTURAR S/ "+ togoCategoria} color={tprcolortooltip}>
+                            <Tooltip title={"Facturar S/ "+ togoCategoria} color={tprcolortooltip}>
                                 <div className={``} style={{ background:'transparent', width: (togoCategoria*100)/realCategoria+'%', height: 15, marginLeft:'100%'}} />
                             </Tooltip>
                         </div>
@@ -84,7 +95,7 @@ const CardImagen = (props) => {
                                     ?0
                                     :objetivoCategoria == 100 && realCategoria == 0 && togoCategoria == 0
                                         ?0
-                                        :funFomratoDecimal(objetivoCategoria,2)
+                                        :<NumberFormat value={funFomratoDecimal(objetivoCategoria, 0)} displayType={'text'} thousandSeparator={true} />
                                 }
                             </span>
                         </div>

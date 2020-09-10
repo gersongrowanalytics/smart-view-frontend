@@ -1,0 +1,2 @@
+(this["webpackJsonpwieldy-hook"]=this["webpackJsonpwieldy-hook"]||[]).push([[127],{2026:function(e,t,a){"use strict";a.r(t);var n=a(0),r=a.n(n),c=a(218),o=a(130),u=a(441),i=a(442);t.default=function(){return r.a.createElement(c.a,null,i.a.map((function(e,t){return r.a.createElement(o.a,{key:t,xl:6,md:8,sm:12,xs:24},r.a.createElement(u.a,{key:t,grid:!0,product:e}))})))}}}]);
+//# sourceMappingURL=127.a33d6237.chunk.js.map
