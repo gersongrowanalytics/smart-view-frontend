@@ -32,7 +32,8 @@ const CardAvance = (props) => {
                         </Col>
                         <Col xl={6} md={6} sm={6} xs={24} className="gx-text-center gx-text-white" style={{ borderRightStyle:'solid', borderRightColor:'white', paddingRight:'20px', alignSelf:'center'}}>
                             <p id="datosAvance">FACTURAR<br/>S/. 
-                                <NumberFormat value={funFomratoDecimal(togoValorizado, 0)} displayType={'text'} thousandSeparator={true} />
+                                {/* <NumberFormat value={funFomratoDecimal(togoValorizado, 0)} displayType={'text'} thousandSeparator={true} /> */}
+                                <NumberFormat value={funFomratoDecimal((realValorizado-objetivoValorizado), 0)} displayType={'text'} thousandSeparator={true} />
                             </p>
                         </Col>
                         <Col xl={6} md={6} sm={6} xs={24} className="gx-text-center gx-text-white" >

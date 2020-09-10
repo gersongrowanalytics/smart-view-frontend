@@ -3,6 +3,7 @@ import {Col, Row, Tooltip} from "antd";
 import './estilos/CardImagen.css'
 import NumberFormat from 'react-number-format';
 import funFomratoDecimal from '../../funciones/funFormatoDecimal.js'
+import { toInteger } from 'lodash';
 
 const CardImagen = (props) => {
 
@@ -51,7 +52,8 @@ const CardImagen = (props) => {
                         <div
                             className={``}
                             style={
-                                objetivoCategoria <= realCategoria
+                                // torealCategoria >= 
+                                parseInt(realCategoria) >= parseInt(objetivoCategoria )
                                 ?{
                                     background: 'linear-gradient('+tprcolorbarra+')',
                                     width: '100%',
