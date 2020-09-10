@@ -178,30 +178,54 @@ class CardCargarArchivo extends Component {
                                 </Col>
                             </Row>
                             :<Row>
+                                {/* <Col xl={1} md={1} />  */}
+                                <div style={{width:'10px'}} />
                                 <Col 
-                                    xl={24} 
-                                    md={24} 
-                                    className="gx-text-center"
+                                    xl={23} 
+                                    md={23} 
+                                    // className="gx-text-center"
                                     style={{
                                         "fontStyle": "normal",
                                         "fontWeight": "600",
                                         "fontSize": "14px",
-                                        "lineHeight": "27px",
-                                        "color": "#4D4D4D",
+                                        // "lineHeight": "27px",
+                                        "color": "#4D4D4D"
                                     }}
                                 >
                                     <input type="file" id="file" ref="subirArchivoInput" style={{display: "none"}} onChange={(e) => this.cambioInputFile(e)} />
-                                    <Button
-                                        style={{background:'#F93258', border:'none', marginTop:'10px', marginRight:'5px'}}
-                                        shape="circle" 
-                                        icon={<PlusOutlined style={{"color" : 'white'}} />} 
-                                        onClick={this.seleccionarFile}
-                                    >
-                                    </Button>
-                                        {this.props.titulo}
+                                    {
+                                        this.props.titulo.length > 26
+                                        ?<Row className="">
+                                            
+                                            <Col xl={2} md={2} style={{marginLeft:'10px', }}>
+                                                <Button
+                                                    style={{background:'#F93258', border:'none', marginTop:'10px',}}
+                                                    shape="circle" 
+                                                    icon={<PlusOutlined style={{"color" : 'white'}} />} 
+                                                    onClick={this.seleccionarFile}
+                                                >
+                                                </Button>
+                                            </Col>
+                                            <Col xl={20} md={20} style={{paddingLeft:'25px', paddingTop:'8px'}}>
+                                                <p>{this.props.titulo}</p>
+                                            </Col>
+                                        </Row>
+                                        :<div>
+                                            <Button
+                                                style={{background:'#F93258', border:'none', marginTop:'10px', marginRight:'5px'}}
+                                                shape="circle" 
+                                                icon={<PlusOutlined style={{"color" : 'white'}} />} 
+                                                onClick={this.seleccionarFile}
+                                            >
+                                            </Button>
+                                            {this.props.titulo}
+                                        </div>
+                                    }
+                                    {/* <div style={{borderBottom: '0.1px solid #CCCCCC', width:'100%'}} /> */}
+                                </Col>
+                                <Col xl={24} md={24}>
                                     <div style={{borderBottom: '0.1px solid #CCCCCC', width:'100%'}} />
                                 </Col>
-                                    
                                 {
                                     this.state.subioArchivo == true
                                     ?<Col

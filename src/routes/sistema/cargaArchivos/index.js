@@ -47,7 +47,7 @@ const CargaArchivosPromociones = () => {
   }
 
   return (
-    <Row style={{marginTop:'100px'}}>
+    <Row style={{marginTop:'0px'}}>
       <Col xl={3} md={3} />
       <Col xl={6} md={6}>
       <CardCargarArchivo
@@ -62,16 +62,28 @@ const CargaArchivosPromociones = () => {
       </Col>
       <Col xl={6} md={6}>
         <CardCargarArchivo
-          titulo = {'Añadir Promoción'}
+          titulo = {'Añadir Mecánica Promocional (excel)'}
           url    = {'cargarArchivo/promociones'}
         />
       </Col>
       <Col xl={3} md={3} />
 
-      <Col xl={9} md={9} />
+      <Col xl={3} md={3} />
       <Col xl={6} md={6}>
       <CardCargarArchivo
-        titulo = {'Añadir Objetivos'}
+        titulo = {'Añadir Objetivos Sell In'}
+        url    = {'cargarArchivo/ventas/obejtivos'}
+      />
+      </Col>
+      <Col xl={6} md={6}>
+      <CardCargarArchivo
+        titulo = {'Añadir Objetivos Sell Out'}
+        url    = {'cargarArchivo/ventas/obejtivos'}
+      />
+      </Col>
+      <Col xl={6} md={6}>
+      <CardCargarArchivo
+        titulo = {'Añadir Plan de Trade (ppt)      '}
         url    = {'cargarArchivo/ventas/obejtivos'}
       />
       </Col>

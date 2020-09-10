@@ -54,7 +54,8 @@ const SellIn = () => {
                                 </Col>
                                 <Col xl={24} md={24} sm={24} xs={24} />
 
-                                <Col xl={12} md={24} sm={24} xs={24}>
+                                {/* <Col xl={15} md={24} sm={24} xs={24}> */}
+                                <div style={{width:'57.5%', marginRight:'20px', marginLeft:'21px'}}>
                                     <CardAvance
                                         objetivoValorizado       = {tipoPromocion.tsuvalorizadoobjetivo}
                                         realValorizado           = {tipoPromocion.tsuvalorizadoreal}
@@ -62,13 +63,16 @@ const SellIn = () => {
                                         cumplimientoPorcentaje   = {tipoPromocion.tsuporcentajecumplimiento}
                                         nombreTipoPromocion      = {tipoPromocion.tprnombre}
                                     />
-                                </Col>
-                                <Col xl={12} md={24} sm={24} xs={24}>
+                                </div>
+                                {/* </Col> */}
+                                {/* <Col xl={9} md={24} sm={24} xs={24}> */}
+                                <div style={{width:'38%', }}>
                                     <CardRebate 
                                         rebateValorizado = {tipoPromocion.tsuvalorizadorebate}
                                         nombreTipoPromocion = {tipoPromocion.tprnombre}
                                     />
-                                </Col>
+                                </div>
+                                {/* </Col> */}
 
                                 {/* <CategoriasCarousel
                                     heading = "Example Slider"   
