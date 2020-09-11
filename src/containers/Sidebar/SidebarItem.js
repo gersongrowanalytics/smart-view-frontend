@@ -72,15 +72,15 @@ class SidebarItem extends React.Component {
                 <MenuItemGroup key="main" className="gx-menu-group" title={null}>
                 <Menu.Item key="#">
                     <img alt="" src={require("assets/images/nombreEjecutivo.png")} style={{ marginRight:'15px' }} width="25px" />
-                    <span id="txtSidebarItem">{localStorage.getItem('usuusuario')}</span>
+                    <span id="txtSidebarItem">{localStorage.getItem('pernombre')}</span>
                 </Menu.Item>
                 <Menu.Item key="#ejecutivo">
                     <img alt="" src={require("assets/images/nombreEjecutivo.png")} style={{ marginRight:'15px' }} width="25px" />
-                    <span id="txtSidebarItem">Nombre de Ejecutivo</span>
+                    <span id="txtSidebarItem">{localStorage.getItem('ejecutivo')}</span>
                 </Menu.Item>
                 <Menu.Item key="#Distribuidora">
                     <img alt="" src={require("assets/images/nombreEjecutivo.png")} style={{ marginRight:'15px' }} width="25px" />
-                    <span id="txtSidebarItem">Nombre de Distribuidora</span>
+                    <span id="txtSidebarItem">{localStorage.getItem('distribuidora')}</span>
                 </Menu.Item>
                 <Menu.Item key="sistema/ventas">
                     <Link to="/sistema/ventas" 

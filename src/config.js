@@ -1,5 +1,4 @@
 export default {
-    api: 'http://gro.gavsistemas.com/',
-    defaultPath: '/quantico',
+    api: 'http://backs.gavsistemas.com/',
     basename: '/',
 };

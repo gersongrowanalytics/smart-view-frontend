@@ -184,6 +184,10 @@ export const loginReducer = (usuario) => async ( dispatch, getState) => {
           localStorage.setItem('user_id', data.datos.usuid)
           localStorage.setItem('usutoken', data.datos.usutoken)
           localStorage.setItem('usuusuario', data.datos.usuusuario)
+          localStorage.setItem('pernombre', data.datos.pernombre)
+          localStorage.setItem('ejecutivo', data.datos.ejecutivo)          
+          localStorage.setItem('distribuidora', data.datos.pernombrecompleto)
+
           dispatch(loginCorrecto(data.datos))
         }else{
           dispatch(showAuthMessage(data.mensajeDetalle))

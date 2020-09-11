@@ -88,6 +88,13 @@ const CargaArchivosPromociones = () => {
       />
       </Col>
       <Col xl={3} md={3} />
+      <Col xl={3} md={3} />
+      <Col xl={6} md={6}>
+      <CardCargarArchivo
+        titulo = {'Añadir Clientes'}
+        url    = {'cargarArchivo/clientes'}
+      />
+      </Col>
     </Row>
   );
 };
