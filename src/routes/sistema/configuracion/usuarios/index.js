@@ -1,6 +1,6 @@
 import React from 'react'
 import Auxiliary from "util/Auxiliary";
-import {Col, Row, Card, Table, message} from "antd";
+import {Col, Row, Card, Table} from "antd";
 import {useDispatch, useSelector} from "react-redux";
 import {obtenerUsuariosReducer} from "appRedux/actions/Configuracion/Usuarios";
 import {seleccionarCargaArchivosReducer} from "appRedux/actions/CargaArchivos";

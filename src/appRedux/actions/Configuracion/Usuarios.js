@@ -11,7 +11,7 @@ import {
 import config from 'config'
 
 
-export const obtenerUsuariosReducer = () =>async (dispatch, getState) => {
+export const obtenerUsuariosReducer = () => async (dispatch, getState) => {
   
   await fetch(config.api+'configuracion/usuarios/mostrarUsuarios',
     {

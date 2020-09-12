@@ -84,7 +84,6 @@ const CargaArchivosPromociones = () => {
       <Col xl={6} md={6}>
       <CardCargarArchivo
         titulo = {'Añadir Plan de Trade (ppt)      '}
-        url    = {'cargarArchivo/ventas/obejtivos'}
       />
       </Col>
       <Col xl={3} md={3} />

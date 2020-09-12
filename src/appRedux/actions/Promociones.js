@@ -1,4 +1,5 @@
 import { estadoRequestReducer } from "appRedux/actions/EstadoRequest"
+import {message} from "antd";
 import {
     OBTENER_PROMOCIONES_EXITO,
     OBTENER_PROMOCIONES_FAIL,
@@ -168,56 +169,53 @@ export const editarPromocionReducer = (posicionCanal, posicionPromocion) => asyn
     })    
 }
 
-export const aceptarEdicionPromocionReducer = () => async (dispatch, getState) => {
-    // let {canalesPromociones} = getState().promociones
-    // canalesPromociones[posicionCanal]['promociones'][posicionPromocion]['guardando'] = false
-    // dispatch({
-    //     type: OBTENER_CANALES_DE_PROMOCIONES_EXITO,
-    //     payload: canalesPromociones
-    // })
+export const aceptarEdicionPromocionReducer = (posicionCanal, posicionPromocion, scaid, cspid, valorizado, planchas) => async (dispatch, getState) => {
 
-    // await fetch(config.api+'promociones/editar',
-    //   {
-    //     mode:'cors',
-    //     method: 'POST',
-    //     body: JSON.stringify({
-    //         usutoken  : localStorage.getItem('usutoken'),
-    //         scaid     : scaid,
-    //     }),
-    //     headers: {
-    //       'Accept' : 'application/json',
-    //       'Content-type' : 'application/json',
-    //       'api_token': localStorage.getItem('usutoken')
-    //     }
-    //   }
-    // )
-    // .then( async res => {
-    //   await dispatch(estadoRequestReducer(res.status))
-    //   return res.json()
-    // })
-    // .then(data => {
-    //   const estadoRequest = getState().estadoRequest.init_request
-    //   if(estadoRequest === true){
-    //     if(data.respuesta === true){
+    let {canalesPromociones} = getState().promociones
+    canalesPromociones[posicionCanal]['promociones'][posicionPromocion]['guardando'] = false
+    dispatch({
+        type: OBTENER_CANALES_DE_PROMOCIONES_EXITO,
+        payload: canalesPromociones
+    })
+
+
+    await fetch(config.api+'promociones/editar',
+      {
+        mode:'cors',
+        method: 'POST',
+        body: JSON.stringify({
+            usutoken    : localStorage.getItem('usutoken'),
+            cspid       : cspid,
+            valorizado  : valorizado,
+            planchas    : planchas
+        }),
+        headers: {
+          'Accept' : 'application/json',
+          'Content-type' : 'application/json',
+          'api_token': localStorage.getItem('usutoken')
+        }
+      }
+    )
+    .then( async res => {
+      await dispatch(estadoRequestReducer(res.status))
+      return res.json()
+    })
+    .then(data => {
+      const estadoRequest = getState().estadoRequest.init_request
+      if(estadoRequest === true){
+        if(data.respuesta === true){
             
-    //         dispatch({
-    //             type: OBTENER_CANALES_DE_PROMOCIONES_EXITO,
-    //             payload: data.datos
-    //         })
+            dispatch(seleccionarCategoriaReducer(scaid))
+            message.success(data.mensaje) 
+        }else{
             
-    //     }else{
-    //         dispatch({
-    //             type: editarPromocionReducer,
-    //             payload: data.datos
-    //         })
-    //     }
-    //   }
-    // }).catch((error)=> {
-    //     dispatch({
-    //         type: OBTENER_CANALES_DE_PROMOCIONES_FAIL,
-    //         payload: []
-    //     })
-    // });
+            message.error(data.mensaje) 
+
+        }
+      }
+    }).catch((error)=> {
+        
+    });
 }
 
 export const seleccionarPromocionReducer = (accion) => {

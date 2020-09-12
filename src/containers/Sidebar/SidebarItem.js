@@ -15,12 +15,14 @@ class SidebarItem extends React.Component {
             menuItemGuiaGrow      : false,
             menuItemCargaArchivo  : false,
             menuItemUsuarios      : false,
+            menuItemRebate        : false,
 
             seleccionoVentas      : false,
             seleccionoPromociones : false,
             seleccionoGuia        : false,
             seleccionoCarga       : false,
             seleccionoUsuarios    : false,
+            seleccionoRebate      : false
         }
         this.funActivarHover = this.funActivarHover.bind(this)
         this.funSeleccionarMenu = this.funSeleccionarMenu.bind(this)
@@ -157,6 +159,22 @@ class SidebarItem extends React.Component {
                             : "txtSidebarItem"
                         }
                     >Usuarios</span></Link>
+                </Menu.Item>
+
+                <Menu.Item key="sistema/configuracion/rebate">
+                    <Link to="/sistema/configuracion/rebate" 
+                        onMouseEnter={() => {this.funActivarHover('menuItemRebate', 'Rebate')}} 
+                        onMouseLeave={() => {this.funDesactivarHover('menuItemRebate', 'Rebate')}}
+                        onClick={() => {this.funSeleccionarMenu('menuItemRebate', 'Rebate')}}
+                    >
+                    <i className="icon icon-angelist"/>
+                    <span
+                        id={
+                            this.state.menuItemRebate == true
+                            ? "txtSidebarItemHover"
+                            : "txtSidebarItem"
+                        }
+                    >Rebate</span></Link>
                 </Menu.Item>
                 </MenuItemGroup>
                 <AppsNavigation/>

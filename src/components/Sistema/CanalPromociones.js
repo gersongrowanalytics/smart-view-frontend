@@ -2,16 +2,25 @@ import React from 'react'
 import {Col, Row, Card, Button, InputNumber} from "antd";
 import PromocionesCarousel from './PromocionesCarousel'
 import {useDispatch} from "react-redux";
-import {editarPromocionReducer} from 'appRedux/actions/Promociones'
+import {editarPromocionReducer, aceptarEdicionPromocionReducer} from 'appRedux/actions/Promociones'
 
 const CanalPromociones = (props) => {
-    const {posicionCanal, cscid, nombreCanal, promociones, colorSeleciconadoPromo, porcentaje} = props
+    const {posicionCanal, scaid, cscid, nombreCanal, promociones, colorSeleciconadoPromo, porcentaje} = props
 
     
     const dispatch = useDispatch();
 
     const editarPromocion = async (posicionPromocion) =>  {
         dispatch(editarPromocionReducer(posicionCanal, posicionPromocion))
+    }
+
+    const aceptarEdicionPromocion = async (posicionPromocion, scaid, cspid, valorizado, planchas) => {
+        console.log(posicionPromocion)
+        console.log(scaid)
+        console.log(cspid)
+        console.log(valorizado)
+        console.log(planchas)
+        // dispatch(aceptarEdicionPromocionReducer(posicionCanal, posicionPromocion, scaid, cspid, valorizado, planchas))
     }
 
     return (
@@ -26,14 +35,16 @@ const CanalPromociones = (props) => {
                 }}
             >
                 <PromocionesCarousel 
-                    heading         = "Example Slider"
-                    posicionCanal   = {posicionCanal}
-                    cscid           = {cscid}
-                    slides          = {promociones} 
-                    editarPromocion = {editarPromocion}
-                    porcentaje      = {porcentaje}
-                    colorSeleciconadoPromo = {colorSeleciconadoPromo}
-                    nombreCanal     = {nombreCanal}
+                    heading                         = "Example Slider"
+                    posicionCanal                   = {posicionCanal}
+                    cscid                           = {cscid}
+                    slides                          = {promociones} 
+                    editarPromocion                 = {editarPromocion}
+                    porcentaje                      = {porcentaje}
+                    colorSeleciconadoPromo          = {colorSeleciconadoPromo}
+                    nombreCanal                     = {nombreCanal}
+                    aceptarEdicionPromocionReducer  = {aceptarEdicionPromocion}
+                    scaid                           = {scaid}
                 />
                 {/* {
                     promociones.map((item, posicion) => {

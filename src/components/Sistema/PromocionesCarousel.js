@@ -89,12 +89,16 @@ class Slide extends React.Component {
       cspcantidadcombo,
       cspcompletado,
       cspplanchas,
-      cspvalorizado
+      cspvalorizado,
+      cspid,
+      tprnombre
     } = this.props.slide
 
-    const posicionPromocion = this.props.posicion
-    const editarPromocion = this.props.editarPromocion
-    const colorSeleciconadoPromo = this.props.colorSeleciconadoPromo
+    const posicionPromocion              = this.props.posicion
+    const editarPromocion                = this.props.editarPromocion
+    const colorSeleciconadoPromo         = this.props.colorSeleciconadoPromo
+    const aceptarEdicionPromocionReducer = this.props.aceptarEdicionPromocionReducer
+
     const current = this.props.current
     let classNames = 'slidePromocion'
     
@@ -137,7 +141,7 @@ class Slide extends React.Component {
                         </span>
                         <span 
                           id="tituloVenta">
-                        Sell In Bonificación</span>
+                        {tprnombre+" "}Bonificación</span>
                     </Col>
                     {
                         productos.map((producto, posicion) => {
@@ -254,7 +258,9 @@ class Slide extends React.Component {
                         <Button 
                           id="btnEditar"
                           style={{border:'1px solid #fff', color:'white', borderRadius:'25px', background:'transparent'}} 
-                          onClick={() => editarPromocion(posicionPromocion)}
+                          onClick={() => 
+                            aceptarEdicionPromocionReducer(posicionPromocion, this.props.scaid, cspid, this.state.txtValorizado, this.state.inputPlanchas)
+                          }
                         >
                           Aceptar
                         </Button>
@@ -368,7 +374,7 @@ class PromocionesCarousel extends React.Component {
 
   render() {
     const { current, direction, seleccionoPromocion } = this.state
-    const { slides, heading, editarPromocion, colorSeleciconadoPromo, porcentaje } = this.props 
+    const { slides, heading, editarPromocion, colorSeleciconadoPromo, porcentaje, aceptarEdicionPromocionReducer, scaid } = this.props 
     const headingId = `slider-heading__${heading.replace(/\s+/g, '-').toLowerCase()}`
     const wrapperTransform = {
       'transform': `translateX(-${current * (100 / slides.length)}%)`
@@ -475,6 +481,8 @@ class PromocionesCarousel extends React.Component {
                     seleccionado           = {slide.seleccionado}
                     editarPromocion        = {editarPromocion}
                     colorSeleciconadoPromo = {colorSeleciconadoPromo}
+                    aceptarEdicionPromocionReducer = {aceptarEdicionPromocionReducer}
+                    scaid = {scaid}
                 />
               </div>
             )
