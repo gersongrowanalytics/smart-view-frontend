@@ -20,7 +20,7 @@ const CanalPromociones = (props) => {
         console.log(cspid)
         console.log(valorizado)
         console.log(planchas)
-        // dispatch(aceptarEdicionPromocionReducer(posicionCanal, posicionPromocion, scaid, cspid, valorizado, planchas))
+        dispatch(aceptarEdicionPromocionReducer(posicionCanal, posicionPromocion, scaid, cspid, valorizado, planchas))
     }
 
     return (
