@@ -67,13 +67,17 @@ const SignIn =()=> {
         >
           <img src={require('assets/images/kimberly.png')} alt=''  id="imagenLogo" />
           <h1 className="tituloIniciarSesionLogin">Iniciar Sesión</h1>
+          <br/>
           <Form
             initialValues={{ remember: true }}
             name="basic"
             onFinish={onFinish}
             onFinishFailed={onFinishFailed}
-            className="gx-signin-form gx-form-row0">
-              <span id="textoInputUsuario">Usuario</span>
+            className="gx-signin-form gx-form-row0"
+            id="formulariologin"
+            >
+              
+              <p id="textoInputUsuario">Usuario</p>
               <div id="campoInputUsuario">
                 <img id="iconoContrasena"  alt="" src={require("assets/images/iconUsuario.png")}/>
                 <Form.Item

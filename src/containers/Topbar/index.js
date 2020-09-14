@@ -87,7 +87,7 @@ const Topbar = () => {
               dispatch(toggleCollapsedSideNav(!navCollapsed));
             }}
           />
-          <img alt='' src={require('assets/images/logoCompletoKim.png')} width='198px' height='24px' id="logoTopbar" />
+          <img alt='' src={require('assets/images/logoCompletoKim.png')} width='59px' height='54px' id="logoTopbar" />
           <Filtros
             sucursales          = {sucursalesUsuario}
             fechas              = {fechasFiltro}

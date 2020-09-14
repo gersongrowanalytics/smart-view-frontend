@@ -48,7 +48,7 @@ const CardImagen = (props) => {
             <div className="gx-line-indi-info" style={{background:'#E8E8E8'}}> 
                 {/* real=30; togo=70 --  70*100/30 */}
                 <div className={`gx-line-indi`} style={{background:'#F2F2F2', width: '100%', height: 18, margin: '10px', borderRadius: 50}}>
-                    <Tooltip title={"Real S/ "+realCategoria} >
+                    <Tooltip title={"Real S/ "+funFomratoDecimal(realCategoria , 0)} >
                         <div
                             className={``}
                             style={
@@ -68,8 +68,20 @@ const CardImagen = (props) => {
                                 }
                             }
                         >
-                            <Tooltip title={"Facturar S/ "+ togoCategoria} color={tprcolortooltip}>
-                                <div className={``} style={{ background:'transparent', width: (togoCategoria*100)/realCategoria+'%', height: 15, marginLeft:'100%'}} />
+                            <Tooltip 
+                                title={
+                                    "Facturar S/ "+ funFomratoDecimal(togoCategoria , 0)}
+                                    // <NumberFormat value={funFomratoDecimal(rebateValorizado, 0)} displayType={'text'} thousandSeparator={true} /></div>
+                                    color={tprcolortooltip
+                                }>
+                                <div 
+                                    className={``} 
+                                    style={{ 
+                                        background:'transparent', 
+                                        width: (togoCategoria*100)/realCategoria+'%', 
+                                        height: 15, 
+                                        marginLeft:'100%'
+                                    }} />
                             </Tooltip>
                         </div>
                     </Tooltip>

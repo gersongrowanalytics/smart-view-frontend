@@ -1,13 +1,13 @@
 import React from 'react'
-import {Col, Row} from "antd";
-import Auxiliary from "util/Auxiliary";
+import {Col, Row} from "antd"
+import Auxiliary from "util/Auxiliary"
 import Titulo from 'components/Sistema/Titulo'
-import CardAvance from 'components/Sistema/CardAvance';
-import CardRebate from 'components/Sistema/CardRebate';
-import {useSelector, useDispatch} from "react-redux";
+import CardAvance from 'components/Sistema/CardAvance'
+import CardRebate from 'components/Sistema/CardRebate'
+import {useSelector, useDispatch} from "react-redux"
 import CategoriasCarousel from './categoriasCarousel'
-import {seleccionarCargaArchivosReducer} from "appRedux/actions/CargaArchivos";
-import {seleccionarTutorialReducer} from "appRedux/actions/Tutorial";
+import {seleccionarCargaArchivosReducer} from "appRedux/actions/CargaArchivos"
+import {seleccionarTutorialReducer} from "appRedux/actions/Tutorial"
 import {seleccionarVistaPromocionReducer} from 'appRedux/actions/Promociones'
 import {seleccionarVistaVentasReducer} from 'appRedux/actions/VentasTpr'
 import CardImagen from 'components/Sistema/CardImagen'

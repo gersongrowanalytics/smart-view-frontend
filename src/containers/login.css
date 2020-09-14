@@ -79,12 +79,14 @@
     position: absolute;
     left: 59px;
     top: 50px;
+    width: 100px;
+    height: 94px;
 }
 
 .tituloIniciarSesionLogin{
     position: absolute;
     left: 59px;
-    top: 140px;
+    top: 150px;
     font-family: Roboto;
     font-style: normal;
     font-weight: 900;
@@ -243,6 +245,8 @@
 }
 
 #logoKimberly{
+    width: 225px;
+    height: 212px;
     padding-top: 30px;
     text-align: center;
     position: absolute;

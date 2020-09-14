@@ -2,6 +2,8 @@ import React from 'react'
 import {Col, Row} from "antd";
 import './estilos/CardRebate.css'
 import config from 'config'
+import NumberFormat from 'react-number-format';
+import funFomratoDecimal from '../../funciones/funFormatoDecimal.js'
 
 const CardRebate = (props) => {
 
@@ -19,7 +21,9 @@ const CardRebate = (props) => {
                             <h2 className="gx-text-white" id="tituloRebate">Rebate {nombreTipoPromocion}</h2>
                         </Col>
                         <Col xl={8} md={8} sm={8} xs={24} style={{ borderRightStyle:'solid', borderRightColor:'white', paddingRight:'1px', alignSelf:'center', textAlignLast: 'left', height:'43px', paddingTop:'10px'}}>
-                            <span className="gx-text-center gx-text-white" id="textoRebate">S/. 0</span>
+                            <span className="gx-text-center gx-text-white" id="textoRebate">
+                                S/.<NumberFormat value={funFomratoDecimal(rebateValorizado, 0)} displayType={'text'} thousandSeparator={true} />
+                            </span>
                         </Col>
                         <Col xl={16} md={16} sm={16} xs={24}>
                             <span className="gx-text-white" id="textoRebate">El pago de Rebate se ejecutará, de llegar a la cuota establecida</span>
