@@ -7,7 +7,7 @@ import {useDispatch, useSelector} from "react-redux";
 
 const Titulo = (props) => {
     const dispatch = useDispatch();
-    const {tieneFecha, tieneTitulo, tieneBotonDescargar, tieneIcono, titulo, tprid} = props;
+    const {tieneFecha, tieneTitulo, tieneBotonDescargar, tieneIcono, titulo, tprid, fechaActual} = props;
 
     const descargarPromociones = async () =>  {
         await dispatch(descargarInformacionPromocionesReducer())
@@ -49,7 +49,7 @@ const Titulo = (props) => {
                     {
                         tieneFecha == true
                         ?<div id="contenedorActualizacion" className="gx-fs-md gx-ml-auto" style={tieneIcono==true?{marginRight:'-35px'}:{}}>
-                            <p className="ultimaActualizacion">Actualización 10 de Agosto del 2020</p>
+                            <p className="ultimaActualizacion">Actualización {fechaActual}</p>
                         </div>
                         :null
                     }

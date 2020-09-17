@@ -58,6 +58,7 @@ const CargaArchivosPromociones = () => {
       <Col xl={6} md={6}>
         <CardCargarArchivo
           titulo = {'Añadir Sell Out'}
+          url    = {'cargarArchivo/ventas/sellout'}
         />
       </Col>
       <Col xl={6} md={6}>
@@ -78,7 +79,7 @@ const CargaArchivosPromociones = () => {
       <Col xl={6} md={6}>
       <CardCargarArchivo
         titulo = {'Añadir Objetivos Sell Out'}
-        url    = {'cargarArchivo/ventas/obejtivos'}
+        url    = {'cargarArchivo/ventas/obejtivossellout'}
       />
       </Col>
       <Col xl={6} md={6}>

@@ -71,7 +71,10 @@ export const obtenerPromocionesReducer = () =>async (dispatch, getState) => {
             // })
             dispatch({
                 type: OBTENER_PROMOCIONES_EXITO,
-                payload: data.datos
+                payload: {
+                  "datos" : data.datos,
+                  "fecha" : data.fechaActualiza
+                }
             })
         }else{
             dispatch({

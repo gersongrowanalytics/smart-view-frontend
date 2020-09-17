@@ -150,7 +150,7 @@ class Slide extends React.Component {
                                 ?<Col xl={11} md={11} sm={11} xs={11}>
                                     <Row className="gx-text-center">
                                         <Col xl={24} md={24}>
-                                          <img src={producto.proimagen} width="105px" height="59px"/>
+                                          <img src={producto.prpimagen} width="105px" height="59px"/>
                                           
                                         </Col>
                                         <Col xl={24} md={24} className="gx-text-center">
@@ -182,7 +182,7 @@ class Slide extends React.Component {
                                             </div>
                                           </div>
 
-                                            <img src={productoBonificado.proimagen} width="105px" height="59px"/>
+                                            <img src={productoBonificado.prbimagen} width="105px" height="59px"/>
                                             {/* <div 
                                                 style={{'width':"105px", 'height':"59px", backgroundImage: "url("+productoBonificado.proimagen+")", backgroundSize: '100% 100%', backgroundRepeat:'no-repeat', backgroundPosition:'center'}} 
                                             /> */}

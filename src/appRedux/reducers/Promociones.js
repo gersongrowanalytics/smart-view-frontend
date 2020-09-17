@@ -19,7 +19,8 @@ const INIT_STATE = {
     seleccionoPromocion         : false,
     colorSeleciconadoPromo      : 'transparent',
     vistaPromocionSeleccionado  : false,
-    deseleccionarPromocion      : false
+    deseleccionarPromocion      : false,
+    fechaActualizacionPromocion : ""
 };
 
 export default (state = INIT_STATE, action) => {
@@ -27,7 +28,8 @@ export default (state = INIT_STATE, action) => {
         case OBTENER_PROMOCIONES_EXITO: {
             return {
                 ...state,
-                categoriasPromociones: action.payload,
+                categoriasPromociones: action.payload.datos,
+                fechaActualizacionPromocion: action.payload.fecha,
                 obtuvoPromociones : true
             }
         }

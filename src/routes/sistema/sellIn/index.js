@@ -50,6 +50,7 @@ const SellIn = () => {
                                         tieneIcono  = {true}
                                         titulo      = {tipoPromocion.tprnombre}
                                         tprid       = {tipoPromocion.tprid}
+                                        fechaActual = {tipoPromocion.fechaActualizacion}
                                     />  
                                 </Col>
                                 <Col xl={24} md={24} sm={24} xs={24} />

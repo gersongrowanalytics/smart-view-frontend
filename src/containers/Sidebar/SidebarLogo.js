@@ -23,7 +23,7 @@ const SidebarLogo = () => {
   }
   return (
     // <div className="gx-layout-sider-header" style={{background:'transparent', height: '150px'}}>
-    <div style={{background:'transparent', height: '150px'}} id="logomenu">
+    <div style={{background:'transparent', height: '130px'}} id="logomenu">
       {(navStyle === NAV_STYLE_FIXED || navStyle === NAV_STYLE_MINI_SIDEBAR) ? <div className="gx-linebar">
         {/* <i
           // className={`gx-icon-btn icon icon-${navStyle === NAV_STYLE_MINI_SIDEBAR ? 'menu-unfold' : 'menu-fold'} ${themeType !== THEME_TYPE_LITE ? 'gx-text-white' : ''}`}

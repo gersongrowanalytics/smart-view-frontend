@@ -73,18 +73,18 @@ class SidebarItem extends React.Component {
                 mode="inline">
                 <MenuItemGroup key="main" className="gx-menu-group" title={null}>
                 <Menu.Item key="#">
-                    <img alt="" src={require("assets/images/nombreEjecutivo.png")} style={{ marginRight:'15px' }} width="25px" />
+                    <img alt="" src={require("assets/images/nombreEjecutivo.png")} style={{ marginRight:'15px' }} width="26px" />
                     <span id="txtSidebarItem">{localStorage.getItem('pernombre')}</span>
                 </Menu.Item>
-                <Menu.Item key="#ejecutivo">
-                    <img alt="" src={require("assets/images/nombreEjecutivo.png")} style={{ marginRight:'15px' }} width="25px" />
+                <Menu.Item key="#ejecutivo" id="menuItemSidebar">
+                    <img alt="" src={require("assets/images/nombreEjecutivo.png")} style={{ marginRight:'15px' }} width="26px" />
                     <span id="txtSidebarItem">{localStorage.getItem('ejecutivo')}</span>
                 </Menu.Item>
-                <Menu.Item key="#Distribuidora">
-                    <img alt="" src={require("assets/images/nombreEjecutivo.png")} style={{ marginRight:'15px' }} width="25px" />
+                <Menu.Item key="#Distribuidora" id="menuItemSidebar">
+                    <img alt="" src={require("assets/images/nombreEjecutivo.png")} style={{ marginRight:'15px' }} width="26px" />
                     <span id="txtSidebarItem">{localStorage.getItem('distribuidora')}</span>
                 </Menu.Item>
-                <Menu.Item key="sistema/ventas">
+                <Menu.Item key="sistema/ventas" id="menuItemSidebar">
                     <Link to="/sistema/ventas" 
                         onMouseEnter={() => {this.funActivarHover('menuItemVentas', 'Ventas')}} 
                         onMouseLeave={() => {this.funDesactivarHover('menuItemVentas', 'Ventas')}}
@@ -100,7 +100,7 @@ class SidebarItem extends React.Component {
                         >Ventas</span>
                     </Link>
                 </Menu.Item>
-                <Menu.Item key="sistema/promociones">
+                <Menu.Item key="sistema/promociones" id="menuItemSidebar">
                     <Link to="/sistema/promociones" 
                         onMouseEnter={() => {this.funActivarHover('menuItemPromociones', 'Promociones')}} 
                         onMouseLeave={() => {this.funDesactivarHover('menuItemPromociones', 'Promociones')}}
@@ -115,7 +115,7 @@ class SidebarItem extends React.Component {
                         }
                     >Promociones</span></Link>
                 </Menu.Item>
-                <Menu.Item key="sistema/tutorial">
+                <Menu.Item key="sistema/tutorial" id="menuItemSidebar">
                     <Link to="/sistema/tutorial" 
                         onMouseEnter={() => {this.funActivarHover('menuItemGuiaGrow', 'Guia')}} 
                         onMouseLeave={() => {this.funDesactivarHover('menuItemGuiaGrow', 'Guia')}}
@@ -130,7 +130,7 @@ class SidebarItem extends React.Component {
                         }
                     >Guía Grow Smart View</span></Link>
                 </Menu.Item>
-                <Menu.Item key="sistema/cargaArchivos/promociones">
+                <Menu.Item key="sistema/cargaArchivos/promociones" id="menuItemSidebar">
                     <Link to="/sistema/cargaArchivos/promociones" 
                         onMouseEnter={() => {this.funActivarHover('menuItemCargaArchivo', 'Carga')}} 
                         onMouseLeave={() => {this.funDesactivarHover('menuItemCargaArchivo', 'Carga')}}
@@ -145,7 +145,7 @@ class SidebarItem extends React.Component {
                         }
                     >Carga de archivo</span></Link>
                 </Menu.Item>
-                <Menu.Item key="sistema/configuracion/usuarios">
+                <Menu.Item key="sistema/configuracion/usuarios" id="menuItemSidebar">
                     <Link to="/sistema/configuracion/usuarios" 
                         onMouseEnter={() => {this.funActivarHover('menuItemUsuarios', 'Usuarios')}} 
                         onMouseLeave={() => {this.funDesactivarHover('menuItemUsuarios', 'Usuarios')}}
@@ -161,7 +161,7 @@ class SidebarItem extends React.Component {
                     >Usuarios</span></Link>
                 </Menu.Item>
 
-                <Menu.Item key="sistema/configuracion/rebate">
+                <Menu.Item key="sistema/configuracion/rebate" id="menuItemSidebar">
                     <Link to="/sistema/configuracion/rebate" 
                         onMouseEnter={() => {this.funActivarHover('menuItemRebate', 'Rebate')}} 
                         onMouseLeave={() => {this.funDesactivarHover('menuItemRebate', 'Rebate')}}
