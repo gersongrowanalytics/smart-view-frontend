@@ -73,12 +73,12 @@ const SignIn =()=> {
             name="basic"
             onFinish={onFinish}
             onFinishFailed={onFinishFailed}
-            className="gx-signin-form gx-form-row0"
+            // className="gx-signin-form gx-form-row0"
             id="formulariologin"
             >
               
-              <p id="textoInputUsuario">Usuario</p>
-              <div id="campoInputUsuario">
+              <p id="textoInputUsuarios">Usuario</p>
+              <div id="campoInputUsuarios">
                 <img id="iconoContrasena"  alt="" src={require("assets/images/iconUsuario.png")}/>
                 <Form.Item
                   initialValue=""
@@ -87,6 +87,7 @@ const SignIn =()=> {
                   <input 
                     name="usuario"
                     id="inputDatos"
+                    autoComplete={"off"}
                   />
                 </Form.Item>
               </div>
@@ -108,7 +109,7 @@ const SignIn =()=> {
                 </Form.Item>
               </div>
               <Link to="/recuperar">
-                <span id="textoOlvidasteContrasena">¿Olvidaste tu contraseña? </span>
+                <span id="textoOlvidasteContrasenas">¿Olvidaste tu contraseña? </span>
               </Link>
               <button
                 className="btnIniciar"
@@ -140,7 +141,7 @@ const SignIn =()=> {
         {
           mostrarForm == true
           ?<Login  />
-          :<div>
+          :<div id="contenedorImagenesCentro">
             <img src={require('assets/images/logoLeadBlanco.png')} alt='' id="logoCarousel" />
             <img src={require('assets/images/logokkc.png')} alt='' id="logoKimberly" />
           </div>

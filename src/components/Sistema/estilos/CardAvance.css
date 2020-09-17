@@ -6,10 +6,18 @@
     line-height: 23px;
 }
 
+#tituloDatosAvance{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 12px;
+    line-height: 18px;
+}
+
 #datosAvance{
     font-family: Roboto;
     font-style: normal;
     font-weight: 900;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 18px;
 }

@@ -62,7 +62,9 @@ class Filtros extends Component {
                                         }}
                                         key  = {sucursal.sucid} 
                                     >
-                                        {sucursal.sucnombre}
+                                        {
+                                            sucursal.sucnombre
+                                        }
                                     </a>
                                     // <option 
                                     //     key      = {sucursal.sucid} 

@@ -22,30 +22,29 @@ const CardAvance = (props) => {
                             <h2 className="gx-text-white" id="tituloAvance">Avance de Venta {nombreTipoPromocion}</h2>
                         </Col>
                         <Col xl={6} md={6} sm={6} xs={24} className="gx-text-center gx-text-white" style={{ borderRightStyle:'solid', borderRightColor:'white', paddingRight:'20px', alignSelf:'center'}}>
-                            <p id="datosAvance">OBJ<br/>S/. 
-                                <NumberFormat value={funFomratoDecimal(objetivoValorizado, 0)} displayType={'text'} thousandSeparator={true} />
+                            <p id=""><span id="tituloDatosAvance" >OBJ</span><br/> 
+                                <span id="datosAvance">S/<NumberFormat value={funFomratoDecimal(objetivoValorizado, 0)} displayType={'text'} thousandSeparator={true} /></span>
                             </p>
                         </Col>
                         <Col xl={6} md={6} sm={6} xs={24} className="gx-text-center gx-text-white" style={{ borderRightStyle:'solid', borderRightColor:'white', paddingRight:'20px', alignSelf:'center'}}>
-                            <p id="datosAvance">REAL<br/>S/. 
-                                <NumberFormat value={funFomratoDecimal(realValorizado, 0)} displayType={'text'} thousandSeparator={true} />
+                            <p id=""><span id="tituloDatosAvance">REAL</span><br/>
+                                <span id="datosAvance">S/<NumberFormat value={funFomratoDecimal(realValorizado, 0)} displayType={'text'} thousandSeparator={true} /></span>
                             </p>
                         </Col>
                         <Col xl={6} md={6} sm={6} xs={24} className="gx-text-center gx-text-white" style={{ borderRightStyle:'solid', borderRightColor:'white', paddingRight:'20px', alignSelf:'center'}}>
-                            <p id="datosAvance">POR FACTURAR<br/>S/. 
+                            <p id=""><span id="tituloDatosAvance">POR FACTURAR</span><br/>
                                 {/* <NumberFormat value={funFomratoDecimal(togoValorizado, 0)} displayType={'text'} thousandSeparator={true} /> */}
                                 {
                                     parseInt(realValorizado-objetivoValorizado)  > 0
-                                    ?0
-                                    :<NumberFormat value={funFomratoDecimal((realValorizado-objetivoValorizado), 0)} displayType={'text'} thousandSeparator={true} />
+                                    ?<span id="datosAvance">S/0</span>
+                                    :<span id="datosAvance">S/<NumberFormat value={funFomratoDecimal((realValorizado-objetivoValorizado), 0)} displayType={'text'} thousandSeparator={true} /></span>
                                 }
                                 
                             </p>
                         </Col>
                         <Col xl={6} md={6} sm={6} xs={24} className="gx-text-center gx-text-white" >
-                            <p id="datosAvance">CUMPLIMIENTO<br/> 
-                                <NumberFormat value={funFomratoDecimal( ((100*realValorizado)/objetivoValorizado), 0)} displayType={'text'} thousandSeparator={true} />
-                                %
+                            <p id=""><span id="tituloDatosAvance">CUMPLIMIENTO</span><br/> 
+                                <span id="datosAvance"><NumberFormat value={funFomratoDecimal( ((100*realValorizado)/objetivoValorizado), 0)} displayType={'text'} thousandSeparator={true} />%</span>
                             </p>
                             {/* <p id="datosAvance">CUMPLIMIENTO<br/>% {funFomratoDecimal(cumplimientoPorcentaje, 0)}</p> */}
                         </Col>

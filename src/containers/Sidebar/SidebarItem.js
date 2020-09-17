@@ -167,7 +167,7 @@ class SidebarItem extends React.Component {
                         onMouseLeave={() => {this.funDesactivarHover('menuItemRebate', 'Rebate')}}
                         onClick={() => {this.funSeleccionarMenu('menuItemRebate', 'Rebate')}}
                     >
-                    <i className="icon icon-angelist"/>
+                    <img alt="" src={require("assets/images/menuRebate.png")} style={{ marginRight:'15px' }} width="25px" />
                     <span
                         id={
                             this.state.menuItemRebate == true

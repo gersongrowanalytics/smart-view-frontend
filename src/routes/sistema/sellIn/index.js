@@ -45,7 +45,7 @@ const SellIn = () => {
                             <Row>        
                                 <Col xl={24} md={24} sm={24} xs={24}>
                                     <Titulo 
-                                        tieneFecha  = { posicion+1 == ventasTpr.length ?false : true}
+                                        tieneFecha  = { tipoPromocion.tprnombre == "Sell In" ? true : false}
                                         tieneTitulo = {true}
                                         tieneIcono  = {true}
                                         titulo      = {tipoPromocion.tprnombre}
@@ -55,7 +55,7 @@ const SellIn = () => {
                                 <Col xl={24} md={24} sm={24} xs={24} />
 
                                 {/* <Col xl={15} md={24} sm={24} xs={24}> */}
-                                <div style={{width:'57.5%', marginRight:'20px', marginLeft:'21px'}}>
+                                <div style={{width:'58%', marginRight:'2%', marginLeft:'22px'}}>
                                     <CardAvance
                                         objetivoValorizado       = {tipoPromocion.tsuvalorizadoobjetivo}
                                         realValorizado           = {tipoPromocion.tsuvalorizadoreal}
@@ -85,7 +85,11 @@ const SellIn = () => {
                                     tipoPromocion.categorias.map( function(categoria, posicion){
                                         return (
                                             // <Col xl={5} md={8} sm={12} xs={24}></div>
-                                            <div style={{width:'18%', marginLeft:'21px'}}>
+                                            <div style={
+                                                posicion == 0
+                                                ?{width:'18%', marginLeft:'22px'}
+                                                :{width:'18%', marginLeft:'2%'}
+                                            }>
                                                 <CardImagen 
                                                     nombreCategoria     = {categoria.catnombre}
                                                     iconoCategoria      = {categoria.caticono}

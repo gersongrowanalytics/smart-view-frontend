@@ -29,3 +29,8 @@
     color: red;
     background: red;
 }
+
+#txt_numeroCumplimiento{
+    font-size: 20px;
+    margin-top: 10px;
+}

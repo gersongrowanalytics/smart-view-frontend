@@ -7,7 +7,7 @@ import { toInteger } from 'lodash';
 
 const CardImagen = (props) => {
 
-    const {nombreCategoria, iconoCategoria, fondoCategoria, objetivoCategoria, realCategoria, togoCategoria, tprcolorbarra, tprcolortooltip, scaiconocategoria, catimagenfondoopaco} = props
+    const {nombreCategoria, objetivoCategoria, realCategoria, togoCategoria, tprcolorbarra, tprcolortooltip, scaiconocategoria, catimagenfondoopaco} = props
     // const {nombreCategoria, iconoCategoria, fondoCategoria, tprcolorbarra, tprcolortooltip, scaiconocategoria, catimagenfondoopaco} = props
     // const objetivoCategoria = 100
     // const realCategoria = 0
@@ -17,10 +17,10 @@ const CardImagen = (props) => {
         <div className={`gx-product-item gx-product-vertical'`} style={{background:'transparent'}}>
             {/* <div className="gx-product-image"> */}
             <div className="" style={{background:'#E8E8E8'}}>
-                <div className="gx-grid-thumb-equal" style={{height:'200px'}}>
+                <div className="gx-grid-thumb-equal" style={{height:'250px'}}>
                     <span className="gx-link gx-grid-thumb-cover" >
                         <div style={{width:'100%', height:'100%', backgroundImage: "url("+catimagenfondoopaco+")", backgroundSize: '100% 100%', backgroundRepeat:'no-repeat' }} >
-                            <Row style={{   height:'100%',  background:'rgba(229,230,230,0.5)'}}>
+                            <Row style={{   height:'100%',  background:'rgba(229,230,230,0.6)', paddingTop:'10px'}}>
                                 <Col md={24} xl={24} sm={24} xs={24}>
                                     <div className="gx-text-center" >
                                         <div className="gx-flex-row gx-justify-content-center gx-mb-3 gx-mb-sm-1">
@@ -34,8 +34,8 @@ const CardImagen = (props) => {
                                         <p className="txtCumplimiento">
                                             Cumplimiento
                                             <br/>
-                                            <NumberFormat value={funFomratoDecimal(((100*realCategoria)/objetivoCategoria), 0)} displayType={'text'} thousandSeparator={true} />
-                                            %
+                                            <p id="txt_numeroCumplimiento"><NumberFormat value={funFomratoDecimal(((100*realCategoria)/objetivoCategoria), 0)} displayType={'text'} thousandSeparator={true} />%</p>
+                                            
                                         </p>
                                     </div>
                                 </Col>
@@ -109,7 +109,9 @@ const CardImagen = (props) => {
                                     ?0
                                     :objetivoCategoria == 100 && realCategoria == 0 && togoCategoria == 0
                                         ?0
-                                        :<NumberFormat value={funFomratoDecimal(objetivoCategoria, 0)} displayType={'text'} thousandSeparator={true} />
+                                        :objetivoCategoria == 100
+                                            ?0
+                                            :<NumberFormat value={funFomratoDecimal(objetivoCategoria, 0)} displayType={'text'} thousandSeparator={true} />
                                 }
                             </span>
                         </div>

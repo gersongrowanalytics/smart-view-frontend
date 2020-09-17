@@ -22,7 +22,7 @@ const CardRebate = (props) => {
                         </Col>
                         <Col xl={8} md={8} sm={8} xs={24} style={{ borderRightStyle:'solid', borderRightColor:'white', paddingRight:'1px', alignSelf:'center', textAlignLast: 'left', height:'43px', paddingTop:'10px'}}>
                             <span className="gx-text-center gx-text-white" id="textoRebate">
-                                S/.<NumberFormat value={funFomratoDecimal(rebateValorizado, 0)} displayType={'text'} thousandSeparator={true} />
+                                S/.<NumberFormat value={funFomratoDecimal((rebateValorizado/100), 2)} displayType={'text'} thousandSeparator={true} />
                             </span>
                         </Col>
                         <Col xl={16} md={16} sm={16} xs={24}>
