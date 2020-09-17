@@ -50,7 +50,8 @@ class Slide extends React.Component {
         catcolor,
         catimagenfondoseleccionado,
         index,
-        caticonohover
+        caticonohover,
+        cantidadPromociones
        } = this.props.slide
     const current = this.props.current
     const seleccionoPromocion  = this.props.seleccionoPromocion
@@ -90,6 +91,7 @@ class Slide extends React.Component {
                 colorhover    = {catcolorhover}
                 catimagenfondoseleccionado = {catimagenfondoseleccionado}
                 caticonohover = {caticonohover}
+                cantidadPromociones = {cantidadPromociones}
             />
         </div>
       </li>

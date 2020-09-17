@@ -37,7 +37,7 @@ const Titulo = (props) => {
                             onClick={() => {descargarPromociones()}}
                             
                         >
-                            <span>Descargar</span> <img alt="" src={require("assets/images/iconoDescargar.png")} style={{marginLeft:'10px'}} width="28px" height="26px"/>
+                            <span>Descargar</span> <img alt="" src={require("assets/images/iconoDescargar.png")} style={{marginLeft:'10px'}} width="20px" height="20px"/>
                         </button>
                         :null
                     }

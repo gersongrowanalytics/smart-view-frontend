@@ -5,7 +5,7 @@ import {Col, Row} from "antd";
 import { useSelector} from "react-redux";
 
 const ImagenHover = (props) => {
-    const {seleccionado, nombre, icono, iconoSeleccionado, fondo, colorhover, color, catimagenfondoseleccionado, caticonohover} = props
+    const {seleccionado, nombre, icono, iconoSeleccionado, fondo, colorhover, color, catimagenfondoseleccionado, caticonohover, cantidadPromociones} = props
     const {seleccionoPromocion} = useSelector(({promociones}) => promociones);
 
     return (
@@ -126,7 +126,7 @@ const ImagenHover = (props) => {
                             <span style={{fontWeight:'500'}} id="nombreCategoriaHover">
                                 {nombre}<br/>
                             </span>
-                            <span id="textoPromocionHover">Promoción: 5</span>
+                            <span id="textoPromocionHover">Promoción: {cantidadPromociones}</span>
                         </h2>
                         
                         <span style={{color:'white'}} id="saberMasHover">

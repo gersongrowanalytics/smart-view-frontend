@@ -67,8 +67,8 @@
     font-family: Roboto;
     font-style: normal;
     font-weight: bold;
-    font-size: 20px;
-    line-height: 30px;
+    font-size: 18px;
+    line-height: 21px;
     color: white;
 }
 
@@ -116,8 +116,8 @@
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
-    font-size: 20px;
-    line-height: 23px;
+    font-size: 18px;
+    line-height: 21px;
 }
 
 #saberMasHover{
@@ -132,7 +132,7 @@
     width: 181px;
     height: 40px;
     border-radius: 21px;
-    padding-top: 5px;
+    padding-top: 10px;
     margin-left: 110px;
 }
 
