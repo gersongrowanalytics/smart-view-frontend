@@ -9,7 +9,8 @@ import {
     SELECCIONAR_VISTA_PROMOCION,
     REINICIAR_PROMOCIONES,
     DESELECCIONAR_PROMOCION,
-    DESCARGAR_INFORMACION_PROMOCIONES
+    OBTENER_PROMOCIONES_EXCEL,
+    MOSTRAR_MODAL_INFORMATIVO_PROMOCIONES
 } from "constants/SistemaTypes";
 
 const INIT_STATE = {
@@ -20,7 +21,9 @@ const INIT_STATE = {
     colorSeleciconadoPromo      : 'transparent',
     vistaPromocionSeleccionado  : false,
     deseleccionarPromocion      : false,
-    fechaActualizacionPromocion : ""
+    fechaActualizacionPromocion : "",
+    promocionesExcel            : [],
+    mostrarModalInformativo     : true
 };
 
 export default (state = INIT_STATE, action) => {
@@ -30,7 +33,8 @@ export default (state = INIT_STATE, action) => {
                 ...state,
                 categoriasPromociones: action.payload.datos,
                 fechaActualizacionPromocion: action.payload.fecha,
-                obtuvoPromociones : true
+                obtuvoPromociones : true,
+                canalesPromociones : []
             }
         }
         case OBTENER_PROMOCIONES_FAIL: {
@@ -93,9 +97,21 @@ export default (state = INIT_STATE, action) => {
                 vistaPromocionSeleccionado  : false
             }
         }
+        case OBTENER_PROMOCIONES_EXCEL: {
+            return {
+                ...state,
+                promocionesExcel : action.payload
+            }
+        }
+        case MOSTRAR_MODAL_INFORMATIVO_PROMOCIONES: {
+            return {
+                ...state,
+                mostrarModalInformativo : action.payload
+            }
+        }
         default:{
             return state;
         }
     }
-  }
+}
   

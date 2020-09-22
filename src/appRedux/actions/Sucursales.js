@@ -38,12 +38,18 @@ export const obtenerSucursalesReducer = () =>async (dispatch, getState) => {
         if(data.respuesta == true){
             dispatch({
                 type: OBTENER_SUCURSALES_USUARIO_EXITO,
-                payload: data.datos
+                payload: {
+                  datos : data.datos,
+                  zonas : data.zonas
+                }
             })
         }else{
             dispatch({
                 type: OBTENER_SUCURSALES_USUARIO_FAIL,
-                payload: data.datos
+                payload: {
+                  datos : data.datos,
+                  zonas : data.zonas
+                }
             })
         }
       }

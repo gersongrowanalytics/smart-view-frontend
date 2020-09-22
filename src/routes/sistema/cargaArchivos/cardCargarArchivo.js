@@ -199,7 +199,7 @@ class CardCargarArchivo extends Component {
                                             
                                             <Col xl={2} md={2} style={{marginLeft:'10px', }}>
                                                 <Button
-                                                    style={{background:'#F93258', border:'none', marginTop:'10px',}}
+                                                    style={{background:'#52B893', border:'none', marginTop:'10px',}}
                                                     shape="circle" 
                                                     icon={<PlusOutlined style={{"color" : 'white'}} />} 
                                                     onClick={this.seleccionarFile}
@@ -212,7 +212,7 @@ class CardCargarArchivo extends Component {
                                         </Row>
                                         :<div>
                                             <Button
-                                                style={{background:'#F93258', border:'none', marginTop:'10px', marginRight:'5px'}}
+                                                style={{background:'#52B893', border:'none', marginTop:'10px', marginRight:'5px'}}
                                                 shape="circle" 
                                                 icon={<PlusOutlined style={{"color" : 'white'}} />} 
                                                 onClick={this.seleccionarFile}

@@ -11,10 +11,11 @@ import {
     SELECCIONAR_VISTA_PROMOCION,
     REINICIAR_PROMOCIONES,
     DESELECCIONAR_PROMOCION,
-    DESCARGAR_INFORMACION_PROMOCIONES
-} from "constants/SistemaTypes";
-import config from 'config'
-import * as FileSaver from 'file-saver';
+    OBTENER_PROMOCIONES_EXCEL,
+    MOSTRAR_MODAL_INFORMATIVO_PROMOCIONES
+  } from "constants/SistemaTypes";
+  import config from 'config'
+  import * as FileSaver from 'file-saver';
 import * as XLSX from 'xlsx';
 
 export const reiniciarPromocionesReducer = () => {
@@ -169,7 +170,7 @@ export const editarPromocionReducer = (posicionCanal, posicionPromocion) => asyn
     dispatch({
         type: OBTENER_CANALES_DE_PROMOCIONES_EXITO,
         payload: canalesPromociones
-    })    
+    })
 }
 
 export const aceptarEdicionPromocionReducer = (posicionCanal, posicionPromocion, scaid, cspid, valorizado, planchas) => async (dispatch, getState) => {
@@ -244,6 +245,7 @@ export const deseleccionarPromocionReducer = (accion) => {
 
 export const descargarInformacionPromocionesReducer = () => async (dispatch, getState) => {
 
+    // alert('descargarinfo')
     const {
         diaFiltroSelec,
         mesFiltroSelec,
@@ -283,6 +285,10 @@ export const descargarInformacionPromocionesReducer = () => async (dispatch, get
       if(estadoRequest === true){
         if(data.respuesta === true){
             objetoArray = data.datos
+            dispatch({
+              type: OBTENER_PROMOCIONES_EXCEL,
+              payload: objetoArray
+            })
         }else{
             
         }
@@ -296,14 +302,21 @@ export const descargarInformacionPromocionesReducer = () => async (dispatch, get
     console.log(objetoArray)
 
     // for(let contador = 0; contador < objetoArray.length; contador++ ){
-        const fileType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
-        const fileExtension = '.xlsx';
+        // const fileType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
+        // const fileExtension = '.xlsx';
 
-        const ws = XLSX.utils.json_to_sheet(objetoArray);
-        const wb = { Sheets: { 'data': ws }, SheetNames: ['data'] };
-        const excelBuffer = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
-        const data = new Blob([excelBuffer], {type: fileType});
-        FileSaver.saveAs(data, 'PROMOCIONES-1'+ fileExtension);
+        // const ws = XLSX.utils.json_to_sheet(objetoArray);
+        // const wb = { Sheets: { 'data': ws }, SheetNames: ['data'] };
+        // const excelBuffer = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
+        // const data = new Blob([excelBuffer], {type: fileType});
+        // FileSaver.saveAs(data, 'PROMOCIONES-1'+ fileExtension);
     // }
 
+}
+
+export const abrirCerrarModalInformativoPromociones = (accion) => {
+  return {
+      type: MOSTRAR_MODAL_INFORMATIVO_PROMOCIONES,
+      payload: accion
+  }
 }

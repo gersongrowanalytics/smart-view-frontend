@@ -1,0 +1,178 @@
+  #contMenuDesplegableGrande {
+    width: auto;
+    /* position: relative; */
+    display: inline-block;
+  }
+  
+  nav {
+    /* position: relative; */
+    /* width: 980px;
+    height: 50px; */
+    /* margin: 0 auto; */
+    /* background: #263c53; */
+  }
+  
+  header, nav { 
+    /* display: block; */
+  }
+  
+  nav ul#menu {
+    /* display: block;
+    margin: 0;
+    padding: 0;
+    list-style: 0; */
+  } 
+  
+  nav ul#menu li {
+    /* position: relative; */
+    display: inline-block;
+  }
+  
+  nav ul#menu li a {
+    background-color: transparent;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 14px;
+    line-height: 19px;
+    color: #4D4D4D;
+    padding-bottom: 5px;
+    border-top: 0px solid black;
+    border-left: 0px solid black;
+    border-right: 0px solid black;
+    border-bottom: 0px solid black;
+    text-align: center;
+    width: 100%;
+  }
+
+  
+  
+  nav ul#menu li a:hover, nav ul#menu li:hover > a {
+    /* background: #333; */
+  }
+  
+  nav ul#menu li:hover > #mega {
+    display: block;
+  }
+  
+  #campoDiferencia{
+    height: 30px;
+    background: transparent;
+  }
+
+  #mega {
+        /* margin-top: 25px; */
+        /* position: absolute; */
+        /* top: 100%; */
+        /* left: 0; */
+        /* width: 100%; */
+        /* height: auto; */
+        
+        
+        display: none; 
+        /* ESTOOOOOOOOOOOOOOOOOOOOOOOOOO */
+        margin-left: -280px;
+  }
+
+  #itemsMenuDesplegable{
+    background: #FFFFFF;
+    box-shadow: 9px 4px 13px rgba(0, 0, 0, 0.25);
+    padding: 20px 30px;
+    height: auto;
+    width: 100%;
+    position: absolute;
+    text-align-last: left;
+
+  }
+  
+  ul#menu ul {
+    float: left;
+    width: auto;
+    margin: 0 50px 15px 100px;
+    padding: 0;
+    list-style: none;
+  }
+  
+  ul#menu ul li {
+    display: block;
+  }
+  
+  ul#menu ul li a {
+    float: left;
+    display: block;
+    width: 100%;
+    height: auto;
+    /* line-height: 1.3em; */
+    color: #4D4D4D;
+    text-decoration: none;
+    padding: 6px 0;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+  }
+  
+  ul#menu ul li:first-child a {
+    /* font-size: 1.2em; */
+    color: #4D4D4D;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 19px;
+  }
+  
+
+  ul#menu ul li#itemZonaSeleccionado a{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    color: #3946AB;
+  }
+
+  ul#menu ul li#itemZona a:hover {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    color: #3946AB;
+  }
+  
+  ul#menu ul li:first-child a:hover {
+    color: #4D4D4D;
+  }
+  
+  /* clearfix */
+  /* nav ul:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+  } */
+  
+  nav ul {
+    display: inline-block;
+  } 
+  
+  html[xmlns] nav ul {
+    display: block;
+  }
+   
+  * html nav ul {
+    height: 1%;
+  }
+  
+  #content {
+    padding: 30px 0;
+  }
+
+  #fondomenudesplegable{
+    float: right;
+    margin-right: 100px;
+  }

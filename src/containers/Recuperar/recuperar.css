@@ -34,18 +34,20 @@
     position: absolute;
     left: 59px;
     top: 50px;
+    width: 146px;
+    height: 137px;
 }
 
 .tituloIniciarSesion{
     position: absolute;
     left: 59px;
-    top: 160px;
+    top: 215px;
     font-family: Roboto;
     font-style: normal;
     font-weight: 900;
-    line-height: 29px;
-    font-size: 31px;
-    color: #F93258;
+    line-height: 23px;
+    font-size: 20px;
+    color: #3946AB;
 }
 
 #textoInputUsuario{
@@ -62,7 +64,7 @@
 #txtInputCorreo{
     position: absolute;
     left: 59px;
-    top: 310px;
+    top: 335px;
     font-size: 15px;
     align-items: center;
     color: black;
@@ -75,7 +77,7 @@
 #regresarLogin{
     position: absolute;
     left: 59px;
-    top: 400px;
+    top: 430px;
     font-size: 15px;
     align-items: center;
     color: black;
@@ -83,7 +85,7 @@
     font-style: normal;
     font-weight: normal;
     line-height: 16px;
-    color: #F93258;
+    color: #3946AB;
     cursor: pointer;
 }
 
@@ -116,7 +118,7 @@
     width: 290px;
     height: 49px;
     left: 59px;
-    top: 335px;
+    top: 355px;
 
     border: 0.1px solid black;
     box-sizing: border-box;
@@ -126,27 +128,29 @@
 #textoContrasena{
     position: absolute;
     left: 59px;
-    top: 255px;
-    font-size: 13px;
+    top: 273px;
+    font-size: 12px;
     color: black;
     float: left;
     font-family: Roboto;
     font-style: normal;
     font-weight: bold;
-    line-height: 18px;
+    line-height: 14px;
 }
+/* 263 */
 
+/* 255 270 */
 #textoContrasenaDos{
     position: absolute;
     left: 59px;
-    top: 270px;
-    font-size: 13px;
+    top: 288px;
+    font-size: 12px;
     color: black;
     float: left;
     font-family: Roboto;
     font-style: normal;
     font-weight: bold;
-    line-height: 18px;
+    line-height: 14px;
 }
 
 
@@ -192,7 +196,7 @@
     display: flex;
     align-items: center;
 
-    color: #F93258;
+    color: #3946AB;
 }
 
 .btnEnviar{
@@ -203,8 +207,8 @@
     width: 290px;
     height: 49px;
     left: 59px;
-    top: 425px;
-    background: #F93258;
+    top: 485px;
+    background: #3946AB;
     border-radius: 10px;
     border: none;
 }

@@ -2,13 +2,19 @@ import React from 'react'
 import Auxiliary from "util/Auxiliary"
 import {Col, Row} from "antd"
 import Slide from './carousel'
-import Titulo from 'components/Sistema/Titulo'
+import Titulo from 'components/Sistema/Titulo/Titulo'
 import CanalPromociones from 'components/Sistema/CanalPromociones'
 import {useDispatch, useSelector} from "react-redux";
-import {seleccionarCategoriaReducer, seleccionarPromocionReducer, seleccionarVistaPromocionReducer, reiniciarPromocionesReducer, deseleccionarPromocionReducer} from 'appRedux/actions/Promociones'
+import {
+    seleccionarCategoriaReducer, 
+    seleccionarPromocionReducer, 
+    seleccionarVistaPromocionReducer, 
+    reiniciarPromocionesReducer, 
+    deseleccionarPromocionReducer} from 'appRedux/actions/Promociones'
 import {seleccionarCargaArchivosReducer} from "appRedux/actions/CargaArchivos";
 import {seleccionarTutorialReducer} from "appRedux/actions/Tutorial";
 import {seleccionarVistaVentasReducer} from 'appRedux/actions/VentasTpr'
+import ModalInformativo from './ModalInformativo'
 
 const Promociones = () => {
     const dispatch = useDispatch();
@@ -46,9 +52,7 @@ const Promociones = () => {
 
     return (
         <Auxiliary>
-            {/* <div style={{background:'transparent', width:'100%', marginBottom:'20px', height:'462px'}} className="gx-text-center" >
-                <img alt="" src={require("assets/images/bannerPromociones.png")} width="100%" height="100%"/>
-            </div> */}
+             <ModalInformativo />
             <Row>
                 <Col xl={24} md={24} sm={24} xs={24}>
                 </Col>
@@ -69,22 +73,6 @@ const Promociones = () => {
                     seleccionoPromocion     = {seleccionoPromocion}
                     deseleccionarCategoria  = {deseleccionarCategoria}
                 />
-                {/* <div style={{marginBottom:'160px',}} /> */}
-                {/* {
-                    categorias.map((item, posicion) => {
-                        return(
-                            <Col xl={8} md={8} sm={12} xs={24} key={posicion} onClick={()=>this.seleccionarCategoria(item.scaid, posicion)}>
-                                <ImagenHover
-                                    seleccionado  = {item.seleccionado}
-                                    nombre        = {item.catnombre}
-                                    fondo         = {item.catimagenfondo}
-                                    icono         = {item.caticono}
-                                    colorhover    = {item.catcolorhover}
-                                />
-                            </Col>
-                        )
-                    })
-                } */}
                 <Col xl={24} md={24} sm={24} xs={24} />
                 {
                     canalesPromociones.map((item, posicion) => {

@@ -5,7 +5,7 @@ import CustomScrollbars from "util/CustomScrollbars";
 import languageData from "./languageData";
 import {switchLanguage, toggleCollapsedSideNav} from "../../appRedux/actions/Setting";
 import {useDispatch, useSelector} from "react-redux";
-import Filtros from './filtros'
+import Filtros from './Filtro/filtros'
 import { obtenerSucursalesReducer, filtroSeleccionarSucursalUsuario } from "appRedux/actions/Sucursales"
 import {
   obtenerFechasReducer,
@@ -14,14 +14,14 @@ import {
   filtroSeleccionarAno
 } from "appRedux/actions/Fechas"
 import {obtenerVentasTprReducer} from 'appRedux/actions/VentasTpr'
-import {obtenerPromocionesReducer} from 'appRedux/actions/Promociones'
+import {obtenerPromocionesReducer, descargarInformacionPromocionesReducer} from 'appRedux/actions/Promociones'
 import './Topbar.css'
 
 const {Header} = Layout;
 
 const Topbar = () => {
   
-  const { sucursalesUsuario, obtuvoSucursalesUsuario } = useSelector(({sucursales}) => sucursales)
+  const { sucursalesUsuario, obtuvoSucursalesUsuario, zonas } = useSelector(({sucursales}) => sucursales)
   const { fechasFiltro, obtuvoFechasFiltro } = useSelector(({fechas}) => fechas)
   const { obtuvoVentasTpr}= useSelector(({ventasTpr}) => ventasTpr);
   const { obtuvoPromociones}= useSelector(({promociones}) => promociones);
@@ -41,6 +41,7 @@ const Topbar = () => {
 
       if(obtuvoPromociones == false){
         dispatch(obtenerPromocionesReducer())
+        dispatch(descargarInformacionPromocionesReducer())
       }
     }
   }
@@ -91,6 +92,7 @@ const Topbar = () => {
           <Filtros
             sucursales          = {sucursalesUsuario}
             fechas              = {fechasFiltro}
+            zonas               = {zonas}
             seleccionarSucursal = {(valor) => dispatch(filtroSeleccionarSucursalUsuario(valor))}
             seleccionarDia      = {(valor) => dispatch(filtroSeleccionarDia(valor))}
             seleccionarMes      = {(valor) => dispatch(filtroSeleccionarMes(valor))}

@@ -1,7 +1,7 @@
 .contenedorFormularioLogin{
     position: relative;
     width: 0%;
-    background: #F93258;
+    background: #3946AB;
     float:left;
     height  : 100%;
     text-align: center;
@@ -20,7 +20,7 @@
 .contenedorFormularioLoginActivado{
     position: relative;
     width: 30%;
-    background: #F93258;
+    background: #3946AB;
     float:left;
     height  : 100%;
     text-align: center;
@@ -206,7 +206,7 @@
 }
 
 .btnIniciar{
-    color: #F93258;
+    color: #3946AB;
     cursor: pointer;
     position: absolute;
     width: 290px;

@@ -113,7 +113,7 @@
     --slide-margin: 0vmin;
     
     // height: var(--slide-size);
-    height: 230px;
+    height: 260px;
     // margin: 0 ;
     position: relative;
     width: 100%;
@@ -529,7 +529,7 @@
   left: -50px;
   width: 73px;
   height: 250px;
-  top: 0px;
+  top: 7px;
   // writing-mode: vertical-lr;
   // text-orientation: upright;
   text-align: center;
@@ -573,4 +573,13 @@
   line-height: 12px;
   color: #A8A6A6;
   margin-bottom: 7px;
+}
+
+#txt_totalPlanchas{
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 11px;
+  line-height: 13px;
+  color: #A8A6A6;
 }

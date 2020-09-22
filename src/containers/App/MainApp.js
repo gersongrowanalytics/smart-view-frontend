@@ -117,7 +117,7 @@ const MainApp = () => {
       ?<div style={{width:'100%', height:'100%'}}>
         <div style={{float:'right', marginRight:'10px'}}>
             <Button
-              style={{background:'#F93258', border:'none', marginTop:'10px', marginRight:'5px'}}
+              style={{background:'#30BEEB', border:'none', marginTop:'10px', marginRight:'5px'}}
               shape="circle" 
               icon={<CloseOutlined style={{"color" : 'white'}} />} 
               onClick={() => dispatch(seleccionarVideoTutorialReducer(false))}

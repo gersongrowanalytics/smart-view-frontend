@@ -1,7 +1,7 @@
 import React from 'react'
 import {Col, Row} from "antd"
 import Auxiliary from "util/Auxiliary"
-import Titulo from 'components/Sistema/Titulo'
+import Titulo from 'components/Sistema/Titulo/Titulo'
 import CardAvance from 'components/Sistema/CardAvance'
 import CardRebate from 'components/Sistema/CardRebate'
 import {useSelector, useDispatch} from "react-redux"
@@ -10,7 +10,7 @@ import {seleccionarCargaArchivosReducer} from "appRedux/actions/CargaArchivos"
 import {seleccionarTutorialReducer} from "appRedux/actions/Tutorial"
 import {seleccionarVistaPromocionReducer} from 'appRedux/actions/Promociones'
 import {seleccionarVistaVentasReducer} from 'appRedux/actions/VentasTpr'
-import CardImagen from 'components/Sistema/CardImagen'
+import CardImagen from 'components/Sistema/CardImagen/CardImagen'
 
 const SellIn = () => {
     const dispatch = useDispatch();
@@ -103,6 +103,7 @@ const SellIn = () => {
                                                     tprcolortooltip     = {tipoPromocion.tprcolortooltip}
                                                     scaiconocategoria   = {categoria.scaiconocategoria}
                                                     catimagenfondoopaco = {categoria.catimagenfondoopaco}
+                                                    tipoPromocion       = {tipoPromocion.tprnombre}
                                                 />
                                             </div>
                                             

@@ -1,0 +1,203 @@
+.tooltip {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    margin-left: 10px;
+}
+
+#tooltiptext {
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.2));
+    width: auto;
+    height: 100%;
+    background-color: #FFFFFF;
+    color: #4D4D4D;
+    position: absolute;
+    align-items: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 11px;
+    line-height: 13px;
+    padding-top: 12px;
+    padding-left: 14px;
+    padding-right: 14px;
+}
+
+#tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #FFFFFF transparent transparent transparent;
+}
+
+#tooltiptextMenor {
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.2));
+    width: auto;
+    height: 100%;
+    background-color: #FFFFFF;
+    color: #4D4D4D;
+    position: absolute;
+    align-items: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 11px;
+    line-height: 13px;
+    padding-top: 12px;
+    padding-left: 14px;
+    padding-right: 14px;
+}
+
+#tooltiptextMenor::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #FFFFFF transparent transparent #FFFFFF;
+}
+
+
+/*  */
+
+.tooltipDerecha {
+    /* padding-right: -52px; */
+    margin-right: 10px;
+    position: relative;
+    width: 100%;
+    height: 40px;
+    /* background: rosybrown; */
+    float: right;
+}
+
+#tooltiptextDerecha {
+    /* width: auto; */
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.2));
+    height: 100%;
+    /* background-color: #FCDE30; */
+    color: #4D4D4D;
+    position: absolute;
+    align-items: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 11px;
+    line-height: 13px;
+    padding-top: 12px;
+    padding-left: 14px;
+    padding-right: 14px;
+    right: 0px;
+}
+
+#tooltiptextDerecha::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #FCDE30 transparent transparent transparent;
+}
+
+
+#tooltiptextDerechaMenor {
+    /* width: auto; */
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.2));
+    height: 100%;
+    /* background-color: #FCDE30; */
+    color: #4D4D4D;
+    position: absolute;
+    align-items: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 11px;
+    line-height: 13px;
+    padding-top: 12px;
+    padding-left: 14px;
+    padding-right: 14px;
+    right: 0px;
+}
+
+#tooltiptextDerechaMenor::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    /* left: 92%; */
+    right: 0px;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #FCDE30 #FCDE30 transparent transparent;
+}
+
+
+/*  */
+
+#tooltiptextDerechaSellOut {
+    /* width: auto; */
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.2));
+    height: 100%;
+    /* background-color: #FCDE30; */
+    color: #4D4D4D;
+    position: absolute;
+    align-items: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 11px;
+    line-height: 13px;
+    padding-top: 12px;
+    padding-left: 14px;
+    padding-right: 14px;
+    right: 0px;
+}
+
+#tooltiptextDerechaSellOut::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #79E2C1 transparent transparent transparent;
+}
+
+
+#tooltiptextDerechaSellOutMenor {
+    /* width: auto; */
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.2));
+    height: 100%;
+    /* background-color: #FCDE30; */
+    color: #4D4D4D;
+    position: absolute;
+    align-items: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 11px;
+    line-height: 13px;
+    padding-top: 12px;
+    padding-left: 14px;
+    padding-right: 14px;
+    right: 0px;
+}
+
+#tooltiptextDerechaSellOutMenor::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    /* left: 90%; */
+    right: 0px;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #79E2C1 #79E2C1 transparent transparent;
+}

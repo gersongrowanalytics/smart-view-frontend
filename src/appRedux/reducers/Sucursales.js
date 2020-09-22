@@ -8,7 +8,8 @@ import {
 const INIT_STATE = {
     sucursalesUsuario       : [],
     obtuvoSucursalesUsuario : false,
-    idSucursalUsuarioSelec  : 0
+    idSucursalUsuarioSelec  : 0,
+    zonas                   : []
 };
 
 export default (state = INIT_STATE, action) => {
@@ -16,15 +17,17 @@ export default (state = INIT_STATE, action) => {
       case OBTENER_SUCURSALES_USUARIO_EXITO: {
           return {
               ...state,
-              sucursalesUsuario: action.payload,
+              sucursalesUsuario       : action.payload.datos,
               obtuvoSucursalesUsuario : true,
-              idSucursalUsuarioSelec : action.payload[0]['sucid']
+              idSucursalUsuarioSelec  : action.payload.datos[0]['sucid'],
+              zonas                   : action.payload.zonas
           }
       }
     case OBTENER_SUCURSALES_USUARIO_FAIL: {
         return {
             ...state,
-            sucursalesUsuario: action.payload,
+            sucursalesUsuario       : action.payload.datos,
+            zonas                   : action.payload.zonas,
             obtuvoSucursalesUsuario : true
         }
     }

@@ -39,7 +39,7 @@ const Tutorial = () => {
         <Auxiliary>
             <Row style={{  height:'100%' }}>
                 <Col xl={24} md={24} style={{marginTop:'100px', }}>
-                    <img src={require('assets/images/logoLeadSmartView.png')} alt=''/>
+                    <img src={require('assets/images/logoLeadSmartView.png')} width="213px" height="90px" alt=''/>
                 </Col>
                 <Col xl={10} md={10} >
                     <span style={{ color:'#4D4D4D'}} id="txtTutorial">

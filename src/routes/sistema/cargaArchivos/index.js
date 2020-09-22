@@ -101,6 +101,12 @@ const CargaArchivosPromociones = () => {
         url    = {'cargarArchivo/productos'}
       />
       </Col>
+      <Col xl={6} md={6}>
+      <CardCargarArchivo
+        titulo = {'Actualizar Clientes'}
+        url    = {'cargarArchivo/clientes/acutalizarzonas'}
+      />
+      </Col>
     </Row>
   );
 };

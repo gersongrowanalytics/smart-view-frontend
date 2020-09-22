@@ -1,7 +1,6 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './CategoriasCarousel.scss'
-import {Col, Row, Card, Button, InputNumber} from "antd";
-import CardImagen from 'components/Sistema/CardImagen'
+import CardImagen from 'components/Sistema/CardImagen/CardImagen'
 
 // =========================
 // Slide

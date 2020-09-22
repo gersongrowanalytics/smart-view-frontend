@@ -91,7 +91,8 @@ class Slide extends React.Component {
       cspplanchas,
       cspvalorizado,
       cspid,
-      tprnombre
+      tprnombre,
+      cspcantidadplancha
     } = this.props.slide
 
     const posicionPromocion              = this.props.posicion
@@ -118,7 +119,7 @@ class Slide extends React.Component {
             <Card style={{
               borderRadius:'20px',
               width:'385px',
-              height: '250px',
+              height: '270px',
               border:'1px solid '+colorSeleciconadoPromo, 
             }}>
               {
@@ -130,7 +131,7 @@ class Slide extends React.Component {
                 :null
               }
                 <Row>
-                    <Col xl={24} md={24} sm={24} xs={24} className="gx-text-center" style={{marginBottom:'20px', marginTop:'0px'}} >
+                    <Col xl={24} md={24} sm={24} xs={24} className="gx-text-center" style={{marginBottom:'20px', marginTop:'-5px'}} >
                         <span 
                           id="tituloCombos"
                           style={{
@@ -138,6 +139,10 @@ class Slide extends React.Component {
                           }}>
                             {funFomratoDecimal(cspcantidadcombo, 0)} Combos
                               <br/>
+                        </span>
+                        <span id="txt_totalPlanchas" style={{color: colorSeleciconadoPromo+"B3", }}>
+                          Total de planchas: {funFomratoDecimal(cspcantidadplancha, 0)}
+                          <br/>
                         </span>
                         <span 
                           id="tituloVenta">
@@ -424,7 +429,9 @@ class PromocionesCarousel extends React.Component {
           
           {slides.map((slide, posicion) => {
             return (
-              <div
+              slide.cspcantidadcombo == 0
+              ?null
+              :<div
                 // onClick={() => seleccionarCategoria(slide.scaid, posicion)}
                 // style={{marginTop:'20px'}}
                 onMouseEnter={() => {
