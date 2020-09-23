@@ -10,7 +10,8 @@ import {
     REINICIAR_PROMOCIONES,
     DESELECCIONAR_PROMOCION,
     OBTENER_PROMOCIONES_EXCEL,
-    MOSTRAR_MODAL_INFORMATIVO_PROMOCIONES
+    MOSTRAR_MODAL_INFORMATIVO_PROMOCIONES,
+    ACTUALIZAR_CANALES_DE_PROMOCIONES
 } from "constants/SistemaTypes";
 
 const INIT_STATE = {
@@ -23,7 +24,8 @@ const INIT_STATE = {
     deseleccionarPromocion      : false,
     fechaActualizacionPromocion : "",
     promocionesExcel            : [],
-    mostrarModalInformativo     : true
+    mostrarModalInformativo     : true,
+    scaidSeleccionado           : 0
 };
 
 export default (state = INIT_STATE, action) => {
@@ -51,6 +53,13 @@ export default (state = INIT_STATE, action) => {
             }
         }
         case OBTENER_CANALES_DE_PROMOCIONES_EXITO: {
+            return {
+                ...state,
+                canalesPromociones : action.payload.canalesPromociones,
+                scaidSeleccionado  : action.payload.scaid
+            }
+        }
+        case ACTUALIZAR_CANALES_DE_PROMOCIONES: {
             return {
                 ...state,
                 canalesPromociones : action.payload,

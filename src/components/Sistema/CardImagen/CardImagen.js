@@ -17,20 +17,20 @@ const CardImagen = (props) => {
         <div className={`gx-product-item gx-product-vertical'`} style={{background:'transparent'}} id="contenedorCardImagen">
             {/* <div className="gx-product-image"> */}
             <div className="" style={{background:'#E8E8E8'}}>
-                <div className="gx-grid-thumb-equal" style={{height:'250px'}}>
+                <div className="gx-grid-thumb-equal" style={{height:'270px'}}>
                     <span className="gx-link gx-grid-thumb-cover" >
                         <div style={{width:'100%', height:'100%', backgroundImage: "url("+catimagenfondoopaco+")", backgroundSize: '100% 100%', backgroundRepeat:'no-repeat' }} >
-                            <Row style={{   height:'100%',  background:'rgba(229,230,230,0.6)', paddingTop:'10px'}}>
+                            <Row style={{   height:'100%',  background:'rgba(229,230,230,0.6)', paddingTop:'1px'}}>
                                 <Col md={24} xl={24} sm={24} xs={24}>
                                     <div className="gx-text-center" >
-                                        <div className="gx-flex-row gx-justify-content-center gx-mb-3 gx-mb-sm-1">
+                                        <div className="gx-flex-row gx-justify-content-center gx-mb-1 gx-mb-sm-1">
                                             <span
                                                 className={` gx-text-red gx-flex-row gx-justify-content-center gx-align-items-center`}
                                             >
                                                 <img alt="Remy Sharp" src={scaiconocategoria}/> 
                                             </span>
                                         </div>
-                                        <span className="nombreCategoriaCard">{nombreCategoria}</span>
+                                        <div className="nombreCategoriaCard">{nombreCategoria}</div>
                                         <p className="txtCumplimiento">
                                             Cumplimiento
                                             <br/>
@@ -46,8 +46,8 @@ const CardImagen = (props) => {
             </div>
 
             {/* <div className="" style={{background:'', paddingLeft:'5px', paddingRight:'5px' }}> */}
-            <Row style={{ background:'#E8E8E8'}} id="contenedorTooltips">
-                <Col xl={24} sm={24} xs={24} md={24} style={{background:''}}>
+            <Row id="contenedorTooltips">
+                <Col xl={24} sm={24} xs={24} md={24} style={{marginBottom:'5px'}}>
                     <div className="gx-text-left">
                         <TooltipCardImagen 
                             esIzquierda     = {true}
@@ -72,10 +72,10 @@ const CardImagen = (props) => {
                 {/* <div style={{height:'40px'}}>d</div> */}
             </Row>
             {/* </div> */}
-            <div className="gx-line-indi-info" style={{background:'#E8E8E8',}}> 
+            <div className="gx-line-indi-info" style={{background:'#E8E8E8', paddingTop:'5px'}}> 
                 {/* real=30; togo=70 --  70*100/30 */}
                 <br/>
-                <div className={`gx-line-indi`} style={{background:'#F2F2F2', width: '100%', height: '18px', margin: '10px', borderRadius: 50}}>
+                <div className={`gx-line-indi`} style={{background:'#F2F2F2', width: '100%', height: '15px', margin: '10px', borderRadius: 50}}>
                     <div
                         className={``}
                         style={
@@ -84,13 +84,13 @@ const CardImagen = (props) => {
                             ?{
                                 background: 'linear-gradient('+tprcolorbarra+')',
                                 width: '100%',
-                                height: 18,
+                                height: '15px',
                                 borderRadius: 50
                             }
                             :{
                                 background: 'linear-gradient('+tprcolorbarra+')',
                                 width: ((100*realCategoria)/objetivoCategoria)+'%',
-                                height: 18,
+                                height: '15px',
                                 borderRadius: 50
                             }
                         }

@@ -12,11 +12,10 @@ import {
     REINICIAR_PROMOCIONES,
     DESELECCIONAR_PROMOCION,
     OBTENER_PROMOCIONES_EXCEL,
-    MOSTRAR_MODAL_INFORMATIVO_PROMOCIONES
+    MOSTRAR_MODAL_INFORMATIVO_PROMOCIONES,
+    ACTUALIZAR_CANALES_DE_PROMOCIONES
   } from "constants/SistemaTypes";
   import config from 'config'
-  import * as FileSaver from 'file-saver';
-import * as XLSX from 'xlsx';
 
 export const reiniciarPromocionesReducer = () => {
     return {
@@ -92,11 +91,15 @@ export const obtenerPromocionesReducer = () =>async (dispatch, getState) => {
     });
 }
 
-export const seleccionarCategoriaReducer = (scaid, posicion) => async (dispatch, getState) => {
-    dispatch({
+export const seleccionarCategoriaReducer = (scaid, limpiarCanales) => async (dispatch, getState) => {
+
+    if(limpiarCanales == true){
+      dispatch({
         type: OBTENER_CANALES_DE_PROMOCIONES_FAIL,
         payload: []
-    })
+      })
+    }
+
     let {categoriasPromociones, deseleccionarPromocion} = getState().promociones
 
     let colorSeleccionado = '';
@@ -145,7 +148,10 @@ export const seleccionarCategoriaReducer = (scaid, posicion) => async (dispatch,
             
             dispatch({
                 type: OBTENER_CANALES_DE_PROMOCIONES_EXITO,
-                payload: data.datos
+                payload: {
+                  canalesPromociones : data.datos,
+                  scaid              : scaid
+                }
             })
             
         }else{
@@ -168,19 +174,19 @@ export const editarPromocionReducer = (posicionCanal, posicionPromocion) => asyn
     let {canalesPromociones} = getState().promociones
     canalesPromociones[posicionCanal]['promociones'][posicionPromocion]['guardando'] = !canalesPromociones[posicionCanal]['promociones'][posicionPromocion]['guardando']
     dispatch({
-        type: OBTENER_CANALES_DE_PROMOCIONES_EXITO,
+        type: ACTUALIZAR_CANALES_DE_PROMOCIONES,
         payload: canalesPromociones
     })
 }
 
 export const aceptarEdicionPromocionReducer = (posicionCanal, posicionPromocion, scaid, cspid, valorizado, planchas) => async (dispatch, getState) => {
 
-    let {canalesPromociones} = getState().promociones
+    let {canalesPromociones, scaidSeleccionado} = getState().promociones
     canalesPromociones[posicionCanal]['promociones'][posicionPromocion]['guardando'] = false
-    dispatch({
-        type: OBTENER_CANALES_DE_PROMOCIONES_EXITO,
-        payload: canalesPromociones
-    })
+    // dispatch({
+    //     type: ACTUALIZAR_CANALES_DE_PROMOCIONES,
+    //     payload: canalesPromociones
+    // })
 
 
     await fetch(config.api+'promociones/editar',
@@ -209,7 +215,7 @@ export const aceptarEdicionPromocionReducer = (posicionCanal, posicionPromocion,
       if(estadoRequest === true){
         if(data.respuesta === true){
             
-            dispatch(seleccionarCategoriaReducer(scaid))
+            dispatch(seleccionarCategoriaReducer(scaidSeleccionado, false))
             message.success(data.mensaje) 
         }else{
             

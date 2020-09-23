@@ -50,12 +50,14 @@ class SidebarItem extends React.Component {
             menuItemGuiaGrow        : false,
             menuItemCargaArchivo    : false,
             menuItemUsuarios        : false,
+            menuItemRebate          : false,
 
             seleccionoVentas        : false,
             seleccionoPromociones   : false,
             seleccionoGuia          : false,
             seleccionoCarga         : false,
-            seleccionoUsuarios      : false
+            seleccionoUsuarios      : false,
+            seleccionoRebate        : false,
         })
 
         this.setState({

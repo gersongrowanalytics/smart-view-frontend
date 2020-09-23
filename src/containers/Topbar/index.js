@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import {Link} from "react-router-dom";
 import {Layout, Popover, Avatar} from "antd";
 import {userSignOut} from "appRedux/actions/Auth";
 import CustomScrollbars from "util/CustomScrollbars";
@@ -88,7 +89,16 @@ const Topbar = () => {
               dispatch(toggleCollapsedSideNav(!navCollapsed));
             }}
           />
-          <img alt='' src={require('assets/images/logoCompletoKim.png')} width='72px' height='66px' id="logoTopbar" />
+
+          <Link to="/sistema/ventas">
+            <img 
+              style   = {{cursor:'pointer'}}
+              alt     = '' src={require('assets/images/logoCompletoKim.png')} 
+              width   = '72px' 
+              height  = '66px' 
+              id      = "logoTopbar"
+            />
+          </Link>
           <Filtros
             sucursales          = {sucursalesUsuario}
             fechas              = {fechasFiltro}

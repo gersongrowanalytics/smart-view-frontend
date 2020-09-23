@@ -276,20 +276,19 @@ class Slider extends React.Component {
                 onDoubleClick = {() => deseleccionarCategoria()}
               >
                 <Slide
-                    key={posicion}
-                    posicion = {posicion}
-                    slide={slide}
-                    current={current}
-                    handleSlideClick={this.handleSlideClick}
-                    
-                    seleccionado  = {slide.seleccionado}
-                    nombre        = {slide.catnombre}
-                    fondo         = {slide.catimagenfondo}
-                    icono         = {slide.caticono}
-                    caticonoseleccionado = {slide.caticonoseleccionado}
-                    catcolor      = {slide.catcolor}
-                    colorhover    = {slide.catcolorhover}
-                    seleccionoPromocion = {seleccionoPromocion}
+                    key                        = {posicion}
+                    posicion                   = {posicion}
+                    slide                      = {slide}
+                    current                    = {current}
+                    handleSlideClick           = {this.handleSlideClick}
+                    seleccionado               = {slide.seleccionado}
+                    nombre                     = {slide.catnombre}
+                    fondo                      = {slide.catimagenfondo}
+                    icono                      = {slide.caticono}
+                    caticonoseleccionado       = {slide.caticonoseleccionado}
+                    catcolor                   = {slide.catcolor}
+                    colorhover                 = {slide.catcolorhover}
+                    seleccionoPromocion        = {seleccionoPromocion}
                     catimagenfondoseleccionado = {slide.catimagenfondoseleccionado}
                 />
               </div>

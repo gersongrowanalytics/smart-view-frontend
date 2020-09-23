@@ -38,7 +38,10 @@ const Titulo = (props) => {
                     }
                     {
                         tieneFecha == true
-                        ?<div id="contenedorActualizacion" className="gx-fs-md gx-ml-auto" style={tieneIcono==true?{marginRight:'-35px'}:{}}>
+                        ?<div 
+                            id="contenedorActualizacion" 
+                            className="gx-fs-md gx-ml-auto" 
+                            style={tieneIcono==true?{marginRight:'-57px'}:{}}>
                             <p className="ultimaActualizacion">Actualización {fechaActual}</p>
                         </div>
                         :null

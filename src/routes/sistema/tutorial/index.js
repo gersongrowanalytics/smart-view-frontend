@@ -47,7 +47,7 @@ const Tutorial = () => {
                     </span>
                 </Col>
                 <Col xl={14} md={14} />
-                <Col xl={10} md={10} style={{marginTop:'10px'}}>
+                <Col xl={10} md={10} >
                     <span 
                         id="playVideo"
                         style={{cursor:'pointer'}}

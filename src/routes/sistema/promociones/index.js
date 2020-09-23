@@ -25,7 +25,7 @@ const Promociones = () => {
 
     const seleccionarCategoria = async (scaid, posicion) =>  {
         await dispatch(seleccionarPromocionReducer(true))
-        await dispatch(seleccionarCategoriaReducer(scaid, posicion))
+        await dispatch(seleccionarCategoriaReducer(scaid, true))
     }
 
     const deseleccionarCategoria = async () => {

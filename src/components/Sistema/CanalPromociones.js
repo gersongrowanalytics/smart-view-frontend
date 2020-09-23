@@ -15,11 +15,11 @@ const CanalPromociones = (props) => {
     }
 
     const aceptarEdicionPromocion = async (posicionPromocion, scaid, cspid, valorizado, planchas) => {
-        console.log(posicionPromocion)
-        console.log(scaid)
-        console.log(cspid)
-        console.log(valorizado)
-        console.log(planchas)
+        // console.log(posicionPromocion)
+        // console.log(scaid)
+        // console.log(cspid)
+        // console.log(valorizado)
+        // console.log(planchas)
         dispatch(aceptarEdicionPromocionReducer(posicionCanal, posicionPromocion, scaid, cspid, valorizado, planchas))
     }
 

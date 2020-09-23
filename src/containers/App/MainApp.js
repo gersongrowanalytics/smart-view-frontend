@@ -124,7 +124,7 @@ const MainApp = () => {
             >
             </Button>
         </div>
-        <div style={{height:'90%'}}>
+        <div style={{height:'90%', paddingLeft:'20px', paddingRight:'20px'}}>
           {/* <iframe width="100%" height="100%" src="http://www.youtube.com/embed/XGSy3_Czz8k?autoplay=1"> */}
           <iframe width="100%" height="100%" src="http://www.youtube.com/embed/cFKxzXXZIRs?autoplay=1" frameBorder="0" allowFullScreen >
           {/* https://www.youtube.com/watch?v=cFKxzXXZIRs&t=2s */}

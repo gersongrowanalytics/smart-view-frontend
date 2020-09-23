@@ -111,7 +111,6 @@ class Slide extends React.Component {
       <li 
         ref={this.slide}
         className={classNames} 
-        // onClick={this.handleSlideClick}
         onMouseMove={this.handleMouseMove}
         onMouseLeave={this.handleMouseLeave}
       >
@@ -222,11 +221,6 @@ class Slide extends React.Component {
                       </div>
                     }
                   </p>
-                  {/* <InputNumber 
-                      style={{border:'none', borderBottom:'1px solid #000',   background: 'transparent', textAlign:'center'}}
-                      className="gx-mb-3" 
-                      size="small" 
-                      min={1} max={100000} defaultValue={0}/> */}
                 </Col>
                 <Col xl={2} md={2} sm={2} xs={2} />
                 <Col xl={11} md={11} sm={11} xs={11} className="gx-text-center">
@@ -274,12 +268,6 @@ class Slide extends React.Component {
                   </div>
                   :null
                 }
-
-                {/* <div style={{alignContent:'center', alignItems:'center', justifyItems:'center', }}>
-                    <div style={{ width:'100px', height:'100px', background:'blue',}} >
-                      <div style={{}} />
-                    </div>
-                  </div> */}
                 <div id="ultimaColumnaCarouselPromocion"></div>
             </Card> 
         </div>
