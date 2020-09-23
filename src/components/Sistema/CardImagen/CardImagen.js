@@ -23,13 +23,7 @@ const CardImagen = (props) => {
                             <Row style={{   height:'100%',  background:'rgba(229,230,230,0.6)', paddingTop:'1px'}}>
                                 <Col md={24} xl={24} sm={24} xs={24}>
                                     <div className="gx-text-center" >
-                                        <div className="gx-flex-row gx-justify-content-center gx-mb-1 gx-mb-sm-1">
-                                            <span
-                                                className={` gx-text-red gx-flex-row gx-justify-content-center gx-align-items-center`}
-                                            >
-                                                <img alt="Remy Sharp" src={scaiconocategoria} width="70px" height="70px"/> 
-                                            </span>
-                                        </div>
+                                        <img alt="Remy Sharp" src={scaiconocategoria} id="iconoCategoria"/> 
                                         <div className="nombreCategoriaCard">{nombreCategoria}</div>
                                         <p className="txtCumplimiento">
                                             Cumplimiento
@@ -72,7 +66,7 @@ const CardImagen = (props) => {
                 {/* <div style={{height:'40px'}}>d</div> */}
             </Row>
             {/* </div> */}
-            <div className="gx-line-indi-info" style={{background:'#E8E8E8', paddingTop:'25px'}}> 
+            <div className="gx-line-indi-info" style={{background:'#E8E8E8', paddingTop:'0px'}}> 
                 {/* real=30; togo=70 --  70*100/30 */}
                 <br/>
                 <div className={`gx-line-indi`} style={{background:'#F2F2F2', width: '100%', height: '15px', margin: '10px', borderRadius: 50}}>
