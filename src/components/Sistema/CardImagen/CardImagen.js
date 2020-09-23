@@ -17,7 +17,7 @@ const CardImagen = (props) => {
         <div className={`gx-product-item gx-product-vertical'`} style={{background:'transparent'}} id="contenedorCardImagen">
             {/* <div className="gx-product-image"> */}
             <div className="" style={{background:'#E8E8E8'}}>
-                <div className="gx-grid-thumb-equal" style={{height:'270px'}}>
+                <div className="gx-grid-thumb-equal" style={{height:'245px'}}>
                     <span className="gx-link gx-grid-thumb-cover" >
                         <div style={{width:'100%', height:'100%', backgroundImage: "url("+catimagenfondoopaco+")", backgroundSize: '100% 100%', backgroundRepeat:'no-repeat' }} >
                             <Row style={{   height:'100%',  background:'rgba(229,230,230,0.6)', paddingTop:'1px'}}>
@@ -27,7 +27,7 @@ const CardImagen = (props) => {
                                             <span
                                                 className={` gx-text-red gx-flex-row gx-justify-content-center gx-align-items-center`}
                                             >
-                                                <img alt="Remy Sharp" src={scaiconocategoria}/> 
+                                                <img alt="Remy Sharp" src={scaiconocategoria} width="70px" height="70px"/> 
                                             </span>
                                         </div>
                                         <div className="nombreCategoriaCard">{nombreCategoria}</div>
@@ -72,7 +72,7 @@ const CardImagen = (props) => {
                 {/* <div style={{height:'40px'}}>d</div> */}
             </Row>
             {/* </div> */}
-            <div className="gx-line-indi-info" style={{background:'#E8E8E8', paddingTop:'5px'}}> 
+            <div className="gx-line-indi-info" style={{background:'#E8E8E8', paddingTop:'25px'}}> 
                 {/* real=30; togo=70 --  70*100/30 */}
                 <br/>
                 <div className={`gx-line-indi`} style={{background:'#F2F2F2', width: '100%', height: '15px', margin: '10px', borderRadius: 50}}>
