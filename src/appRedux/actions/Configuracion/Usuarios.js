@@ -4,9 +4,7 @@ import { estadoRequestReducer } from "appRedux/actions/EstadoRequest"
 import {
     OBTENER_USUARIOS_EXITO,
     OBTENER_USUARIOS_FAIL,
-    ACTUALIZAR_COLUMNAS_TABLA_USUARIOS,
-    EDITAR_USUARIO_EXITO,
-    EDITAR_USUARIO_FAIL
+    ACTUALIZAR_COLUMNAS_TABLA_USUARIOS
 } from "constants/SistemaTypes";
 import config from 'config'
 

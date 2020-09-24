@@ -1,6 +1,5 @@
 import React from "react";
 import {Layout, Row, Col, Button} from "antd";
-
 import Sidebar from "../Sidebar/index";
 import HorizontalDefault from "../Topbar/HorizontalDefault/index";
 import HorizontalDark from "../Topbar/HorizontalDark/index";
@@ -9,7 +8,6 @@ import AboveHeader from "../Topbar/AboveHeader/index";
 import BelowHeader from "../Topbar/BelowHeader/index";
 import config from 'config'
 import Topbar from "../Topbar/index";
-import {footerText} from "util/config";
 import App from "routes/index";
 import {useSelector, useDispatch} from "react-redux";
 import {seleccionarVideoTutorialReducer} from "appRedux/actions/Tutorial"

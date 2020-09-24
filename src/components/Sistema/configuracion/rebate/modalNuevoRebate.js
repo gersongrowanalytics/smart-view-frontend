@@ -24,82 +24,97 @@ const ModalNuevoRebate = () => {
 
     return (
         <Modal
-            title="Nuevo Rebate"
-            visible={modalNuevoRebate}
-            onOk={ () => dispatch(ModalNuevoRebateReducer(false))}
-            onCancel={ () => dispatch(ModalNuevoRebateReducer(false))}
-            footer={[]}
+            title       = "Nuevo Rebate"
+            visible     = {modalNuevoRebate}
+            onOk        = { () => dispatch(ModalNuevoRebateReducer(false))}
+            onCancel    = { () => dispatch(ModalNuevoRebateReducer(false))}
+            footer      = {null}
         >
-            <Form 
-                form={form}
-                onFinish={enviarFormulario}
-                name="formNuevoRebate"   
-            > 
-                <Form.Item label="Fecha del Rebate" name="fecha">
-                    {/* <DatePicker className='gx-mb-3 gx-w-100' /> */}
-                    <DatePicker
-                        locale="es"
-                        selected={startDate}
-                        onChange={date => setStartDate(date)}
-                        dateFormat="yyyy/MM"
-                        showMonthYearPicker
-                        
-                    />
-                </Form.Item>
-                <Form.Item label="Tipo de Promoción" name="tipoPromocion">
-                    <Select
-                        className="gx-mb-3 gx-w-100" 
-                    >
-                        <Select.Option value="1">Sell In</Select.Option>
-                        <Select.Option value="2">Sell Out</Select.Option>
-                    </Select>
-                </Form.Item>
-                <Form.Item label="Porcentaje Desde" name="porcentajeDesde">  
-                    <InputNumber 
-                        className="gx-mb-3 gx-w-100" 
-                        rules={[{ required: true, message: 'Es necesario un porcentaje desde' }]}
-                        defaultValue={0}
-                        min={0}
-                        max={100}
-                        formatter={value => `${value}%`}
-                        parser={value => value.replace('%', '')}
-                    />
-                </Form.Item>
-                <Form.Item label="Porcentaje Hasta" name="porcentajeHasta">
-                    <InputNumber className="gx-mb-3 gx-w-100" 
-                        rules={[{ required: true, message: 'Es necesario un porcentaje hasta' }]}
-                        defaultValue={0}
-                        min={0}
-                        max={100}
-                        formatter={value => `${value}%`}
-                        parser={value => value.replace('%', '')}
-                    />
-                </Form.Item>
-                <Form.Item label="Porcentaje Rebate" name="porcentajeRebate">
-                    <InputNumber className="gx-mb-3 gx-w-100" 
-                        rules={[{ required: true, message: 'Es necesario un porcentaje rebate' }]}
-                        defaultValue={0}
-                        min={0}
-                        max={100}
-                        formatter={value => `${value}%`}
-                        parser={value => value.replace('%', '')}
-                        value = {"10"}
-                    />
-                </Form.Item>
-                <Form.Item>
-                    <Button className="gx-mb-0"
-                        type="primary"
-                        htmlType="submit"
-                        loading={cargandoNuevoRebate}
-                    >
-                        {
-                            cargandoNuevoRebate == true
-                            ?"Enviando"
-                            :"Enviar"
-                        }
-                    </Button>
-                </Form.Item>
-            </Form>
+            {/* <div> */}
+                {/* <img alt="" src={require("assets/images/importante.png")} width="100%" height="100%"/> */}
+            {/* </div> */}
+            <div style={{paddingLeft:'20px', paddingRight:'20px'}}>
+                <Form 
+                    form={form}
+                    onFinish={enviarFormulario}
+                    name="formNuevoRebate"   
+                > 
+                    <Form.Item label="Fecha del Rebate" name="fecha">
+                        {/* <DatePicker className='gx-mb-3 gx-w-100' /> */}
+                        <DatePicker
+                            locale="es"
+                            selected={startDate}
+                            onChange={date => setStartDate(date)}
+                            dateFormat="yyyy/MM"
+                            showMonthYearPicker
+                            
+                        />
+                    </Form.Item>
+                    <Form.Item label="Grupo Rebate" name="grupoRebate">
+                        <Select
+                            className="gx-mb-3 gx-w-100" 
+                        >
+                            <Select.Option value="1">U9</Select.Option>
+                            <Select.Option value="2">UJ</Select.Option>
+                            <Select.Option value="3">UB</Select.Option>
+                            <Select.Option value="4">UD</Select.Option>
+                        </Select>
+                    </Form.Item>
+                    <Form.Item label="Tipo de Promoción" name="tipoPromocion">
+                        <Select
+                            className="gx-mb-3 gx-w-100" 
+                        >
+                            <Select.Option value="1">Sell In</Select.Option>
+                            <Select.Option value="2">Sell Out</Select.Option>
+                        </Select>
+                    </Form.Item>
+                    <Form.Item label="Porcentaje Desde" name="porcentajeDesde">  
+                        <InputNumber 
+                            className="gx-mb-3 gx-w-100" 
+                            rules={[{ required: true, message: 'Es necesario un porcentaje desde' }]}
+                            defaultValue={0}
+                            min={0}
+                            max={100}
+                            formatter={value => `${value}%`}
+                            parser={value => value.replace('%', '')}
+                        />
+                    </Form.Item>
+                    <Form.Item label="Porcentaje Hasta" name="porcentajeHasta">
+                        <InputNumber className="gx-mb-3 gx-w-100" 
+                            rules={[{ required: true, message: 'Es necesario un porcentaje hasta' }]}
+                            defaultValue={0}
+                            min={0}
+                            max={100}
+                            formatter={value => `${value}%`}
+                            parser={value => value.replace('%', '')}
+                        />
+                    </Form.Item>
+                    <Form.Item label="Porcentaje Rebate" name="porcentajeRebate">
+                        <InputNumber className="gx-mb-3 gx-w-100" 
+                            rules={[{ required: true, message: 'Es necesario un porcentaje rebate' }]}
+                            defaultValue={0}
+                            min={0}
+                            max={100}
+                            formatter={value => `${value}%`}
+                            parser={value => value.replace('%', '')}
+                            value = {"10"}
+                        />
+                    </Form.Item>
+                    <Form.Item>
+                        <Button className="gx-mb-0"
+                            type="primary"
+                            htmlType="submit"
+                            loading={cargandoNuevoRebate}
+                        >
+                            {
+                                cargandoNuevoRebate == true
+                                ?"Enviando"
+                                :"Enviar"
+                            }
+                        </Button>
+                    </Form.Item>
+                </Form>
+            </div>
         </Modal>
     )
 }

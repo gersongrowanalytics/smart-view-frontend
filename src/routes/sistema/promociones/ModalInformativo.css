@@ -1,18 +1,22 @@
 #txt_tituloModal{
-    text-align: center;
     font-family: Roboto;
     font-style: normal;
-    font-weight: bold;
+    font-weight: 900;
     font-size: 20px;
     line-height: 23px;
+    color: #558CFF;
+    text-align: center;
 }
 
 #txt_contenidoModal{
+    margin-top: -15px;
     font-family: Roboto;
     font-style: normal;
-    font-weight: bold;
-    font-size: 14px;
-    line-height: 16px;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 13px;
+    text-align: justify;
+
 }
 
 #contenedorModal{
@@ -20,8 +24,15 @@
     padding-right: 65px;
     padding-top: 50px;
     padding-bottom: 60px;
+    margin-left: 34%;
+    margin-right: 3%;
 }
 
 .ant-modal-content{
     border-radius: 20px;
+}
+
+#imagenFondoModal{
+    position: absolute;
+    top: 0px;
 }

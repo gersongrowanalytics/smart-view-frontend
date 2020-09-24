@@ -5,6 +5,7 @@ import './ModalInformativo.css'
 import {
     abrirCerrarModalInformativoPromociones} from 'appRedux/actions/Promociones'
 import {useDispatch, useSelector} from "react-redux";
+import config from 'config'
 
 const ModalInformativo = () => {
 
@@ -14,7 +15,8 @@ const ModalInformativo = () => {
 
     return (
         <Modal
-            width={1000}
+            width={850}
+            height = {406}
             title={null}
             visible={mostrarModalInformativo}
             footer = {null}
@@ -27,6 +29,7 @@ const ModalInformativo = () => {
                 >
                 </Button>
             }
+            bodyStyle   = {{backgroundImage: `url(${config.api}Sistema/abs/img/importantev2.png)`, backgroundSize: '100% 100%', backgroundRepeat:'no-repeat', borderRadius:'20px'}}
         >
             <div id="contenedorModal">
                 <h1 id="txt_tituloModal">PROMOCIONES</h1><br/>

@@ -10,47 +10,9 @@ import {seleccionarVistaPromocionReducer} from 'appRedux/actions/Promociones'
 import {seleccionarVistaVentasReducer} from 'appRedux/actions/VentasTpr'
 
 const Rebate = () => {
-    const columns = [
-        {
-            title: 'Año',
-            dataIndex: 'fecano',
-            key: 'fecano',
-            width: 150
-        },
-        {
-            title: 'Fecha',
-            dataIndex: 'fecmes',
-            key: 'fecmes',
-            width: 150,
-        }, 
-        {
-            title: 'Tipo de Promoción',
-            dataIndex: 'tprnombre',
-            key: 'tprnombre',
-            width: 150,
-        }, 
-        {
-            title: 'Desde',
-            dataIndex: 'rtpporcentajedesde',
-            key: 'rtpporcentajedesde',
-        }, 
-        {
-            title: 'Hasta',
-            dataIndex: 'rtpporcentajehasta',
-            key: 'rtpporcentajehasta',
-            width: 150,
-            
-        },
-        {
-            title: 'Rebate',
-            dataIndex: 'rtpporcentajerebate',
-            key: 'rtpporcentajerebate',
-            width: 150,  
-        }
-    ];
 
     const dispatch = useDispatch();
-    const {obtuvoRebate, listaRebates}  = useSelector(({configuracionRebate}) => configuracionRebate);
+    const {obtuvoRebate, listaRebates, columnasTablaRebate, cargandoTablaRebate}  = useSelector(({configuracionRebate}) => configuracionRebate);
     const {cargaArchivosSeleccionado}   = useSelector(({cargaArchivos}) => cargaArchivos);
     const {tutorialSeleccionado}        = useSelector(({tutorial}) => tutorial);
     const {vistaPromocionSeleccionado}  = useSelector(({promociones}) => promociones);
@@ -80,20 +42,24 @@ const Rebate = () => {
         <Auxiliary>
              <ModalNuevoRebate />
             <Row>
-                <Col>
+                <Col xl={24} md={24} sm={24}>
                     <Card title="Lista de Rebate">
                         <Button
                             onClick = {() => dispatch(ModalNuevoRebateReducer(true))}
                         >
                             Nuevo Rebate
                         </Button>
+                        <Button
+                            onClick = {() => dispatch(ModalNuevoRebateReducer(true))}
+                        >
+                            Nuevo Grupo Rebate
+                        </Button>
                         <Table 
-                            // loading={!obtuvoUsuarios}
-                            className="gx-table-responsive" 
-                            columns={columns} 
-                            dataSource={listaRebates} 
-                            pagination={{pageSize: 10}}
-                            scroll={{y: 340}}
+                            loading     = {cargandoTablaRebate}
+                            className   = "gx-table-responsive" 
+                            columns     = {columnasTablaRebate} 
+                            dataSource  = {listaRebates} 
+                            pagination  = {{pageSize: 10}}
                         />
                     </Card>
                 </Col>
