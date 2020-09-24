@@ -141,6 +141,24 @@
     line-height: 16px;
     color: #3946AB;
   }
+
+  #itemSucursal a:hover{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    color: #3946AB;
+  }
+
+  ul#menu ul li#itemSucursalSeleccionado a{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    color: #3946AB;
+  }
   
   ul#menu ul li:first-child a:hover {
     color: #4D4D4D;

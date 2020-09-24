@@ -76,3 +76,59 @@ export const seleccionarVistaVentasReducer = (accion) => {
       payload: accion
   }
 }
+
+export const obtenerVentasTprXZonaReducer = () => async (dispatch, getState) => {
+  const {
+    diaFiltroSelec,
+    mesFiltroSelec,
+    anoFiltroSelec
+  } = getState().fechas
+
+  const {
+    zonaidseleccionado,
+  } = getState().zonas
+
+  await fetch(config.api+'ventas/mostrar/porzona',
+    {
+      mode:'cors',
+      method: 'POST',
+      body: JSON.stringify({
+        usutoken : localStorage.getItem('usutoken'),
+        zonid    : zonaidseleccionado,
+        dia      : diaFiltroSelec,
+        mes      : mesFiltroSelec,
+        ano      : anoFiltroSelec,
+      }),
+      headers: {
+        'Accept' : 'application/json',
+        'Content-type' : 'application/json',
+        'api_token': localStorage.getItem('usutoken')
+      }
+    }
+  )
+  .then( async res => {
+    await dispatch(estadoRequestReducer(res.status))
+    return res.json()
+  })
+  .then(data => {
+    const estadoRequest = getState().estadoRequest.init_request
+    if(estadoRequest == true){
+      if(data.respuesta == true){
+          dispatch({
+              type: OBTENER_VENTAS_TPR_EXITO,
+              payload: data.datos
+          })
+      }else{
+          dispatch({
+              type: OBTENER_VENTAS_TPR_FAIL,
+              payload: data.datos
+          })
+      }
+    }
+  }).catch((error)=> {
+      dispatch({
+          type: OBTENER_VENTAS_TPR_FAIL,
+          payload: []
+      })
+  });
+}

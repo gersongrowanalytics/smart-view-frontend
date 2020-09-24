@@ -3,7 +3,7 @@ import './filtroSucursal.css'
 
 const FiltroSucursal = (props) => {
 
-    const {sucursalSeleccionada, sucursales, seleccionarSucursal, animacionMenuDesplegable, zonas, idZonaSeleccionado, seleccionarZona} = props
+    const {sucursalSeleccionada, sucursales, seleccionarSucursal, animacionMenuDesplegable, zonas, idZonaSeleccionado, idSucursalSeleccionado, seleccionarZona} = props
 
 
 
@@ -25,7 +25,7 @@ const FiltroSucursal = (props) => {
                                             return (
                                                 <li  id={ idZonaSeleccionado == zona.zonid ?"itemZonaSeleccionado" :"itemZona"}>
                                                     <a 
-                                                        onClick = {() => seleccionarZona(zona.zonid)}
+                                                        onClick = {() => seleccionarZona(zona.zonid, zona.zonnombre)}
                                                         key = {zona.zonid}
                                                     >
                                                         {zona.zonnombre}
@@ -48,7 +48,7 @@ const FiltroSucursal = (props) => {
                                         ?sucursales.map((sucursal, posicion) => {
                                             return (
                                                 idZonaSeleccionado == sucursal.zonid
-                                                ?<li>
+                                                ?<li  id={idSucursalSeleccionado == sucursal.sucid ? "itemSucursalSeleccionado" : "itemSucursal" }>
                                                     <a 
                                                         onClick={() => seleccionarSucursal(sucursal.sucnombre, sucursal.sucid)}
                                                         key  = {sucursal.sucid} 

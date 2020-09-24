@@ -7,6 +7,7 @@ import Contact from "./Contact";
 import Common from "./Common";
 import EstadoRequest from "./EstadoRequest";
 import Sucursales from "./Sucursales";
+import Zonas from "./Zonas";
 import Fechas from "./Fechas";
 import VentasTpr from "./VentasTpr";
 import Promociones from "./Promociones";
@@ -24,6 +25,7 @@ const createRootReducer = (history) => combineReducers({
   common                : Common,
   estadoRequest         : EstadoRequest,
   sucursales            : Sucursales,
+  zonas                 : Zonas,
   fechas                : Fechas,
   ventasTpr             : VentasTpr,
   promociones           : Promociones,

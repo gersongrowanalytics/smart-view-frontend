@@ -29,7 +29,13 @@ const TooltipCardImagen = (props) => {
                 }
             >
                 {titulo}
-                <NumberFormat value={cantidad} displayType={'text'} thousandSeparator={true} />
+                {
+                    titulo.includes('Por Facturar')
+                    ? cantidad >= 0
+                        ?0
+                        :<NumberFormat value={cantidad} displayType={'text'} thousandSeparator={true} />
+                    : <NumberFormat value={cantidad} displayType={'text'} thousandSeparator={true} />
+                }
             </div>
         </div>
     )

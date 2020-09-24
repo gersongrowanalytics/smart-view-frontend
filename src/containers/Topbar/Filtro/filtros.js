@@ -12,7 +12,8 @@ class Filtros extends Component {
             nombreAno   : 'Año',
 
             animacionMenuDesplegable : true,
-            idZonaSeleccionado : 0
+            idZonaSeleccionado : 0,
+            idSucursalSeleccionado : 0
         }
         this.seleccionarFile     = this.seleccionarFile.bind(this)
         this.seleccionarSucursal = this.seleccionarSucursal.bind(this)
@@ -49,16 +50,20 @@ class Filtros extends Component {
         }
     }
 
-    seleccionarZona(idZona){
+    seleccionarZona(idZona, nombreZona){
         this.setState({
-            idZonaSeleccionado : idZona
+            idZonaSeleccionado  : idZona,
+            nombreSucursal      : nombreZona,
         })
+
+        this.props.seleccionarZona(idZona)
     }
 
     seleccionarSucursal(nombreSucursalSeleccionada, idSucursalSeleccionada){
         this.setState({
             nombreSucursal : nombreSucursalSeleccionada,
-            animacionMenuDesplegable : false
+            animacionMenuDesplegable : false,
+            idSucursalSeleccionado : idSucursalSeleccionada
         })
 
         this.props.seleccionarSucursal(idSucursalSeleccionada)
@@ -73,32 +78,6 @@ class Filtros extends Component {
     render() {
         return (
             <span className="gx-text-black gx-fs-md gx-pointer gx-ml-auto  " >
-                {/* <div class="dropdown">
-                    <button class="dropbtn">{this.state.nombreSucursal}</button>
-                    <div class="dropdown-content">
-                        {
-                            this.props.sucursales.length > 0
-                            ?this.props.sucursales.map((sucursal, posicion) => {
-                                return (
-                                    <a 
-                                        onClick={() => {
-                                            this.setState({
-                                                nombreSucursal : sucursal.sucnombre
-                                            })
-                                            this.props.seleccionarSucursal(sucursal.sucid)
-                                        }}
-                                        key  = {sucursal.sucid} 
-                                    >
-                                        {
-                                            sucursal.sucnombre
-                                        }
-                                    </a>
-                                )
-                            })
-                            :<a>Sucursales</a>
-                        }
-                    </div>
-                </div> */}
 
                 <FiltroSucursal 
                     sucursalSeleccionada     = {this.state.nombreSucursal}
@@ -108,36 +87,8 @@ class Filtros extends Component {
                     zonas                    = {this.props.zonas}
                     idZonaSeleccionado       = {this.state.idZonaSeleccionado}
                     seleccionarZona          = {this.seleccionarZona}
+                    idSucursalSeleccionado   = {this.state.idSucursalSeleccionado}
                 />
-
-
-
-
-{/* 
-                <div class="dropdown">
-                    <button class="dropbtn">{this.state.nombreDia}</button>
-                    <div class="dropdown-content">
-                        {
-                            this.props.fechas.dias.length > 0
-                            ?this.props.fechas.dias.map((dia, posicion) => {
-                                return (
-                                    <a 
-                                        onClick={() => {
-                                            this.setState({
-                                                nombreDia : dia
-                                            })
-                                            this.props.seleccionarDia(dia)
-                                        }}
-                                        key  = {dia}
-                                    >
-                                        {dia}
-                                    </a>
-                                )
-                            })
-                            :<a>Día</a>
-                        }
-                    </div>
-                </div> */}
 
                 <div class="dropdown">
                     <button class="dropbtn">{this.state.nombreMes}</button>

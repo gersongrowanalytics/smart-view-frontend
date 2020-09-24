@@ -58,7 +58,7 @@ const CardImagen = (props) => {
                         esIzquierda     = {false}
                         tprcolortooltip = {tprcolortooltip}
                         esSellIn        = {tipoPromocion == "Sell In" ? true : false}
-                        titulo          = {"Facturar S/"}
+                        titulo          = {"Por Facturar S/"}
                         cantidad        = {funFomratoDecimal(togoCategoria , 0)}
                         porcumplimiento = {funFomratoDecimal(((100*realCategoria)/objetivoCategoria), 0)}
                     />

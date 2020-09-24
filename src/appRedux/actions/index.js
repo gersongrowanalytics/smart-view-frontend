@@ -5,6 +5,7 @@ export * from './Common';
 export * from './Contact';
 export * from './EstadoRequest';
 export * from './Sucursales';
+export * from './Zonas';
 export * from './Fechas';
 export * from './VentasTpr';
 export * from './Promociones';

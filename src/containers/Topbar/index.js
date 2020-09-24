@@ -8,6 +8,7 @@ import {switchLanguage, toggleCollapsedSideNav} from "../../appRedux/actions/Set
 import {useDispatch, useSelector} from "react-redux";
 import Filtros from './Filtro/filtros'
 import { obtenerSucursalesReducer, filtroSeleccionarSucursalUsuario } from "appRedux/actions/Sucursales"
+import { filtroSeleccionarZonaUsuarioReducer } from "appRedux/actions/Zonas"
 import {
   obtenerFechasReducer,
   filtroSeleccionarDia,
@@ -103,6 +104,7 @@ const Topbar = () => {
             sucursales          = {sucursalesUsuario}
             fechas              = {fechasFiltro}
             zonas               = {zonas}
+            seleccionarZona     = {(valor) => dispatch(filtroSeleccionarZonaUsuarioReducer(valor))}
             seleccionarSucursal = {(valor) => dispatch(filtroSeleccionarSucursalUsuario(valor))}
             seleccionarDia      = {(valor) => dispatch(filtroSeleccionarDia(valor))}
             seleccionarMes      = {(valor) => dispatch(filtroSeleccionarMes(valor))}
