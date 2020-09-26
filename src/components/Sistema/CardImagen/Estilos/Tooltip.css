@@ -5,7 +5,8 @@
     margin-left: 10px;
 }
 
-#tooltiptext {
+/* TOOLTIPS DE REAL */
+#tooltiptextIzquierdaSellIn {
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.2));
     width: auto;
     height: 100%;
@@ -23,7 +24,7 @@
     padding-right: 14px;
 }
 
-#tooltiptext::after {
+#tooltiptextIzquierdaSellIn::after {
     content: "";
     position: absolute;
     top: 100%;
@@ -31,10 +32,10 @@
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: #FFFFFF transparent transparent transparent;
+    border-color: #FCDE30 transparent transparent transparent;
 }
 
-#tooltiptextMenor {
+#tooltiptextIzquierdaSellInMenor {
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.2));
     width: auto;
     height: 100%;
@@ -52,15 +53,77 @@
     padding-right: 14px;
 }
 
-#tooltiptextMenor::after {
+#tooltiptextIzquierdaSellInMenor::after {
     content: "";
     position: absolute;
     top: 100%;
     left: 0px;
     border-width: 5px;
     border-style: solid;
-    border-color: #FFFFFF transparent transparent #FFFFFF;
+    border-color: #FCDE30 transparent transparent #FCDE30;
 }
+
+
+#tooltiptextIzquierdaSellOut {
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.2));
+    width: auto;
+    height: 100%;
+    background-color: #FFFFFF;
+    color: #4D4D4D;
+    position: absolute;
+    align-items: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 11px;
+    line-height: 13px;
+    padding-top: 7px;
+    padding-left: 14px;
+    padding-right: 14px;
+}
+
+#tooltiptextIzquierdaSellOut::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #79E2C1 transparent transparent transparent;
+}
+
+
+#tooltiptextIzquierdaSellOutMenor {
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.2));
+    width: auto;
+    height: 100%;
+    background-color: #FFFFFF;
+    color: #4D4D4D;
+    position: absolute;
+    align-items: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 11px;
+    line-height: 13px;
+    padding-top: 7px;
+    padding-left: 14px;
+    padding-right: 14px;
+}
+
+#tooltiptextIzquierdaSellOutMenor::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #79E2C1 transparent transparent #79E2C1;
+}
+
+/* FIN DE TOOLTIPS DE REAL */
+
 
 
 /*  */
@@ -98,15 +161,14 @@
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: #FCDE30 transparent transparent transparent;
+    /* border-color: #FCDE30 transparent transparent transparent; */
+    border-color: #fff transparent transparent transparent;
 }
 
 
 #tooltiptextDerechaMenor {
-    /* width: auto; */
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.2));
     height: 100%;
-    /* background-color: #FCDE30; */
     color: #4D4D4D;
     position: absolute;
     align-items: center;
@@ -130,7 +192,8 @@
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: #FCDE30 #FCDE30 transparent transparent;
+    /* border-color: #FCDE30 #FCDE30 transparent transparent; */
+    border-color: #fff #fff transparent transparent;
 }
 
 
@@ -161,7 +224,8 @@
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: #79E2C1 transparent transparent transparent;
+    /* border-color: #79E2C1 transparent transparent transparent; */
+    border-color: #fff transparent transparent transparent;
 }
 
 
@@ -190,5 +254,22 @@
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: #79E2C1 #79E2C1 transparent transparent;
+    /* border-color: #79E2C1 #79E2C1 transparent transparent; */
+    border-color: #fff #fff transparent transparent;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*  */
+
+

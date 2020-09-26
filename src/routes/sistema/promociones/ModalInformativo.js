@@ -32,11 +32,12 @@ const ModalInformativo = () => {
             bodyStyle   = {{backgroundImage: `url(${config.api}Sistema/abs/img/importantev2.png)`, backgroundSize: '100% 100%', backgroundRepeat:'no-repeat', borderRadius:'20px'}}
         >
             <div id="contenedorModal">
-                <h1 id="txt_tituloModal">PROMOCIONES</h1><br/>
+                <h1 id="txt_tituloModal">IMPORTANTE</h1><br/>
                 <div id="txt_contenidoModal">
-                    Por el presente correo, cumplo con informarle las tácticas promocionales para este mes con el número de combos/soles a reconocer por actividad y monto máximo de reconocimiento en valor por actividad respectivos por cada mecánica. Dichos montos no podrán excederse de no recibir una aprobación formal del área de Trade copiando al buzón _KC, Cuida tu negocio (Cuidatunegocio.kc@kcc.com), dejando claro que yo como ejecutivo no podré aprobar acciones adicionales sin antes pasar por las aprobaciones respectivas.<br/><br/>
-                    Recordar que estos pagos serán vía notas de crédito, una vez compartido su cierre de ventas hasta el día 5 hábil del siguiente mes y se pagarán vía Notas de Crédito en el mismo siguiente mes. Si no envía el cierre dentro del plazo establecido, no se le pagará las tácticas promocionales dentro del próximo mes, sino un mes después de esto.<br/><br/>
-                    De acuerdo a la nueva política de KC pongo en copia al correo interno _KC, Cuida tu negocio (Cuidatunegocio.kc@kcc.com), y estas acciones entran en validez desde la fecha 01 de Septiembre hasta fin de mes.
+                    Estimado Cliente,<br/><br/>
+                    Les informamos que a través de este portal se les comunicará de manera mensual las tácticas promocionales con el número de combos e inversión dineraria que ha sido aprobada por actividad y monto máximo para cada mecánica. Dichos montos,  no podrán ser excedidos de no recibir una aprobación formal del área de Trade y posterior actualización en este portal; . Bajo ningún supuesto o circunstancia, el ejecutivo comercial podrá ofrecer y mucho menos aprobar acciones adicionales<br/><br/>
+                    Finalmente, les recordamos que los pagos se realizarán a través de notas de crédito, las mismas que será aprobadas una vez compartido el cierre de sus ventas hasta el quinto día hábil del siguiente mes y pagadas el siguiente mes. el cierre de ventas no es enviado dentro del plazo establecido, Kimberly- Clark Perú se encontrará facultado postergar el pago hasta dos meses posteriores a la ejecución de  las tácticas promocionales.<br/><br/>
+                    Saludos,
                 </div>
             </div>
         </Modal>

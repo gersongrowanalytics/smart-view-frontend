@@ -43,7 +43,8 @@ const Tutorial = () => {
                 </Col>
                 <Col xl={10} md={10} >
                     <span style={{ color:'#4D4D4D'}} id="txtTutorial">
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam
+                        Presenta la nueva plataforma inteligente “Creciendo Juntos” que te permitirá tener un mayor control de tus ventas.<br/><br/>
+                        El siguiente video, te brindará un mayor detalle de la funcionalidad de la plataforma.
                     </span>
                 </Col>
                 <Col xl={14} md={14} />

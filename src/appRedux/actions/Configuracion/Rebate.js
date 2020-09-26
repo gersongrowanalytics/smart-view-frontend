@@ -8,12 +8,23 @@ import {
     OBTUVO_LISTA_REBATE,
     ACTUALIZAR_COLUMNAS_TABLA_REBATE,
     ACTUALIZAR_OBTUVO_REBATE,
-    ACTUALIZAR_CARGANDO_TABLA_REBATE
+    ACTUALIZAR_CARGANDO_TABLA_REBATE,
+    MODAL_NUEVO_GRUPO_REBATE,
+    AGREGAR_NUEVO_GRUPO_REBATE,
+    OBTENER_LISTA_GRUPOS_REBATE,
+    ACTUALIZAR_OBTUVO_GRUPO_REBATE
 } from "constants/SistemaTypes"
 
 export const ModalNuevoRebateReducer = (estadoModal) => {
     return {
         type    : MODAL_NUEVO_REBATE,
+        payload : estadoModal
+    }
+}
+
+export const ModalNuevoGrupoRebateReducer = (estadoModal) => {
+    return {
+        type    : MODAL_NUEVO_GRUPO_REBATE,
         payload : estadoModal
     }
 }
@@ -92,6 +103,64 @@ export const agregarNuevoRebateReducer = (fecha, tipoPromocion, porcentajeDesde,
     }
 }
 
+export const agregarNuevoGrupoRebateReducer = (nombreGrupoRebate) => async (dispatch, getState) => {
+
+    // VALIDACION DE CAMPOS
+    if(nombreGrupoRebate === '' || nombreGrupoRebate === undefined){
+        message.error('Lo sentimos, es necesario un nombre de grupo') 
+    }else{
+
+        dispatch({
+            type    : AGREGAR_NUEVO_GRUPO_REBATE,
+            payload : {
+                cargandoNuevoGrupoRebate : true
+            }
+        })
+
+        await fetch(config.api+'configuracion/rebate/crear/GrupoRebate',
+        {
+            mode:'cors',
+            method: 'POST',
+            body: JSON.stringify({
+                "nombreGrupoRebate" : nombreGrupoRebate
+            }),
+            headers: {
+                'Accept' : 'application/json',
+                'Content-type' : 'application/json',
+                'api_token': localStorage.getItem('usutoken')
+            }
+        }).then( async res => {
+            await dispatch(estadoRequestReducer(res.status))
+            return res.json()
+        }).then(data => {
+            dispatch({
+                type    : AGREGAR_NUEVO_GRUPO_REBATE,
+                payload : {
+                    cargandoNuevoGrupoRebate : false
+                }
+            })
+            const estadoRequest = getState().estadoRequest.init_request
+            if(estadoRequest == true){
+                if(data.respuesta == true){
+                    message.success(data.mensaje)
+                    dispatch(obtenerGrupoRebateReducer())
+                }else{
+                    message.error(data.mensaje)
+                }
+            }
+        }).catch((error)=> {
+            console.log(error)
+            message.error('Lo sentimos, ocurrio un error al momento de guardar el nuevo rebate') 
+            dispatch({
+                type    : AGREGAR_NUEVO_GRUPO_REBATE,
+                payload : {
+                    cargandoNuevoGrupoRebate : false
+                }
+            })
+        });
+    }
+}
+
 export const obtenerRebateReducer = () => async (dispatch, getState) => {
 
     await dispatch({
@@ -152,6 +221,61 @@ export const obtenerRebateReducer = () => async (dispatch, getState) => {
     });
 }
 
+export const obtenerGrupoRebateReducer = () => async (dispatch, getState) => {
+    await dispatch({
+        type    : ACTUALIZAR_OBTUVO_GRUPO_REBATE,
+        payload : true
+    })
+
+    await fetch(config.api+'configuracion/rebate/mostrar/GrupoRebate',
+        {
+            mode:'cors',
+            method: 'POST',
+            body: JSON.stringify({}),
+            headers: {
+                'Accept' : 'application/json',
+                'Content-type' : 'application/json',
+                'api_token': localStorage.getItem('usutoken')
+            }
+        }
+    )
+    .then( async res => {
+        await dispatch(estadoRequestReducer(res.status))
+        return res.json()
+    })
+    .then(data => {
+        const estadoRequest = getState().estadoRequest.init_request
+        if(estadoRequest == true){
+            if(data.respuesta == true){
+                
+                dispatch({
+                    type: OBTENER_LISTA_GRUPOS_REBATE,
+                    payload: {
+                        datos               : data.datos,
+                        obtuvoGrupoRebate   : true
+                    }
+                })
+            }else{
+                dispatch({
+                    type: OBTENER_LISTA_GRUPOS_REBATE,
+                    payload: {
+                        datos               : data.datos,
+                        obtuvoGrupoRebate   : true
+                    }
+                })
+            }
+        }
+    }).catch((error)=> {
+        dispatch({
+            type: OBTENER_LISTA_GRUPOS_REBATE,
+            payload: {
+                datos               : [],
+                obtuvoGrupoRebate   : true
+            }
+        })
+    });
+}
+
 export const armarColumnasTablaRebateReducer = () => async (dispatch) => {
 
     const columnas = [
@@ -172,6 +296,7 @@ export const armarColumnasTablaRebateReducer = () => async (dispatch) => {
             dataIndex: 'trenombre',
             key: 'trenombre',
             width: 150,
+            // sorter : (a, b) => a.length - b.length,
         }, 
         {
             title: 'Tipo de Promoción',
@@ -256,7 +381,7 @@ export const armarColumnasTablaRebateReducer = () => async (dispatch) => {
                         className="gx-link gx-text-yellow"
                         style={{marginRight:'10px'}}
                         onClick = {() => {
-                            dispatch(editarRebate(data))
+                            dispatch(editarRebateReducer(data))
                         }}
                     >
                         Guardar
@@ -312,7 +437,7 @@ export const armarColumnasTablaRebateReducer = () => async (dispatch) => {
     })
 }
 
-export const editarRebate = (nuevadata) => async (dispatch, getState ) => {
+export const editarRebateReducer = (nuevadata) => async (dispatch, getState ) => {
     
     console.log(nuevadata)
     dispatch({
@@ -320,7 +445,7 @@ export const editarRebate = (nuevadata) => async (dispatch, getState ) => {
         payload : true
     })
 
-    await fetch(config.api+'configuracion/rebate/editarRebate',
+    await fetch(config.api+'configuracion/rebate/editar/Rebate',
         {
             mode:'cors',
             method: 'POST',

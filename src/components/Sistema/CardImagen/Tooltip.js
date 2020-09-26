@@ -10,15 +10,21 @@ const TooltipCardImagen = (props) => {
         <div className={esIzquierda == true ?"tooltip" : "tooltipDerecha"}>
             <div 
                 style={{background: tprcolortooltip}} 
-                // className={
-                    
-                // }
-
                 id={
                     esIzquierda == true
                     ? porcumplimiento > 40
-                        ? "tooltiptext"
-                        : "tooltiptextMenor"
+                        ? esSellIn == true
+                            ? "tooltiptextIzquierdaSellIn"
+                            : "tooltiptextIzquierdaSellOut"
+                            // ? "tooltiptext"
+                            // : "tooltiptext"
+                            
+                        : esSellIn == true
+                            ? "tooltiptextIzquierdaSellInMenor"
+                            : "tooltiptextIzquierdaSellOutMenor"
+                            // ? "tooltiptextMenor"
+                            // : "tooltiptextMenor"
+
                     : porcumplimiento > 60
                         ? esSellIn == true
                             ? "tooltiptextDerechaMenor"
@@ -31,7 +37,7 @@ const TooltipCardImagen = (props) => {
                 {titulo}
                 {
                     titulo.includes('Por Facturar')
-                    ? cantidad >= 0
+                    ? cantidad <= 0
                         ?0
                         :<NumberFormat value={cantidad} displayType={'text'} thousandSeparator={true} />
                     : <NumberFormat value={cantidad} displayType={'text'} thousandSeparator={true} />

@@ -35,9 +35,11 @@ const CardAvance = (props) => {
                             <p id=""><span id="tituloDatosAvance">POR FACTURAR</span><br/>
                                 {/* <NumberFormat value={funFomratoDecimal(togoValorizado, 0)} displayType={'text'} thousandSeparator={true} /> */}
                                 {
-                                    parseInt(realValorizado-objetivoValorizado)  > 0
+                                    // parseInt(realValorizado-objetivoValorizado)  > 0
+                                    togoValorizado < 0
                                     ?<span id="datosAvance">S/0</span>
-                                    :<span id="datosAvance">S/<NumberFormat value={funFomratoDecimal((realValorizado-objetivoValorizado), 0)} displayType={'text'} thousandSeparator={true} /></span>
+                                    // :<span id="datosAvance">S/<NumberFormat value={funFomratoDecimal((realValorizado-objetivoValorizado), 0)} displayType={'text'} thousandSeparator={true} /></span>
+                                    :<span id="datosAvance">S/<NumberFormat value={funFomratoDecimal(togoValorizado, 0)} displayType={'text'} thousandSeparator={true} /></span>
                                 }
                                 
                             </p>

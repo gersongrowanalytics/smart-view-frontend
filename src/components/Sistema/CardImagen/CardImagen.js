@@ -45,7 +45,8 @@ const CardImagen = (props) => {
                     <div className="gx-text-left">
                         <TooltipCardImagen 
                             esIzquierda     = {true}
-                            tprcolortooltip = {"#FFFF"}
+                            esSellIn        = {tipoPromocion == "Sell In" ? true : false}
+                            tprcolortooltip = {tprcolortooltip}
                             titulo          = {"Real S/"}
                             cantidad        = {funFomratoDecimal(realCategoria , 0)}
                             porcumplimiento = {funFomratoDecimal(((100*realCategoria)/objetivoCategoria), 0)}
@@ -56,7 +57,7 @@ const CardImagen = (props) => {
                     {/* s */}
                     <TooltipCardImagen
                         esIzquierda     = {false}
-                        tprcolortooltip = {tprcolortooltip}
+                        tprcolortooltip = {"#FFFF"}
                         esSellIn        = {tipoPromocion == "Sell In" ? true : false}
                         titulo          = {"Por Facturar S/"}
                         cantidad        = {funFomratoDecimal(togoCategoria , 0)}

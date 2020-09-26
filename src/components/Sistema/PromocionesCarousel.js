@@ -2,7 +2,7 @@ import React from 'react';
 import './estilos/PromocionCarousel.scss'
 import {Col, Row, Card, Button, Modal} from "antd";
 import funFomratoDecimal from '../../funciones/funFormatoDecimal.js'
-
+import NumberFormat from 'react-number-format';
 
 // =========================
 // Slide
@@ -136,11 +136,12 @@ class Slide extends React.Component {
                           style={{
                             color:colorSeleciconadoPromo, 
                           }}>
-                            {funFomratoDecimal(cspcantidadcombo, 0)} Combos
-                              <br/>
+                            <NumberFormat value={funFomratoDecimal(cspcantidadcombo, 0)} displayType={'text'} thousandSeparator={true} />
+                            {" Combos"}
+                            <br/>
                         </span>
                         <span id="txt_totalPlanchas" style={{color: colorSeleciconadoPromo+"B3", }}>
-                          Total de planchas: {funFomratoDecimal(cspcantidadplancha, 0)}
+                          Total de planchas: <NumberFormat value={funFomratoDecimal(cspcantidadplancha, 0)} displayType={'text'} thousandSeparator={true} />
                           <br/>
                         </span>
                         <span 
@@ -591,4 +592,3 @@ class PromocionesCarousel extends React.Component {
 }
 
 export default PromocionesCarousel
-// ReactDOM.render(<Slider heading="Example Slider" slides={slideData} />, document.getElementById('app'));

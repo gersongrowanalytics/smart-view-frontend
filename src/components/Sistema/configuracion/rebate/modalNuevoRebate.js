@@ -10,7 +10,7 @@ import es from 'date-fns/locale/es';
 registerLocale('es', es);
 
 
-const ModalNuevoRebate = () => {
+const ModalNuevoRebate = (props) => {
     const [form] = Form.useForm();
     const {modalNuevoRebate, cargandoNuevoRebate} = useSelector(({configuracionRebate}) => configuracionRebate);
     const dispatch = useDispatch();
@@ -22,6 +22,7 @@ const ModalNuevoRebate = () => {
         dispatch(agregarNuevoRebateReducer(values.fecha, values.tipoPromocion, values.porcentajeDesde, values.porcentajeHasta, values.porcentajeRebate))
     }
 
+    const {listaGruposRebates} = props
     return (
         <Modal
             title       = "Nuevo Rebate"
@@ -54,10 +55,14 @@ const ModalNuevoRebate = () => {
                         <Select
                             className="gx-mb-3 gx-w-100" 
                         >
-                            <Select.Option value="1">U9</Select.Option>
-                            <Select.Option value="2">UJ</Select.Option>
-                            <Select.Option value="3">UB</Select.Option>
-                            <Select.Option value="4">UD</Select.Option>
+                            {
+                                listaGruposRebates.map((grupoRebate) => {
+                                    return ( 
+                                        <Select.Option value="1">{grupoRebate.trenombre}</Select.Option>
+                                    )
+                                })
+                            }
+                            
                         </Select>
                     </Form.Item>
                     <Form.Item label="Tipo de Promoción" name="tipoPromocion">

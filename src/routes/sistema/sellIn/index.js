@@ -5,7 +5,6 @@ import Titulo from 'components/Sistema/Titulo/Titulo'
 import CardAvance from 'components/Sistema/CardAvance'
 import CardRebate from 'components/Sistema/CardRebate'
 import {useSelector, useDispatch} from "react-redux"
-import CategoriasCarousel from './categoriasCarousel'
 import {seleccionarCargaArchivosReducer} from "appRedux/actions/CargaArchivos"
 import {seleccionarTutorialReducer} from "appRedux/actions/Tutorial"
 import {seleccionarVistaPromocionReducer} from 'appRedux/actions/Promociones'

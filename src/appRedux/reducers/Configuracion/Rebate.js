@@ -4,16 +4,24 @@ import {
     OBTUVO_LISTA_REBATE,
     ACTUALIZAR_COLUMNAS_TABLA_REBATE,
     ACTUALIZAR_OBTUVO_REBATE,
-    ACTUALIZAR_CARGANDO_TABLA_REBATE
+    ACTUALIZAR_CARGANDO_TABLA_REBATE,
+    MODAL_NUEVO_GRUPO_REBATE,
+    AGREGAR_NUEVO_GRUPO_REBATE,
+    OBTENER_LISTA_GRUPOS_REBATE,
+    ACTUALIZAR_OBTUVO_GRUPO_REBATE
 } from "constants/SistemaTypes"
 
 const INIT_STATE = {
-    listaRebates        : [],
-    modalNuevoRebate    : false,
-    cargandoNuevoRebate : false,
-    obtuvoRebate        : false,
-    cargandoTablaRebate : true,
-    columnasTablaRebate : []
+    listaRebates             : [],
+    listaGruposRebates       : [],
+    modalNuevoRebate         : false,
+    modalNuevoGrupoRebate    : false,
+    cargandoNuevoRebate      : false,
+    cargandoNuevoGrupoRebate : false,
+    obtuvoRebate             : false,
+    obtuvoGrupoRebate        : false,
+    cargandoTablaRebate      : true,
+    columnasTablaRebate      : []
 }
 
 export default (state = INIT_STATE, action) => {
@@ -24,10 +32,20 @@ export default (state = INIT_STATE, action) => {
                 ...state,
                 modalNuevoRebate : action.payload
             }
+        case MODAL_NUEVO_GRUPO_REBATE:
+            return {
+                ...state,
+                modalNuevoGrupoRebate : action.payload
+            }
         case AGREGAR_NUEVO_REBATE:
             return {
                 ...state,
                 cargandoNuevoRebate : action.payload.cargandoNuevoRebate
+            }
+        case AGREGAR_NUEVO_GRUPO_REBATE:
+            return {
+                ...state,
+                cargandoNuevoGrupoRebate : action.payload.cargandoNuevoGrupoRebate
             }
         case OBTUVO_LISTA_REBATE :
             return {
@@ -50,6 +68,17 @@ export default (state = INIT_STATE, action) => {
             return {
                 ...state,
                 cargandoTablaRebate : action.payload
+            }
+        case ACTUALIZAR_OBTUVO_GRUPO_REBATE:
+            return {
+                ...state,
+                obtuvoGrupoRebate : action.payload
+            }
+        case OBTENER_LISTA_GRUPOS_REBATE:
+            return {
+                ...state,
+                listaGruposRebates : action.payload.datos,
+                obtuvoGrupoRebate  : action.payload.obtuvoGrupoRebate,
             }
         default: 
             return state
