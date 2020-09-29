@@ -13,4 +13,4 @@ export * from './CargaArchivos';
 export * from './Tutorial';
 export * from './Configuracion/Usuarios';
 export * from './Configuracion/Rebate';
-
+export * from './Configuracion/TiposUsuarios';

@@ -15,24 +15,26 @@ import CargaArchivos from "./CargaArchivos";
 import Tutorial from "./Tutorial";
 import ConfiguracionUsuarios from "./Configuracion/Usuarios";
 import ConfiguracionRebate from "./Configuracion/Rebate";
+import ConfiguracionTiposUsuarios from "./Configuracion/TiposUsuarios";
 
 const createRootReducer = (history) => combineReducers({
-  router                : connectRouter(history),
-  settings              : Settings,
-  auth                  : Auth,
-  notes                 : Notes,
-  contact               : Contact,
-  common                : Common,
-  estadoRequest         : EstadoRequest,
-  sucursales            : Sucursales,
-  zonas                 : Zonas,
-  fechas                : Fechas,
-  ventasTpr             : VentasTpr,
-  promociones           : Promociones,
-  cargaArchivos         : CargaArchivos,
-  tutorial              : Tutorial,
-  configuracionUsuario  : ConfiguracionUsuarios,
-  configuracionRebate   : ConfiguracionRebate
+  router                     : connectRouter(history),
+  settings                   : Settings,
+  auth                       : Auth,
+  notes                      : Notes,
+  contact                    : Contact,
+  common                     : Common,
+  estadoRequest              : EstadoRequest,
+  sucursales                 : Sucursales,
+  zonas                      : Zonas,
+  fechas                     : Fechas,
+  ventasTpr                  : VentasTpr,
+  promociones                : Promociones,
+  cargaArchivos              : CargaArchivos,
+  tutorial                   : Tutorial,
+  configuracionUsuario       : ConfiguracionUsuarios,
+  configuracionRebate        : ConfiguracionRebate,
+  configuracionTiposUsuarios : ConfiguracionTiposUsuarios
 });
 
 export default createRootReducer

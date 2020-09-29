@@ -130,6 +130,14 @@ const App = (props) => {
 
   const currentAppLocale = AppLocale[locale.locale];
 
+  // CONSULTAR PERMISOS DEL USUARIOS LOGEADO
+  // if (authUser != null) {
+  //   if(obtuvoPermisos == true){
+  //     dispatch(seleccionarCargaArchivosReducer(false))
+  //   }
+  // }
+
+
   return (
     <ConfigProvider locale={currentAppLocale.antd}>
       <IntlProvider

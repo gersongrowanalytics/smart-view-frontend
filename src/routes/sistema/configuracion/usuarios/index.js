@@ -1,8 +1,8 @@
 import React from 'react'
 import Auxiliary from "util/Auxiliary";
 import {Col, Row} from "antd";
-import TablaUsuarios from './Tablas/TablaUsuarios'
-import TablaEjecutivos from './Tablas/TablaEjecutivos'
+import TablaUsuarios from './tablas/TablaUsuarios'
+import TablaEjecutivos from './tablas/TablaEjecutivos'
 
 const Usuarios = () => {
     return (

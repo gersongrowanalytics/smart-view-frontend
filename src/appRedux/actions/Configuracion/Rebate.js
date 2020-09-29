@@ -439,7 +439,6 @@ export const armarColumnasTablaRebateReducer = () => async (dispatch) => {
 
 export const editarRebateReducer = (nuevadata) => async (dispatch, getState ) => {
     
-    console.log(nuevadata)
     dispatch({
         type    : ACTUALIZAR_CARGANDO_TABLA_REBATE,
         payload : true
