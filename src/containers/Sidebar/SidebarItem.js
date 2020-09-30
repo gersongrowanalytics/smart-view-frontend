@@ -134,68 +134,86 @@ class SidebarItem extends React.Component {
                         }
                     >Guía Grow Smart View</span></Link>
                 </Menu.Item>
-                <Menu.Item key="sistema/cargaArchivos/promociones" id="menuItemSidebar">
-                    <Link to="/sistema/cargaArchivos/promociones" 
-                        onMouseEnter={() => {this.funActivarHover('menuItemCargaArchivo', 'Carga')}} 
-                        onMouseLeave={() => {this.funDesactivarHover('menuItemCargaArchivo', 'Carga')}}
-                        onClick={() => {this.funSeleccionarMenu('menuItemCargaArchivo', 'Carga')}}
-                    >
-                    <img alt="" src={require("assets/images/menuCargaArchivo.png")} style={{ marginRight:'15px' }} width="25px" />
-                    <span 
-                        id={
-                            this.state.menuItemCargaArchivo == true
-                            ? "txtSidebarItemHover"
-                            : "txtSidebarItem"
-                        }
-                    >Carga de archivo</span></Link>
-                </Menu.Item>
-                <Menu.Item key="sistema/configuracion/usuarios" id="menuItemSidebar">
-                    <Link to="/sistema/configuracion/usuarios" 
-                        onMouseEnter={() => {this.funActivarHover('menuItemUsuarios', 'Usuarios')}} 
-                        onMouseLeave={() => {this.funDesactivarHover('menuItemUsuarios', 'Usuarios')}}
-                        onClick={() => {this.funSeleccionarMenu('menuItemUsuarios', 'Usuarios')}}
-                    >
-                    <i className="icon icon-user-o"/>
-                    <span
-                        id={
-                            this.state.menuItemUsuarios == true
-                            ? "txtSidebarItemHover"
-                            : "txtSidebarItem"
-                        }
-                    >Usuarios</span></Link>
-                </Menu.Item>
+                {
+                    localStorage.getItem('tpuprivilegio') == "todo"
+                    ?<Menu.Item key="sistema/cargaArchivos/promociones" id="menuItemSidebar">
+                        <Link to="/sistema/cargaArchivos/promociones" 
+                            onMouseEnter={() => {this.funActivarHover('menuItemCargaArchivo', 'Carga')}} 
+                            onMouseLeave={() => {this.funDesactivarHover('menuItemCargaArchivo', 'Carga')}}
+                            onClick={() => {
+                                this.funSeleccionarMenu('menuItemCargaArchivo', 'Carga')
+                            }}>
 
-                <Menu.Item key="sistema/configuracion/rebate" id="menuItemSidebar">
-                    <Link to="/sistema/configuracion/rebate" 
-                        onMouseEnter={() => {this.funActivarHover('menuItemRebate', 'Rebate')}} 
-                        onMouseLeave={() => {this.funDesactivarHover('menuItemRebate', 'Rebate')}}
-                        onClick={() => {this.funSeleccionarMenu('menuItemRebate', 'Rebate')}}
-                    >
-                    <img alt="" src={require("assets/images/menuRebate.png")} style={{ marginRight:'15px' }} width="25px" />
-                    <span
-                        id={
-                            this.state.menuItemRebate == true
-                            ? "txtSidebarItemHover"
-                            : "txtSidebarItem"
-                        }
-                    >Rebate</span></Link>
-                </Menu.Item>
-
-                <Menu.Item key="sistema/configuracion/tiposUsuarios" id="menuItemSidebar">
-                    <Link to="/sistema/configuracion/tiposUsuarios" 
-                        onMouseEnter={() => {this.funActivarHover('menuItemTiposUsuarios', 'TiposUsuarios')}} 
-                        onMouseLeave={() => {this.funDesactivarHover('menuItemTiposUsuarios', 'TiposUsuarios')}}
-                        onClick={() => {this.funSeleccionarMenu('menuItemTiposUsuarios', 'TiposUsuarios')}}
-                    >
-                    <img alt="" src={require("assets/images/menuRebate.png")} style={{ marginRight:'15px' }} width="25px" />
-                    <span
-                        id={
-                            this.state.menuItemTiposUsuarios == true
-                            ? "txtSidebarItemHover"
-                            : "txtSidebarItem"
-                        }
-                    >Tipos de Usuarios</span></Link>
-                </Menu.Item>
+                                <img alt="" src={require("assets/images/menuCargaArchivo.png")} style={{ marginRight:'15px' }} width="25px" />
+                                <span 
+                                    id={
+                                        this.state.menuItemCargaArchivo == true
+                                        ? "txtSidebarItemHover"
+                                        : "txtSidebarItem"
+                                    }
+                                >Carga de archivo</span>
+                        </Link>
+                    </Menu.Item>
+                    :null 
+                }
+                {
+                    localStorage.getItem('tpuprivilegio') == "todo"
+                    ?<Menu.Item key="sistema/configuracion/usuarios" id="menuItemSidebar">
+                        <Link to="/sistema/configuracion/usuarios" 
+                            onMouseEnter={() => {this.funActivarHover('menuItemUsuarios', 'Usuarios')}} 
+                            onMouseLeave={() => {this.funDesactivarHover('menuItemUsuarios', 'Usuarios')}}
+                            onClick={() => {this.funSeleccionarMenu('menuItemUsuarios', 'Usuarios')}}
+                        >
+                        <i className="icon icon-user-o"/>
+                        <span
+                            id={
+                                this.state.menuItemUsuarios == true
+                                ? "txtSidebarItemHover"
+                                : "txtSidebarItem"
+                            }
+                        >Usuarios</span></Link>
+                    </Menu.Item>
+                    :null
+                }
+                {
+                    localStorage.getItem('tpuprivilegio') == "todo"
+                    ?<Menu.Item key="sistema/configuracion/rebate" id="menuItemSidebar">
+                        <Link to="/sistema/configuracion/rebate" 
+                            onMouseEnter={() => {this.funActivarHover('menuItemRebate', 'Rebate')}} 
+                            onMouseLeave={() => {this.funDesactivarHover('menuItemRebate', 'Rebate')}}
+                            onClick={() => {this.funSeleccionarMenu('menuItemRebate', 'Rebate')}}
+                        >
+                        <img alt="" src={require("assets/images/menuRebate.png")} style={{ marginRight:'15px' }} width="25px" />
+                        <span
+                            id={
+                                this.state.menuItemRebate == true
+                                ? "txtSidebarItemHover"
+                                : "txtSidebarItem"
+                            }
+                        >Rebate</span></Link>
+                    </Menu.Item>
+                    :null
+                }
+                {
+                    localStorage.getItem('tpuprivilegio') == "todo"
+                    ?<Menu.Item key="sistema/configuracion/tiposUsuarios" id="menuItemSidebar">
+                        <Link to="/sistema/configuracion/tiposUsuarios" 
+                            onMouseEnter={() => {this.funActivarHover('menuItemTiposUsuarios', 'TiposUsuarios')}} 
+                            onMouseLeave={() => {this.funDesactivarHover('menuItemTiposUsuarios', 'TiposUsuarios')}}
+                            onClick={() => {this.funSeleccionarMenu('menuItemTiposUsuarios', 'TiposUsuarios')}}
+                        >
+                        <img alt="" src={require("assets/images/menuRebate.png")} style={{ marginRight:'15px' }} width="25px" />
+                        <span
+                            id={
+                                this.state.menuItemTiposUsuarios == true
+                                ? "txtSidebarItemHover"
+                                : "txtSidebarItem"
+                            }
+                        >Tipos de Usuarios</span></Link>
+                    </Menu.Item>
+                    :null
+                }
+               
                 </MenuItemGroup>
                 <AppsNavigation/>
           </Menu>

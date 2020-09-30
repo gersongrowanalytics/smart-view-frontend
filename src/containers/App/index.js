@@ -1,7 +1,14 @@
 import React, {memo, useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import URLSearchParams from 'url-search-params'
-import {Redirect, Route, Switch, useHistory, useLocation, useRouteMatch} from "react-router-dom";
+import {
+  Redirect, 
+  Route, 
+  Switch, 
+  useHistory, 
+  useLocation, 
+  useRouteMatch
+} from "react-router-dom";
 import {ConfigProvider} from 'antd';
 import {IntlProvider} from "react-intl";
 

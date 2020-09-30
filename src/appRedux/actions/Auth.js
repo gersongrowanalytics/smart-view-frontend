@@ -187,6 +187,7 @@ export const loginReducer = (usuario) => async ( dispatch, getState) => {
           localStorage.setItem('pernombre', data.datos.pernombre)
           localStorage.setItem('ejecutivo', data.datos.ejecutivo)          
           localStorage.setItem('distribuidora', data.datos.pernombrecompleto)
+          localStorage.setItem('tpuprivilegio', data.datos.tpuprivilegio)
 
           dispatch(loginCorrecto(data.datos))
         }else{
