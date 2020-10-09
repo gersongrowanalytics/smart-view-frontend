@@ -1,22 +1,13 @@
-import React from 'react'
-import Auxiliary from "util/Auxiliary";
-import {Col, Row} from "antd";
-import TablaUsuarios from './tablas/TablaUsuarios'
-import TablaEjecutivos from './tablas/TablaEjecutivos'
+import React from "react";
+import {Route, Switch} from "react-router-dom";
+import Lista from './Lista/index'
+import Nuevo from './Nuevo/index'
 
-const Usuarios = () => {
-    return (
-        <Auxiliary>
-            <Row>
-                <Col xl={24} md={24} sm={24} xs={24}>
-                    <TablaUsuarios />
-                </Col>
-                <Col xl={24} md={24} sm={24} xs={24}>
-                    <TablaEjecutivos />
-                </Col>
-            </Row>
-        </Auxiliary>
-    )
-}
+const Usuarios = ({match}) => (
+  <Switch>
+    <Route path={`${match.url}/lista`} component={Lista}/>
+    <Route path={`${match.url}/nuevo`} component={Nuevo}/>
+  </Switch>
+);
 
-export default Usuarios
+export default Usuarios;

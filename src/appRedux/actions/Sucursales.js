@@ -56,7 +56,10 @@ export const obtenerSucursalesReducer = () =>async (dispatch, getState) => {
     }).catch((error)=> {
         dispatch({
             type: OBTENER_SUCURSALES_USUARIO_FAIL,
-            payload: []
+            payload: {
+              datos : [],
+              zonas : []
+            }
         })
     });
 }

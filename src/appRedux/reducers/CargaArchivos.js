@@ -1,6 +1,7 @@
 import {
     SELECCIONAR_CARGA_DE_ARCHIVOS
 } from "constants/SistemaTypes";
+
 const INIT_STATE = {
     cargaArchivosSeleccionado : false,
 };

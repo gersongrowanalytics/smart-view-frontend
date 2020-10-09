@@ -14,3 +14,6 @@ export * from './Tutorial';
 export * from './Configuracion/Usuarios';
 export * from './Configuracion/Rebate';
 export * from './Configuracion/TiposUsuarios';
+export * from './Mostrar/Tdis';
+export * from './Mostrar/Tpus';
+export * from './Mostrar/Zons';

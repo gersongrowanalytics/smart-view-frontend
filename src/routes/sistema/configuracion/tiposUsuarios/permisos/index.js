@@ -10,8 +10,8 @@ const PermisosTipoUsuario = () => {
     
     const dispatch = useDispatch();
 
-    function onChange(checked) {
-        console.log(`switch to ${checked}`);
+    function onChange(posicion) {
+        console.log(`switch to ${posicion}`);
     }
 
     const {
@@ -31,7 +31,12 @@ const PermisosTipoUsuario = () => {
             {" "}
             <Button 
                 className="ant-btn ant-btn-primary" 
-                onClick={() => dispatch(GuardarPermisosTipoUsuarioReducer(tpuidSeleccionado, permisosTipoUsuarioSeleccionado))}>
+                onClick={() => dispatch(
+                    GuardarPermisosTipoUsuarioReducer(
+                        tpuidSeleccionado, 
+                        permisosTipoUsuarioSeleccionado
+                    )
+                )}>
                 Guardar
             </Button>
             <Spin spinning={cargandoPermisosTipoUsuarioSeleccionado} tip="Cargando...">
@@ -39,8 +44,16 @@ const PermisosTipoUsuario = () => {
                     {
                         permisosTipoUsuarioSeleccionado.map((pts, posicion) => {
                             return (
-                                <Col xl={24} md={24} sm={24} xs={24} style={{marginTop:'10px', textTransform: 'uppercase'}}>
-                                    <Switch defaultChecked={pts.seleccionado} onChange={onChange} style={{marginRight:'10px'}}/>
+                                <Col 
+                                    xl={24} 
+                                    md={24} 
+                                    sm={24} 
+                                    xs={24} 
+                                    style={{marginTop:'10px', textTransform: 'uppercase'}}>
+                                    <Switch 
+                                        defaultChecked={pts.seleccionado} 
+                                        onChange={() => pts.seleccionado=!pts.seleccionado} 
+                                        style={{marginRight:'10px'}}/>
                                     {pts.pemnombre}<br />
                                 </Col>
                             )

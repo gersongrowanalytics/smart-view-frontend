@@ -1,8 +1,12 @@
 import React from 'react';
 import './estilos/PromocionCarousel.scss'
-import {Col, Row, Card, Button, Modal} from "antd";
+import {Col, Row, Card, Button, Modal, message, Spin } from "antd";
 import funFomratoDecimal from '../../funciones/funFormatoDecimal.js'
 import NumberFormat from 'react-number-format';
+import {
+  PERMISO_BOTON_EDITAR_PROMOCION
+} from "constants/PermisosTypes"
+import {funPermisosObtenidos} from 'funciones/funPermiso.js'
 
 // =========================
 // Slide
@@ -15,7 +19,15 @@ class Slide extends React.Component {
     this.state = {
       editando : false,
       inputPlanchas : this.props.slide.cspplanchas,
-      txtValorizado : this.props.slide.cspvalorizado
+      txtValorizado : this.props.slide.cspvalorizado,
+
+      editandoPromocion       : false,
+      fileProducto            : null,
+      fileBonificado          : null,
+      imagenPreviewProducto   : null,
+      imagenPreviewBonificado : null,
+      prbid                   : 0,
+      prpid                   : 0
     }
     this.handleMouseMove = this.handleMouseMove.bind(this)
     this.handleMouseLeave = this.handleMouseLeave.bind(this)
@@ -23,6 +35,10 @@ class Slide extends React.Component {
     this.imageLoaded = this.imageLoaded.bind(this)
     this.obtenerValorizado = this.obtenerValorizado.bind(this)
     this.slide = React.createRef()
+    this.habilitarDesabilitarEdicionPromocion = this.habilitarDesabilitarEdicionPromocion.bind(this)
+    this.seleccionarImagenProducto = this.seleccionarImagenProducto.bind(this)
+    this.seleccionarImagenBonificado = this.seleccionarImagenBonificado.bind(this)
+    this.mandarEditarImagenPromocion = this.mandarEditarImagenPromocion.bind(this)
   }
   
   handleMouseMove(event) {
@@ -83,6 +99,82 @@ class Slide extends React.Component {
 
   }
 
+  // SELECCIOJNAR ARCHIVOS DE  
+  seleccionarImagenProducto(prpid) {
+    this.setState({
+      prpid : prpid
+    })  
+    this.refs.seleccionarImagenProductoRef.click();
+  }
+
+  seleccionarImagenBonificado(prbid) {
+    this.setState({
+      prbid : prbid
+    })  
+    this.refs.seleccionarImagenBonificadoRef.click();
+  }
+
+  async cambioInputFileProducto(event){
+    event.stopPropagation();
+    event.preventDefault();
+    if(event.target.files.length > 0){
+      let reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onloadend = () => {
+        this.setState({
+          fileProducto: reader.result
+        });
+      };
+      this.setState({
+        imagenPreviewProducto :  URL.createObjectURL(event.target.files[0])
+      })
+    }else{
+      message.error('Lo sentimos, es necesario seleccionar una imagen') 
+    }
+  }
+
+  async cambioInputFileBonificado(event){
+    event.stopPropagation();
+    event.preventDefault();
+    if(event.target.files.length > 0){
+      let reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onloadend = () => {
+        this.setState({
+          fileBonificado: reader.result
+        });
+      };
+      this.setState({
+        imagenPreviewBonificado :  URL.createObjectURL(event.target.files[0])
+      })
+    }else{
+      message.error('Lo sentimos, es necesario seleccionar una imagen') 
+    }
+  }
+
+  habilitarDesabilitarEdicionPromocion(){
+    this.setState({
+      editandoPromocion : !this.state.editandoPromocion,
+      fileProducto            : null,
+      fileBonificado          : null,
+      imagenPreviewProducto   : null,
+      imagenPreviewBonificado : null,
+      prbid                   : 0,
+      prpid                   : 0
+    })
+  }
+
+  async mandarEditarImagenPromocion(){
+    await this.props.editarImagenesPromocion(
+      this.state.prpid,
+      this.state.prbid,
+      this.state.fileProducto,
+      this.state.fileBonificado,
+      this.props.posicion
+    )
+    this.habilitarDesabilitarEdicionPromocion()
+  }
+
   render() {
     const { 
       guardando, productos, productosbonificados, index,
@@ -92,13 +184,16 @@ class Slide extends React.Component {
       cspvalorizado,
       cspid,
       tprnombre,
-      cspcantidadplancha
+      cspcantidadplancha,
+      cargando,
     } = this.props.slide
-
+    
+    const permisosUsuario                = this.props.permisos
     const posicionPromocion              = this.props.posicion
     const editarPromocion                = this.props.editarPromocion
     const colorSeleciconadoPromo         = this.props.colorSeleciconadoPromo
     const aceptarEdicionPromocionReducer = this.props.aceptarEdicionPromocionReducer
+    const editarImagenesPromocion        = this.props.editarImagenesPromocion
 
     const current = this.props.current
     let classNames = 'slidePromocion'
@@ -115,12 +210,57 @@ class Slide extends React.Component {
         onMouseLeave={this.handleMouseLeave}
       >
         <div className="slide__image-wrapperPromocion">
+            <Spin spinning={cargando == undefined ? false : cargando} tip="Cargando...">
             <Card style={{
               borderRadius:'20px',
               width:'385px',
               height: '270px',
               border:'1px solid '+colorSeleciconadoPromo, 
             }}>
+              {
+                funPermisosObtenidos(
+                  permisosUsuario,
+                  PERMISO_BOTON_EDITAR_PROMOCION,
+                  <div id ="contenedorBtnEditarPromocion">
+                    {
+                      this.state.editandoPromocion == true
+                      ?this.state.imagenPreviewProducto != null || this.state.imagenPreviewBonificado != null
+                        ?<div id="contenedorIconosEdicion">
+                          <span 
+                            onClick = {() => this.habilitarDesabilitarEdicionPromocion()}
+                            id="btnEditarPromocion" 
+                            // className="gx-size-50 gx-border gx-border-danger gx-text-danger gx-justify-content-center gx-align-items-center gx-rounded-circle"
+                          >
+                            <i className="icon icon-close-circle" id="iconoCancelarEdicionPequeno"/>
+                          </span>
+                          {" "}
+                          <span 
+                            onClick = {() => 
+                              this.mandarEditarImagenPromocion()
+                            }
+                            id="btnEditarPromocion" 
+                            className="">
+                            <i className="icon icon-check-circle-o" id="iconoGuardarEdicion"/>
+                          </span>
+                        </div>
+                        :<span 
+                          onClick = {() => this.habilitarDesabilitarEdicionPromocion()}
+                          id="btnEditarPromocion" 
+                          className="gx-size-40 gx-border gx-border-danger gx-text-danger gx-flex-row gx-justify-content-center gx-align-items-center gx-rounded-circle">
+                          <i className="icon icon-close" id="iconoCancelarEdicion"/>
+                        </span>
+                      :<span 
+                        onClick = {() => this.habilitarDesabilitarEdicionPromocion()}
+                        id="btnEditarPromocion" 
+                        className="gx-size-40 gx-border gx-border-primary gx-text-primary gx-flex-row gx-justify-content-center gx-align-items-center gx-rounded-circle">
+                        <i className="icon icon-edit" id="iconoEditar"/>
+                      </span>
+                    }
+                  </div>
+                )
+              }
+              
+              
               {
                 cspcompletado == true
                 ?<div id="insigniaCompletado">
@@ -155,7 +295,32 @@ class Slide extends React.Component {
                                 ?<Col xl={11} md={11} sm={11} xs={11}>
                                     <Row className="gx-text-center">
                                         <Col xl={24} md={24}>
-                                          <img src={producto.prpimagen} width="105px" height="59px"/>
+                                        <input 
+                                          type="file" 
+                                          id="file" 
+                                          ref="seleccionarImagenProductoRef" 
+                                          style={{display: "none"}} 
+                                          onChange={(e) => this.cambioInputFileProducto(e)} 
+                                        />
+                                          {
+                                            this.state.editandoPromocion == true
+                                            ?<div
+                                              onClick = {() => this.seleccionarImagenProducto(producto.prpid)} 
+                                              id="contenedorImagenProducto">
+                                              <img 
+                                                src={
+                                                  this.state.imagenPreviewProducto == null
+                                                  ?"https://cdn.pixabay.com/photo/2017/11/10/05/24/upload-2935442_960_720.png"
+                                                  :this.state.imagenPreviewProducto
+                                                } 
+                                                width="105px" 
+                                                height="59px" 
+                                                id="imagenProducto"/>
+                                              {/* <i className="icon icon-edit" id="iconoEditarProducto"/> */}
+                                            </div>
+                                            :<img src={producto.prpimagen} width="105px" height="59px"/>
+                                          }
+                                          
                                           
                                         </Col>
                                         <Col xl={24} md={24} className="gx-text-center">
@@ -180,17 +345,39 @@ class Slide extends React.Component {
                                     return(
                                       posicion == 0
                                         ?<Col xl={24} md={24} className="gx-text-center" style={{marginTop:'-20px'}}>
+                                          <input 
+                                            type="file" 
+                                            id="file" 
+                                            ref="seleccionarImagenBonificadoRef" 
+                                            style={{display: "none"}} 
+                                            onChange={(e) => this.cambioInputFileBonificado(e)} 
+                                          />
                                           <div  style={{width:'100%'}} className="gx-text-center">
                                             <div id="entornoGratis">
                                               <img src={require('assets/images/regalo.png')} alt='' id="imggratis"/>
                                               <span id="txtgratis"> Gratis </span>
                                             </div>
                                           </div>
-
-                                            <img src={productoBonificado.prbimagen} width="105px" height="59px"/>
-                                            {/* <div 
-                                                style={{'width':"105px", 'height':"59px", backgroundImage: "url("+productoBonificado.proimagen+")", backgroundSize: '100% 100%', backgroundRepeat:'no-repeat', backgroundPosition:'center'}} 
-                                            /> */}
+                                          {
+                                            this.state.editandoPromocion == true
+                                            ?<div
+                                              onClick = {() => this.seleccionarImagenBonificado(productoBonificado.prbid)} 
+                                              id="contenedorImagenProductoBonificado">
+                                              <img 
+                                                src={
+                                                  this.state.imagenPreviewBonificado == null
+                                                  ?"https://cdn.pixabay.com/photo/2017/11/10/05/24/upload-2935442_960_720.png"
+                                                  :this.state.imagenPreviewBonificado
+                                                } 
+                                                width="105px" 
+                                                height="59px" 
+                                              />
+                                              {/* <i className="icon icon-edit" id="iconoEditarProducto"/> */}
+                                            </div>
+                                            :<img src={productoBonificado.prbimagen} width="105px" height="59px"/>
+                                          }
+                                            
+                                            
                                             <div id="txtProducto" >{productoBonificado.prbproductoppt}<br/></div>
                                             <div id="txtSubProducto" title={productoBonificado.prbcomprappt}>
                                               {productoBonificado.prbcomprappt.substr(0, 25)}
@@ -271,6 +458,7 @@ class Slide extends React.Component {
                 }
                 <div id="ultimaColumnaCarouselPromocion"></div>
             </Card> 
+            </Spin>,
         </div>
       </li>
     )
@@ -368,7 +556,17 @@ class PromocionesCarousel extends React.Component {
 
   render() {
     const { current, direction, seleccionoPromocion } = this.state
-    const { slides, heading, editarPromocion, colorSeleciconadoPromo, porcentaje, aceptarEdicionPromocionReducer, scaid } = this.props 
+    const { 
+      slides, 
+      heading, 
+      editarPromocion, 
+      colorSeleciconadoPromo, 
+      porcentaje, 
+      aceptarEdicionPromocionReducer, 
+      scaid,
+      permisos,
+      editarImagenesPromocion
+     } = this.props 
     const headingId = `slider-heading__${heading.replace(/\s+/g, '-').toLowerCase()}`
     const wrapperTransform = {
       'transform': `translateX(-${current * (100 / slides.length)}%)`
@@ -469,16 +667,19 @@ class PromocionesCarousel extends React.Component {
                 }}
               >
                 <Slide
-                    key                    = {posicion}
-                    posicion               = {posicion}
-                    slide                  = {slide}
-                    current                = {current}
-                    handleSlideClick       = {this.handleSlideClick}
-                    seleccionado           = {slide.seleccionado}
-                    editarPromocion        = {editarPromocion}
-                    colorSeleciconadoPromo = {colorSeleciconadoPromo}
+                    key                     = {posicion}
+                    posicion                = {posicion}
+                    slide                   = {slide}
+                    current                 = {current}
+                    handleSlideClick        = {this.handleSlideClick}
+                    seleccionado            = {slide.seleccionado}
+                    editarPromocion         = {editarPromocion}
+                    colorSeleciconadoPromo  = {colorSeleciconadoPromo}
+                    editarImagenesPromocion = {editarImagenesPromocion}
                     aceptarEdicionPromocionReducer = {aceptarEdicionPromocionReducer}
-                    scaid = {scaid}
+                    scaid     = {scaid}
+                    permisos  = {permisos}
+                    
                 />
               </div>
             )

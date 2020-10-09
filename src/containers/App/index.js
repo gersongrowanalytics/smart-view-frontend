@@ -18,7 +18,7 @@ import SignIn from "../SignIn";
 import SignUp from "../SignUp";
 import Recuperar from "../Recuperar/Recuperar";
 
-import {setInitUrl} from "appRedux/actions/Auth";
+import {setInitUrl, obtenerPermisosUsuarioReducer} from "appRedux/actions/Auth";
 import {onLayoutTypeChange, onNavStyleChange, setThemeType} from "appRedux/actions/Setting";
 
 import {
@@ -58,6 +58,9 @@ const App = (props) => {
   const history = useHistory();
   const match = useRouteMatch();
 
+  useEffect(() => {
+    dispatch(obtenerPermisosUsuarioReducer())
+  }, [])
 
   useEffect(() => {
         if (initURL === '') {

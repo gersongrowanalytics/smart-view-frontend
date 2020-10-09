@@ -20,6 +20,7 @@ const SidebarContent = () => {
 
   let {pathname} = useSelector(({common}) => common);
   let {navStyle, themeType} = useSelector(({settings}) => settings);
+  const {permisos} = useSelector(({auth}) => auth);
 
   const getNoHeaderClass = (navStyle) => {
     if (navStyle === NAV_STYLE_NO_HEADER_MINI_SIDEBAR || navStyle === NAV_STYLE_NO_HEADER_EXPANDED_SIDEBAR) {
@@ -49,6 +50,7 @@ const SidebarContent = () => {
             selectedKeys    = {selectedKeys}
             themeType       = {themeType}
             THEME_TYPE_LITE = {THEME_TYPE_LITE}
+            permisos        = {permisos}
           />
         </div>
       </div>

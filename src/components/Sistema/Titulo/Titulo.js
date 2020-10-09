@@ -3,12 +3,14 @@ import {Col, Row} from "antd"
 import './Estilos/Titulo.css'
 import config from 'config'
 import BotonDescargar from './BotonDescargar'
+import funPermiso from 'funciones/funPermiso.js'
+import {
+    PERMISO_BOTON_DESCARGAR_PROMOCIONES
+} from "constants/PermisosTypes"
 
 const Titulo = (props) => {
     
     const {tieneFecha, tieneTitulo, tieneBotonDescargar, tieneIcono, titulo, tprid, fechaActual} = props;
-
-    
 
     return (
         <Row>
@@ -28,7 +30,7 @@ const Titulo = (props) => {
                 }>                    
                     {
                         tieneBotonDescargar == true
-                        ?<BotonDescargar />
+                        ?funPermiso(PERMISO_BOTON_DESCARGAR_PROMOCIONES, <BotonDescargar />)
                         :null
                     }
                     {

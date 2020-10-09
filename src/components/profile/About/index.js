@@ -1,7 +1,7 @@
 import React from "react";
 import {Col, Row, Tabs} from "antd";
 import Widget from "components/Widget";
-import {aboutList} from '../../../routes/socialApps/Profile/data'
+// import {aboutList} from '../../../routes/socialApps/Profile/data'
 import AboutItem from "./AboutItem";
 
 
@@ -15,36 +15,22 @@ const About = () => {
           <TabPane tab="Overview" key="1">
             <div className="gx-mb-2">
               <Row>
-                {aboutList.map((about, index) =>
-                  <Col key={index} xl={8} lg={12} md={12} sm={12} xs={24}>
-                    <AboutItem data={about}/>
-                  </Col>
-                )}
+              <Col key={1} xl={8} lg={12} md={12} sm={12} xs={24}>
+                <AboutItem data={{title: "asd", icon: "1", desc: "asd", userList: "as"}}/>  
+                </Col>
               </Row>
             </div>
           </TabPane>
           <TabPane tab="Work" key="2">
             <div className="gx-mb-2">
-              <Row>{aboutList.map((about, index) =>
-                <Col key={index} xl={8} lg={12} md={12} sm={12} xs={24}>
-                  <AboutItem data={about}/>
-                </Col>
-              )}
-              </Row>
-            </div>
-          </TabPane>
-          <TabPane tab="Education" key="3">
-            <div className="gx-mb-2">
               <Row>
-                {aboutList.map((about, index) =>
-
-                  <Col key={index} xl={8} lg={12} md={12} sm={12} xs={24}>
-                    <AboutItem data={about}/>
-                  </Col>
-                )}
+                <Col key={2} xl={8} lg={12} md={12} sm={12} xs={24}>
+                  <AboutItem data={{title: "asd", icon: "1", desc: "asd", userList: "as"}}/>
+                </Col>
               </Row>
             </div>
           </TabPane>
+          
         </Tabs>
       </Widget>
     );

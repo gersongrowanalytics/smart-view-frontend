@@ -6,6 +6,7 @@ import {
     FILTRO_SELECCIONAR_FECHA_ANO,
     REINICIAR_FECHAS
 } from "constants/SistemaTypes";
+
 const INIT_STATE = {
     fechasFiltro       : {"dias": [], "meses": [], "anos": []},
     obtuvoFechasFiltro : false,

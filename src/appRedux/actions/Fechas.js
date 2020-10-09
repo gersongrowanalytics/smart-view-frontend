@@ -52,7 +52,7 @@ export const obtenerFechasReducer = () =>async (dispatch, getState) => {
     }).catch((error)=> {
         dispatch({
             type: OBTENER_FECHAS_FILTRO_FAIL,
-            payload: []
+            fechasFiltro : {"dias": [], "meses": [], "anos": []},
         })
     });
 }

@@ -11,7 +11,8 @@ import {
   SIGNIN_USER_SUCCESS,
   SIGNOUT_USER_SUCCESS,
   SIGNUP_USER_SUCCESS,
-  MOSTRAR_FORMULARIO_LOGIN
+  MOSTRAR_FORMULARIO_LOGIN,
+  OBTENER_PERMISOS_USUARIO
 } from "constants/ActionTypes";
 
 const INIT_STATE = {
@@ -22,7 +23,8 @@ const INIT_STATE = {
   authUser: localStorage.getItem('user_id'),
   datosUsuario : [],
   ventastpr    : [],
-  mostrarForm  : false
+  mostrarForm  : false,
+  permisos     : []
 };
 
 
@@ -126,6 +128,12 @@ export default (state = INIT_STATE, action) => {
       return{
         ...state,
         mostrarForm: action.payload,
+      }
+    }
+    case OBTENER_PERMISOS_USUARIO: {
+      return {
+        ...state,
+        permisos : action.payload
       }
     }
     default:

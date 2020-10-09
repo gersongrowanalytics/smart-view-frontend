@@ -22,6 +22,7 @@ const Promociones = () => {
     const {cargaArchivosSeleccionado} = useSelector(({cargaArchivos}) => cargaArchivos);
     const {tutorialSeleccionado} = useSelector(({tutorial}) => tutorial);
     const {vistaVentasSeleccionado}= useSelector(({ventasTpr}) => ventasTpr);
+    const {permisos} = useSelector(({auth}) => auth);
 
     const seleccionarCategoria = async (scaid, posicion) =>  {
         await dispatch(seleccionarPromocionReducer(true))
@@ -84,6 +85,7 @@ const Promociones = () => {
                                 promociones     = {item.promociones}
                                 porcentaje      = {item.porcentaje}
                                 colorSeleciconadoPromo = {colorSeleciconadoPromo}
+                                permisos        = {permisos}
                             />
                         )
                     })

@@ -16,7 +16,7 @@ const Profile = (props) => {
   };
 
   const {user, userInfo} = props;
-  const {id, name, image, address} = user;
+  const {id, name, image, address, soldTo, email} = user;
   const {followers, following, frinds} = userInfo;
   return (
     <Auxiliary>
@@ -25,20 +25,20 @@ const Profile = (props) => {
           <img src={image} alt=''/>
         </div>
         <div className="gx-profileon-content">
-          <p className="gx-profileon-title">{name}</p>
-          <span className="gx-fs-sm">{address}</span>
+          <p className="gx-profileon-title">{soldTo+"#"+name}</p>
+          <span className="gx-fs-sm">{email}</span>
         </div>
       </div>
 
-      <div className="gx-follower gx-text-center">
+      {/* <div className="gx-follower gx-text-center">
         <ul className="gx-follower-list">
           <li>
             <span className="gx-follower-title">{followers}</span>
-            <span>Followers</span>
+            <span>N° Usuarios</span>
           </li>
           <li>
             <span className="gx-follower-title">{following}</span>
-            <span>Following</span>
+            <span>N° Tipo Usuario</span>
           </li>
           <li>
             <span className="gx-follower-title">{frinds}</span>
@@ -46,13 +46,7 @@ const Profile = (props) => {
           </li>
         </ul>
       </div>
-      <div className="gx-mb-xl-4 gx-mb-3">
-        <p>You are following {name}</p>
-        {authUser === id ? null :
-          <Button className="gx-btn-sm gx-mb-0" type="primary"
-                  onClick={handleToggle}>{isFollow === true ? 'Follow' : 'Unfollow'}</Button>
-        }
-      </div>
+     */}
     </Auxiliary>
   )
 };

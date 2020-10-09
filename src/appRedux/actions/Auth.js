@@ -1,4 +1,5 @@
 import config from 'config'
+import {message} from "antd"
 import { estadoRequestReducer } from "appRedux/actions/EstadoRequest"
 import {
   HIDE_MESSAGE,
@@ -20,7 +21,8 @@ import {
   SIGNOUT_USER_SUCCESS,
   SIGNUP_USER,
   SIGNUP_USER_SUCCESS,
-  MOSTRAR_FORMULARIO_LOGIN
+  MOSTRAR_FORMULARIO_LOGIN,
+  OBTENER_PERMISOS_USUARIO
 } from "constants/ActionTypes";
 import {reiniciarSucursalesReducer} from 'appRedux/actions/Sucursales'
 import {reiniciarFechasReducer} from 'appRedux/actions/Fechas'
@@ -205,3 +207,47 @@ export const mostrarFormReducer = (accion) => {
     payload: accion
   }
 }
+
+export const obtenerPermisosUsuarioReducer = () => async (dispatch, getState) => {
+  	await fetch(config.api+'usuario/mostrar/permisos',
+		{
+			mode	: 'cors',
+			method	: 'POST',
+			body	: JSON.stringify({}),
+			headers: {
+				'Accept' 		: 'application/json',
+				'Content-type' 	: 'application/json',
+				'api_token'		: localStorage.getItem('usutoken')
+			}
+		}
+    )
+    .then( async res => {
+		await dispatch(estadoRequestReducer(res.status))
+		return res.json()
+    })
+    .then(data => {
+      	const estadoRequest = getState().estadoRequest.init_request
+      	if(estadoRequest == true){
+        	if(data.respuesta == true){
+            	dispatch({
+                	type: OBTENER_PERMISOS_USUARIO,
+                	payload: data.datos
+            	})
+			}else{
+				dispatch({
+					type	: OBTENER_PERMISOS_USUARIO,
+					payload	: data.datos
+				})
+			}
+      	}
+    }).catch((error)=> {
+		console.log('Obtener permisos')
+		console.log(error)
+		message.error('Lo sentimos, h,ubo un erro al momento de consultar tus permisos') 
+        dispatch({
+            type	: OBTENER_PERMISOS_USUARIO,
+            payload : []
+        })
+    });
+}
+

@@ -16,6 +16,9 @@ import Tutorial from "./Tutorial";
 import ConfiguracionUsuarios from "./Configuracion/Usuarios";
 import ConfiguracionRebate from "./Configuracion/Rebate";
 import ConfiguracionTiposUsuarios from "./Configuracion/TiposUsuarios";
+import MostrarTdis from "./Mostrar/Tdis";
+import MostrarTpus from "./Mostrar/Tpus";
+import MostrarZons from "./Mostrar/Zons";
 
 const createRootReducer = (history) => combineReducers({
   router                     : connectRouter(history),
@@ -34,7 +37,10 @@ const createRootReducer = (history) => combineReducers({
   tutorial                   : Tutorial,
   configuracionUsuario       : ConfiguracionUsuarios,
   configuracionRebate        : ConfiguracionRebate,
-  configuracionTiposUsuarios : ConfiguracionTiposUsuarios
+  configuracionTiposUsuarios : ConfiguracionTiposUsuarios,
+  mostrarTdis                : MostrarTdis,
+  mostrarTpus                : MostrarTpus,
+  mostrarZons                : MostrarZons
 });
 
 export default createRootReducer

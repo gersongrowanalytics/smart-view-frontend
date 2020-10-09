@@ -3,7 +3,16 @@ import './filtroSucursal.css'
 
 const FiltroSucursal = (props) => {
 
-    const {sucursalSeleccionada, sucursales, seleccionarSucursal, animacionMenuDesplegable, zonas, idZonaSeleccionado, idSucursalSeleccionado, seleccionarZona} = props
+    const {
+        sucursalSeleccionada, 
+        sucursales, 
+        seleccionarSucursal, 
+        animacionMenuDesplegable, 
+        zonas, 
+        idZonaSeleccionado, 
+        idSucursalSeleccionado, 
+        seleccionarZona
+    } = props
 
 
 

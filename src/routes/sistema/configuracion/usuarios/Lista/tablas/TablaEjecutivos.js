@@ -1,5 +1,7 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {Card, Table} from "antd";
+import {useDispatch, useSelector} from "react-redux";
+import {obtenerEjecutivosReducer} from 'appRedux/actions/Configuracion/Usuarios'
 
 const columns = [
     {title: 'Tipo de Usuario', dataIndex: 'tipoUsuario', key: 'tipoUsuario'},
@@ -19,23 +21,17 @@ const data = [
         correo: '',
         description: <ul><li>DISTRIBUCIONES Y REPRESENTACIONES K</li><li>DESPENSA PERUANA S.A</li></ul>
     },
-    // {
-    //     key: 2,
-    //     name: 'Jim Green',
-    //     age: 42,
-    //     address: 'London No. 1 Lake Park',
-    //     description: 'My name is Jim Green, I am 42 years old, living in London No. 1 Lake Park.'
-    // },
-    // {
-    //     key: 3,
-    //     name: 'Joe Black',
-    //     age: 32,
-    //     address: 'Sidney No. 1 Lake Park',
-    //     description: 'My name is Joe Black, I am 32 years old, living in Sidney No. 1 Lake Park.'
-    // },
 ];
 
 const TablaEjecutivos = () => {
+
+    const dispatch = useDispatch();
+    const {} = useSelector(({configuracionUsuario}) => configuracionUsuario);
+
+    useEffect(() => {
+        dispatch(obtenerEjecutivosReducer());
+    }, [])
+
     return (
         <>
             <Card title="Lista de Ejecutivos">

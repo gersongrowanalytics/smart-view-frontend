@@ -190,41 +190,39 @@ export const aceptarEdicionPromocionReducer = (posicionCanal, posicionPromocion,
 
 
     await fetch(config.api+'promociones/editar',
-      {
-        mode:'cors',
-        method: 'POST',
-        body: JSON.stringify({
-            usutoken    : localStorage.getItem('usutoken'),
-            cspid       : cspid,
-            valorizado  : valorizado,
-            planchas    : planchas
-        }),
-        headers: {
-          'Accept' : 'application/json',
-          'Content-type' : 'application/json',
-          'api_token': localStorage.getItem('usutoken')
-        }
-      }
+      	{
+			mode:'cors',
+			method: 'POST',
+			body: JSON.stringify({
+				usutoken    : localStorage.getItem('usutoken'),
+				cspid       : cspid,
+				valorizado  : valorizado,
+				planchas    : planchas
+			}),
+        	headers: {
+				'Accept' : 'application/json',
+				'Content-type' : 'application/json',
+				'api_token': localStorage.getItem('usutoken')
+        	}
+      	}
     )
     .then( async res => {
-      await dispatch(estadoRequestReducer(res.status))
-      return res.json()
+      	await dispatch(estadoRequestReducer(res.status))
+      	return res.json()
     })
     .then(data => {
-      const estadoRequest = getState().estadoRequest.init_request
-      if(estadoRequest === true){
-        if(data.respuesta === true){
-            
-            dispatch(seleccionarCategoriaReducer(scaidSeleccionado, false))
-            message.success(data.mensaje) 
-        }else{
-            
-            message.error(data.mensaje) 
-
-        }
-      }
+      	const estadoRequest = getState().estadoRequest.init_request
+      	if(estadoRequest === true){
+        	if(data.respuesta === true){
+            	dispatch(seleccionarCategoriaReducer(scaidSeleccionado, false))
+            	message.success(data.mensaje) 
+        	}else{
+            	message.error(data.mensaje) 
+        	}
+      	}
     }).catch((error)=> {
-        
+		console.log(error)
+		message.error("Lo sentimos, ocurrio un error del servidor (Frntd)") 
     });
 }
 
@@ -325,4 +323,72 @@ export const abrirCerrarModalInformativoPromociones = (accion) => {
       type: MOSTRAR_MODAL_INFORMATIVO_PROMOCIONES,
       payload: accion
   }
+}
+
+export const guardarImagenPromocionReducer = (
+	prpid, 
+	prbid, 
+	producto, 
+	bonificado, 
+	posicionCanal, 
+	posicionPromocion
+) => async (dispatch, getState) => {
+
+
+	let {canalesPromociones, scaidSeleccionado} = getState().promociones
+
+    canalesPromociones[posicionCanal]['promociones'][posicionPromocion]['cargando'] = true
+
+	dispatch({
+        type: ACTUALIZAR_CANALES_DE_PROMOCIONES,
+        payload: canalesPromociones
+	})
+	
+  	await fetch(config.api+'promociones/editar/imagenes',
+		{
+			mode:'cors',
+			method: 'POST',
+			body: JSON.stringify({
+				prpid			 : prpid,
+				prbid			 : prbid,
+				imagenProducto 	 : producto,
+				imagenBonificado : bonificado
+			}),
+			headers: {
+				'Accept' 	   : 'application/json',
+				'Content-type' : 'application/json',
+				'api_token'	   : localStorage.getItem('usutoken')
+			}
+		}
+	)
+    .then( async res => {
+		await dispatch(estadoRequestReducer(res.status))
+		return res.json()
+    })
+    .then(data => {
+		canalesPromociones[posicionCanal]['promociones'][posicionPromocion]['cargando'] = false
+		dispatch({
+			type: ACTUALIZAR_CANALES_DE_PROMOCIONES,
+			payload: canalesPromociones
+		})
+      	const estadoRequest = getState().estadoRequest.init_request
+      	if(estadoRequest === true){
+        	if(data.respuesta === true){
+				
+				message.success(data.mensaje)
+				dispatch(seleccionarCategoriaReducer(scaidSeleccionado, false))
+        	}else{
+				message.error(data.mensaje)
+        	}
+      	}
+    }).catch((error)=> {
+		canalesPromociones[posicionCanal]['promociones'][posicionPromocion]['cargando'] = false
+		dispatch({
+			type: ACTUALIZAR_CANALES_DE_PROMOCIONES,
+			payload: canalesPromociones
+		})
+		console.log(error)
+		message.error("Lo sentimos, ocurrio un error del servidor (Frntd)") 
+  	});
+
 }

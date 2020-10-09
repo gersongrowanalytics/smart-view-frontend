@@ -1,17 +1,21 @@
 import {
     OBTENER_USUARIOS_EXITO,
     OBTENER_USUARIOS_FAIL,
-    ACTUALIZAR_COLUMNAS_TABLA_USUARIOS
+    ACTUALIZAR_COLUMNAS_TABLA_USUARIOS,
+    ACTUALIZAR_LISTA_EJECUTIVOS,
+    ACTUALIZAR_COLUMNAS_TABLA_EJECUTIVOS
 } from "constants/SistemaTypes";
 
 const INIT_STATE = {
-    listaUsuario   : [],
-    obtuvoUsuarios : false,
-    columnasTabla  : [],
-    mostrarMsjErr  : false,
-    mostrarMsjExi  : false,
-    msjErr         : '',
-    msjExi         : ''
+    listaUsuario    : [],
+    listaEjecutivos : [],
+    obtuvoUsuarios  : false,
+    columnasTabla   : [],
+    columnasTablaEj : [],
+    mostrarMsjErr   : false,
+    mostrarMsjExi   : false,
+    msjErr          : '',
+    msjExi          : ''
 };
 
 export default (state = INIT_STATE, action) => {
@@ -34,6 +38,18 @@ export default (state = INIT_STATE, action) => {
             return {
                 ...state,
                 columnasTabla : action.payload
+            }
+        }
+        case ACTUALIZAR_LISTA_EJECUTIVOS: {
+            return {
+                ...state,
+                listaEjecutivos : action.payload
+            }
+        }
+        case ACTUALIZAR_COLUMNAS_TABLA_EJECUTIVOS: {
+            return {
+                ...state,
+                columnasTablaEj : action.payload
             }
         }
         default:
