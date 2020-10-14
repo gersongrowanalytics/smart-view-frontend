@@ -8,6 +8,7 @@ import {
 import {obtenerVentasTprReducer} from 'appRedux/actions/VentasTpr'
 import {obtenerPromocionesReducer} from 'appRedux/actions/Promociones'
 import config from 'config'
+import {descargarInformacionPromocionesReducer} from 'appRedux/actions/Promociones'
 
 export const reiniciarSucursalesReducer = () => {
   return {
@@ -32,7 +33,7 @@ export const obtenerSucursalesReducer = () =>async (dispatch, getState) => {
       await dispatch(estadoRequestReducer(res.status))
       return res.json()
     })
-    .then(data => {
+    .then(async data => {
       const estadoRequest = getState().estadoRequest.init_request
       if(estadoRequest == true){
         if(data.respuesta == true){
@@ -71,4 +72,5 @@ export const filtroSeleccionarSucursalUsuario = (sucid) => async (dispatch, getS
   })
   await dispatch(obtenerVentasTprReducer())
   await dispatch(obtenerPromocionesReducer())
+  await dispatch(descargarInformacionPromocionesReducer())
 }

@@ -10,6 +10,7 @@ import {
 import {obtenerVentasTprReducer} from 'appRedux/actions/VentasTpr'
 import {obtenerPromocionesReducer} from 'appRedux/actions/Promociones'
 import config from 'config'
+import {descargarInformacionPromocionesReducer} from 'appRedux/actions/Promociones'
 
 export const reiniciarFechasReducer = () => {
   return {
@@ -64,6 +65,7 @@ export const filtroSeleccionarDia = (dia) => async (dispatch, getState) => {
   })
   await dispatch(obtenerVentasTprReducer())
   await dispatch(obtenerPromocionesReducer())
+  await dispatch(descargarInformacionPromocionesReducer())
 }
 
 export const filtroSeleccionarMes = (mes) => async (dispatch, getState) => {
@@ -73,6 +75,7 @@ export const filtroSeleccionarMes = (mes) => async (dispatch, getState) => {
   })
   await dispatch(obtenerVentasTprReducer())
   await dispatch(obtenerPromocionesReducer())
+  await dispatch(descargarInformacionPromocionesReducer())
 }
 
 export const filtroSeleccionarAno = (ano) => async (dispatch, getState) => {
@@ -82,4 +85,5 @@ export const filtroSeleccionarAno = (ano) => async (dispatch, getState) => {
   })
   await dispatch(obtenerVentasTprReducer())
   await dispatch(obtenerPromocionesReducer())
+  await dispatch(descargarInformacionPromocionesReducer())
 }

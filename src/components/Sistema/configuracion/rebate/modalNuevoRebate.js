@@ -19,7 +19,16 @@ const ModalNuevoRebate = (props) => {
     const enviarFormulario = values => {
         form.resetFields();
         setStartDate('')
-        dispatch(agregarNuevoRebateReducer(values.fecha, values.tipoPromocion, values.porcentajeDesde, values.porcentajeHasta, values.porcentajeRebate))
+        dispatch(agregarNuevoRebateReducer(
+            values.fecha, 
+            values.tipoPromocion, 
+            values.porcentajeDesde, 
+            values.porcentajeHasta, 
+            values.porcentajeRebate,
+            values.categoria,
+            values.grupoRebate,
+            
+        ))
     }
 
     const {listaGruposRebates} = props
@@ -51,20 +60,35 @@ const ModalNuevoRebate = (props) => {
                             
                         />
                     </Form.Item>
+
                     <Form.Item label="Grupo Rebate" name="grupoRebate">
+                        <Select
+                            mode="multiple"
+                            style={{width: '100%'}}
+                            className="gx-mb-3 gx-w-100" >
+                                {
+                                    listaGruposRebates.map((grupoRebate) => {
+                                        return ( 
+                                            <Select.Option value={grupoRebate.treid}>{grupoRebate.trenombre}</Select.Option>
+                                        )
+                                    })
+                                }
+                        </Select>
+                    </Form.Item>
+                    {/* <Form.Item label="Grupo Rebate" name="grupoRebate">
                         <Select
                             className="gx-mb-3 gx-w-100" 
                         >
                             {
                                 listaGruposRebates.map((grupoRebate) => {
                                     return ( 
-                                        <Select.Option value="1">{grupoRebate.trenombre}</Select.Option>
+                                        <Select.Option value={grupoRebate.treid}>{grupoRebate.trenombre}</Select.Option>
                                     )
                                 })
                             }
                             
                         </Select>
-                    </Form.Item>
+                    </Form.Item> */}
                     <Form.Item label="Tipo de Promoción" name="tipoPromocion">
                         <Select
                             className="gx-mb-3 gx-w-100" 
@@ -73,13 +97,28 @@ const ModalNuevoRebate = (props) => {
                             <Select.Option value="2">Sell Out</Select.Option>
                         </Select>
                     </Form.Item>
+                    <Form.Item label="Categoria" name="categoria">
+                        <Select
+                            mode="multiple"
+                            style={{width: '100%'}}
+                            // onChange={handleChange}
+                            className="gx-mb-3 gx-w-100" >
+
+                            <Select.Option value="1">Family Care</Select.Option>
+                            <Select.Option value="2">Infant Care</Select.Option>
+                            <Select.Option value="3">Adult Care</Select.Option>
+                            <Select.Option value="4">Wipes</Select.Option>
+                            <Select.Option value="5">Fem Care</Select.Option>
+                            <Select.Option value="6">MultiCategoria</Select.Option>
+                        </Select>
+                    </Form.Item>
                     <Form.Item label="Porcentaje Desde" name="porcentajeDesde">  
                         <InputNumber 
                             className="gx-mb-3 gx-w-100" 
                             rules={[{ required: true, message: 'Es necesario un porcentaje desde' }]}
                             defaultValue={0}
                             min={0}
-                            max={100}
+                            max={10000}
                             formatter={value => `${value}%`}
                             parser={value => value.replace('%', '')}
                         />
@@ -89,7 +128,7 @@ const ModalNuevoRebate = (props) => {
                             rules={[{ required: true, message: 'Es necesario un porcentaje hasta' }]}
                             defaultValue={0}
                             min={0}
-                            max={100}
+                            max={10000}
                             formatter={value => `${value}%`}
                             parser={value => value.replace('%', '')}
                         />

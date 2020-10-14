@@ -29,7 +29,15 @@ export const ModalNuevoGrupoRebateReducer = (estadoModal) => {
     }
 }
 
-export const agregarNuevoRebateReducer = (fecha, tipoPromocion, porcentajeDesde, porcentajeHasta, porcentajeRebate) => async (dispatch, getState) => {
+export const agregarNuevoRebateReducer = (
+    fecha, 
+    tipoPromocion, 
+    porcentajeDesde, 
+    porcentajeHasta, 
+    porcentajeRebate, 
+    categorias,
+    grupoRebate
+) => async (dispatch, getState) => {
 
     // VALIDACION DE CAMPOS
     if(fecha === '' || fecha === undefined){
@@ -42,6 +50,10 @@ export const agregarNuevoRebateReducer = (fecha, tipoPromocion, porcentajeDesde,
         message.error('Lo sentimos, es necesario colocar un porcentaje hasta') 
     }else if(porcentajeRebate === 0 || porcentajeRebate === undefined || porcentajeRebate === ''){
         message.error('Lo sentimos, es necesario colocar un porcentaje rebate') 
+    }else if(categorias === 0 || categorias === undefined || categorias === ""){
+        message.error('Lo sentimos, es necesario seleccionar una categoria') 
+    }else if(grupoRebate === 0 || grupoRebate === undefined || grupoRebate === ""){
+        message.error('Lo sentimos, es necesario seleccionar un grupo rebate') 
     }else{
 
         dispatch({
@@ -60,7 +72,9 @@ export const agregarNuevoRebateReducer = (fecha, tipoPromocion, porcentajeDesde,
                 tipoPromocion    : tipoPromocion,
                 porcentajeDesde  : porcentajeDesde,
                 porcentajeHasta  : porcentajeHasta,
-                porcentajeRebate : porcentajeRebate
+                porcentajeRebate : porcentajeRebate,
+                catsid           : categorias,
+                tresid           : grupoRebate
             }),
             headers: {
                 'Accept' : 'application/json',
@@ -82,6 +96,7 @@ export const agregarNuevoRebateReducer = (fecha, tipoPromocion, porcentajeDesde,
                 if(data.respuesta == true){
                     message.success(data.mensaje)
                     dispatch(obtenerRebateReducer())
+                    dispatch(ActualiazrRebateReducer(data.fecid))
                 }else{
                     message.error(data.mensaje)
                 }
@@ -101,6 +116,37 @@ export const agregarNuevoRebateReducer = (fecha, tipoPromocion, porcentajeDesde,
     return {
         type : ''
     }
+}
+
+export const ActualiazrRebateReducer = (fecid) => async (dispatch, getState) => {
+    await fetch(config.api+'configuracion/rebate/actualizar/rebate',
+    {
+        mode:'cors',
+        method: 'POST',
+        body: JSON.stringify({
+            fecha : fecid
+        }),
+        headers: {
+            'Accept' : 'application/json',
+            'Content-type' : 'application/json',
+            'api_token': localStorage.getItem('usutoken')
+        }
+    }).then( async res => {
+        await dispatch(estadoRequestReducer(res.status))
+        return res.json()
+    }).then(data => {
+        const estadoRequest = getState().estadoRequest.init_request
+        if(estadoRequest == true){
+            if(data.respuesta == true){
+                
+            }else{
+                message.error(data.mensaje)
+            }
+        }
+    }).catch((error)=> {
+        console.log(error)
+        message.error('Lo sentimos, ocurrio un error al momento de actualirzar el rebate') 
+    });
 }
 
 export const agregarNuevoGrupoRebateReducer = (nombreGrupoRebate) => async (dispatch, getState) => {
@@ -283,32 +329,38 @@ export const armarColumnasTablaRebateReducer = () => async (dispatch) => {
             title: 'Año',
             dataIndex: 'fecano',
             key: 'fecano',
-            width: 150
+            // width: 150
         },
         {
             title: 'Fecha',
             dataIndex: 'fecmes',
             key: 'fecmes',
-            width: 150,
+            // width: 150,
         }, 
         {
             title: 'Grupo Rebate',
             dataIndex: 'trenombre',
             key: 'trenombre',
-            width: 150,
+            // width: 150,
             // sorter : (a, b) => a.length - b.length,
         }, 
         {
             title: 'Tipo de Promoción',
             dataIndex: 'tprnombre',
             key: 'tprnombre',
-            width: 150,
+            // width: 150,
         }, 
+        {
+            title: 'Categoria',
+            dataIndex: 'catnombre',
+            key: 'catnombre',
+            // width: 150,
+        },
         {
             title: 'Desde',
             dataIndex: '',
             key: 'rtpporcentajedesde',
-            width: 150,
+            // width: 150,
             render: (data) => 
                 data.editar == true
                     ?<InputNumber 
@@ -330,7 +382,7 @@ export const armarColumnasTablaRebateReducer = () => async (dispatch) => {
             title     : 'Hasta',
             dataIndex : '',
             key       : 'rtpporcentajehasta',
-            width     : 150,
+            // width     : 150,
             render    : (data) => 
                 data.editar == true
                     ? <InputNumber 
@@ -352,7 +404,7 @@ export const armarColumnasTablaRebateReducer = () => async (dispatch) => {
             title: 'Rebate',
             dataIndex: '',
             key: 'rtpporcentajerebate',
-            width: 150,
+            // width: 150,
             render: (data) =>
                 data.editar == true
                 ?<InputNumber 

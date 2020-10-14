@@ -91,6 +91,7 @@ class Filtros extends Component {
                 />
 
                 <div class="dropdown">
+                    <div id="tituloFiltro">Mes</div>
                     <button class="dropbtn">{this.state.nombreMes}</button>
                     <div class="dropdown-content">
                         {

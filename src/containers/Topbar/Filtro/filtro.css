@@ -57,3 +57,19 @@
 .dropdown:hover .dropdown-content {display: block;}
 
 /* .dropdown:hover .dropbtn {background-color: #3e8e41;} */
+#tituloFiltro{
+    background-color: transparent;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 9px;
+    line-height: 19px;
+    color: #4D4D4D;
+    margin-bottom: -8px;
+    border-top: 0px solid black;
+    border-left: 0px solid black;
+    border-right: 0px solid black;
+    border-bottom: 0px solid black;
+    text-align: center;
+    width: 100%;
+}
