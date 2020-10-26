@@ -4,10 +4,12 @@ import './estilos/CardRebate.css'
 import config from 'config'
 import NumberFormat from 'react-number-format';
 import funFomratoDecimal from '../../funciones/funFormatoDecimal.js'
+import { useSelector} from "react-redux";
 
 const CardRebate = (props) => {
 
     const {nombreTipoPromocion, rebateValorizado} = props
+    const {mesFiltroSelec} = useSelector(({fechas}) => fechas);
 
     return (
         <div style={{background:'#5A7DD5', width:'100%', marginBottom:'20px', paddingRight:'15px', borderRadius:'20px', boxShadow: '9px 6px 9px -1px rgba(0, 0, 0, 0.2)'}} >
@@ -22,7 +24,14 @@ const CardRebate = (props) => {
                         </Col>
                         <Col xl={8} md={8} sm={8} xs={24} style={{ borderRightStyle:'solid', borderRightColor:'white', paddingRight:'1px', alignSelf:'center', textAlignLast: 'left', height:'43px', paddingTop:'10px'}}>
                             <span className="gx-text-center gx-text-white" id="textoRebate">
-                                S/.<NumberFormat value={funFomratoDecimal((rebateValorizado/100), 2)} displayType={'text'} thousandSeparator={true} />
+                                S/.<NumberFormat 
+                                    value={
+                                        mesFiltroSelec == "SET"
+                                        ?funFomratoDecimal((rebateValorizado), 2)
+                                        :funFomratoDecimal((rebateValorizado/100), 2)
+                                    } 
+                                    displayType={'text'} 
+                                    thousandSeparator={true} />
                             </span>
                         </Col>
                         <Col xl={16} md={16} sm={16} xs={24}>

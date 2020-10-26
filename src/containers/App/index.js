@@ -58,9 +58,9 @@ const App = (props) => {
   const history = useHistory();
   const match = useRouteMatch();
 
-  useEffect(() => {
-    dispatch(obtenerPermisosUsuarioReducer())
-  }, [])
+  // useEffect(() => {
+  //   dispatch(obtenerPermisosUsuarioReducer())
+  // }, [])
 
   useEffect(() => {
         if (initURL === '') {

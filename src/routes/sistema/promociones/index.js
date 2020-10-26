@@ -18,7 +18,15 @@ import ModalInformativo from './ModalInformativo'
 
 const Promociones = () => {
     const dispatch = useDispatch();
-    const {categoriasPromociones, canalesPromociones, seleccionoPromocion, colorSeleciconadoPromo, vistaPromocionSeleccionado, deseleccionarPromocion, fechaActualizacionPromocion} = useSelector(({promociones}) => promociones);
+    const {
+        categoriasPromociones, 
+        canalesPromociones, 
+        seleccionoPromocion, 
+        colorSeleciconadoPromo, 
+        vistaPromocionSeleccionado, 
+        deseleccionarPromocion, 
+        fechaActualizacionPromocion
+    } = useSelector(({promociones}) => promociones);
     const {cargaArchivosSeleccionado} = useSelector(({cargaArchivos}) => cargaArchivos);
     const {tutorialSeleccionado} = useSelector(({tutorial}) => tutorial);
     const {vistaVentasSeleccionado}= useSelector(({ventasTpr}) => ventasTpr);
@@ -53,7 +61,7 @@ const Promociones = () => {
 
     return (
         <Auxiliary>
-             <ModalInformativo />
+            <ModalInformativo />
             <Row>
                 <Col xl={24} md={24} sm={24} xs={24}>
                 </Col>
