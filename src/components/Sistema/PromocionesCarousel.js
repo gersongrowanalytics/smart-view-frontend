@@ -4,7 +4,8 @@ import {Col, Row, Card, Button, Modal, message, Spin } from "antd";
 import funFomratoDecimal from '../../funciones/funFormatoDecimal.js'
 import NumberFormat from 'react-number-format';
 import {
-  PERMISO_BOTON_EDITAR_PROMOCION
+  PERMISO_BOTON_EDITAR_PROMOCION,
+  PERMISO_CODIGO_PROMOCION
 } from "constants/PermisosTypes"
 import {funPermisosObtenidos} from 'funciones/funPermiso.js'
 
@@ -182,6 +183,7 @@ class Slide extends React.Component {
       cspcompletado,
       cspplanchas,
       cspvalorizado,
+      prmcodigo,
       cspid,
       tprnombre,
       cspcantidadplancha,
@@ -259,7 +261,17 @@ class Slide extends React.Component {
                   </div>
                 )
               }
-              
+
+
+{
+                funPermisosObtenidos(
+                  permisosUsuario,
+                  PERMISO_CODIGO_PROMOCION,
+                  <div id="contenedorPalabraCodigoPromocion">
+                    {prmcodigo}
+                  </div>
+                )
+              }
               
               {
                 cspcompletado == true

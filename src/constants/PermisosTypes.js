@@ -11,3 +11,5 @@ export const PERMISO_MODULO_TIPO_USUARIOS  = 'modulo.tipos.usuarios'
 // PERMISOS DEL MODULO DE PROMOCIONES
 export const PERMISO_BOTON_DESCARGAR_PROMOCIONES = 'modulo.promocion.boton.descargar.promociones'
 export const PERMISO_BOTON_EDITAR_PROMOCION      = 'modulo.promocion.boton.editar.promocion'
+export const PERMISO_CODIGO_PROMOCION            = 'modulo.promocion.codigo.promocion'
+
