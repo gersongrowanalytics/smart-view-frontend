@@ -549,7 +549,7 @@
 #txtcanal{
 
   // transform-origin: 0 0;
-  
+  background-color: green;
   transform: rotate(270deg);
   // color: rebeccapurple;
   // @include transform(rotate(270deg));
@@ -615,6 +615,12 @@
 #contenedorBtnEditarPromocion{
   position: absolute;
   z-index: 1;
+}
+
+#contenedorPalabraCodigoPromocion{
+  position: absolute;
+  z-index: 1;
+  bottom: 0.0;
 }
 
 #conteno{
