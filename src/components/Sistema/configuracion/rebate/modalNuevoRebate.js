@@ -57,6 +57,7 @@ const ModalNuevoRebate = (props) => {
                             onChange={date => setStartDate(date)}
                             dateFormat="yyyy/MM"
                             showMonthYearPicker
+                            autoComplete={"off"}
                             
                         />
                     </Form.Item>

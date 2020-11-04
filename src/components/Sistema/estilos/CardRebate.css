@@ -14,3 +14,63 @@
     line-height: 18px;
     padding-top: 10px;
 }
+
+#primerBloqueRebate{
+    border-right: 3px solid #FFFFFF;
+}
+
+#segundoBloqueRebate{
+    /* background: blue; */
+}
+
+#tercerBloqueRebate{
+    /* background: chartreuse; */
+}
+
+
+#txtRebateTipo{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 16px;
+    color: #FFFFFF;
+}
+
+#txtRebateData{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 16px;
+    align-items: center;
+    color: #89E9FF;
+}
+
+#resultadoRebate{
+    border-top: 1px dotted #FFFFFF;
+    margin-right: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#txtRebateDataTrimestre{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 16px;
+    align-items: center;
+    color: #FFF3AB;
+}
+
+#separadorRebateTrimestre{
+    border-top: 1px dotted #FFFFFF;
+    margin-right: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.nombreTipoPromocionRebate{
+    text-transform: uppercase;
+}

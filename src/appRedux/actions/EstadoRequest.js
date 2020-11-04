@@ -8,6 +8,7 @@ import {
     ESTADO_REQUEST_NO_EXISTE,
     ESTADO_REQUEST_DESCONOCIDO
 } from "constants/SistemaTypes";
+import {userSignOut} from "appRedux/actions/Auth";
 
 // REDUCER -> ENVIAR LA DATA DE FETCH A UNA CONSTANTE O ESTADO
 export const estadoRequestReducer = (estado) => (dispatch) => {
@@ -21,6 +22,8 @@ export const estadoRequestReducer = (estado) => (dispatch) => {
             type: ESTADO_REQUEST_NO_AUTORIZADO,
             payload: estado
         })
+
+        dispatch(userSignOut())
     }else if(estado == 404){
         
         dispatch({
