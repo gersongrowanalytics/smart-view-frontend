@@ -68,6 +68,7 @@ const SellIn = () => {
                                 {/* <Col xl={9} md={24} sm={24} xs={24}> */}
                                 <div style={{width:'38%', }}>
                                     <CardRebate 
+                                        objetivoValorizado       = {tipoPromocion.tsuvalorizadoobjetivo}
                                         rebateValorizado    = {tipoPromocion.tsuvalorizadorebate}
                                         nombreTipoPromocion = {tipoPromocion.tprnombre}
                                         trrs = {tipoPromocion.trrs}
