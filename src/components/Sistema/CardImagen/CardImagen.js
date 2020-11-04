@@ -60,7 +60,8 @@ const CardImagen = (props) => {
                         tprcolortooltip = {"#FFFF"}
                         esSellIn        = {tipoPromocion == "Sell In" ? true : false}
                         titulo          = {"Por Facturar S/"}
-                        cantidad        = {funFomratoDecimal(togoCategoria , 0)}
+                        // cantidad        = {funFomratoDecimal(togoCategoria , 0)}
+                        cantidad        = {funFomratoDecimal(objetivoCategoria-realCategoria , 0)}
                         porcumplimiento = {funFomratoDecimal(((100*realCategoria)/objetivoCategoria), 0)}
                     />
                 </Col>

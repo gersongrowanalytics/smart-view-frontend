@@ -137,7 +137,7 @@ const CardRebate = (props) => {
                                 value={
                                     mesFiltroSelec == "SET"
                                     ?funFomratoDecimal((rebateValorizado), 0)
-                                    :funFomratoDecimal((rebateValorizado/100), 0)
+                                    :funFomratoDecimal((rebateValorizado), 0)
                                 } 
                                 displayType={'text'} 
                                 thousandSeparator={true} />
