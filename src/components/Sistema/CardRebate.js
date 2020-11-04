@@ -28,10 +28,10 @@ const CardRebate = (props) => {
             <Row>
                 <Col xl={14} md={14} sm={14} xs={14} id="primerBloqueRebate">
                     <Row>
-                        <Col xl={15} md={15} sm={15} xs={15} >
+                        <Col xl={14} md={14} sm={14} xs={14} >
                             <div id="txtRebateTipo" className="nombreTipoPromocionRebate">REBATE {nombreTipoPromocion}:</div>
                         </Col>
-                        <Col xl={9} md={9} sm={9} xs={9} >
+                        <Col xl={10} md={10} sm={10} xs={10} >
                             <div id="txtRebateData">MENSUAL </div>
                         </Col>
                     </Row>
@@ -42,7 +42,7 @@ const CardRebate = (props) => {
                             return(
                                 trrs.length <= 3
                                 ?<Row>
-                                    <Col xl={15} md={15} sm={15} xs={15} >
+                                    <Col xl={14} md={14} sm={14} xs={14} >
                                         <div id="txtRebateData">
                                             Escala {posicion+1 +"  "} 
                                             {escala.rtpporcentajedesde}% - 
@@ -52,7 +52,7 @@ const CardRebate = (props) => {
                                                 :escala.rtpporcentajehasta
                                             }%</div>
                                     </Col>
-                                    <Col xl={9} md={9} sm={9} xs={9} >
+                                    <Col xl={10} md={10} sm={10} xs={10} >
                                         <div id="txtRebateData">
                                             = S/
                                             {/* {
@@ -81,7 +81,7 @@ const CardRebate = (props) => {
                                 </Row>
                                 :posicion+1 > trrs.length-3 
                                     ?<Row>
-                                        <Col xl={15} md={15} sm={15} xs={15} >
+                                        <Col xl={14} md={14} sm={14} xs={14} >
                                             <div id="txtRebateData">
                                                 Escala {posicion+1 +"  "} 
                                                 {escala.rtpporcentajedesde}% - 
@@ -91,7 +91,7 @@ const CardRebate = (props) => {
                                                     :escala.rtpporcentajehasta
                                                 }%</div>
                                         </Col>
-                                        <Col xl={9} md={9} sm={9} xs={9} >
+                                        <Col xl={10} md={10} sm={10} xs={10} >
                                             <div id="txtRebateData">
                                                 = S/
                                                 {/* {
@@ -128,10 +128,10 @@ const CardRebate = (props) => {
 
                     <div id="resultadoRebate"></div>
                     <Row>
-                        <Col xl={15} md={15} sm={15} xs={15} >
+                        <Col xl={14} md={14} sm={14} xs={14} >
                             <div id="txtRebateTipo">Rebate Real </div>
                         </Col>
-                        <Col xl={9} md={9} sm={9} xs={9} >
+                        <Col xl={10} md={10} sm={10} xs={10} >
                             <div id="txtRebateTipo">
                             = S/<NumberFormat 
                                 value={
@@ -179,14 +179,14 @@ const CardRebate = (props) => {
                     </Row>
                     <div id="separadorRebateTrimestre"></div>
                     <Row>
-                        <Col xl={10} md={10} sm={10} xs={10}>
+                        <Col xl={12} md={12} sm={12} xs={12}>
                             <div id="txtRebateTipo">
                                 Real Q4
                             </div>
                         </Col>
-                        <Col xl={14} md={14} sm={14} xs={14}>
+                        <Col xl={12} md={12} sm={12} xs={12}>
                             <div id="txtRebateTipo">
-                                S/0000.0
+                                S/0
                             </div>
                         </Col>
                     </Row>
