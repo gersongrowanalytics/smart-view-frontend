@@ -81,7 +81,14 @@ class Slide extends React.Component {
   }
 
   obtenerValorizado(e){
-    let nuevoValor = parseInt(e.target.value)
+    let nuevoValor;
+    if(e.target.value == ""){
+      nuevoValor = 0
+    }else{
+      nuevoValor = parseInt(e.target.value)
+    }
+    
+     
     this.setState({
       inputPlanchas : nuevoValor
     })
@@ -425,7 +432,12 @@ class Slide extends React.Component {
                 <Col xl={2} md={2} sm={2} xs={2} />
                 <Col xl={11} md={11} sm={11} xs={11} className="gx-text-center">
                   <p  id="tituloValorizado">Valorizado<br/>
-                  <b id="precioValorizado">S/{funFomratoDecimal(this.state.txtValorizado, 2)}</b></p>
+                  <b id="precioValorizado">
+                    S/
+                    <NumberFormat value={
+                      funFomratoDecimal(this.state.txtValorizado, 2)} displayType={'text'} thousandSeparator={true} />
+                  </b>
+                  </p>
                 </Col>
                 <Col xl={24} md={24} sm={24} xs={24} className="gx-text-center" style={{marginTop:'0'}}>
                   <Button 
