@@ -482,7 +482,7 @@ class Slide extends React.Component {
                 }
                 <div id="ultimaColumnaCarouselPromocion"></div>
             </Card> 
-            </Spin>,
+            </Spin>
         </div>
       </li>
     )
