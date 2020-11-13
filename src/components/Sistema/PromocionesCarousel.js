@@ -374,14 +374,18 @@ class Slide extends React.Component {
                                           />
 
                                           {
-                                            cspgratis == 1
-                                            ?<div  style={{width:'100%'}} className="gx-text-center">
-                                              <div id="entornoGratis">
-                                                <img src={require('assets/images/regalo.png')} alt='' id="imggratis"/>
-                                                <span id="txtgratis"> Gratis </span>
-                                              </div>
+                                            <div  style={{width:'100%'}} className="gx-text-center">
+                                              {
+                                                cspgratis == 1
+                                                ?<div id="entornoGratis">
+                                                    <div>
+                                                      <img src={require('assets/images/regalo.png')} alt='' id="imggratis"/>
+                                                      <span id="txtgratis"> Gratis </span>
+                                                    </div>
+                                                  </div>
+                                                :<div id="entornoGratisSinColor"></div>
+                                              }
                                             </div>
-                                            :null
                                           }
                                           {
                                             this.state.editandoPromocion == true
@@ -407,7 +411,7 @@ class Slide extends React.Component {
                                             <div id="txtSubProducto" title={productoBonificado.prbcomprappt}>
                                               {
                                                 productoBonificado.prbcomprappt.includes('0.0')
-                                                ?<div>{(productoBonificado.prbcomprappt*100)}%</div>
+                                                ?<div>{funFomratoDecimal((productoBonificado.prbcomprappt*100), 2)}%</div>
                                                 :productoBonificado.prbcomprappt.substr(0, 25)
                                               }
                                               
