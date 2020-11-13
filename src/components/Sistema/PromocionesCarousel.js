@@ -410,7 +410,7 @@ class Slide extends React.Component {
                                             <div id="txtProducto" >{productoBonificado.prbproductoppt}<br/></div>
                                             <div id="txtSubProducto" title={productoBonificado.prbcomprappt}>
                                               {
-                                                productoBonificado.prbcomprappt.includes('0.0')
+                                                productoBonificado.prbproductoppt == "Dscto"
                                                 ?<div>{funFomratoDecimal((productoBonificado.prbcomprappt*100), 2)}%</div>
                                                 :productoBonificado.prbcomprappt.substr(0, 25)
                                               }
