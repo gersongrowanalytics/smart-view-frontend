@@ -640,7 +640,8 @@ class PromocionesCarousel extends React.Component {
           
           {slides.map((slide, posicion) => {
             return (
-              slide.cspcantidadcombo == 0
+              // slide.cspcantidadcombo == 0
+              slide.cspcantidadplancha == 0
               ?null
               :<div
                 // onClick={() => seleccionarCategoria(slide.scaid, posicion)}
