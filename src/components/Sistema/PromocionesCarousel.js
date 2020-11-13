@@ -195,6 +195,7 @@ class Slide extends React.Component {
       tprnombre,
       cspcantidadplancha,
       cargando,
+      cspgratis
     } = this.props.slide
     
     const permisosUsuario                = this.props.permisos
@@ -371,12 +372,17 @@ class Slide extends React.Component {
                                             style={{display: "none"}} 
                                             onChange={(e) => this.cambioInputFileBonificado(e)} 
                                           />
-                                          <div  style={{width:'100%'}} className="gx-text-center">
-                                            <div id="entornoGratis">
-                                              <img src={require('assets/images/regalo.png')} alt='' id="imggratis"/>
-                                              <span id="txtgratis"> Gratis </span>
+
+                                          {
+                                            cspgratis == 1
+                                            ?<div  style={{width:'100%'}} className="gx-text-center">
+                                              <div id="entornoGratis">
+                                                <img src={require('assets/images/regalo.png')} alt='' id="imggratis"/>
+                                                <span id="txtgratis"> Gratis </span>
+                                              </div>
                                             </div>
-                                          </div>
+                                            :null
+                                          }
                                           {
                                             this.state.editandoPromocion == true
                                             ?<div
@@ -399,7 +405,12 @@ class Slide extends React.Component {
                                             
                                             <div id="txtProducto" >{productoBonificado.prbproductoppt}<br/></div>
                                             <div id="txtSubProducto" title={productoBonificado.prbcomprappt}>
-                                              {productoBonificado.prbcomprappt.substr(0, 25)}
+                                              {
+                                                productoBonificado.prbcomprappt.includes('0.0')
+                                                ?<div>{(productoBonificado.prbcomprappt*100)}%</div>
+                                                :productoBonificado.prbcomprappt.substr(0, 25)
+                                              }
+                                              
                                             </div>
                                           </Col>           
                                         :null
