@@ -306,7 +306,9 @@ class Slide extends React.Component {
                         </span>
                         <span 
                           id="tituloVenta">
-                        {tprnombre+" "}Bonificación</span>
+                          {tprnombre+" "}
+                          {/* Bonificación */}
+                        </span>
                     </Col>
                     {
                         productos.map((producto, posicion) => {
@@ -411,7 +413,7 @@ class Slide extends React.Component {
                                             <div id="txtSubProducto" title={productoBonificado.prbcomprappt}>
                                               {
                                                 productoBonificado.prbproductoppt == "Dscto"
-                                                ?<div>{funFomratoDecimal((productoBonificado.prbcomprappt*100), 2)}%</div>
+                                                ?<div>{funFomratoDecimal((productoBonificado.prbcomprappt*100), 2)}% (S/{<NumberFormat value={funFomratoDecimal(((productoBonificado.prbcomprappt*100) * this.props.slide.csptotal), 2)} displayType={'text'} thousandSeparator={true} /> })</div>
                                                 :productoBonificado.prbcomprappt.substr(0, 25)
                                               }
                                               
