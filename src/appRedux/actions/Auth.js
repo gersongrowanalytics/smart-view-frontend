@@ -243,11 +243,42 @@ export const obtenerPermisosUsuarioReducer = () => async (dispatch, getState) =>
     }).catch((error)=> {
 		console.log('Obtener permisos')
 		console.log(error)
-		message.error('Lo sentimos, h,ubo un erro al momento de consultar tus permisos') 
+		message.error('Lo sentimos, hubo un erro al momento de consultar tus permisos') 
         dispatch({
             type	: OBTENER_PERMISOS_USUARIO,
             payload : []
         })
     });
+}
+
+export const recuperarContrasenaReducer = (usuario) => async (dispatch, getState) => {
+  await fetch(config.api+'recuperar/contrasena',
+    {
+      mode:'cors',
+      method: 'POST',
+      body: JSON.stringify(usuario),
+      headers: {
+        'Accept' : 'application/json',
+        'Content-type' : 'application/json'
+      }
+    }
+  )
+  .then( async res => {
+    await dispatch(estadoRequestReducer(res.status))
+    return res.json()
+  })
+  .then(data => {
+    const estadoRequest = getState().estadoRequest.init_request
+    if(estadoRequest == true){
+      if(data.respuesta == true){
+
+        
+      }else{
+        dispatch(showAuthMessage(data.mensaje))
+      }
+    }
+  }).catch((error)=> {
+    dispatch(showAuthMessage(error))
+  });
 }
 
