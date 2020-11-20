@@ -1,12 +1,13 @@
 import React from 'react'
-import {Input} from "antd";
+import {message, Input} from "antd";
 import { estadoRequestReducer } from "appRedux/actions/EstadoRequest"
 import {
     OBTENER_USUARIOS_EXITO,
     OBTENER_USUARIOS_FAIL,
 	ACTUALIZAR_COLUMNAS_TABLA_USUARIOS,
 	ACTUALIZAR_LISTA_EJECUTIVOS,
-	ACTUALIZAR_COLUMNAS_TABLA_EJECUTIVOS
+  ACTUALIZAR_COLUMNAS_TABLA_EJECUTIVOS,
+  CARGANDO_NUEVO_USUARIO
 } from "constants/SistemaTypes";
 import config from 'config'
 
@@ -361,4 +362,42 @@ export const armarColumnasTablaEjecutivoReducer = () => async (dispatch) => {
 			}
 		]
 	})
+}
+
+export const crearUsuarioReducer = (data) => async (dispatch, getState) => {
+  console.log(data)
+  dispatch({type: "CARGANDO_NUEVO_USUARIO",payload: true}) 
+  await fetch(config.api+'configuracion/usuarios/crear/usuario',
+    {
+      mode:'cors',
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        'Accept' : 'application/json',
+        'Content-type' : 'application/json',
+        'api_token': localStorage.getItem('usutoken')
+      }
+    }
+  )
+  .then( async res => {
+    await dispatch(estadoRequestReducer(res.status))
+    return res.json()
+  })
+  .then(data => {
+    const estadoRequest = getState().estadoRequest.init_request
+    if(estadoRequest == true){
+      if(data.respuesta == true){
+        message.success(data.mensaje)
+        dispatch({type: "CARGANDO_NUEVO_USUARIO",payload: false}) 
+        dispatch(obtenerUsuariosReducer()) 
+      }else{
+        message.success(data.mensaje)
+        dispatch({type: "CARGANDO_NUEVO_USUARIO",payload: false}) 
+      }
+    }
+  }).catch((error)=> {
+    console.log(error)
+    message.success("Lo sentimos ocurrio un error en el servidor")
+    dispatch({type: "CARGANDO_NUEVO_USUARIO",payload: false}) 
+  });
 }

@@ -3,7 +3,8 @@ import {
     OBTENER_USUARIOS_FAIL,
     ACTUALIZAR_COLUMNAS_TABLA_USUARIOS,
     ACTUALIZAR_LISTA_EJECUTIVOS,
-    ACTUALIZAR_COLUMNAS_TABLA_EJECUTIVOS
+    ACTUALIZAR_COLUMNAS_TABLA_EJECUTIVOS,
+    CARGANDO_NUEVO_USUARIO
 } from "constants/SistemaTypes";
 
 const INIT_STATE = {
@@ -15,7 +16,8 @@ const INIT_STATE = {
     mostrarMsjErr   : false,
     mostrarMsjExi   : false,
     msjErr          : '',
-    msjExi          : ''
+    msjExi          : '',
+    cargandoCrearUsuario : false
 };
 
 export default (state = INIT_STATE, action) => {
@@ -50,6 +52,12 @@ export default (state = INIT_STATE, action) => {
             return {
                 ...state,
                 columnasTablaEj : action.payload
+            }
+        }
+        case CARGANDO_NUEVO_USUARIO: {
+            return {
+                ...state,
+                cargandoCrearUsuario : action.payload
             }
         }
         default:

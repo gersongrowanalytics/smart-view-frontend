@@ -1,11 +1,15 @@
 import React from 'react'
 import {Col, Row, Card, Form, Input, Button, Select} from "antd";
-import FormTdi from './Form/formTdi'
+import {useDispatch, useSelector} from "react-redux";
 import FormTpu from './Form/formTpu'
 import FormZon from './Form/formZon'
 import Profile from "components/wall/Profile/index";
+import {crearUsuarioReducer} from "appRedux/actions/Configuracion/Usuarios";
 
-const index = () => {
+const Formprincipal = () => {
+
+    const dispatch = useDispatch();
+    const {cargandoCrearUsuario} = useSelector(({configuracionUsuario}) => configuracionUsuario);
 
     const [form] = Form.useForm();
 
@@ -22,6 +26,7 @@ const index = () => {
 
     const onFinish = async values =>  {
         console.log("finish",values)
+        dispatch(crearUsuarioReducer(values))
     };
 
     return (
@@ -35,9 +40,9 @@ const index = () => {
                         scrollToFirstError
                     >
                         
-                        <FormTdi />
+                        {/* <FormTdi /> */}
 
-                        <Form.Item 
+                        {/* <Form.Item 
                             rules={[{ 
                                 required: true, 
                                 message: 'El Número de Documento es requerido' 
@@ -45,7 +50,7 @@ const index = () => {
                             name={"pernum"}
                             label="N° Documento" required>
                             <Input type="number" placeholder="" />
-                        </Form.Item>
+                        </Form.Item> */}
 
                         <Form.Item 
                             name={"pernom"}
@@ -94,11 +99,19 @@ const index = () => {
                             <Input type="email" placeholder="" />
                         </Form.Item>
 
-                        <button
-
-                        >
-                            Crear
-                        </button>
+                        <Form.Item>
+                            <Button className="gx-mb-0"
+                                type="primary"
+                                htmlType="submit"
+                                loading={cargandoCrearUsuario}
+                            >
+                                {
+                                    cargandoCrearUsuario == true
+                                    ?"Enviando"
+                                    :"Crear"
+                                }
+                            </Button>
+                        </Form.Item>
                         {/* <Form.Item>
                             <Button type="primary">Crear</Button>
                         </Form.Item> */}
@@ -164,4 +177,4 @@ const index = () => {
     )
 }
 
-export default index
+export default Formprincipal
