@@ -10,8 +10,8 @@ class Login extends React.Component {
     super(props);
     this.state = { 
       items: [
-        'http://gro.gavsistemas.com/Sistema/abs/img/sfondoLogin.png',
-        'http://gro.gavsistemas.com/Sistema/abs/img/sfondoLogin.png',
+        'http://backend.leadsmartview.com/Sistema/abs/img/sfondoLogin.png',
+        'http://backend.leadsmartview.com/Sistema/abs/img/sfondoLogin.png',
       ], 
       current: 0, 
       isNext: true 
