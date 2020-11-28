@@ -9,9 +9,11 @@ import {
     PERMISO_MODULO_PROMOCIONES,
     PERMISO_MODULO_GUIA,
     PERMISO_MODULO_CARGA_ARCHIVOS,
+    PERMISO_MODULO_CONTROL_ARCHIVOS,
     PERMISO_MODULO_USUARIOS,
     PERMISO_MODULO_REBATE,
-    PERMISO_MODULO_TIPO_USUARIOS
+    PERMISO_MODULO_TIPO_USUARIOS,
+    PERMISO_MODULO_CONTROL_VENTAS
 } from "constants/PermisosTypes"
 
 const MenuItemGroup = Menu.ItemGroup;
@@ -20,21 +22,25 @@ class SidebarItem extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            menuItemVentas          : false,
-            menuItemPromociones     : false,
-            menuItemGuiaGrow        : false,
-            menuItemCargaArchivo    : false,
-            menuItemUsuarios        : false,
-            menuItemRebate          : false,
-            menuItemTiposUsuarios   : false,
+            menuItemVentas           : false,
+            menuItemPromociones      : false,
+            menuItemGuiaGrow         : false,
+            menuItemCargaArchivo     : false,
+            menuItemControlArchivos  : false,
+            menuItemControlVentas    : false,
+            menuItemUsuarios         : false,
+            menuItemRebate           : false,
+            menuItemTiposUsuarios    : false,
 
-            seleccionoVentas        : false,
-            seleccionoPromociones   : false,
-            seleccionoGuia          : false,
-            seleccionoCarga         : false,
-            seleccionoUsuarios      : false,
-            seleccionoRebate        : false,
-            seleccionoTiposUsuarios : false,
+            seleccionoVentas         : false,
+            seleccionoPromociones    : false,
+            seleccionoGuia           : false,
+            seleccionoCarga          : false,
+            seleccionoControlArchivo : false,
+            seleccionoControlVentas  : false,
+            seleccionoUsuarios       : false,
+            seleccionoRebate         : false,
+            seleccionoTiposUsuarios  : false,
         }
         this.funActivarHover = this.funActivarHover.bind(this)
         this.funSeleccionarMenu = this.funSeleccionarMenu.bind(this)
@@ -57,21 +63,25 @@ class SidebarItem extends React.Component {
 
     funSeleccionarMenu(nombre, nombreSelecciono){
         this.setState({
-            menuItemVentas          : false,
-            menuItemPromociones     : false,
-            menuItemGuiaGrow        : false,
-            menuItemCargaArchivo    : false,
-            menuItemUsuarios        : false,
-            menuItemRebate          : false,
-            menuItemTiposUsuarios   : false,
+            menuItemVentas           : false,
+            menuItemPromociones      : false,
+            menuItemGuiaGrow         : false,
+            menuItemCargaArchivo     : false,
+            menuItemControlArchivos  : false,
+            menuItemControlVentas    : false,
+            menuItemUsuarios         : false,
+            menuItemRebate           : false,
+            menuItemTiposUsuarios    : false,
 
-            seleccionoVentas        : false,
-            seleccionoPromociones   : false,
-            seleccionoGuia          : false,
-            seleccionoCarga         : false,
-            seleccionoUsuarios      : false,
-            seleccionoRebate        : false,
-            seleccionoTiposUsuarios : false,
+            seleccionoVentas         : false,
+            seleccionoPromociones    : false,
+            seleccionoGuia           : false,
+            seleccionoCarga          : false,
+            seleccionoControlArchivo : false,
+            seleccionoUsuarios       : false,
+            seleccionoRebate         : false,
+            seleccionoTiposUsuarios  : false,
+            seleccionoControlVentas  : false,
         })
 
         this.setState({
@@ -190,6 +200,64 @@ class SidebarItem extends React.Component {
                         </Menu.Item>
                     )
                 }
+
+
+                
+
+                {
+                    funPermisosObtenidos(
+                        this.props.permisos,
+                        PERMISO_MODULO_CONTROL_ARCHIVOS,
+                        <Menu.Item key="sistema/cargaArchivos/control" id="menuItemSidebar">
+                            <Link to="/sistema/cargaArchivos/control" 
+                                onMouseEnter={() => {this.funActivarHover('menuItemControlArchivos', 'ControlArchivo')}} 
+                                onMouseLeave={() => {this.funDesactivarHover('menuItemControlArchivos', 'ControlArchivo')}}
+                                onClick={() => {
+                                    this.funSeleccionarMenu('menuItemControlArchivos', 'ControlArchivo')
+                                }}>
+
+                                    <img alt="" src={require("assets/images/menuCargaArchivo.png")} style={{ marginRight:'15px' }} width="25px" />
+                                    <span 
+                                        id={
+                                            this.state.menuItemControlArchivos == true
+                                            ? "txtSidebarItemHover"
+                                            : "txtSidebarItem"
+                                        }
+                                    >Control de Archivos</span>
+                            </Link>
+                        </Menu.Item>
+                    )
+                }
+
+
+                {
+                    funPermisosObtenidos(
+                        this.props.permisos,
+                        PERMISO_MODULO_CONTROL_VENTAS,
+                        <Menu.Item key="sistema/controlVentas" id="menuItemSidebar">
+                            <Link to="/sistema/controlVentas" 
+                                onMouseEnter={() => {this.funActivarHover('menuItemControlVentas', 'ControlVentas')}} 
+                                onMouseLeave={() => {this.funDesactivarHover('menuItemControlVentas', 'ControlVentas')}}
+                                onClick={() => {
+                                    this.funSeleccionarMenu('menuItemControlVentas', 'ControlVentas')
+                                }}>
+
+                                    <img alt="" src={require("assets/images/menuCargaArchivo.png")} style={{ marginRight:'15px' }} width="25px" />
+                                    <span 
+                                        id={
+                                            this.state.menuItemControlVentas == true
+                                            ? "txtSidebarItemHover"
+                                            : "txtSidebarItem"
+                                        }
+                                    >Control de Ventas</span>
+                            </Link>
+                        </Menu.Item>
+                    )
+                }
+
+
+
+
                 {
                     funPermisosObtenidos(
                         this.props.permisos,

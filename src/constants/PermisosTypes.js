@@ -1,11 +1,13 @@
 // PERMISOS DE MODULOS
-export const PERMISO_MODULO_VENTAS         = 'modulo.ventas'
-export const PERMISO_MODULO_PROMOCIONES    = 'modulo.promociones'
-export const PERMISO_MODULO_GUIA           = 'modulo.guia'
-export const PERMISO_MODULO_CARGA_ARCHIVOS = 'modulo.cargar.archivos'
-export const PERMISO_MODULO_USUARIOS       = 'modulo.usuarios'
-export const PERMISO_MODULO_REBATE         = 'modulo.rebate'
-export const PERMISO_MODULO_TIPO_USUARIOS  = 'modulo.tipos.usuarios'
+export const PERMISO_MODULO_VENTAS           = 'modulo.ventas'
+export const PERMISO_MODULO_PROMOCIONES      = 'modulo.promociones'
+export const PERMISO_MODULO_GUIA             = 'modulo.guia'
+export const PERMISO_MODULO_CARGA_ARCHIVOS   = 'modulo.cargar.archivos'
+export const PERMISO_MODULO_CONTROL_ARCHIVOS = 'modulo.control.archivos'
+export const PERMISO_MODULO_CONTROL_VENTAS   = 'modulo.control.ventas'
+export const PERMISO_MODULO_USUARIOS         = 'modulo.usuarios'
+export const PERMISO_MODULO_REBATE           = 'modulo.rebate'
+export const PERMISO_MODULO_TIPO_USUARIOS    = 'modulo.tipos.usuarios'
 
 
 // PERMISOS DEL MODULO DE PROMOCIONES

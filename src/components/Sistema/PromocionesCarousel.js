@@ -93,16 +93,22 @@ class Slide extends React.Component {
       inputPlanchas : nuevoValor
     })
 
-    if(nuevoValor <= this.props.slide.cspcantidadplancha){
-      let nuevoValorizado = nuevoValor*this.props.slide.csptotalplancha
+    if(this.props.slide.cspcantidadplancha == 'NA'){
       this.setState({
-        txtValorizado : nuevoValorizado
+        txtValorizado : 0
       })
     }else{
-      let nuevoValorizado = this.props.slide.cspcantidadplancha*this.props.slide.csptotalplancha
-      this.setState({
-        txtValorizado : nuevoValorizado
-      })
+      if(nuevoValor <= this.props.slide.cspcantidadplancha){
+        let nuevoValorizado = nuevoValor*this.props.slide.csptotalplancha
+        this.setState({
+          txtValorizado : nuevoValorizado
+        })
+      }else{
+        let nuevoValorizado = this.props.slide.cspcantidadplancha*this.props.slide.csptotalplancha
+        this.setState({
+          txtValorizado : nuevoValorizado
+        })
+      }
     }
 
   }
@@ -291,19 +297,33 @@ class Slide extends React.Component {
               }
                 <Row>
                     <Col xl={24} md={24} sm={24} xs={24} className="gx-text-center" style={{marginBottom:'20px', marginTop:'-5px'}} >
+                        
                         <span 
                           id="tituloCombos"
                           style={{
                             color:colorSeleciconadoPromo, 
                           }}>
-                            <NumberFormat value={funFomratoDecimal(cspcantidadcombo, 0)} displayType={'text'} thousandSeparator={true} />
-                            {" Combos"}
+                            {
+                              cspcantidadplancha == 'NA'
+                              ?0
+                              :<NumberFormat value={funFomratoDecimal(cspcantidadplancha, 0)} displayType={'text'} thousandSeparator={true} />
+                            }
+                           
+                           {" Planchas"}
                             <br/>
                         </span>
+                        
                         <span id="txt_totalPlanchas" style={{color: colorSeleciconadoPromo+"B3", }}>
-                          Total de planchas: <NumberFormat value={funFomratoDecimal(cspcantidadplancha, 0)} displayType={'text'} thousandSeparator={true} />
+                        {"Total de Combos: "}
+                        {
+                          cspcantidadcombo == 'NA'
+                          ?0
+                          :<NumberFormat value={funFomratoDecimal(cspcantidadcombo, 0)} displayType={'text'} thousandSeparator={true} />
+                        }
+                          
                           <br/>
                         </span>
+
                         <span 
                           id="tituloVenta">
                           {tprnombre+" "}

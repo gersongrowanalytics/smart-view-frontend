@@ -3,6 +3,8 @@ import {Route, Switch} from "react-router-dom";
 import Sellin from "./sellIn/";
 import Promociones from "./promociones"
 import CargaArchivoPromociones from "./cargaArchivos"
+import controlCargaArchivos from "./controlCargaArchivos/controlCargaArchivos"
+import controlVentas from "./controlVentas/controlVentas"
 import Tutorial from "./tutorial"
 import Configuracion from "./configuracion/index"
 
@@ -11,6 +13,8 @@ const Sistema = ({match}) => (
     <Route path={`${match.url}/ventas`} component={Sellin}/>
     <Route path={`${match.url}/promociones`} component={Promociones}/>
     <Route path={`${match.url}/cargaArchivos/promociones`} component={CargaArchivoPromociones}/>
+    <Route path={`${match.url}/cargaArchivos/control`} component={controlCargaArchivos}/>
+    <Route path={`${match.url}/controlVentas`} component={controlVentas}/>
     <Route path={`${match.url}/tutorial`} component={Tutorial}/>
     <Route path={`${match.url}/configuracion`} component={Configuracion}/>
   </Switch>
