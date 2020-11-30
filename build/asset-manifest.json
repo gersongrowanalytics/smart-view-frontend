@@ -1,0 +1,39 @@
+{
+  "files": {
+    "main.css": "/static/css/main.d2930818.chunk.css",
+    "main.js": "/static/js/main.b14f62b1.chunk.js",
+    "main.js.map": "/static/js/main.b14f62b1.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.5d96f3e5.js",
+    "runtime-main.js.map": "/static/js/runtime-main.5d96f3e5.js.map",
+    "static/css/2.bc3e163e.chunk.css": "/static/css/2.bc3e163e.chunk.css",
+    "static/js/2.9664b0a9.chunk.js": "/static/js/2.9664b0a9.chunk.js",
+    "static/js/2.9664b0a9.chunk.js.map": "/static/js/2.9664b0a9.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.de2cff2fa64feb1ff8e0bffb64de6a72.js": "/precache-manifest.de2cff2fa64feb1ff8e0bffb64de6a72.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.bc3e163e.chunk.css.map": "/static/css/2.bc3e163e.chunk.css.map",
+    "static/css/main.d2930818.chunk.css.map": "/static/css/main.d2930818.chunk.css.map",
+    "static/js/2.9664b0a9.chunk.js.LICENSE.txt": "/static/js/2.9664b0a9.chunk.js.LICENSE.txt",
+    "static/media/styles.css": "/static/media/gaxon.b1a63de8.svg",
+    "static/media/bannerPromociones.png": "/static/media/bannerPromociones.f93e4425.png",
+    "static/media/bannerVentas.png": "/static/media/bannerVentas.73fb4a75.png",
+    "static/media/estrellaCompletado.png": "/static/media/estrellaCompletado.601c16cb.png",
+    "static/media/fondomenudesplegable.png": "/static/media/fondomenudesplegable.1cb1e9bc.png",
+    "static/media/kimberly.png": "/static/media/kimberly.136e1280.png",
+    "static/media/kimberlyrojo.png": "/static/media/kimberlyrojo.3e68d24b.png",
+    "static/media/logoCompletoKim.png": "/static/media/logoCompletoKim.3e68d24b.png",
+    "static/media/logoLeadSmartView.png": "/static/media/logoLeadSmartView.ded669f8.png",
+    "static/media/logofooter.png": "/static/media/logofooter.c6749b18.png",
+    "static/media/logokkc.png": "/static/media/logokkc.136e1280.png",
+    "static/media/notifications.css": "/static/media/notification.c0d3c94c.eot",
+    "static/media/play.png": "/static/media/play.0643f439.png",
+    "static/media/sprite-flags-24x24.css": "/static/media/sprite-flags-24x24.7ed12ca4.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.5d96f3e5.js",
+    "static/css/2.bc3e163e.chunk.css",
+    "static/js/2.9664b0a9.chunk.js",
+    "static/css/main.d2930818.chunk.css",
+    "static/js/main.b14f62b1.chunk.js"
+  ]
+}
