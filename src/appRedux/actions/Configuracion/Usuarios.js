@@ -391,13 +391,13 @@ export const crearUsuarioReducer = (data) => async (dispatch, getState) => {
         dispatch({type: "CARGANDO_NUEVO_USUARIO",payload: false}) 
         dispatch(obtenerUsuariosReducer()) 
       }else{
-        message.success(data.mensaje)
+        message.error(data.mensaje)
         dispatch({type: "CARGANDO_NUEVO_USUARIO",payload: false}) 
       }
     }
   }).catch((error)=> {
     console.log(error)
-    message.success("Lo sentimos ocurrio un error en el servidor")
+    message.error("Lo sentimos ocurrio un error en el servidor")
     dispatch({type: "CARGANDO_NUEVO_USUARIO",payload: false}) 
   });
 }

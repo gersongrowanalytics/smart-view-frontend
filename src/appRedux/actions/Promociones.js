@@ -392,3 +392,49 @@ export const guardarImagenPromocionReducer = (
   	});
 
 }
+
+export const GuardarImagenPromocionListaReducer = (
+	prpid, 
+	prbid, 
+	producto, 
+	bonificado
+) => async (dispatch, getState) => {
+	
+  	await fetch(config.api+'promociones/editar/imagenes',
+		{
+			mode:'cors',
+			method: 'POST',
+			body: JSON.stringify({
+				prpid			 : prpid,
+				prbid			 : prbid,
+				imagenProducto 	 : producto,
+				imagenBonificado : bonificado
+			}),
+			headers: {
+				'Accept' 	   : 'application/json',
+				'Content-type' : 'application/json',
+				'api_token'	   : localStorage.getItem('usutoken')
+			}
+		}
+	)
+  .then( async res => {
+    await dispatch(estadoRequestReducer(res.status))
+    return res.json()
+  })
+  .then(data => {
+      
+      const estadoRequest = getState().estadoRequest.init_request
+      if(estadoRequest === true){
+        if(data.respuesta === true){
+          message.success(data.mensaje)
+          
+        }else{
+          message.error(data.mensaje)
+        }
+      }
+  }).catch((error)=> {
+    console.log(error)
+    message.error("Lo sentimos, ocurrio un error del servidor (Frntd)") 
+  });
+
+}

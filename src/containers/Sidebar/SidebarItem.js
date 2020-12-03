@@ -31,6 +31,7 @@ class SidebarItem extends React.Component {
             menuItemUsuarios         : false,
             menuItemRebate           : false,
             menuItemTiposUsuarios    : false,
+            menuItemControlPromociones : false,
 
             seleccionoVentas         : false,
             seleccionoPromociones    : false,
@@ -41,6 +42,7 @@ class SidebarItem extends React.Component {
             seleccionoUsuarios       : false,
             seleccionoRebate         : false,
             seleccionoTiposUsuarios  : false,
+            seleccionoControlPromociones : false,
         }
         this.funActivarHover = this.funActivarHover.bind(this)
         this.funSeleccionarMenu = this.funSeleccionarMenu.bind(this)
@@ -72,6 +74,7 @@ class SidebarItem extends React.Component {
             menuItemUsuarios         : false,
             menuItemRebate           : false,
             menuItemTiposUsuarios    : false,
+            menuItemControlPromociones : false,
 
             seleccionoVentas         : false,
             seleccionoPromociones    : false,
@@ -82,6 +85,7 @@ class SidebarItem extends React.Component {
             seleccionoRebate         : false,
             seleccionoTiposUsuarios  : false,
             seleccionoControlVentas  : false,
+            seleccionoControlPromociones : false,
         })
 
         this.setState({
@@ -250,6 +254,31 @@ class SidebarItem extends React.Component {
                                             : "txtSidebarItem"
                                         }
                                     >Control de Ventas</span>
+                            </Link>
+                        </Menu.Item>
+                    )
+                }
+
+                {
+                    funPermisosObtenidos(
+                        this.props.permisos,
+                        PERMISO_MODULO_CONTROL_VENTAS,
+                        <Menu.Item key="sistema/control/promociones" id="menuItemSidebar">
+                            <Link to="/sistema/control/promociones" 
+                                onMouseEnter={() => {this.funActivarHover('menuItemControlPromociones', 'ControlPromociones')}} 
+                                onMouseLeave={() => {this.funDesactivarHover('menuItemControlPromociones', 'ControlPromociones')}}
+                                onClick={() => {
+                                    this.funSeleccionarMenu('menuItemControlPromociones', 'ControlPromociones')
+                                }}>
+
+                                    <img alt="" src={require("assets/images/menuPromociones.png")} style={{ marginRight:'15px' }} width="25px" />
+                                    <span 
+                                        id={
+                                            this.state.menuItemControlPromociones == true
+                                            ? "txtSidebarItemHover"
+                                            : "txtSidebarItem"
+                                        }
+                                    >Control de Promociones</span>
                             </Link>
                         </Menu.Item>
                     )

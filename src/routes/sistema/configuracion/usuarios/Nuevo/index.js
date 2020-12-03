@@ -1,15 +1,19 @@
-import React from 'react'
-import {Col, Row, Card, Form, Input, Button, Select} from "antd";
+import React, {useEffect} from 'react'
+import {Col, Row, Card, Form, Input, Button, Select, Cascader} from "antd";
 import {useDispatch, useSelector} from "react-redux";
 import FormTpu from './Form/formTpu'
 import FormZon from './Form/formZon'
 import Profile from "components/wall/Profile/index";
 import {crearUsuarioReducer} from "appRedux/actions/Configuracion/Usuarios";
+import { 
+    ObtenerSucursales, 
+} from "appRedux/actions/Mostrar/Sucs"
 
 const Formprincipal = () => {
 
     const dispatch = useDispatch();
     const {cargandoCrearUsuario} = useSelector(({configuracionUsuario}) => configuracionUsuario);
+    const {sucsxzona} = useSelector(({mostrarSucs}) => mostrarSucs);
 
     const [form] = Form.useForm();
 
@@ -28,6 +32,10 @@ const Formprincipal = () => {
         console.log("finish",values)
         dispatch(crearUsuarioReducer(values))
     };
+
+    useEffect(() => {
+        dispatch(ObtenerSucursales())
+    }, [])
 
     return (
         <Row>
@@ -73,6 +81,14 @@ const Formprincipal = () => {
                         <FormTpu />
                         
                         <FormZon />
+
+                        <Form.Item
+                            name="sucursales"
+                            label="Sucursales"
+                            required
+                        >
+                            <Cascader options={sucsxzona} placeholder="Selecciona una sucursal"/>
+                        </Form.Item>
                         
                         
                         <Form.Item 

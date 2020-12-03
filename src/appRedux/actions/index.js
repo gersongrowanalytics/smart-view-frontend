@@ -19,3 +19,5 @@ export * from './Mostrar/Tpus';
 export * from './Mostrar/Zons';
 export * from './controlCargaArchivos/controlCargaArchivos';
 export * from './controlVentas/controlVentas';
+export * from './Mostrar/Sucs';
+export * from './controlPromociones/controlPromociones';

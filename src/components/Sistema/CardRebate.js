@@ -26,7 +26,12 @@ const CardRebate = (props) => {
             paddingTop:'18px'
         }} >
             <Row>
-                <Col xl={14} md={14} sm={14} xs={14} id="primerBloqueRebate">
+                <Col 
+                    xl={nombreTipoPromocion.includes("Out") == true ? 24 :14} 
+                    md={nombreTipoPromocion.includes("Out") == true ? 24 :14} 
+                    sm={nombreTipoPromocion.includes("Out") == true ? 24 :14} 
+                    xs={nombreTipoPromocion.includes("Out") == true ? 24 :14} 
+                    id={nombreTipoPromocion.includes("Out") == true ? "" : "primerBloqueRebate"}>
                     <Row>
                         <Col xl={14} md={14} sm={14} xs={14} >
                             <div id="txtRebateTipo" className="nombreTipoPromocionRebate">REBATE {nombreTipoPromocion}:</div>
@@ -145,52 +150,57 @@ const CardRebate = (props) => {
                         </Col>
                     </Row>
                 </Col>
+                
+                {
+                    nombreTipoPromocion.includes("Out") == true
+                    ? null
+                    :   <Col xl={10} md={10} sm={10} xs={10} id="segundoBloqueRebate">
+                            <Row>
+                                <Col xl={24} md={24} sm={24} xs={24}>
+                                    <div id="txtRebateDataTrimestre">
+                                        TRIMESTRE - Q4
+                                    </div>
+                                </Col>
+                                <Col xl={24} md={24} sm={24} xs={24}>
+                                    <div id="txtRebateDataTrimestre">
+                                        Objetivo:
+                                    </div>
+                                </Col>
+                                <Col xl={24} md={24} sm={24} xs={24}>
+                                    <div id="txtRebateDataTrimestre">
+                                        Real:
+                                    </div>
+                                </Col>
+                                <Col xl={24} md={24} sm={24} xs={24}>
+                                    <div id="txtRebateDataTrimestre">
+                                        Facturar:
+                                    </div>
+                                </Col>
 
-                <Col xl={10} md={10} sm={10} xs={10} id="segundoBloqueRebate">
-                    <Row>
-                        <Col xl={24} md={24} sm={24} xs={24}>
-                            <div id="txtRebateDataTrimestre">
-                                TRIMESTRE - Q4
-                            </div>
-                        </Col>
-                        <Col xl={24} md={24} sm={24} xs={24}>
-                            <div id="txtRebateDataTrimestre">
-                                Objetivo:
-                            </div>
-                        </Col>
-                        <Col xl={24} md={24} sm={24} xs={24}>
-                            <div id="txtRebateDataTrimestre">
-                                Real:
-                            </div>
-                        </Col>
-                        <Col xl={24} md={24} sm={24} xs={24}>
-                            <div id="txtRebateDataTrimestre">
-                                Facturar:
-                            </div>
-                        </Col>
+                                
 
-                        
-
-                        
+                                
 
 
-                        
-                        
-                    </Row>
-                    <div id="separadorRebateTrimestre"></div>
-                    <Row>
-                        <Col xl={12} md={12} sm={12} xs={12}>
-                            <div id="txtRebateTipo">
-                                Real Q4
-                            </div>
+                                
+                                
+                            </Row>
+                            <div id="separadorRebateTrimestre"></div>
+                            <Row>
+                                <Col xl={12} md={12} sm={12} xs={12}>
+                                    <div id="txtRebateTipo">
+                                        Real Q4
+                                    </div>
+                                </Col>
+                                <Col xl={12} md={12} sm={12} xs={12}>
+                                    <div id="txtRebateTipo">
+                                        S/0
+                                    </div>
+                                </Col>
+                            </Row>
                         </Col>
-                        <Col xl={12} md={12} sm={12} xs={12}>
-                            <div id="txtRebateTipo">
-                                S/0
-                            </div>
-                        </Col>
-                    </Row>
-                </Col>
+                }
+                
                 
             </Row>        
         </div>
