@@ -20,4 +20,5 @@ export * from './Mostrar/Zons';
 export * from './controlCargaArchivos/controlCargaArchivos';
 export * from './controlVentas/controlVentas';
 export * from './Mostrar/Sucs';
+export * from './Mostrar/Cats';
 export * from './controlPromociones/controlPromociones';

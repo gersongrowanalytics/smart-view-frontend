@@ -1,5 +1,6 @@
 import React from 'react'
 import { estadoRequestReducer } from "appRedux/actions/EstadoRequest"
+import {GuardarImagenPromocionListaReducer} from 'appRedux/actions/Promociones'
 import {
     OBTENER_CONTROL_PROMOCIONES,
     OBTENER_COLUMNAS_CONTROL_PROMOCIONES,
@@ -10,7 +11,7 @@ import {message} from "antd"
 import FileImgProducto from 'components/Sistema/actions/controlPromociones/fileImgProducto'
 import FileImgBonificado from 'components/Sistema/actions/controlPromociones/fileImgBonificado'
 
-export const ObtenerListaPromociones = (fecha, codigoPromocion, sucid, catid, canid) => async (dispatch, getState) => {
+export const ObtenerListaPromociones = (fecha, sucnombre, catsid, codigoPromocion, canid) => async (dispatch, getState) => {
 
     dispatch({
         type: CARGANDO_TABLA_CONTROL_PROMOCIONES,
@@ -24,8 +25,8 @@ export const ObtenerListaPromociones = (fecha, codigoPromocion, sucid, catid, ca
 			body: JSON.stringify({
                 fecha           : fecha,
                 codigoPromocion : codigoPromocion,
-                sucid           : sucid,
-                catid           : catid,
+                sucnombre       : sucnombre,
+                catsid          : catsid,
                 canid           : canid
             }),
 			headers: {
@@ -134,16 +135,21 @@ export const ArmarColumnasTablaPromocionesReducer = () => async (dispatch, getSt
             render: (data) => 
             data.editar == true 
             ?<div>
-                {/* <span 
+                <span 
                 className="gx-link gx-text-yellow"
                 style={{marginRight:'10px'}}
                 onClick = {
                     () => 
-                    console.log(dataprbideditar)
+                    {
+                        dispatch(GuardarImagenPromocionListaReducer(data.prpid, data.prbid, data.prpimageneditar, data.prbimageneditar))
+                        data.editar = false
+                        dispatch({type: "",payload: data}) 
+                        dispatch(ArmarColumnasTablaPromocionesReducer())
+                    }
                 }
                 >
                 Guardar
-                </span> */}
+                </span>
                 <span 
                 className="gx-link gx-text-red"
                 onClick = {

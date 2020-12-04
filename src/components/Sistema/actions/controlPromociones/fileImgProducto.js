@@ -7,17 +7,17 @@ class FileImgProducto extends React.Component {
         this.state = {
             imagenPreviewProducto : null,
             fileProducto : "",
-            prbid : ""
+            prpid : ""
         }
         this.slide = React.createRef()
     }
     
     
     // SELECCIOJNAR ARCHIVOS DE  
-    seleccionarImagenProducto(prbid) {
-        this.props.data.prbideditar = prbid
+    seleccionarImagenProducto(prpid) {
+        this.props.data.prpideditar = prpid
         this.setState({
-            prbid : prbid
+            prpid : prpid
         })  
         this.refs.seleccionarImagenProductoRef.click();
     }
@@ -42,6 +42,7 @@ class FileImgProducto extends React.Component {
                                         fileProducto: reader.result
                                     });
                                     this.props.data.prpimageneditar = reader.result
+                                    this.props.data.prpid = this.props.data.prpidex
                                 };
                                 this.setState({
                                     imagenPreviewProducto :  URL.createObjectURL(event.target.files[0])
@@ -57,7 +58,7 @@ class FileImgProducto extends React.Component {
                     this.props.data.editar == true
                     ?<div class="gx-flex-row gx-align-items-center" style={{cursor:'pointer'}}>
                         <img 
-                            onClick = {() => this.seleccionarImagenProducto(this.props.data.prbid)} 
+                            onClick = {() => this.seleccionarImagenProducto(this.props.data.prpidex)} 
                             class="gx-size-100"
                             src={
                                 this.state.imagenPreviewProducto == null
@@ -67,7 +68,7 @@ class FileImgProducto extends React.Component {
                             alt="" />
                     </div>
                     :<div class="gx-flex-row gx-align-items-center">
-                        <img class=" gx-size-100 " src={this.props.data.prbimagen} alt="" />
+                        <img class=" gx-size-100 " src={this.props.data.prpimagen} alt="" />
                     </div>
                     }
                 

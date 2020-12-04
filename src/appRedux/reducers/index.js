@@ -22,6 +22,7 @@ import MostrarZons from "./Mostrar/Zons";
 import controlCargaArchivos from "./controlCargaArchivos/controlCargaArchivos";
 import controlVentas from "./controlVentas/controlVentas";
 import MostrarSucs from "./Mostrar/Sucs";
+import MostrarCats from "./Mostrar/Cats";
 import ControlPromociones from "./controlPromociones/controlPromociones";
 
 const createRootReducer = (history) => combineReducers({
@@ -49,6 +50,7 @@ const createRootReducer = (history) => combineReducers({
   controlVentas              : controlVentas,
   mostrarSucs                : MostrarSucs,
   controlPromociones         : ControlPromociones,
+  mostrarCats                : MostrarCats,
 });
 
 export default createRootReducer

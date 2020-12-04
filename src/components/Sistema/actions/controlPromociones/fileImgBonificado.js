@@ -42,6 +42,7 @@ class FileImgProducto extends React.Component {
                                         fileProducto: reader.result
                                     });
                                     this.props.data.prbimageneditar = reader.result
+                                    this.props.data.prbimageneditar = this.props.data.prbidex
                                 };
                                 this.setState({
                                     imagenPreviewProducto :  URL.createObjectURL(event.target.files[0])
@@ -57,7 +58,7 @@ class FileImgProducto extends React.Component {
                     this.props.data.editar == true
                     ?<div class="gx-flex-row gx-align-items-center" style={{cursor:'pointer'}}>
                         <img 
-                            onClick = {() => this.seleccionarImagenProducto(this.props.data.prbid)} 
+                            onClick = {() => this.seleccionarImagenProducto(this.props.data.prbidex)} 
                             class="gx-size-100"
                             src={
                                 this.state.imagenPreviewProducto == null
