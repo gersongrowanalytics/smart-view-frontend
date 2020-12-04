@@ -42,7 +42,7 @@ class FileImgProducto extends React.Component {
                                         fileProducto: reader.result
                                     });
                                     this.props.data.prbimageneditar = reader.result
-                                    this.props.data.prbimageneditar = this.props.data.prbidex
+                                    this.props.data.prbid = this.props.data.prbidex
                                 };
                                 this.setState({
                                     imagenPreviewProducto :  URL.createObjectURL(event.target.files[0])
