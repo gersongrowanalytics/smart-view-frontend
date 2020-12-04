@@ -139,9 +139,9 @@ export const ArmarColumnasTablaPromocionesReducer = () => async (dispatch, getSt
                 className="gx-link gx-text-yellow"
                 style={{marginRight:'10px'}}
                 onClick = {
-                    () => 
+                    async () => 
                     {
-                        dispatch(GuardarImagenPromocionListaReducer(data.prpid, data.prbid, data.prpimageneditar, data.prbimageneditar))
+                        await dispatch(GuardarImagenPromocionListaReducer(data.prpid, data.prbid, data.prpimageneditar, data.prbimageneditar))
                         data.editar = false
                         dispatch({type: "",payload: data}) 
                         dispatch(ArmarColumnasTablaPromocionesReducer())
