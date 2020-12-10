@@ -10,10 +10,11 @@ import {seleccionarTutorialReducer} from "appRedux/actions/Tutorial"
 import {seleccionarVistaPromocionReducer} from 'appRedux/actions/Promociones'
 import {seleccionarVistaVentasReducer} from 'appRedux/actions/VentasTpr'
 import CardImagen from 'components/Sistema/CardImagen/CardImagen'
+import RebateBonus from 'components/Sistema/Ventas/RebateBonus/RebateBonus'
 
 const SellIn = () => {
     const dispatch = useDispatch();
-    const {ventasTpr, vistaVentasSeleccionado}= useSelector(({ventasTpr}) => ventasTpr);
+    const {ventasTpr, vistaVentasSeleccionado, rebateBonus}= useSelector(({ventasTpr}) => ventasTpr);
     const {cargaArchivosSeleccionado} = useSelector(({cargaArchivos}) => cargaArchivos);
     const {tutorialSeleccionado} = useSelector(({tutorial}) => tutorial);
     const {vistaPromocionSeleccionado} = useSelector(({promociones}) => promociones);
@@ -117,6 +118,13 @@ const SellIn = () => {
                         )
                     })
                 }
+                    <Row>
+                        <Col xl={24} md={24} sm={24} xs={24}>
+                            <RebateBonus
+                                rebateBonus = {rebateBonus}
+                            />
+                        </Col>
+                    </Row>
                 </Col>
             </Row>
         </Auxiliary>

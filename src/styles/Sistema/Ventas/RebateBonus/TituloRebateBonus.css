@@ -1,0 +1,53 @@
+
+  #contenedorTituloRebateBonus{
+    margin-top: 30px;
+  }
+
+  .iconoRebateBonus{
+    width: 45px;
+    height: 47px;
+    margin-left: 18px;
+    margin-bottom: 15px;
+    margin-top: -30px;
+  }
+
+  .titulo-subrayado-rebate-bonus {
+    /* border-bottom: solid 1px #d9d9d9; */
+    margin-top: 10px;
+    padding-bottom: 2px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    position: relative;
+  }
+  .titulo-subrayado-rebate-bonus:before {
+    content: "";
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    z-index: 1;
+    height: 3px;
+    width: 100px;
+    background-color: #FDA019;
+  }
+  
+  .ant-card .titulo-subrayado-rebate-bonus:before,
+  .gx-card .titulo-subrayado-rebate-bonus:before {
+    display: none;
+  }
+  .ant-card .titulo-subrayado-rebate-bonus,
+  .gx-card .titulo-subrayado-rebate-bonus {
+    border-bottom: 0 none;
+    margin-bottom: 15px;
+    padding-bottom: 0;
+  }
+
+  #tituloRebateBonus{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 23px;
+    color: #4D4D4D;
+    margin-top: -35px;
+    /* padding-bottom: -100px; */
+  }

@@ -1,0 +1,33 @@
+#titulo-resultado-rebatebonus{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 19px;
+    color: #FFFFFF;
+}
+
+#txt-resultado-rebatebonus{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 19px;
+    color: #FFFFFF;
+}
+
+#txtResultado-resultado-rebatebonus{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    color: #FFFFFF;
+}
+
+#lineaResltado-resultado-rebatebonus{
+    border-top: 1px dotted #FFFFFF;
+    /* margin-right: 10px; */
+    margin-top: 5px;
+    margin-bottom: 5px;
+}

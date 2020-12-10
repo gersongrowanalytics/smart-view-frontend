@@ -7,7 +7,14 @@ import {
 const INIT_STATE = {
     ventasTpr : [],
     obtuvoVentasTpr : false,
-    vistaVentasSeleccionado  : false
+    vistaVentasSeleccionado  : false,
+    rebateBonus : {
+        "categorias"   : [],
+        "objetivo"     : "",
+        "real"         : "",
+        "cumplimiento" : "",
+        "rebate"       : ""
+    }
 };
 
 export default (state = INIT_STATE, action) => {
@@ -15,7 +22,8 @@ export default (state = INIT_STATE, action) => {
         case OBTENER_VENTAS_TPR_EXITO: {
             return {
                 ...state,
-                ventasTpr: action.payload,
+                ventasTpr: action.payload.datos,
+                rebateBonus : action.payload.rebatebonus,
                 obtuvoVentasTpr : true
             }
         }

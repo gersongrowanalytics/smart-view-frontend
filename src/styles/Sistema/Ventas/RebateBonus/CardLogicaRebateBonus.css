@@ -1,0 +1,61 @@
+#contenedor-cardlogica-rebatebonus{
+    background: #FDA019;
+    box-shadow: 9px 6px 9px -1px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    width: 100%;
+    padding: 20px;
+}
+
+#tituloCategorias-cardlogica-rebatebonus{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 17px;
+    line-height: 20px;
+    color: #FFFFFF;
+    margin-bottom: 10px;
+}
+
+#categoria-cardlogica-rebatebonus{
+    /* width:'127px', height:'120px',
+    backgroundSize: 'cover', backgroundPosition:'center' */
+    width: 57px;
+    height: 57px;
+    background-size: cover;
+    /* background-position: center; */
+    /* margin-right: 20px; */
+}
+
+#nombreCategoria-cardlogica-rebatebonus{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 18px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+    padding-left: 10px;
+}
+
+#contenedorLogica-cardlogica-rebatebonus{
+    padding-left: -20px;
+}
+
+
+#tituloDatos-cardlogica-rebatebonus{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 12px;
+    line-height: 18px;
+}
+
+#datos-cardlogica-rebatebonus{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 18px;
+}

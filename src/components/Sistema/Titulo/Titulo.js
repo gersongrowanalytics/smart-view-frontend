@@ -35,7 +35,7 @@ const Titulo = (props) => {
                     }
                     {
                         tieneTitulo
-                        ?<div id={ tprid == 1 ?"tituloModuloVentasSellIn" :"tituloModuloVentas"}> {titulo}</div>
+                        ?<div id={ tprid == 1 ?"tituloModuloVentasSellIn" :"tituloModuloVentas"}> {titulo.toUpperCase()}</div>
                         :null
                     }
                     {

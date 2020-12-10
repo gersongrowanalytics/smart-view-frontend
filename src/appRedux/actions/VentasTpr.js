@@ -53,7 +53,10 @@ export const obtenerVentasTprReducer = () =>async (dispatch, getState) => {
         if(data.respuesta == true){
             dispatch({
                 type: OBTENER_VENTAS_TPR_EXITO,
-                payload: data.datos
+                payload: {
+                  "datos" : data.datos,
+                  "rebatebonus" : data.rebatebonus
+                }
             })
         }else{
             dispatch({
@@ -116,7 +119,10 @@ export const obtenerVentasTprXZonaReducer = () => async (dispatch, getState) => 
       if(data.respuesta == true){
           dispatch({
               type: OBTENER_VENTAS_TPR_EXITO,
-              payload: data.datos
+              payload: {
+                "datos" : data.datos,
+                "rebatebonus" : data.rebatebonus
+              }
           })
       }else{
           dispatch({
