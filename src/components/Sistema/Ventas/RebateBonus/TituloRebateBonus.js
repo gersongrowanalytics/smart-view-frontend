@@ -6,7 +6,7 @@ import config from 'config'
 const RebateBonus = () => {
     return (
         <Row id="contenedorTituloRebateBonus">
-            <img src={config.api+'/Sistema/tiposPromociones/img/iconos/carrito.png'} className={"iconoRebateBonus"}/>
+            <img src={config.api+'/Sistema/categorias/img/iconos/iconosDesactivados/BONO-21.png'} className={"iconoRebateBonus"}/>
 
             <Col xl={22} md={22} sm={22} xs={22}>
                 <span className={"titulo-subrayado-rebate-bonus gx-flex-row"}>                    
