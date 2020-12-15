@@ -41,27 +41,38 @@ const CardLogicaRebateBonus = (props) => {
     return (
         <div id="contenedor-cardlogica-rebatebonus">
             <Row>
-                <Col xl={10} md={10} sm={10} xm={10}>
+                <Col xl={12} md={12} sm={12} xm={12}>
                     <div id="tituloCategorias-cardlogica-rebatebonus">CATEGORÍAS</div>
                     <Row>
                         {
                             categorias.map((data, posicion) => {
+
+                                let nombre = ""
+                                if(data.catnombre == "MultiCategoria"){
+                                    nombre = "Mult."
+                                }else{
+                                    nombre = data.catnombre.split(' Care')
+                                }
+
                                 return (
                                     <Col 
-                                        xl={categorias.length == 5 ?posicion==categorias.length-1? 4:5 : categorias.length == 4 ?6 : categorias.length == 3 ?8 : categorias.length == 2 ?12 : categorias.length == 1 ?24 : 24} 
-                                        md={categorias.length == 5 ?posicion==categorias.length-1? 4:5 : categorias.length == 4 ?6 : categorias.length == 3 ?8 : categorias.length == 2 ?12 : categorias.length == 1 ?24 : 24}  
-                                        sm={categorias.length == 5 ?posicion==categorias.length-1? 4:5 : categorias.length == 4 ?6 : categorias.length == 3 ?8 : categorias.length == 2 ?12 : categorias.length == 1 ?24 : 24}  
-                                        xm={categorias.length == 5 ?posicion==categorias.length-1? 4:5 : categorias.length == 4 ?6 : categorias.length == 3 ?8 : categorias.length == 2 ?12 : categorias.length == 1 ?24 : 24} 
+                                        xl={categorias.length == 6 ?4 :categorias.length == 5 ?4 : categorias.length == 4 ?6 : categorias.length == 3 ?8 : categorias.length == 2 ?12 : categorias.length == 1 ?24 : 24} 
+                                        md={categorias.length == 6 ?4 :categorias.length == 5 ?4 : categorias.length == 4 ?6 : categorias.length == 3 ?8 : categorias.length == 2 ?12 : categorias.length == 1 ?24 : 24}  
+                                        sm={categorias.length == 6 ?4 :categorias.length == 5 ?4 : categorias.length == 4 ?6 : categorias.length == 3 ?8 : categorias.length == 2 ?12 : categorias.length == 1 ?24 : 24}  
+                                        xm={categorias.length == 6 ?4 :categorias.length == 5 ?4 : categorias.length == 4 ?6 : categorias.length == 3 ?8 : categorias.length == 2 ?12 : categorias.length == 1 ?24 : 24} 
+                                        style={{textAlign: '-webkit-center'}}
                                     >
-                                        <div id="categoria-cardlogica-rebatebonus" style={{backgroundImage: "url('"+data.caticono+"')"}} />
-                                        <span id="nombreCategoria-cardlogica-rebatebonus">{data.catnombre}</span>
+                                        {/* <div id="categoria-cardlogica-rebatebonus" style={{backgroundImage: "url('"+data.caticono+"')"}} /> */}
+                                        
+                                        <img src={data.caticono} width="62px" height="62px" />
+                                        <span id="nombreCategoria-cardlogica-rebatebonus">{nombre}</span>
                                     </Col>
                                 )
                             })
                         }
                     </Row>
                 </Col>
-                <Col xl={14} md={14} sm={14} xm={14} id="contenedorLogica-cardlogica-rebatebonus">
+                <Col xl={12} md={12} sm={12} xm={12} id="contenedorLogica-cardlogica-rebatebonus">
                     <br/>
                     <Row style={{marginLeft:'5px', marginTop:'20px'}}>
                         <Col xl={8} md={8} sm={8} xs={8} className="gx-text-center gx-text-white" style={{ borderLeftStyle:'solid', borderLeftColor:'white',  alignSelf:'center'}}>

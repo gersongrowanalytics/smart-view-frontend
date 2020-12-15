@@ -22,10 +22,10 @@ const CardResultadoRebateBonus = (props) => {
         }} >
             <Row>
                 <Col 
-                    xl={14} 
-                    md={14} 
-                    sm={14} 
-                    xs={14} 
+                    xl={24} 
+                    md={24} 
+                    sm={24} 
+                    xs={24} 
                     id={""}>
                     <Row>
                         <Col xl={24} md={24} sm={24} xs={24} >
@@ -35,7 +35,7 @@ const CardResultadoRebateBonus = (props) => {
 
                     
                     <Row style={{marginTop:'10px', marginBottom:'20px'}}>
-                        <Col xl={14} md={14} sm={14} xs={14} >
+                        <Col xl={10} md={10} sm={10} xs={10} >
                             <div id="txt-resultado-rebatebonus">
                                 0.5%
                             </div>
@@ -54,7 +54,7 @@ const CardResultadoRebateBonus = (props) => {
                     <div id="lineaResltado-resultado-rebatebonus"></div>
 
                     <Row>
-                        <Col xl={14} md={14} sm={14} xs={14} >
+                        <Col xl={10} md={10} sm={10} xs={10} >
                             <div id="txtResultado-resultado-rebatebonus">Rebate Bonus </div>
                         </Col>
                         <Col xl={10} md={10} sm={10} xs={10} style={{textAlign: 'right'}} >

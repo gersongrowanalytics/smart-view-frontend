@@ -7,10 +7,10 @@ import funFomratoDecimal from '../../funciones/funFormatoDecimal.js'
 
 const CardAvance = (props) => {
 
-    const { objetivoValorizado, realValorizado, togoValorizado, cumplimientoPorcentaje, nombreTipoPromocion } = props
+    const { objetivoValorizado, realValorizado, togoValorizado, cumplimientoPorcentaje, nombreTipoPromocion, tieneRebateTrimestral } = props
 
     return (
-        <div style={{background:'#30C0D8', width:'100%', paddingRight:'20px', marginBottom:'20px', borderRadius:'20px', boxShadow: '9px 6px 9px -1px rgba(0, 0, 0, 0.2)'}} >
+        <div style={{background:'#30C0D8', width:'100%', height: nombreTipoPromocion.includes("Out") == true ?'120px' : tieneRebateTrimestral == true ?'140px' :'120px', paddingRight:'20px', paddingTop:nombreTipoPromocion.includes("Out") == true ?'0px' : tieneRebateTrimestral == true ?'10px' : '0px',marginBottom:'20px', borderRadius:'20px', boxShadow: '9px 6px 9px -1px rgba(0, 0, 0, 0.2)'}} >
             <Row>
                 <Col xl={4} md={8} sm={6} xs={12}>
                     <div style={{width:'127px', height:'120px', backgroundImage: "url('"+config.api+"Sistema/abs/img/avance-de-venta.png')", backgroundSize: 'cover', backgroundPosition:'center'}} />

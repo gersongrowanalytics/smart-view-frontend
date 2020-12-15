@@ -63,18 +63,20 @@ const SellIn = () => {
                                         togoValorizado           = {tipoPromocion.tsuvalorizadotogo}
                                         cumplimientoPorcentaje   = {tipoPromocion.tsuporcentajecumplimiento}
                                         nombreTipoPromocion      = {tipoPromocion.tprnombre}
+                                        tieneRebateTrimestral    = {tipoPromocion.tieneRebateTrimestral}
                                     />
                                 </div>
                                 {/* </Col> */}
                                 {/* <Col xl={9} md={24} sm={24} xs={24}> */}
                                 <div style={{width:'38%', }}>
                                     <CardRebate 
-                                        objetivoValorizado       = {tipoPromocion.tsuvalorizadoobjetivo}
-                                        rebateValorizado    = {tipoPromocion.tsuvalorizadorebate}
-                                        nombreTipoPromocion = {tipoPromocion.tprnombre}
-                                        trrs = {tipoPromocion.trrs}
-                                        cumplimientoPorcentaje   = {tipoPromocion.tsuporcentajecumplimiento}
-                                        realValorizado           = {tipoPromocion.tsuvalorizadoreal}
+                                        objetivoValorizado     = {tipoPromocion.tsuvalorizadoobjetivo}
+                                        rebateValorizado       = {tipoPromocion.tsuvalorizadorebate}
+                                        nombreTipoPromocion    = {tipoPromocion.tprnombre}
+                                        trrs                   = {tipoPromocion.trrs}
+                                        cumplimientoPorcentaje = {tipoPromocion.tsuporcentajecumplimiento}
+                                        realValorizado         = {tipoPromocion.tsuvalorizadoreal}
+                                        tsu                    = {tipoPromocion}
                                     />
                                 </div>
                                 {/* </Col> */}
@@ -118,13 +120,18 @@ const SellIn = () => {
                         )
                     })
                 }
-                    <Row>
+
+                {
+                    ventasTpr.length > 0
+                    ?<Row>
                         <Col xl={24} md={24} sm={24} xs={24}>
                             <RebateBonus
                                 rebateBonus = {rebateBonus}
                             />
                         </Col>
                     </Row>
+                    :null
+                }
                 </Col>
             </Row>
         </Auxiliary>

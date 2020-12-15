@@ -8,7 +8,25 @@ import { useSelector} from "react-redux";
 
 const CardRebate = (props) => {
 
-    const {nombreTipoPromocion, rebateValorizado, trrs, cumplimientoPorcentaje, realValorizado, objetivoValorizado} = props
+    const {
+        nombreTipoPromocion, 
+        rebateValorizado, 
+        trrs, 
+        cumplimientoPorcentaje, 
+        realValorizado, 
+        objetivoValorizado,
+    } = props
+
+    const {
+        tieneRebateTrimestral,
+        tsuobjetivotrimestral,
+        tsurealtrimestral,
+        tsufacturartrimestral,
+        tsucumplimientotrimestral,
+        tsurebatetrimestral,
+        nombreTrimestre
+    } = props.tsu
+
     const {mesFiltroSelec} = useSelector(({fechas}) => fechas);
 
 
@@ -17,7 +35,7 @@ const CardRebate = (props) => {
         <div style={{
             background:'#5A7DD5', 
             width:'100%',
-            height:'120px', 
+            height: nombreTipoPromocion.includes("Out") == true ?'120px' : tieneRebateTrimestral == true ?'140px' :'120px', 
             marginBottom:'20px', 
             paddingRight:'15px', 
             borderRadius:'20px', 
@@ -27,15 +45,25 @@ const CardRebate = (props) => {
         }} >
             <Row>
                 <Col 
-                    xl={nombreTipoPromocion.includes("Out") == true ? 24 :14} 
-                    md={nombreTipoPromocion.includes("Out") == true ? 24 :14} 
-                    sm={nombreTipoPromocion.includes("Out") == true ? 24 :14} 
-                    xs={nombreTipoPromocion.includes("Out") == true ? 24 :14} 
-                    id={nombreTipoPromocion.includes("Out") == true ? "" : "primerBloqueRebate"}>
+                    xl={nombreTipoPromocion.includes("Out") == true ? 24 : tieneRebateTrimestral == true ?14 : 24} 
+                    md={nombreTipoPromocion.includes("Out") == true ? 24 : tieneRebateTrimestral == true ?14 : 24} 
+                    sm={nombreTipoPromocion.includes("Out") == true ? 24 : tieneRebateTrimestral == true ?14 : 24} 
+                    xs={nombreTipoPromocion.includes("Out") == true ? 24 : tieneRebateTrimestral == true ?14 : 24} 
+                    id={nombreTipoPromocion.includes("Out") == true ? "" : tieneRebateTrimestral == true ? "primerBloqueRebate": ""}>
                     <Row>
-                        <Col xl={14} md={14} sm={14} xs={14} >
-                            <div id="txtRebateTipo" className="nombreTipoPromocionRebate">REBATE {nombreTipoPromocion}:</div>
-                        </Col>
+                        {
+                            nombreTipoPromocion.includes("Out") == true
+                            ?<Col xl={14} md={14} sm={14} xs={14} >
+                                <div id="txtRebateTipo" className="nombreTipoPromocionRebate">REBATE {nombreTipoPromocion}:</div>
+                            </Col>
+                            : tieneRebateTrimestral == true
+                                ?<Col xl={24} md={24} sm={24} xs={24} >
+                                    <div id="txtRebateTipo" className="nombreTipoPromocionRebate">REBATE {nombreTipoPromocion}:</div>
+                                </Col>
+                                :<Col xl={14} md={14} sm={14} xs={14} >
+                                    <div id="txtRebateTipo" className="nombreTipoPromocionRebate">REBATE {nombreTipoPromocion}:</div>
+                                </Col>
+                        }
                         <Col xl={10} md={10} sm={10} xs={10} >
                             <div id="txtRebateData">MENSUAL </div>
                         </Col>
@@ -154,51 +182,90 @@ const CardRebate = (props) => {
                 {
                     nombreTipoPromocion.includes("Out") == true
                     ? null
-                    :   <Col xl={10} md={10} sm={10} xs={10} id="segundoBloqueRebate">
+                    :   
+                    
+                        tieneRebateTrimestral == true
+                        ?<Col xl={10} md={10} sm={10} xs={10} id="segundoBloqueRebate">
                             <Row>
                                 <Col xl={24} md={24} sm={24} xs={24}>
                                     <div id="txtRebateDataTrimestre">
-                                        TRIMESTRE - Q4
+                                        TRIMESTRE - {nombreTrimestre}
                                     </div>
                                 </Col>
-                                <Col xl={24} md={24} sm={24} xs={24}>
+
+
+                                <Col xl={10} md={10} sm={10} xs={10}>
                                     <div id="txtRebateDataTrimestre">
-                                        Objetivo:
+                                        Objetivo: 
                                     </div>
                                 </Col>
-                                <Col xl={24} md={24} sm={24} xs={24}>
+                                <Col xl={14} md={14} sm={14} xs={14}>
+                                    <div id="txtRebateDataTrimestre">
+                                        <NumberFormat value={
+                                            funFomratoDecimal(tsuobjetivotrimestral , 0)} displayType={'text'} thousandSeparator={true} />
+                                    </div>
+                                </Col>
+
+
+                                <Col xl={10} md={10} sm={10} xs={10}>
                                     <div id="txtRebateDataTrimestre">
                                         Real:
                                     </div>
                                 </Col>
-                                <Col xl={24} md={24} sm={24} xs={24}>
+
+                                <Col xl={14} md={14} sm={14} xs={14}>
+                                    <div id="txtRebateDataTrimestre">
+                                        <NumberFormat value={
+                                            funFomratoDecimal(tsurealtrimestral , 0)} displayType={'text'} thousandSeparator={true} />
+                                    </div>
+                                </Col>
+
+
+
+                                <Col xl={10} md={10} sm={10} xs={10}>
                                     <div id="txtRebateDataTrimestre">
                                         Facturar:
                                     </div>
                                 </Col>
 
-                                
+                                <Col xl={14} md={14} sm={14} xs={14}>
+                                    <div id="txtRebateDataTrimestre">
+                                        <NumberFormat value={
+                                            funFomratoDecimal(tsufacturartrimestral , 0)} displayType={'text'} thousandSeparator={true} />
+                                    </div>
+                                </Col>
 
-                                
+                                <Col xl={10} md={10} sm={10} xs={10}>
+                                    <div id="txtRebateDataTrimestre">
+                                        Cump.:
+                                    </div>
+                                </Col>
 
-
+                                <Col xl={14} md={14} sm={14} xs={14}>
+                                    <div id="txtRebateDataTrimestre">
+                                        {funFomratoDecimal(tsucumplimientotrimestral , 0)}%
+                                    </div>
+                                </Col>
                                 
                                 
                             </Row>
                             <div id="separadorRebateTrimestre"></div>
                             <Row>
-                                <Col xl={12} md={12} sm={12} xs={12}>
+                                <Col xl={10} md={10} sm={10} xs={10}>
                                     <div id="txtRebateTipo">
-                                        Real Q4
+                                        Real {nombreTrimestre}
                                     </div>
                                 </Col>
-                                <Col xl={12} md={12} sm={12} xs={12}>
+                                <Col xl={14} md={14} sm={14} xs={14}>
                                     <div id="txtRebateTipo">
-                                        S/0
+                                        <NumberFormat value={
+                                            funFomratoDecimal(tsurebatetrimestral , 0)} displayType={'text'} thousandSeparator={true} />
                                     </div>
                                 </Col>
                             </Row>
                         </Col>
+
+                        :null
                 }
                 
                 
