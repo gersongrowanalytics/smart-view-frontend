@@ -201,7 +201,8 @@ class Slide extends React.Component {
       tprnombre,
       cspcantidadplancha,
       cargando,
-      cspgratis
+      cspgratis,
+      cspnuevo
     } = this.props.slide
     
     const permisosUsuario                = this.props.permisos
@@ -276,8 +277,7 @@ class Slide extends React.Component {
                 )
               }
 
-
-{
+              {
                 funPermisosObtenidos(
                   permisosUsuario,
                   PERMISO_CODIGO_PROMOCION,
@@ -287,6 +287,10 @@ class Slide extends React.Component {
                 )
               }
               
+              {/* <div id="insigniaNuevo"> 
+                <img alt="" src={require("assets/images/insignia/etiquetaNuevo.png")} width="62px" height="99px"/>
+              </div> */}
+
               {
                 cspcompletado == true
                 ?<div id="insigniaCompletado">
