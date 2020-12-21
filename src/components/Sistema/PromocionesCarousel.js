@@ -286,10 +286,13 @@ class Slide extends React.Component {
                   </div>
                 )
               }
-              
-              {/* <div id="insigniaNuevo"> 
-                <img alt="" src={require("assets/images/insignia/etiquetaNuevo.png")} width="62px" height="99px"/>
-              </div> */}
+              {/* {
+                cspnuevo == 1
+                ?<div id="insigniaNuevo"> 
+                  <img alt="" src={require("assets/images/insignia/etiquetaNuevo.png")} width="62px" height="99px"/>
+                </div>
+                :null
+              } */}
 
               {
                 cspcompletado == true
