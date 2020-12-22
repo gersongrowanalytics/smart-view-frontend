@@ -2,6 +2,7 @@ import React from 'react'
 import TituloRebateBonus from './TituloRebateBonus'
 import CardLogicaRebateBonus from './CardLogicaRebateBonus'
 import CardResultadoRebateBonus from './CardResultadoRebateBonus'
+import CardDescripcionRebateBonus from './CardDescripcionRebateBonus'
 import {Col, Row} from "antd";
 
 const RebateBonus = (props) => {
@@ -20,6 +21,16 @@ const RebateBonus = (props) => {
                     <CardResultadoRebateBonus 
                         rebateBonus  = {props.rebateBonus}
                     />
+                </Col>
+
+                <Col xl={2} md={2} sm={2} xs={2} >
+                </Col>
+
+                <Col xl={20} md={20} sm={20} xs={20}>
+                    <CardDescripcionRebateBonus rebateBonus  = {props.rebateBonus} />
+                </Col>
+
+                <Col xl={2} md={2} sm={2} xs={2} >
                 </Col>
 
                 {/* <div style={{width:'59%', marginRight:'2%', marginLeft:'8px'}}>

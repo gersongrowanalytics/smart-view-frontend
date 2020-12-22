@@ -10,7 +10,7 @@ const CardResultadoRebateBonus = (props) => {
 
     return (
         <div style={{
-            background:'#FDA019', 
+            background:'#EF2206', 
             width:'100%',
             height:'145px', 
             marginBottom:'20px', 
