@@ -1,0 +1,45 @@
+#contenedorTituloBigBet{
+    margin-top: 90px;
+}
+
+.titulo-subrayado-bigbet {
+    /* border-bottom: solid 1px #d9d9d9; */
+    margin-top: 10px;
+    padding-bottom: 2px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    position: relative;
+}
+
+.titulo-subrayado-bigbet:before {
+    content: "";
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    z-index: 1;
+    height: 3px;
+    width: 90px;
+    background-color: #FD8619;
+}
+
+.ant-card .titulo-subrayado-bigbet:before,
+.gx-card .titulo-subrayado-bigbet:before {
+    display: none;
+}
+.ant-card .titulo-subrayado-bigbet,
+.gx-card .titulo-subrayado-bigbet {
+    border-bottom: 0 none;
+    margin-bottom: 15px;
+    padding-bottom: 0;
+}
+
+#tituloBigBet{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 23px;
+    color: #4D4D4D;
+    margin-top: -35px;
+    /* padding-bottom: -100px; */
+}

@@ -56,15 +56,15 @@ const CardLogicaRebateBonus = (props) => {
 
                                 return (
                                     <Col 
-                                        xl={categorias.length == 6 ?4 :categorias.length == 5 ?4 : categorias.length == 4 ?6 : categorias.length == 3 ?8 : categorias.length == 2 ?12 : categorias.length == 1 ?24 : 24} 
-                                        md={categorias.length == 6 ?4 :categorias.length == 5 ?4 : categorias.length == 4 ?6 : categorias.length == 3 ?8 : categorias.length == 2 ?12 : categorias.length == 1 ?24 : 24}  
-                                        sm={categorias.length == 6 ?4 :categorias.length == 5 ?4 : categorias.length == 4 ?6 : categorias.length == 3 ?8 : categorias.length == 2 ?12 : categorias.length == 1 ?24 : 24}  
-                                        xm={categorias.length == 6 ?4 :categorias.length == 5 ?4 : categorias.length == 4 ?6 : categorias.length == 3 ?8 : categorias.length == 2 ?12 : categorias.length == 1 ?24 : 24} 
-                                        style={{textAlign: '-webkit-center'}}
+                                        // xl={categorias.length == 6 ?4 :categorias.length == 5 ?4 : categorias.length == 4 ?6 : categorias.length == 3 ?8 : categorias.length == 2 ?12 : categorias.length == 1 ?24 : 24} 
+                                        // md={categorias.length == 6 ?4 :categorias.length == 5 ?4 : categorias.length == 4 ?6 : categorias.length == 3 ?8 : categorias.length == 2 ?12 : categorias.length == 1 ?24 : 24}  
+                                        // sm={categorias.length == 6 ?4 :categorias.length == 5 ?4 : categorias.length == 4 ?6 : categorias.length == 3 ?8 : categorias.length == 2 ?12 : categorias.length == 1 ?24 : 24}  
+                                        // xm={categorias.length == 6 ?4 :categorias.length == 5 ?4 : categorias.length == 4 ?6 : categorias.length == 3 ?8 : categorias.length == 2 ?12 : categorias.length == 1 ?24 : 24} 
+                                        style={{textAlign: '-webkit-center', width:'20%', height:'62px'}}
                                     >
                                         {/* <div id="categoria-cardlogica-rebatebonus" style={{backgroundImage: "url('"+data.caticono+"')"}} /> */}
                                         
-                                        <img src={data.caticono} width="62px" height="62px" />
+                                        <img src={data.caticono} width="62px" height="62px" /><br/>
                                         <span id="nombreCategoria-cardlogica-rebatebonus">{nombre}</span>
                                     </Col>
                                 )

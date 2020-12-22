@@ -11,6 +11,7 @@ import {seleccionarVistaPromocionReducer} from 'appRedux/actions/Promociones'
 import {seleccionarVistaVentasReducer} from 'appRedux/actions/VentasTpr'
 import CardImagen from 'components/Sistema/CardImagen/CardImagen'
 import RebateBonus from 'components/Sistema/Ventas/RebateBonus/RebateBonus'
+import BigBet from 'components/Sistema/Ventas/BigBet/BigBet'
 
 const SellIn = () => {
     const dispatch = useDispatch();
@@ -127,6 +128,18 @@ const SellIn = () => {
                         <Col xl={24} md={24} sm={24} xs={24}>
                             <RebateBonus
                                 rebateBonus = {rebateBonus}
+                            />
+                        </Col>
+                    </Row>
+                    :null
+                }
+
+                {
+                    ventasTpr.length > 0
+                    ?<Row>
+                        <Col xl={24} md={24} sm={24} xs={24}>
+                            <BigBet
+
                             />
                         </Col>
                     </Row>
