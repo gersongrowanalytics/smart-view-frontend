@@ -6,7 +6,7 @@ const BigBet = (props) => {
 
     return (
         <div>
-            <TituloBigBet />
+            {/* <TituloBigBet /> */}
         </div>
     )
 }
