@@ -123,7 +123,7 @@ const SellIn = () => {
                 }
 
                 {
-                    ventasTpr.length > 0
+                    rebateBonus.categorias.length > 0
                     ?<Row>
                         <Col xl={24} md={24} sm={24} xs={24}>
                             <RebateBonus
