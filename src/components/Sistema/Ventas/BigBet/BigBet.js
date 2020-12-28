@@ -7,7 +7,7 @@ const BigBet = (props) => {
 
     return (
         <div>
-            {/* <TituloBigBet />
+            <TituloBigBet />
 
             <Row justify="space-between">
                 {
@@ -17,7 +17,7 @@ const BigBet = (props) => {
                         )
                     })
                 }
-            </Row> */}
+            </Row>
         </div>
     )
 }

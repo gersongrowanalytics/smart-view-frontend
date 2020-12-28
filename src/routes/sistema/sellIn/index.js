@@ -134,7 +134,7 @@ const SellIn = () => {
                     :null
                 }
 
-                {
+                {/* {
                     ventasTpr.length > 0
                     ?<Row>
                         <Col xl={24} md={24} sm={24} xs={24}>
@@ -144,7 +144,7 @@ const SellIn = () => {
                         </Col>
                     </Row>
                     :null
-                }
+                } */}
                 </Col>
             </Row>
         </Auxiliary>
