@@ -45,7 +45,7 @@ const Titulo = (props) => {
                             className="gx-fs-md gx-ml-auto" 
                             style={tieneIcono==true?{marginRight:'-57px'}:{}}>
                             {/* <p className="ultimaActualizacion">Actualización {fechaActual}</p> */}
-                            <p className="ultimaActualizacion">Actualización 28 de Diciembre del 2020</p>
+                            <p className="ultimaActualizacion">Actualización 29 de Diciembre del 2020</p>
 
                         </div>
                         :null
