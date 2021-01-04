@@ -183,7 +183,7 @@ const MainApp = () => {
                       fontWeight:'bold'
                     }}
                   >
-                    © Lead Smart View 2020
+                    © Lead Smart View 2021
                   </Col>
                   <Col xl={16} >
                     <img alt="" width="103px" height="50px" src={require("assets/images/logofooter.png")} />

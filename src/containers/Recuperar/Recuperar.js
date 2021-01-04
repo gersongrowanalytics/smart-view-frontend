@@ -81,7 +81,7 @@ const Recuperar =()=> {
               </button>
               
           </Form>
-          <span className="textoFooterRecuperar">© Lead Smart View 2020</span>
+          <span className="textoFooterRecuperar">© Lead Smart View 2021</span>
         </div>
       </div>
       <div 

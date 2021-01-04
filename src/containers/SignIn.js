@@ -128,7 +128,7 @@ const SignIn =()=> {
                 </Form.Item> */}
               
           </Form>
-          <span className="textoFooterLogin">© Lead Smart View 2020</span>
+          <span className="textoFooterLogin">© Lead Smart View 2021</span>
         </div>
       </div>
       <div 
