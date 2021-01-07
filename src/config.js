@@ -3,4 +3,5 @@ export default {
     api: 'http://backend.leadsmartview.com/',
     // api: 'http://gro.gavsistemas.com/',
     basename: '/',
+    produccion: true
 };
