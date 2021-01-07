@@ -1,6 +1,6 @@
-import React, {Component} from "react";
+import React from "react";
 import './CarouselLogin.scss'
-
+import config from 'config'
 import ReactCSSTransitionGroup from 'react-transition-group'; // ES6
 // var ReactCSSTransitionGroup = require('react-transition-group'); // ES5 with npm
 // var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
@@ -10,8 +10,8 @@ class Login extends React.Component {
     super(props);
     this.state = { 
       items: [
-        'http://backend.leadsmartview.com/Sistema/abs/img/sfondoLogin.png',
-        'http://backend.leadsmartview.com/Sistema/abs/img/sfondoLogin.png',
+        config.api+'Sistema/abs/img/sfondoLogin.png',
+        config.api+'Sistema/abs/img/sfondoLogin.png',
       ], 
       current: 0, 
       isNext: true 
