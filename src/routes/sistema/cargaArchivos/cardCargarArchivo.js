@@ -13,7 +13,8 @@ class CardCargarArchivo extends Component {
             enviarCambios    : false,
             nombreArchivo    : '',
             fileSeleccionado : null,
-            cargando         : false
+            cargando         : false,
+            archivoExito     : true
         }   
         this.seleccionarFile = this.seleccionarFile.bind(this)
         this.guardarCambios = this.guardarCambios.bind(this)
@@ -81,15 +82,22 @@ class CardCargarArchivo extends Component {
         }).then(rpta => {
             let datos = rpta.data
             if(datos.respuesta == true){
-                
+                this.setState({
+                    archivoExito : true
+                })
             }else{
-
+                this.setState({
+                    archivoExito : false
+                })
+                message.error(datos.mensaje);
             }
         })
         .catch((error)=> {
             this.setState({
                 cargando : false,
+                archivoExito : false
             })
+            message.error(error);
         });
         
 
@@ -163,10 +171,18 @@ class CardCargarArchivo extends Component {
                                     {this.props.titulo}
                                     <div style={{borderBottom: '0.1px solid #CCCCCC', width:'100%'}} />
                                 </Col>
-                                <Col xl={24} md={24} className="gx-text-center" style={{marginTop:'10px'}}>
-                                    <b>¡Listo!<br/></b>
-                                    <span>El archivo se subió con éxito</span>
-                                </Col>
+
+                                {
+                                    this.state.archivoExito == true
+                                    ?<Col xl={24} md={24} className="gx-text-center" style={{marginTop:'10px'}}>
+                                        <b>¡Listo!<br/></b>
+                                        <span>El archivo se subió con éxito</span>
+                                    </Col>
+                                    :<Col xl={24} md={24} className="gx-text-center" style={{marginTop:'10px'}}>
+                                        <b>¡Lo sentimos!<br/></b>
+                                        <span>El archivo no se pudo subir</span>
+                                    </Col>
+                                }
                                     
                                 <Col xl={24} md={24} className="gx-text-center" style={{marginTop:'10px'}}>
                                     <Button
