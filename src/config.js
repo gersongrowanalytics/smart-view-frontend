@@ -1,6 +1,6 @@
 export default {
-    // api: 'http://backend.leadsmartview.com/',
-    api: 'https://pre-back.leadsmartview.com/',
+    api: 'http://backend.leadsmartview.com/',
+    // api: 'https://pre-back.leadsmartview.com/',
     basename: '/',
-    produccion: false
+    produccion: true
 };

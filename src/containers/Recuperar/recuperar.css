@@ -17,7 +17,7 @@
 }
 
 .contenedorLoginSlider{
-    background-image : url("http://gro.gavsistemas.com/Sistema/abs/img/sfondoLogin.png");
+    /* background-image : url("http://gro.gavsistemas.com/Sistema/abs/img/sfondoLogin.png"); */
     background-size: cover;
     background-repeat: no-repeat;
     width           : 100%;

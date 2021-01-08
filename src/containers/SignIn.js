@@ -137,6 +137,11 @@ const SignIn =()=> {
           ?"contenedorLoginSlidersCarousel"
           :"contenedorLoginSliders"
         }
+        // style={
+        //   mostrarForm == true
+        //   ? { backgroundImage: config.api+"" }
+        //   : {}
+        // }
       >
         {
           mostrarForm == true

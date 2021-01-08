@@ -10,6 +10,7 @@ import {
 import CircularProgress from "components/CircularProgress/index";
 import './recuperar.css'
 import Login from '../Login'
+import config from 'config'
 
 const Recuperar =()=> {
 
@@ -86,6 +87,7 @@ const Recuperar =()=> {
       </div>
       <div 
         className="contenedorLoginSlider"
+        style={{backgroundImage: config.api+"Sistema/abs/img/sfondoLogin.png"}}
       >
         <Login  />
       </div>
