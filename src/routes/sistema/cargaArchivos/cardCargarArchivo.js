@@ -79,7 +79,8 @@ class CardCargarArchivo extends Component {
                 'content-type': 'multipart/form-data',
                 'api_token': localStorage.getItem('usutoken')
             }
-        }).then(rpta => {
+        })
+        .then(rpta => {
             let datos = rpta.data
             if(datos.respuesta == true){
                 this.setState({
@@ -97,7 +98,6 @@ class CardCargarArchivo extends Component {
                 cargando : false,
                 archivoExito : false
             })
-            message.error(error);
         });
         
 
@@ -123,7 +123,6 @@ class CardCargarArchivo extends Component {
             nombreArchivo : ''
         })
     }
-
 
 
     render() {
