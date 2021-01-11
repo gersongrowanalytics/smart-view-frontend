@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 import AmCharts from "@amcharts/amcharts3-react";
-import {Col, Row, Card, Button, Modal, message, Spin } from "antd";
+import {Card, Button } from "antd";
 import {useDispatch, useSelector} from "react-redux";
 import {ObtenerEstadisticaXZona} from "appRedux/actions/controlVentas/controlVentas";
 import {seleccionarCargaArchivosReducer} from "appRedux/actions/CargaArchivos";

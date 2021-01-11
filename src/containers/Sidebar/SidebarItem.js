@@ -32,6 +32,7 @@ class SidebarItem extends React.Component {
             menuItemRebate           : false,
             menuItemTiposUsuarios    : false,
             menuItemControlPromociones : false,
+            menuItemControlSellOut   : false,
 
             seleccionoVentas         : false,
             seleccionoPromociones    : false,
@@ -43,6 +44,7 @@ class SidebarItem extends React.Component {
             seleccionoRebate         : false,
             seleccionoTiposUsuarios  : false,
             seleccionoControlPromociones : false,
+            seleccionoControlSellOut : false,
         }
         this.funActivarHover = this.funActivarHover.bind(this)
         this.funSeleccionarMenu = this.funSeleccionarMenu.bind(this)
@@ -75,6 +77,7 @@ class SidebarItem extends React.Component {
             menuItemRebate           : false,
             menuItemTiposUsuarios    : false,
             menuItemControlPromociones : false,
+            menuItemControlSellOut   : false,
 
             seleccionoVentas         : false,
             seleccionoPromociones    : false,
@@ -86,6 +89,7 @@ class SidebarItem extends React.Component {
             seleccionoTiposUsuarios  : false,
             seleccionoControlVentas  : false,
             seleccionoControlPromociones : false,
+            seleccionoControlSellOut : false,
         })
 
         this.setState({
@@ -93,7 +97,7 @@ class SidebarItem extends React.Component {
             ["selecciono"+nombreSelecciono] : true
         })
     }
-  
+
     render() {
         return (
             <Menu
@@ -347,6 +351,27 @@ class SidebarItem extends React.Component {
                                     : "txtSidebarItem"
                                 }
                             >Tipos de Usuarios</span></Link>
+                        </Menu.Item>
+                    )
+                }
+                {
+                    funPermisosObtenidos(
+                        this.props.permisos,
+                        PERMISO_MODULO_TIPO_USUARIOS,
+                        <Menu.Item key="sistema/control/sellout" id="menuItemSidebar">
+                            <Link to="/sistema/control/sellout" 
+                                onMouseEnter={() => {this.funActivarHover('menuItemControlSellOut', 'ControlSellOut')}} 
+                                onMouseLeave={() => {this.funDesactivarHover('menuItemControlSellOut', 'ControlSellOut')}}
+                                onClick={() => {this.funSeleccionarMenu('menuItemControlSellOut', 'ControlSellOut')}}
+                            >
+                            <img alt="" src={require("assets/images/menuRebate.png")} style={{ marginRight:'15px' }} width="25px" />
+                            <span
+                                id={
+                                    this.state.menuItemControlSellOut == true
+                                    ? "txtSidebarItemHover"
+                                    : "txtSidebarItem"
+                                }
+                            >Control de SellOut</span></Link>
                         </Menu.Item>
                     )
                 }

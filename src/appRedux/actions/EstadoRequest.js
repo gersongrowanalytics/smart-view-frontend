@@ -43,3 +43,38 @@ export const estadoRequestReducer = (estado) => (dispatch) => {
         })
     }
 };
+
+export const estadoRequestConsecuenciaReducer = (estado, consecuencia) => (dispatch) => {
+
+    if(estado == 200){
+        dispatch({
+            type: ESTADO_REQUEST_EXITO,
+            payload: estado
+        })
+    }else if(estado == 401){
+        dispatch ({
+            type: ESTADO_REQUEST_NO_AUTORIZADO,
+            payload: estado
+        })
+
+        dispatch(userSignOut())
+    }else if(estado == 404){
+        consecuencia()
+        dispatch({
+            type: ESTADO_REQUEST_NO_EXISTE,
+            payload: estado
+        })
+        dispatch(showAuthMessage("error 404"))
+    }else if(estado == 500){
+        consecuencia()
+        dispatch({
+            type: ESTADO_REQUEST_ERROR_SERVIDOR,
+            payload: estado
+        })
+    }else{
+        dispatch({
+            type: ESTADO_REQUEST_DESCONOCIDO,
+            payload: estado
+        })
+    }
+}

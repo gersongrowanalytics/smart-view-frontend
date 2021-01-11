@@ -24,6 +24,7 @@ import controlVentas from "./controlVentas/controlVentas";
 import MostrarSucs from "./Mostrar/Sucs";
 import MostrarCats from "./Mostrar/Cats";
 import ControlPromociones from "./controlPromociones/controlPromociones";
+import ControlSellOut from "./ControlSellOut/ControlSellOut";
 
 const createRootReducer = (history) => combineReducers({
   router                     : connectRouter(history),
@@ -51,6 +52,7 @@ const createRootReducer = (history) => combineReducers({
   mostrarSucs                : MostrarSucs,
   controlPromociones         : ControlPromociones,
   mostrarCats                : MostrarCats,
+  controlSellOut             : ControlSellOut,
 });
 
 export default createRootReducer
