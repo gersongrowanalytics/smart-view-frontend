@@ -64,19 +64,19 @@ const Formprincipal = () => {
                         <Form.Item 
                             name={"pernom"}
                             label="Nombre" required>
-                            <Input placeholder="" />
+                            <Input placeholder="" autoComplete={"off"}/>
                         </Form.Item>
 
                         <Form.Item 
                             name={"perapellpat"}
                             label="Apellido Paterno" required>
-                            <Input placeholder="" />
+                            <Input placeholder="" autoComplete={"off"}/>
                         </Form.Item>
 
                         <Form.Item
                             name={"perapellmat"}
                             label="Apellido Materno" required>
-                            <Input placeholder="" />
+                            <Input placeholder="" autoComplete={"off"}/>
                         </Form.Item>
 
                         <FormTpu />
@@ -95,25 +95,25 @@ const Formprincipal = () => {
                         <Form.Item 
                             name={"soldto"}
                             label="Código SoldTo" required>
-                            <Input type="number" placeholder="" />
+                            <Input type="number" placeholder="" autoComplete={"off"}/>
                         </Form.Item>
 
                         <Form.Item
                             name={"usuario"} 
                             label="Usuario" required>
-                            <Input placeholder="" />
+                            <Input placeholder="" autoComplete={"off"} />
                         </Form.Item>
 
                         <Form.Item
                             name={"contrasena"}
                             label="Contraseña" required>
-                            <Input.Password  placeholder="" />
+                            <Input.Password  placeholder="" autoComplete={"off"} />
                         </Form.Item>
 
                         <Form.Item
                             name={"correo"} 
                             label="Correo" required>
-                            <Input type="email" placeholder="" />
+                            <Input type="email" placeholder="" autoComplete={"off"} />
                         </Form.Item>
 
                         <Form.Item>
@@ -198,7 +198,8 @@ const Formprincipal = () => {
                             sucursalesXZona.map((zona, posicion) => {
                                 return ( 
                                     <Col xl={12} md={12} sm={12} xs={12}>
-                                        <Checkbox ><h4>{zona.zona}</h4></Checkbox>
+                                        {/* <Checkbox ></Checkbox> */}
+                                        <h4>{zona.zona}</h4>
                                         {
                                             zona.sucs.map((sucursal) => {
                                                 return (
