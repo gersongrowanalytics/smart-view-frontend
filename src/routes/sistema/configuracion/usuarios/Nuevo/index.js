@@ -1,10 +1,10 @@
 import React, {useEffect} from 'react'
-import {Col, Row, Card, Form, Input, Button, Select, Cascader} from "antd";
+import {Col, Row, Card, Form, Input, Button, Select, Cascader, Checkbox } from "antd";
 import {useDispatch, useSelector} from "react-redux";
 import FormTpu from './Form/formTpu'
 import FormZon from './Form/formZon'
 import Profile from "components/wall/Profile/index";
-import {crearUsuarioReducer} from "appRedux/actions/Configuracion/Usuarios";
+import {crearUsuarioReducer, ObtenerSucursalesXZonaReducer} from "appRedux/actions/Configuracion/Usuarios";
 import { 
     ObtenerSucursales, 
 } from "appRedux/actions/Mostrar/Sucs"
@@ -12,7 +12,7 @@ import {
 const Formprincipal = () => {
 
     const dispatch = useDispatch();
-    const {cargandoCrearUsuario} = useSelector(({configuracionUsuario}) => configuracionUsuario);
+    const {cargandoCrearUsuario, sucursalesXZona} = useSelector(({configuracionUsuario}) => configuracionUsuario);
     const {sucsxzona} = useSelector(({mostrarSucs}) => mostrarSucs);
 
     const [form] = Form.useForm();
@@ -35,11 +35,12 @@ const Formprincipal = () => {
 
     useEffect(() => {
         dispatch(ObtenerSucursales())
+        dispatch(ObtenerSucursalesXZonaReducer())
     }, [])
 
     return (
         <Row>
-            <Col xl={15} md={15} sm={15} xs={15}>
+            <Col xl={12} md={12} sm={12} xs={12}>
                 <Card>
                     <Form
                         {...formItemLayout}
@@ -135,7 +136,7 @@ const Formprincipal = () => {
                 </Card>
             </Col>
 
-            <Col xl={9} md={9} sm={9} xs={9}>
+            {/* <Col xl={9} md={9} sm={9} xs={9}>
                 <Profile user={{
                     id: 'vUAqPRNWgYdS2DyJNAC1lV5KpJF21',
                     soldTo: '425156',
@@ -186,6 +187,32 @@ const Formprincipal = () => {
                                 </div>
                             </div>
                         </Col>
+                    </Row>
+                </Card>
+            </Col>
+         */}
+            <Col xl={12} md={12} sm={12} xs={12}>
+                <Card>
+                    <Row>
+                        {
+                            sucursalesXZona.map((zona, posicion) => {
+                                return ( 
+                                    <Col xl={12} md={12} sm={12} xs={12}>
+                                        <Checkbox ><h4>{zona.zona}</h4></Checkbox>
+                                        {
+                                            zona.sucs.map((sucursal) => {
+                                                return (
+                                                    <div>
+                                                        <Checkbox ><span>{sucursal.sucnombre}</span></Checkbox><br/>
+                                                    </div>
+                                                )
+                                            })
+                                        }
+                                        <br/>
+                                    </Col>
+                                )
+                            })
+                        }
                     </Row>
                 </Card>
             </Col>

@@ -4,7 +4,8 @@ import {
     ACTUALIZAR_COLUMNAS_TABLA_USUARIOS,
     ACTUALIZAR_LISTA_EJECUTIVOS,
     ACTUALIZAR_COLUMNAS_TABLA_EJECUTIVOS,
-    CARGANDO_NUEVO_USUARIO
+    CARGANDO_NUEVO_USUARIO,
+    OBTENER_SUCURSALES_X_ZONA
 } from "constants/SistemaTypes";
 
 const INIT_STATE = {
@@ -17,7 +18,8 @@ const INIT_STATE = {
     mostrarMsjExi   : false,
     msjErr          : '',
     msjExi          : '',
-    cargandoCrearUsuario : false
+    cargandoCrearUsuario : false,
+    sucursalesXZona : []
 };
 
 export default (state = INIT_STATE, action) => {
@@ -58,6 +60,12 @@ export default (state = INIT_STATE, action) => {
             return {
                 ...state,
                 cargandoCrearUsuario : action.payload
+            }
+        }
+        case OBTENER_SUCURSALES_X_ZONA: {
+            return {
+                ...state,
+                sucursalesXZona: action.payload
             }
         }
         default:

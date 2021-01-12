@@ -7,7 +7,8 @@ import {
 	ACTUALIZAR_COLUMNAS_TABLA_USUARIOS,
 	ACTUALIZAR_LISTA_EJECUTIVOS,
   ACTUALIZAR_COLUMNAS_TABLA_EJECUTIVOS,
-  CARGANDO_NUEVO_USUARIO
+  CARGANDO_NUEVO_USUARIO,
+  OBTENER_SUCURSALES_X_ZONA
 } from "constants/SistemaTypes";
 import config from 'config'
 
@@ -365,7 +366,7 @@ export const armarColumnasTablaEjecutivoReducer = () => async (dispatch) => {
 }
 
 export const crearUsuarioReducer = (data) => async (dispatch, getState) => {
-  console.log(data)
+  // console.log(data)
   dispatch({type: "CARGANDO_NUEVO_USUARIO",payload: true}) 
   await fetch(config.api+'configuracion/usuarios/crear/usuario',
     {
@@ -399,5 +400,40 @@ export const crearUsuarioReducer = (data) => async (dispatch, getState) => {
     console.log(error)
     message.error("Lo sentimos ocurrio un error en el servidor")
     dispatch({type: "CARGANDO_NUEVO_USUARIO",payload: false}) 
+  });
+}
+
+export const ObtenerSucursalesXZonaReducer = () => async (dispatch, getState) => {
+  await fetch(config.api+'configuracion/usuarios/mostrar/sucursales',
+    {
+      mode:'cors',
+      method: 'POST',
+      body: JSON.stringify(),
+      headers: {
+        'Accept' : 'application/json',
+        'Content-type' : 'application/json',
+        'api_token': localStorage.getItem('usutoken')
+      }
+    }
+  )
+  .then( async res => {
+    await dispatch(estadoRequestReducer(res.status))
+    return res.json()
+  })
+  .then(data => {
+    const estadoRequest = getState().estadoRequest.init_request
+    if(estadoRequest == true){
+      if(data.respuesta == true){
+        dispatch({
+          type: OBTENER_SUCURSALES_X_ZONA,
+          payload: data.datos
+        })
+      }else{
+
+      }
+    }
+  }).catch((error)=> {
+    console.log(error)
+    message.error("Lo sentimos ocurrio un error en el servidor")
   });
 }
