@@ -46,7 +46,7 @@ const SellIn = () => {
                             <Row>        
                                 <Col xl={24} md={24} sm={24} xs={24}>
                                     <Titulo 
-                                        tieneFecha  = { tipoPromocion.tprnombre == "Sell Ins" ? true : false}
+                                        tieneFecha  = { tipoPromocion.tprnombre == "Sell In" ? true : false}
                                         tieneTitulo = {true}
                                         tieneIcono  = {true}
                                         titulo      = {tipoPromocion.tprnombre}
