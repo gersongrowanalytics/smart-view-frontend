@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import FormTpu from './Form/formTpu'
 import FormZon from './Form/formZon'
 import Profile from "components/wall/Profile/index";
-import {crearUsuarioReducer, ObtenerSucursalesXZonaReducer} from "appRedux/actions/Configuracion/Usuarios";
+import {crearUsuarioReducer, ObtenerSucursalesXZonaReducer, SeleccionaSucursalesReducer} from "appRedux/actions/Configuracion/Usuarios";
 import { 
     ObtenerSucursales, 
 } from "appRedux/actions/Mostrar/Sucs"
@@ -29,7 +29,11 @@ const Formprincipal = () => {
     }; 
 
     const onFinish = async values =>  {
-        console.log("finish",values)
+        // console.log("finish",values)
+
+        values['sucs'] = sucursalesXZona
+
+        // console.log(values)
         dispatch(crearUsuarioReducer(values))
     };
 
@@ -39,15 +43,17 @@ const Formprincipal = () => {
     }, [])
 
     return (
+        <Form
+            {...formItemLayout}
+            form={form}
+            onFinish={onFinish}
+            scrollToFirstError
+        >
         <Row>
+            
             <Col xl={12} md={12} sm={12} xs={12}>
                 <Card>
-                    <Form
-                        {...formItemLayout}
-                        form={form}
-                        onFinish={onFinish}
-                        scrollToFirstError
-                    >
+                    
                         
                         {/* <FormTdi /> */}
 
@@ -132,7 +138,7 @@ const Formprincipal = () => {
                         {/* <Form.Item>
                             <Button type="primary">Crear</Button>
                         </Form.Item> */}
-                    </Form>
+                    {/* </Form> */}
                 </Card>
             </Col>
 
@@ -201,10 +207,10 @@ const Formprincipal = () => {
                                         {/* <Checkbox ></Checkbox> */}
                                         <h4>{zona.zona}</h4>
                                         {
-                                            zona.sucs.map((sucursal) => {
+                                            zona.sucs.map((sucursal, posicionSuc) => {
                                                 return (
                                                     <div>
-                                                        <Checkbox ><span>{sucursal.sucnombre}</span></Checkbox><br/>
+                                                        <Checkbox onChange={(valor) => { dispatch(SeleccionaSucursalesReducer(posicion, posicionSuc, valor.target.checked)) }}  ><span>{sucursal.sucnombre}</span></Checkbox><br/>
                                                     </div>
                                                 )
                                             })
@@ -217,7 +223,9 @@ const Formprincipal = () => {
                     </Row>
                 </Card>
             </Col>
+            
         </Row>
+        </Form>
     )
 }
 

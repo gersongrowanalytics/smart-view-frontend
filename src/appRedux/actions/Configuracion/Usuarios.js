@@ -437,3 +437,15 @@ export const ObtenerSucursalesXZonaReducer = () => async (dispatch, getState) =>
     message.error("Lo sentimos ocurrio un error en el servidor")
   });
 }
+
+export const SeleccionaSucursalesReducer = (posicionZona, posicionSuc, valor) => async (dispatch, getState) => {
+  var sucursales = getState().configuracionUsuario.sucursalesXZona
+
+  sucursales[posicionZona]['sucs'][posicionSuc]['seleccionado'] = valor;
+
+  dispatch({
+    type: OBTENER_SUCURSALES_X_ZONA,
+    payload: sucursales
+  })
+
+}

@@ -32,7 +32,8 @@ export const obtenerVentasTprReducer = () =>async (dispatch, getState) => {
         body: JSON.stringify({
           usutoken : localStorage.getItem('usutoken'),
           sucid    : idSucursalUsuarioSelec,
-          dia      : diaFiltroSelec,
+          // dia      : diaFiltroSelec,
+          dia      : "01",
           mes      : mesFiltroSelec,
           ano      : anoFiltroSelec,
         }),
@@ -98,7 +99,7 @@ export const obtenerVentasTprXZonaReducer = () => async (dispatch, getState) => 
       body: JSON.stringify({
         usutoken : localStorage.getItem('usutoken'),
         zonid    : zonaidseleccionado,
-        dia      : diaFiltroSelec,
+        dia      : "01",
         mes      : mesFiltroSelec,
         ano      : anoFiltroSelec,
       }),
