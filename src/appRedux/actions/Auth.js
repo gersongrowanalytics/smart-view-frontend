@@ -57,11 +57,13 @@ export const guardarVentasTpr = (ventastpr) => {
 };
 
 export const userSignOut = () => async (dispatch) => {
-
+  localStorage.clear();
   await dispatch({
     type: SIGNOUT_USER
   })
   await dispatch(reiniciarSucursalesReducer())
+  window.location.href = window.location.href;
+
 };
 export const userSignUpSuccess = (authUser) => {
   return {
@@ -183,10 +185,14 @@ export const loginReducer = (usuario) => async ( dispatch, getState) => {
       const estadoRequest = getState().estadoRequest.init_request
       if(estadoRequest == true){
         if(data.respuesta == true){
+          localStorage.setItem('contrasena', usuario.contrasena)
+          localStorage.setItem('usuario', usuario.usuario)
           localStorage.setItem('user_id', data.datos.usuid)
           localStorage.setItem('usutoken', data.datos.usutoken)
           localStorage.setItem('usuusuario', data.datos.usuusuario)
           localStorage.setItem('pernombre', data.datos.pernombre)
+          localStorage.setItem('pernombrecompleto', data.datos.pernombrecompleto)
+          localStorage.setItem('tpunombre', data.datos.tpunombre)
           localStorage.setItem('ejecutivo', data.datos.ejecutivo)          
           localStorage.setItem('distribuidora', data.datos.pernombrecompleto)
           localStorage.setItem('tpuprivilegio', data.datos.tpuprivilegio)

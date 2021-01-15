@@ -82,7 +82,7 @@ const SignIn =()=> {
                 <img id="iconoContrasena"  alt="" src={require("assets/images/iconUsuario.png")}/>
                 <Form.Item
                   initialValue=""
-                  // rules={[{ required: true, message: 'Es necesario un usuario'}]}
+                  rules={[{ required: true, message: 'Es necesario un usuario'}]}
                   name="usuario">
                   <input 
                     name="usuario"
@@ -97,7 +97,7 @@ const SignIn =()=> {
                 <img id="iconoContrasena" alt="" src={require("assets/images/iconCandado.png")} /> 
                 <Form.Item
                   initialValue=""
-                  rules= {[{required: true}]}
+                  rules= {[{required: true, message: 'Es necesario una contraseña'}]}
                   name="contrasena">
                     
                     <input 

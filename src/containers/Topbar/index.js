@@ -1,7 +1,7 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {Link} from "react-router-dom";
 import {Layout, Popover, Avatar} from "antd";
-import {userSignOut} from "appRedux/actions/Auth";
+import {userSignOut, loginReducer} from "appRedux/actions/Auth";
 import CustomScrollbars from "util/CustomScrollbars";
 import languageData from "./languageData";
 import {switchLanguage, toggleCollapsedSideNav} from "../../appRedux/actions/Setting";
@@ -22,7 +22,7 @@ import './Topbar.css'
 const {Header} = Layout;
 
 const Topbar = () => {
-  
+
   const { sucursalesUsuario, obtuvoSucursalesUsuario, zonas } = useSelector(({sucursales}) => sucursales)
   const { fechasFiltro, obtuvoFechasFiltro } = useSelector(({fechas}) => fechas)
   const { obtuvoVentasTpr}= useSelector(({ventasTpr}) => ventasTpr);
@@ -31,22 +31,22 @@ const Topbar = () => {
   const {searchText, setSearchText} = useState('');
   const dispatch = useDispatch();
 
-  if(obtuvoSucursalesUsuario == false){
-    dispatch(obtenerSucursalesReducer())
-  }else{
-    if(obtuvoFechasFiltro == false){
-      dispatch(obtenerFechasReducer())
-    }else{
-      if(obtuvoVentasTpr == false){
-        dispatch(obtenerVentasTprReducer())
-      }
+  // if(obtuvoSucursalesUsuario == false){
+  //   dispatch(obtenerSucursalesReducer())
+  // }else{
+  //   if(obtuvoFechasFiltro == false){
+  //     dispatch(obtenerFechasReducer())
+  //   }else{
+  //     if(obtuvoVentasTpr == false){
+  //       dispatch(obtenerVentasTprReducer())
+  //     }
 
-      if(obtuvoPromociones == false){
-        dispatch(obtenerPromocionesReducer())
-        dispatch(descargarInformacionPromocionesReducer())
-      }
-    }
-  }
+  //     if(obtuvoPromociones == false){
+  //       dispatch(obtenerPromocionesReducer())
+  //       dispatch(descargarInformacionPromocionesReducer())
+  //     }
+  //   }
+  // }
 
   const languageMenu = () => (
     <CustomScrollbars className="gx-popover-lang-scroll">
@@ -66,10 +66,31 @@ const Topbar = () => {
     <ul className="gx-user-popover">
       {/* <li>My Account</li>
       <li>Connections</li> */}
-      <li onClick={() => dispatch(userSignOut())} style={{fontFamily:'Roboto', fontWeight:'bold'}}>Salir
-      </li>
+      {/* <li style={{fontFamily:'Roboto', fontWeight:'bold'}}>Mi Perfil
+      </li> */}
+      <Link to="/sistema/perfil">
+        <li onClick={() => dispatch(userSignOut())} style={{fontFamily:'Roboto', fontWeight:'bold'}}>Salir
+        </li>
+      </Link>
     </ul>
   );
+
+  useEffect(async () =>  {
+    dispatch(loginReducer({
+      contrasena: localStorage.getItem('contrasena'),
+      usuario: localStorage.getItem('usuario')
+    }))
+    
+    await dispatch(obtenerSucursalesReducer())
+    await dispatch(obtenerFechasReducer())
+    await dispatch(obtenerVentasTprReducer())
+    await dispatch(obtenerPromocionesReducer())
+    await dispatch(descargarInformacionPromocionesReducer())
+
+    
+
+  }, [])
+
   return (
     // <></>
     <Header>
@@ -115,7 +136,16 @@ const Topbar = () => {
         
       </div>
       <div className="gx-linebar gx-mr-24">
-        <Popover placement="bottomRight" content={userMenuOptions} trigger="click">
+        <Popover placement="bottomRight" content={(<ul className="gx-user-popover">
+      {/* <li>My Account</li>
+      <li>Connections</li> */}
+      <Link to="/sistema/perfil">
+        <li style={{fontFamily:'Roboto', fontWeight:'bold'}}>Mi Perfil
+        </li>
+      </Link>
+      <li onClick={() => dispatch(userSignOut())} style={{fontFamily:'Roboto', fontWeight:'bold'}}>Salir
+      </li>
+    </ul>)} trigger="click">
           <span className="gx-avatar-name" id="nombreUsuarioLogeado">{localStorage.getItem('pernombre')} </span>
           <Avatar src={require('assets/images/iconoUsuario.png')} //150*150
             className="gx-size-35 gx-pointer gx-mr-3" alt=""/>

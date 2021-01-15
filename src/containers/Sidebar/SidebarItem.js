@@ -375,6 +375,28 @@ class SidebarItem extends React.Component {
                         </Menu.Item>
                     )
                 }
+
+                {
+                    funPermisosObtenidos(
+                        this.props.permisos,
+                        PERMISO_MODULO_TIPO_USUARIOS,
+                        <Menu.Item key="sistema/chat" id="menuItemSidebar">
+                            <Link to="/sistema/chat" 
+                                onMouseEnter={() => {this.funActivarHover('menuItemControlSellOut', 'ControlSellOut')}} 
+                                onMouseLeave={() => {this.funDesactivarHover('menuItemControlSellOut', 'ControlSellOut')}}
+                                onClick={() => {this.funSeleccionarMenu('menuItemControlSellOut', 'ControlSellOut')}}
+                            >
+                            <img alt="" src={require("assets/images/menuRebate.png")} style={{ marginRight:'15px' }} width="25px" />
+                            <span
+                                id={
+                                    this.state.menuItemControlSellOut == true
+                                    ? "txtSidebarItemHover"
+                                    : "txtSidebarItem"
+                                }
+                            >Chat</span></Link>
+                        </Menu.Item>
+                    )
+                }
                 </MenuItemGroup>
                 <AppsNavigation/>
           </Menu>

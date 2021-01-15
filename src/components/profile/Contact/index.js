@@ -1,8 +1,28 @@
 import React from "react";
 import Widget from "components/Widget";
-import {contactList} from '../../../routes/socialApps/Profile/data'
 
 const Contact = () => {
+
+  const contactList = [
+    {
+      id: 1,
+      title: 'Email',
+      icon: 'email',
+      desc: [<span className="gx-link" key={1}>kiley.brown@example.com</span>]
+    },
+    {
+      id: 2,
+      title: 'Web page',
+      icon: 'link',
+      desc: [<span className="gx-link" key={2}>example.com</span>]
+    }, {
+      id: 3,
+      title: 'Phone',
+      icon: 'phone',
+      desc: ['+1-987 (454) 987']
+    },
+  ]
+  
   return (
     <Widget title="Contact" styleName="gx-card-profile-sm">
       {contactList.map((data, index) =>

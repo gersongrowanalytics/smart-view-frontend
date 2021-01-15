@@ -1,6 +1,8 @@
 import React from "react";
 import {Route, Switch} from "react-router-dom";
 import Sellin from "./sellIn/";
+import Perfil from "./Perfil/Perfil";
+import Chat from "./Chat/Chat";
 import Promociones from "./promociones"
 import CargaArchivoPromociones from "./cargaArchivos"
 import controlCargaArchivos from "./controlCargaArchivos/controlCargaArchivos"
@@ -13,6 +15,8 @@ import ControlSellOut from "./ControlSellOut/ControlSellOut"
 const Sistema = ({match}) => (
   <Switch>
     <Route path={`${match.url}/ventas`} component={Sellin}/>
+    <Route path={`${match.url}/perfil`} component={Perfil}/>
+    <Route path={`${match.url}/chat`} component={Chat}/>
     <Route path={`${match.url}/promociones`} component={Promociones}/>
     <Route path={`${match.url}/cargaArchivos/promociones`} component={CargaArchivoPromociones}/>
     <Route path={`${match.url}/cargaArchivos/control`} component={controlCargaArchivos}/>
