@@ -23,7 +23,7 @@ const {Header} = Layout;
 
 const Topbar = () => {
 
-  const { sucursalesUsuario, obtuvoSucursalesUsuario, zonas } = useSelector(({sucursales}) => sucursales)
+  const { sucursalesUsuario, obtuvoSucursalesUsuario, zonas, cass, gsus } = useSelector(({sucursales}) => sucursales)
   const { fechasFiltro, obtuvoFechasFiltro } = useSelector(({fechas}) => fechas)
   const { obtuvoVentasTpr}= useSelector(({ventasTpr}) => ventasTpr);
   const { obtuvoPromociones}= useSelector(({promociones}) => promociones);
@@ -68,10 +68,8 @@ const Topbar = () => {
       <li>Connections</li> */}
       {/* <li style={{fontFamily:'Roboto', fontWeight:'bold'}}>Mi Perfil
       </li> */}
-      <Link to="/sistema/perfil">
         <li onClick={() => dispatch(userSignOut())} style={{fontFamily:'Roboto', fontWeight:'bold'}}>Salir
         </li>
-      </Link>
     </ul>
   );
 
@@ -125,6 +123,8 @@ const Topbar = () => {
             sucursales          = {sucursalesUsuario}
             fechas              = {fechasFiltro}
             zonas               = {zonas}
+            cass                = {cass}
+            gsus                = {gsus}
             seleccionarZona     = {(valor) => dispatch(filtroSeleccionarZonaUsuarioReducer(valor))}
             seleccionarSucursal = {(valor) => dispatch(filtroSeleccionarSucursalUsuario(valor))}
             seleccionarDia      = {(valor) => dispatch(filtroSeleccionarDia(valor))}

@@ -41,7 +41,9 @@ export const obtenerSucursalesReducer = () =>async (dispatch, getState) => {
                 type: OBTENER_SUCURSALES_USUARIO_EXITO,
                 payload: {
                   datos : data.datos,
-                  zonas : data.zonas
+                  zonas : data.zonas,
+                  cass  : data.cass,
+                  gsus  : data.gsus,
                 }
             })
         }else{
@@ -49,7 +51,9 @@ export const obtenerSucursalesReducer = () =>async (dispatch, getState) => {
                 type: OBTENER_SUCURSALES_USUARIO_FAIL,
                 payload: {
                   datos : data.datos,
-                  zonas : data.zonas
+                  zonas : data.zonas,
+                  cass  : data.cass,
+                  gsus  : data.gsus,
                 }
             })
         }
@@ -59,7 +63,9 @@ export const obtenerSucursalesReducer = () =>async (dispatch, getState) => {
             type: OBTENER_SUCURSALES_USUARIO_FAIL,
             payload: {
               datos : [],
-              zonas : []
+              zonas : [],
+              cass  : [],
+              gsus  : []
             }
         })
     });

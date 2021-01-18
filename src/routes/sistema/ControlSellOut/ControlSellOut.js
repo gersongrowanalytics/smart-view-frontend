@@ -12,6 +12,7 @@ import {
 } from 'appRedux/actions/ControlSellOut/ControlSellOut'
 import {Col, Row, Card, Form, Select, Spin, Button, Alert } from "antd";
 import 'styles/Sistema/ControlSellOut/ControlSellOut.css'
+import Music from './Music'
 
 const ControlSellOut = () => {
 
@@ -43,6 +44,7 @@ const ControlSellOut = () => {
     return (
         <Spin tip="Enviando..." spinning={cargandoTodoMes}>
             <Row>
+                <Music/>
                 <Col xl={24} sm={24} md={24} xs={24} >
                     <Row className={"contenedorFiltro-ControlSellOut"}>
                         <Col xl={4} sm={4} md={4} xs={4} id="filtroMes-ControlSellOut">

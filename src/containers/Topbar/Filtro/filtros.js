@@ -7,17 +7,23 @@ class Filtros extends Component {
         super();
         this.state = {
             nombreSucursal : 'Sucursales',
+            nombreGrupo : 'Grupos',
+            nombreCanal : 'Canales',
             nombreDia   : 'Día',
             nombreMes   : 'Meses',
             nombreAno   : 'Año',
 
             animacionMenuDesplegable : true,
             idZonaSeleccionado : 0,
-            idSucursalSeleccionado : 0
+            idSucursalSeleccionado : 0,
+            idCanalSeleccionado : 0,
+            idGrupoSeleccionado : 0
         }
         this.seleccionarFile     = this.seleccionarFile.bind(this)
         this.seleccionarSucursal = this.seleccionarSucursal.bind(this)
         this.seleccionarZona     = this.seleccionarZona.bind(this)
+        this.seleccionarCanal     = this.seleccionarCanal.bind(this)
+        this.seleccionarGrupo     = this.seleccionarGrupo.bind(this)
     }
     
     seleccionarFile(e) {
@@ -75,6 +81,20 @@ class Filtros extends Component {
           }, 500);
     }
 
+    seleccionarCanal(nombreCanal, idCanalSeleccionado){
+        this.setState({
+            nombreCanal : nombreCanal,
+            idCanalSeleccionado : idCanalSeleccionado
+        })
+    }
+
+    seleccionarGrupo(nombreGrupo, idGrupoSeleccionado){
+        this.setState({
+            nombreGrupo : nombreGrupo,
+            idGrupoSeleccionado : idGrupoSeleccionado
+        })
+    }
+
     render() {
         return (
             <span className="gx-text-black gx-fs-md gx-pointer gx-ml-auto  " >
@@ -83,11 +103,17 @@ class Filtros extends Component {
                     sucursalSeleccionada     = {this.state.nombreSucursal}
                     sucursales               = {this.props.sucursales}
                     seleccionarSucursal      = {this.seleccionarSucursal}
+                    seleccionarGrupo         = {this.seleccionarGrupo}
+                    seleccionarCanal         = {this.seleccionarCanal}
                     animacionMenuDesplegable = {this.state.animacionMenuDesplegable}
                     zonas                    = {this.props.zonas}
+                    cass                     = {this.props.cass}
+                    gsus                     = {this.props.gsus}
                     idZonaSeleccionado       = {this.state.idZonaSeleccionado}
                     seleccionarZona          = {this.seleccionarZona}
                     idSucursalSeleccionado   = {this.state.idSucursalSeleccionado}
+                    idCanalSeleccionado      = {this.state.idCanalSeleccionado}
+                    idGrupoSeleccionado      = {this.state.idGrupoSeleccionado}
                 />
 
                 <div class="dropdown">
