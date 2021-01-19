@@ -2,7 +2,9 @@ import {
     OBTENER_VENTAS_TPR_EXITO,
     OBTENER_VENTAS_TPR_FAIL,
     SELECCIONAR_VISTA_VENTAS,
-    REINICIAR_VENTASTPR
+    REINICIAR_VENTASTPR,
+    ACTUALIZAR_ESTADO_CARGA_SUCURSAL_VENTAS,
+    ACTUALIZAR_ESTADO_CARGA_ZONA_VENTAS
 } from "constants/SistemaTypes";
 const INIT_STATE = {
     ventasTpr : [],
@@ -14,7 +16,11 @@ const INIT_STATE = {
         "real"         : "",
         "cumplimiento" : "",
         "rebate"       : ""
-    }
+    },
+    cargoZona      : true,
+    cargoSucursal  : true,
+    nombreZonaSel  : "",
+    nombreSucuSel  : ""
 };
 
 export default (state = INIT_STATE, action) => {
@@ -46,6 +52,22 @@ export default (state = INIT_STATE, action) => {
                 ventasTpr : [],
                 obtuvoVentasTpr : false,
                 vistaVentasSeleccionado  : false
+            }
+        }
+        case ACTUALIZAR_ESTADO_CARGA_SUCURSAL_VENTAS: {
+            return {
+                ...state,
+                cargoSucursal : action.payload.cargoSucursal,
+                cargoZona     : action.payload.cargoZona,
+                nombreSucuSel : action.payload.nombreSucuSel,
+            }
+        }
+        case ACTUALIZAR_ESTADO_CARGA_ZONA_VENTAS: {
+            return {
+                ...state,
+                cargoZona     : action.payload.cargoZona,
+                nombreZonaSel : action.payload.nombreZonaSel,
+                cargoSucursal : action.payload.cargoSucursal,
             }
         }
         default:

@@ -57,12 +57,19 @@ class Filtros extends Component {
     }
 
     seleccionarZona(idZona, nombreZona){
-        this.setState({
-            idZonaSeleccionado  : idZona,
-            nombreSucursal      : nombreZona,
-        })
-
-        this.props.seleccionarZona(idZona)
+        if(this.state.idZonaSeleccionado == idZona){
+            this.setState({
+                idZonaSeleccionado  : 0,
+                nombreSucursal      : nombreZona,
+            })
+            // this.props.seleccionarZona(0)
+        }else{
+            this.setState({
+                idZonaSeleccionado  : idZona,
+                nombreSucursal      : nombreZona,
+            })
+            this.props.seleccionarZona(idZona)
+        }
     }
 
     seleccionarSucursal(nombreSucursalSeleccionada, idSucursalSeleccionada){
@@ -82,17 +89,32 @@ class Filtros extends Component {
     }
 
     seleccionarCanal(nombreCanal, idCanalSeleccionado){
-        this.setState({
-            nombreCanal : nombreCanal,
-            idCanalSeleccionado : idCanalSeleccionado
-        })
+        if(this.state.idCanalSeleccionado == idCanalSeleccionado){
+            this.setState({
+                nombreCanal : nombreCanal,
+                idCanalSeleccionado : 0
+            })
+        }else{
+            this.setState({
+                nombreCanal : nombreCanal,
+                idCanalSeleccionado : idCanalSeleccionado
+            })
+        }
+        
     }
 
     seleccionarGrupo(nombreGrupo, idGrupoSeleccionado){
-        this.setState({
-            nombreGrupo : nombreGrupo,
-            idGrupoSeleccionado : idGrupoSeleccionado
-        })
+        if(this.state.idGrupoSeleccionado == idGrupoSeleccionado){
+            this.setState({
+                nombreGrupo : nombreGrupo,
+                idGrupoSeleccionado : 0
+            })
+        }else{
+            this.setState({
+                nombreGrupo : nombreGrupo,
+                idGrupoSeleccionado : idGrupoSeleccionado
+            })
+        }
     }
 
     render() {
