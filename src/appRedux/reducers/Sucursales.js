@@ -2,7 +2,8 @@ import {
     OBTENER_SUCURSALES_USUARIO_EXITO,
     OBTENER_SUCURSALES_USUARIO_FAIL,
     FILTRO_SELECCIONAR_SUCURSAL_USUARIO,
-    REINICIAR_SUCURSALES_USUARIO
+    REINICIAR_SUCURSALES_USUARIO,
+    OBTENER_SUCURSALES_USUARIO,
 } from "constants/SistemaTypes";
 
 const INIT_STATE = {
@@ -49,6 +50,13 @@ export default (state = INIT_STATE, action) => {
             sucursalesUsuario       : [],
             obtuvoSucursalesUsuario : false,
             idSucursalUsuarioSelec  : 0
+        }
+    }
+    case OBTENER_SUCURSALES_USUARIO : {
+        return {
+            ...state,
+            sucursalesUsuario : action.payload.sucursalesUsuario,
+            zonas : action.payload.zonas,
         }
     }
     default:

@@ -126,6 +126,7 @@ export const obtenerVentasTprXZonaReducer = (nombreZonaSel) => async (dispatch, 
 
     const {
         zonaidseleccionado,
+        gsuidSeleccionado
     } = getState().zonas
 
     dispatch({
@@ -144,6 +145,7 @@ export const obtenerVentasTprXZonaReducer = (nombreZonaSel) => async (dispatch, 
             body: JSON.stringify({
                 usutoken : localStorage.getItem('usutoken'),
                 zonid    : zonaidseleccionado,
+                gsuid    : gsuidSeleccionado,
                 dia      : "01",
                 mes      : mesFiltroSelec,
                 ano      : anoFiltroSelec,
@@ -188,10 +190,10 @@ export const obtenerVentasTprXZonaReducer = (nombreZonaSel) => async (dispatch, 
                             }
                         })
                     }else{
-                        dispatch({
-                            type: OBTENER_VENTAS_TPR_FAIL,
-                            payload: data.datos
-                        })
+                        // dispatch({
+                        //     type: OBTENER_VENTAS_TPR_FAIL,
+                        //     payload: data.datos
+                        // })
                     }
                 }else{
                     dispatch({

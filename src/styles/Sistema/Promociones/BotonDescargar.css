@@ -1,0 +1,17 @@
+#Boton-Personalizado-BotonDescargar{
+    position: absolute;
+    margin-top: -33px;
+    margin-left: 140px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+#Boton-BotonDescargar{
+    /* border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px; */
+}

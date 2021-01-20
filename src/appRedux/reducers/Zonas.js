@@ -3,7 +3,8 @@ import {
 } from "constants/SistemaTypes";
 
 const INIT_STATE = {
-    zonaidseleccionado : 0
+    zonaidseleccionado : 0,
+    gsuidSeleccionado : 0
 };
 
 export default (state = INIT_STATE, action) => {
@@ -11,7 +12,8 @@ export default (state = INIT_STATE, action) => {
       case FILTRO_SELECCIONAR_ZONA_USUARIO: {
           return {
               ...state,
-              zonaidseleccionado : action.payload
+              zonaidseleccionado : action.payload.zonaidseleccionado,
+              gsuidSeleccionado : action.payload.gsuidSeleccionado
           }
       }
     default:

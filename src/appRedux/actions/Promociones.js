@@ -12,8 +12,10 @@ import {
     REINICIAR_PROMOCIONES,
     DESELECCIONAR_PROMOCION,
     OBTENER_PROMOCIONES_EXCEL,
+    OBTENER_PROMOCIONES_EXCEL_ESPECIFICO,
     MOSTRAR_MODAL_INFORMATIVO_PROMOCIONES,
-    ACTUALIZAR_CANALES_DE_PROMOCIONES
+    ACTUALIZAR_CANALES_DE_PROMOCIONES,
+    ACTIVAR_MODAL_DESCARGAS_PROMOCIONES,
   } from "constants/SistemaTypes";
   import config from 'config'
 
@@ -437,4 +439,72 @@ export const GuardarImagenPromocionListaReducer = (
     message.error("Lo sentimos, ocurrio un error del servidor (Frntd)") 
   });
 
+}
+
+export const ActivarModalDescargas = (estado) => (dispatch) => {
+
+  dispatch({
+    type : ACTIVAR_MODAL_DESCARGAS_PROMOCIONES,
+    payload: estado
+  })
+
+}
+
+export const ObtenerPromocionesDescargaEspecifica = () => async (dispatch, getState) => {
+
+  // alert('descargarinfo')
+  const {
+      diaFiltroSelec,
+      mesFiltroSelec,
+      anoFiltroSelec
+  } = getState().fechas
+
+  const {
+    sucursalesUsuario,
+  } = getState().sucursales
+
+  let objetoArray = [];
+
+  await fetch(config.api+'promociones/descargar/especificos',
+    {
+      mode:'cors',
+      method: 'POST',
+      body: JSON.stringify({
+          usutoken : localStorage.getItem('usutoken'),
+          sucs     : sucursalesUsuario,
+          dia      : diaFiltroSelec,
+          mes      : mesFiltroSelec,
+          ano      : anoFiltroSelec,
+      }),
+      headers: {
+        'Accept' : 'application/json',
+        'Content-type' : 'application/json',
+        'api_token': localStorage.getItem('usutoken')
+      }
+    }
+  )
+  .then( async res => {
+    await dispatch(estadoRequestReducer(res.status))
+    return res.json()
+  })
+  .then(data => {
+    const estadoRequest = getState().estadoRequest.init_request
+    if(estadoRequest === true){
+      if(data.respuesta === true){
+          objetoArray = data.datos
+          dispatch({
+            type: OBTENER_PROMOCIONES_EXCEL_ESPECIFICO,
+            payload: objetoArray
+          })
+      }else{
+          
+      }
+    }
+  }).catch((error)=> {
+    console.log(error)    
+  });   
+
+  
+
+  // console.log(objetoArray)
 }

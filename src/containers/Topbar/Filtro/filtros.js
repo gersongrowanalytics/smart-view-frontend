@@ -7,6 +7,7 @@ class Filtros extends Component {
         super();
         this.state = {
             nombreSucursal : 'Sucursales',
+            nombreZona  : 'Zonas',
             nombreGrupo : 'Grupos',
             nombreCanal : 'Canales',
             nombreDia   : 'Día',
@@ -58,18 +59,41 @@ class Filtros extends Component {
 
     seleccionarZona(idZona, nombreZona){
         if(this.state.idZonaSeleccionado == idZona){
+            
+            idZona = 0
+
             this.setState({
-                idZonaSeleccionado  : 0,
-                nombreSucursal      : nombreZona,
+                idZonaSeleccionado : 0,
+                nombreSucursal     : nombreZona,
+                nombreZona         : nombreZona,
             })
-            // this.props.seleccionarZona(0)
+
+            if(this.state.idGrupoSeleccionado != 0){
+                this.setState({
+                    nombreSucursal : this.state.nombreGrupo
+                })
+            }else{
+                this.setState({
+                    nombreSucursal :"Sucursales"
+                })
+            }
         }else{
             this.setState({
-                idZonaSeleccionado  : idZona,
-                nombreSucursal      : nombreZona,
+                idZonaSeleccionado : idZona,
+                nombreZona         : nombreZona,
             })
-            this.props.seleccionarZona(idZona)
+
+            if(this.state.idGrupoSeleccionado != 0){
+                this.setState({
+                    nombreSucursal : nombreZona+" - "+this.state.nombreGrupo
+                })
+            }else{
+                this.setState({
+                    nombreSucursal :nombreZona
+                })
+            }
         }
+        this.props.seleccionarZona(idZona, this.state.idGrupoSeleccionado)
     }
 
     seleccionarSucursal(nombreSucursalSeleccionada, idSucursalSeleccionada){
@@ -105,16 +129,40 @@ class Filtros extends Component {
 
     seleccionarGrupo(nombreGrupo, idGrupoSeleccionado){
         if(this.state.idGrupoSeleccionado == idGrupoSeleccionado){
+            idGrupoSeleccionado = 0
             this.setState({
                 nombreGrupo : nombreGrupo,
                 idGrupoSeleccionado : 0
             })
+
+            if(this.state.idZonaSeleccionado != 0){
+                this.setState({
+                    nombreSucursal : this.state.nombreZona
+                })
+            }else{
+                this.setState({
+                    nombreSucursal :"Sucursales"
+                })
+            }
+
         }else{
             this.setState({
                 nombreGrupo : nombreGrupo,
                 idGrupoSeleccionado : idGrupoSeleccionado
             })
+
+            if(this.state.idZonaSeleccionado != 0){
+                this.setState({
+                    nombreSucursal : this.state.nombreZona+" - "+nombreGrupo
+                })
+            }else{
+                this.setState({
+                    nombreSucursal :nombreGrupo
+                })
+            }
         }
+
+        this.props.seleccionarZona(this.state.idZonaSeleccionado, idGrupoSeleccionado)
     }
 
     render() {

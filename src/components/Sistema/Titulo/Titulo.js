@@ -58,7 +58,7 @@ const Titulo = (props) => {
                                 cargoSucursal == true
                                 ?cargoZona == true
                                     ? tieneFecha == true
-                                        ?<p className="ultimaActualizacion">Actualización 19 de Enero del 2021</p>
+                                        ?<p className="ultimaActualizacion">Actualización 20 de Enero del 2021</p>
                                         :null
                                     : <div>
                                         <Spin style={{position:'absolute', marginLeft:'-30px', marginBottom:'50px'}}></Spin>

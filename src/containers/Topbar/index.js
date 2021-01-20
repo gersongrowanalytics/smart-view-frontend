@@ -125,7 +125,7 @@ const Topbar = () => {
             zonas               = {zonas}
             cass                = {cass}
             gsus                = {gsus}
-            seleccionarZona     = {(valor) => dispatch(filtroSeleccionarZonaUsuarioReducer(valor))}
+            seleccionarZona     = {(valor, gsuid) => dispatch(filtroSeleccionarZonaUsuarioReducer(valor, gsuid))}
             seleccionarSucursal = {(valor) => dispatch(filtroSeleccionarSucursalUsuario(valor))}
             seleccionarDia      = {(valor) => dispatch(filtroSeleccionarDia(valor))}
             seleccionarMes      = {(valor) => dispatch(filtroSeleccionarMes(valor))}

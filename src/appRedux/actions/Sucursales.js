@@ -3,10 +3,11 @@ import {
     OBTENER_SUCURSALES_USUARIO_EXITO,
     OBTENER_SUCURSALES_USUARIO_FAIL,
     FILTRO_SELECCIONAR_SUCURSAL_USUARIO,
-    REINICIAR_SUCURSALES_USUARIO
+    REINICIAR_SUCURSALES_USUARIO,
+    OBTENER_SUCURSALES_USUARIO,
 } from "constants/SistemaTypes";
 import {obtenerVentasTprReducer} from 'appRedux/actions/VentasTpr'
-import {obtenerPromocionesReducer} from 'appRedux/actions/Promociones'
+import {obtenerPromocionesReducer, ObtenerPromocionesDescargaEspecifica} from 'appRedux/actions/Promociones'
 import config from 'config'
 import {descargarInformacionPromocionesReducer} from 'appRedux/actions/Promociones'
 
@@ -79,4 +80,70 @@ export const filtroSeleccionarSucursalUsuario = (sucid) => async (dispatch, getS
   await dispatch(obtenerVentasTprReducer())
   await dispatch(obtenerPromocionesReducer())
   await dispatch(descargarInformacionPromocionesReducer())
+}
+
+export const SeleccionarSucursalDescargasReducer = (posicionSucursal, estado) => async(dispatch, getState) => {
+
+  let sucursales = getState().sucursales.sucursalesUsuario
+  let zonas = getState().sucursales.zonas
+
+  sucursales[posicionSucursal]['sucpromociondescarga'] = estado
+
+  await dispatch({
+    type    : OBTENER_SUCURSALES_USUARIO,
+    payload : {
+      sucursalesUsuario : sucursales,
+      zonas : zonas
+    }
+  })
+
+  dispatch(ObtenerPromocionesDescargaEspecifica())
+
+}
+
+export const SeleccionarSucursalesZonaReducerReducer = (zonid, posicionZona, estado) => async(dispatch, getState) => {
+  let sucursales = getState().sucursales.sucursalesUsuario
+  let zonas = getState().sucursales.zonas
+  zonas[posicionZona]['zonpromociondescarga'] = estado
+
+  await sucursales.map((sucursal, posicion) => {
+    if(sucursal.zonid == zonid){
+      sucursales[posicion]['sucpromociondescarga'] = estado;
+    }
+  })
+
+  await dispatch({
+    type    : OBTENER_SUCURSALES_USUARIO,
+    payload : {
+      sucursalesUsuario : sucursales,
+      zonas : zonas
+    }
+  })
+
+  dispatch(ObtenerPromocionesDescargaEspecifica())
+}
+
+export const SeleccionarTodasSucursalesDescargasReducer = (estado) => async(dispatch, getState) => {
+  let sucursales = getState().sucursales.sucursalesUsuario
+  let zonas = getState().sucursales.zonas
+
+  await sucursales.map((sucursal, posicion) => {
+    sucursales[posicion]['sucpromociondescarga'] = estado;
+  })
+
+  await zonas.map((zona, posicionZona) => {
+    zonas[posicionZona]['zonpromociondescarga'] = estado;
+  })
+
+
+
+  await dispatch({
+    type    : OBTENER_SUCURSALES_USUARIO,
+    payload : {
+      sucursalesUsuario : sucursales,
+      zonas : zonas
+    }
+  })
+
+  dispatch(ObtenerPromocionesDescargaEspecifica())
 }

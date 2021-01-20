@@ -1,0 +1,52 @@
+#Titulo-ModalDescargas{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 23px;
+    align-items: center;
+    text-align: center;
+    color: #558CFF;
+    padding-bottom: 30px;
+}
+
+#Contenedor-Zona-ModalDescargas{
+    margin-bottom: 20px;
+}
+
+#Titulo-Zona-ModalDescargas{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 13px;
+    line-height: 13px;
+    color: #000000;
+}
+
+#Titulo-Sucursal-ModalDescargas{
+    font-family: Roboto;
+    font-style: normal;
+    font-size: 11px;
+    line-height: 9px;
+}
+
+#Checkbox-Sucursal-ModalDescargas{
+    padding-left: 5px;
+}
+
+
+#Checkbox-Zona-ModalDescargas{
+    padding-left: 5px;
+    /* margin-top: -10px; */
+}
+
+#SubTitulo-ModalDescargas{
+    cursor: pointer;
+    font-family: Roboto;
+    /* font-weight: 900; */
+    font-size: 11px;
+    line-height: 18px;
+    align-items: center;
+    text-align: center;
+    color: #558CFF;
+}
