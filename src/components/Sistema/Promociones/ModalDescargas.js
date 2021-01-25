@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import { Modal, Button, Row, Col, Checkbox} from 'antd';
 import {useDispatch} from "react-redux";
 import { CloseOutlined } from '@ant-design/icons';
@@ -10,6 +10,10 @@ const ExcelSheet = ReactExport.ExcelFile.ExcelSheet;
 const ModalDescargas = (props) => {
 
     const dispatch = useDispatch();
+
+    useEffect(() =>  {
+        console.log('click')
+    }, [])
 
     return (
         <>
@@ -72,11 +76,12 @@ const ModalDescargas = (props) => {
                     </Col>
 
                 </Row>
-                <Row>
+                <Row style={{marginLeft: "50px"}}>
                     {
                         props.zonas.map((zona, posicion) => {
                             return(
                                 <Col 
+                                    key={zona.zonid}
                                     xl={props.zonas.length == 1 ? 24 : props.zonas.length == 2 ? 12 : props.zonas.length == 3 ? 8 : props.zonas.length == 4 ? 12 : props.zonas.length == 5 ? posicion <= 2 ? 8 : 12 : props.zonas.length == 6 ? 8 : 8   } 
                                     sm={props.zonas.length == 1 ? 24 : props.zonas.length == 2 ? 12 : props.zonas.length == 3 ? 8 : props.zonas.length == 4 ? 12 : props.zonas.length == 5 ? posicion <= 2 ? 8 : 12 : props.zonas.length == 6 ? 8 : 8   } 
                                     md={props.zonas.length == 1 ? 24 : props.zonas.length == 2 ? 12 : props.zonas.length == 3 ? 8 : props.zonas.length == 4 ? 12 : props.zonas.length == 5 ? posicion <= 2 ? 8 : 12 : props.zonas.length == 6 ? 8 : 8   } 
@@ -92,7 +97,7 @@ const ModalDescargas = (props) => {
                                         props.sucursalesUsuario.map((sucursal, posicionSucursal) => {
                                             return(
                                                 sucursal.zonid == zona.zonid
-                                                ?<p id="Titulo-Sucursal-ModalDescargas">
+                                                ?<p key={sucursal.sucid} id="Titulo-Sucursal-ModalDescargas">
                                                     <Checkbox 
                                                         checked={sucursal.sucpromociondescarga}
                                                         onClick={(e) => dispatch(props.SeleccionarSucursalDescargasReducer(posicionSucursal, e.target.checked))}

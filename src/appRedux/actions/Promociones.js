@@ -19,10 +19,16 @@ import {
   } from "constants/SistemaTypes";
   import config from 'config'
 
-export const reiniciarPromocionesReducer = () => {
-    return {
-        type: REINICIAR_PROMOCIONES
-    }
+export const reiniciarPromocionesReducer = () => (dispatch) => {
+  console.log("reiniciar")
+  dispatch({
+    type: OBTENER_CANALES_DE_PROMOCIONES_FAIL,
+    payload: []
+  })
+  dispatch({
+      type    : REINICIAR_PROMOCIONES,
+      payload : true
+    })
 }
 
 export const obtenerPromocionesReducer = () =>async (dispatch, getState) => {
@@ -71,6 +77,10 @@ export const obtenerPromocionesReducer = () =>async (dispatch, getState) => {
             // data.datos.map(item => {
             //     data.datos.push(item)
             // })
+            dispatch({
+              type    : REINICIAR_PROMOCIONES,
+              payload : false
+            })
             dispatch({
                 type: OBTENER_PROMOCIONES_EXITO,
                 payload: {
@@ -145,22 +155,33 @@ export const seleccionarCategoriaReducer = (scaid, limpiarCanales) => async (dis
     })
     .then(data => {
       const estadoRequest = getState().estadoRequest.init_request
+      const reiniciandoPromociones = getState().promociones.reiniciandoPromociones
+
       if(estadoRequest === true){
-        if(data.respuesta === true){
-            
-            dispatch({
-                type: OBTENER_CANALES_DE_PROMOCIONES_EXITO,
-                payload: {
-                  canalesPromociones : data.datos,
-                  scaid              : scaid
-                }
-            })
-            
+        if(reiniciandoPromociones == false){
+          if(data.respuesta === true){
+              
+              dispatch({
+                  type: OBTENER_CANALES_DE_PROMOCIONES_EXITO,
+                  payload: {
+                    canalesPromociones : data.datos,
+                    scaid              : scaid
+                  }
+              })
+              
+          }else{
+              dispatch({
+                  type: editarPromocionReducer,
+                  payload: data.datos
+              })
+          }
         }else{
-            dispatch({
-                type: editarPromocionReducer,
-                payload: data.datos
-            })
+
+          dispatch({
+            type    : REINICIAR_PROMOCIONES,
+            payload : false
+          })
+
         }
       }
     }).catch((error)=> {

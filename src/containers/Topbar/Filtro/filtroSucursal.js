@@ -37,24 +37,62 @@ const FiltroSucursal = (props) => {
                             <div id="itemsMenuDesplegable">
 
                                 {/* <ul>
-                                    <li><a href="#">Canales</a></li>
+                                    <li><a href="#">Región</a></li>
                                     {
                                         cass.length > 0
                                         ?cass.map((cas) => {
                                             return (
-                                                <li onMouseEnter={play} id={idCanalSeleccionado == cas.casid ? "itemSucursalSeleccionado" : "itemSucursal" }>
-                                                    <a 
-                                                        onClick={() => seleccionarCanal(cas.casnombre, cas.casid)}
-                                                        key  = {cas.casid} 
-                                                    >
-                                                    {
-                                                        cas.casnombre
-                                                    }
-                                                    </a>
-                                                </li>
+                                                idZonaSeleccionado > 0
+                                                ?cas.zonas.map((caszona) => {
+                                                    return (
+                                                        caszona == idZonaSeleccionado
+                                                        ?<li onMouseEnter={play} id={idCanalSeleccionado == cas.casid ? "itemSucursalSeleccionado" : "itemSucursal" }>
+                                                            <a 
+                                                                onClick={() => seleccionarCanal(cas.casnombre, cas.casid)}
+                                                                key  = {cas.casid} 
+                                                            >
+                                                            {
+                                                                cas.casnombre
+                                                            }
+                                                            </a>
+                                                        </li>
+                                                        :null
+                                                    )
+                                                })
+
+
+                                                : idGrupoSeleccionado > 0
+                                                    ?cas.grupos.map((casgrupo) => {
+                                                        return(
+                                                            casgrupo == idGrupoSeleccionado
+                                                                ?<li onMouseEnter={play} id={idCanalSeleccionado == cas.casid ? "itemSucursalSeleccionado" : "itemSucursal" }>
+                                                                    <a 
+                                                                        onClick={() => seleccionarCanal(cas.casnombre, cas.casid)}
+                                                                        key  = {cas.casid} 
+                                                                    >
+                                                                    {
+                                                                        cas.casnombre
+                                                                    }
+                                                                    </a>
+                                                                </li>
+                                                                :null
+
+                                                        )
+                                                    })
+                                                    
+                                                    :<li onMouseEnter={play} id={idCanalSeleccionado == cas.casid ? "itemSucursalSeleccionado" : "itemSucursal" }>
+                                                        <a 
+                                                            onClick={() => seleccionarCanal(cas.casnombre, cas.casid)}
+                                                            key  = {cas.casid} 
+                                                        >
+                                                        {
+                                                            cas.casnombre
+                                                        }
+                                                        </a>
+                                                    </li>
                                             )
                                         })
-                                        :<li><a href="#">Canales</a></li>
+                                        :<li><a href="#">Regiones</a></li>
                                     }
                                 </ul> */}
 
@@ -67,7 +105,7 @@ const FiltroSucursal = (props) => {
                                                 idCanalSeleccionado > 0
                                                 ?idCanalSeleccionado == zona.casid 
                                                     ?<li  
-                                                        // onMouseEnter={play}
+                                                        onMouseEnter={play}
                                                         id={ idZonaSeleccionado == zona.zonid ?"itemZonaSeleccionado" :"itemZona"}>
                                                             <a 
                                                                 onClick = {() => seleccionarZona(zona.zonid, zona.zonnombre)}
@@ -77,16 +115,33 @@ const FiltroSucursal = (props) => {
                                                             </a>
                                                         </li>
                                                     :null
-                                                :<li  
-                                                    // onMouseEnter={play}
-                                                    id={ idZonaSeleccionado == zona.zonid ?"itemZonaSeleccionado" :"itemZona"}>
-                                                        <a 
-                                                            onClick = {() => seleccionarZona(zona.zonid, zona.zonnombre)}
-                                                            key = {zona.zonid}
-                                                        >
-                                                            {zona.zonnombre}
-                                                        </a>
-                                                    </li>                            
+                                                : idGrupoSeleccionado > 0
+                                                    ? zona.gsus.map((zonagsu) => {
+                                                        return (
+                                                            zonagsu == idGrupoSeleccionado
+                                                            ?<li  
+                                                                onMouseEnter={play}
+                                                                id={ idZonaSeleccionado == zona.zonid ?"itemZonaSeleccionado" :"itemZona"}>
+                                                                    <a 
+                                                                        onClick = {() => seleccionarZona(zona.zonid, zona.zonnombre)}
+                                                                        key = {zona.zonid}
+                                                                    >
+                                                                        {zona.zonnombre}
+                                                                    </a>
+                                                                </li> 
+                                                            :null
+                                                        )
+                                                    })
+                                                    :<li  
+                                                        onMouseEnter={play}
+                                                        id={ idZonaSeleccionado == zona.zonid ?"itemZonaSeleccionado" :"itemZona"}>
+                                                            <a 
+                                                                onClick = {() => seleccionarZona(zona.zonid, zona.zonnombre)}
+                                                                key = {zona.zonid}
+                                                            >
+                                                                {zona.zonnombre}
+                                                            </a>
+                                                        </li>                     
                                             )
                                         })
                                         :null
@@ -104,16 +159,55 @@ const FiltroSucursal = (props) => {
                                         gsus.length > 0
                                         ?gsus.map((gsu) => {
                                             return (
-                                                <li onMouseEnter={play} id={idGrupoSeleccionado == gsu.gsuid ? "itemSucursalSeleccionado" : "itemSucursal" }>
-                                                    <a 
-                                                        onClick={() => seleccionarGrupo(gsu.gsunombre, gsu.gsuid)}
-                                                        key  = {gsu.gsuid} 
-                                                    >
-                                                    {
-                                                        gsu.gsunombre
-                                                    }
-                                                    </a>
-                                                </li>
+                                                idZonaSeleccionado > 0
+                                                ?gsu.zonas.map((gsuzona) => {
+                                                    return(
+                                                        gsuzona == idZonaSeleccionado
+                                                        ?<li onMouseEnter={play} id={idGrupoSeleccionado == gsu.gsuid ? "itemSucursalSeleccionado" : "itemSucursal" }>
+                                                            <a 
+                                                                onClick={() => seleccionarGrupo(gsu.gsunombre, gsu.gsuid)}
+                                                                key  = {gsu.gsuid} 
+                                                            >
+                                                            {
+                                                                gsu.gsunombre
+                                                            }
+                                                            </a>
+                                                        </li>
+                                                        :null
+                                                    )
+                                                })
+
+                                                :idCanalSeleccionado > 0
+                                                    ?gsu.canales.map((gsucanal) => {
+
+                                                        return(
+                                                            gsucanal == idCanalSeleccionado
+                                                            ?<li onMouseEnter={play} id={idGrupoSeleccionado == gsu.gsuid ? "itemSucursalSeleccionado" : "itemSucursal" }>
+                                                                <a 
+                                                                    onClick={() => seleccionarGrupo(gsu.gsunombre, gsu.gsuid)}
+                                                                    key  = {gsu.gsuid} 
+                                                                >
+                                                                {
+                                                                    gsu.gsunombre
+                                                                }
+                                                                </a>
+                                                            </li>
+                                                            :null
+                                                        )
+                                                        
+                                                    })  
+                                                    :<li onMouseEnter={play} id={idGrupoSeleccionado == gsu.gsuid ? "itemSucursalSeleccionado" : "itemSucursal" }>
+                                                        <a 
+                                                            onClick={() => seleccionarGrupo(gsu.gsunombre, gsu.gsuid)}
+                                                            key  = {gsu.gsuid} 
+                                                        >
+                                                        {
+                                                            gsu.gsunombre
+                                                        }
+                                                        </a>
+                                                    </li>
+                                                
+                                                
                                             )
                                         })
                                         :<li><a href="#">Grupos</a></li>
@@ -128,53 +222,62 @@ const FiltroSucursal = (props) => {
                                             return (
                                                 idGrupoSeleccionado > 0 && idZonaSeleccionado > 0
                                                 ?idZonaSeleccionado == sucursal.zonid && idGrupoSeleccionado == sucursal.gsuid
-                                                    ?<li 
-                                                        // onMouseEnter={play} 
-                                                        id={idSucursalSeleccionado == sucursal.sucid ? "itemSucursalSeleccionado" : "itemSucursal" }>
+                                                    ?<li onMouseEnter={play} id={idSucursalSeleccionado == sucursal.sucid ? "itemSucursalSeleccionado" : "itemSucursal" }>
                                                         <a 
-                                                            onClick={() => seleccionarSucursal(sucursal.sucnombre, sucursal.sucid)}
+                                                            onClick={() => seleccionarSucursal(
+                                                                sucursal.sucnombre, 
+                                                                sucursal.sucid, 
+                                                                sucursal.gsuid, 
+                                                                sucursal.zonid, 
+                                                                sucursal.casid)}
                                                             key  = {sucursal.sucid} 
                                                         >
                                                         {
                                                             sucursal.sucnombre
                                                         }
                                                         {
-                                                            // " ("+sucursal.ususoldto+")"
+                                                            // " ("+sucursal.sucsoldto+")"
                                                         }
                                                         </a>
                                                     </li>
                                                     :null
                                                 :idGrupoSeleccionado > 0
                                                     ?idGrupoSeleccionado == sucursal.gsuid
-                                                        ?<li 
-                                                            // onMouseEnter={play} 
-                                                            id={idSucursalSeleccionado == sucursal.sucid ? "itemSucursalSeleccionado" : "itemSucursal" }>
+                                                        ?<li onMouseEnter={play} id={idSucursalSeleccionado == sucursal.sucid ? "itemSucursalSeleccionado" : "itemSucursal" }>
                                                             <a 
-                                                                onClick={() => seleccionarSucursal(sucursal.sucnombre, sucursal.sucid)}
+                                                                onClick={() => seleccionarSucursal(
+                                                                    sucursal.sucnombre, 
+                                                                    sucursal.sucid, 
+                                                                    sucursal.gsuid, 
+                                                                    sucursal.zonid, 
+                                                                    sucursal.casid)}
                                                                 key  = {sucursal.sucid} 
                                                             >
                                                             {
                                                                 sucursal.sucnombre
                                                             }
                                                             {
-                                                                // " ("+sucursal.ususoldto+")"
+                                                                // " ("+sucursal.sucsoldto+")"
                                                             }
                                                             </a>
                                                         </li>
                                                         :null
                                                     :idZonaSeleccionado == sucursal.zonid
-                                                        ?<li 
-                                                            // onMouseEnter={play} 
-                                                            id={idSucursalSeleccionado == sucursal.sucid ? "itemSucursalSeleccionado" : "itemSucursal" }>
+                                                        ?<li onMouseEnter={play} id={idSucursalSeleccionado == sucursal.sucid ? "itemSucursalSeleccionado" : "itemSucursal" }>
                                                             <a 
-                                                                onClick={() => seleccionarSucursal(sucursal.sucnombre, sucursal.sucid)}
+                                                                onClick={() => seleccionarSucursal(
+                                                                    sucursal.sucnombre, 
+                                                                    sucursal.sucid, 
+                                                                    sucursal.gsuid, 
+                                                                    sucursal.zonid, 
+                                                                    sucursal.casid)}
                                                                 key  = {sucursal.sucid} 
                                                             >
                                                             {
                                                                 sucursal.sucnombre
                                                             }
                                                             {
-                                                                // " ("+sucursal.ususoldto+")"
+                                                                // " ("+sucursal.sucsoldto+")"
                                                             }
                                                             </a>
                                                         </li>

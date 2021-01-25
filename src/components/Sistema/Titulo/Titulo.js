@@ -19,6 +19,38 @@ const Titulo = (props) => {
         nombreSucuSel
     }= useSelector(({ventasTpr}) => ventasTpr);
 
+    const newDate = new Date()
+    const dia = newDate.getDate();
+    let mes = newDate.getMonth() + 1;
+    const anio = newDate.getFullYear();
+
+    if(mes == 1){
+        mes = "Enero"
+    }else if(mes == 2){
+        mes = "Febrero"
+    }else if(mes == 3){
+        mes = "Marzo"
+    }else if(mes == 4){
+        mes = "Abril"
+    }else if(mes == 5){
+        mes = "Mayo"
+    }else if(mes == 6){
+        mes = "Junio"
+    }else if(mes == 7){
+        mes = "Julio"
+    }else if(mes == 8){
+        mes = "Agosto"
+    }else if(mes == 9){
+        mes = "Setiembre"
+    }else if(mes == 10){
+        mes = "Octubre"
+    }else if(mes == 11){
+        mes = "Noviembre"
+    }else if(mes == 12){
+        mes = "Diciembre"
+    }
+
+
     return (
         <Row>
             {
@@ -58,7 +90,7 @@ const Titulo = (props) => {
                                 cargoSucursal == true
                                 ?cargoZona == true
                                     ? tieneFecha == true
-                                        ?<p className="ultimaActualizacion">Actualización 20 de Enero del 2021</p>
+                                        ?<p className="ultimaActualizacion">Actualización {dia} de {mes} del {anio}</p>
                                         :null
                                     : <div>
                                         <Spin style={{position:'absolute', marginLeft:'-30px', marginBottom:'50px'}}></Spin>

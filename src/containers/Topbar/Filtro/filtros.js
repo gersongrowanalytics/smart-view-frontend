@@ -68,9 +68,17 @@ class Filtros extends Component {
                 nombreZona         : nombreZona,
             })
 
-            if(this.state.idGrupoSeleccionado != 0){
+            if(this.state.idGrupoSeleccionado != 0 && this.state.idCanalSeleccionado != 0 ){
+                this.setState({
+                    nombreSucursal : this.state.nombreCanal+" - "+this.state.nombreGrupo
+                })
+            }else if(this.state.idGrupoSeleccionado != 0){
                 this.setState({
                     nombreSucursal : this.state.nombreGrupo
+                })
+            }else if(this.state.idCanalSeleccionado != 0){
+                this.setState({
+                    nombreSucursal : this.state.nombreCanal
                 })
             }else{
                 this.setState({
@@ -83,24 +91,41 @@ class Filtros extends Component {
                 nombreZona         : nombreZona,
             })
 
-            if(this.state.idGrupoSeleccionado != 0){
+            if(this.state.idGrupoSeleccionado != 0 && this.state.idCanalSeleccionado != 0 ){
+                this.setState({
+                    nombreSucursal : this.state.nombreCanal+" - "+nombreZona+" - "+this.state.nombreGrupo
+                })
+            }else if(this.state.idGrupoSeleccionado != 0){
                 this.setState({
                     nombreSucursal : nombreZona+" - "+this.state.nombreGrupo
                 })
+            }else if(this.state.idCanalSeleccionado != 0){
+                this.setState({
+                    nombreSucursal : this.state.nombreCanal+" - "+nombreZona
+                })
             }else{
                 this.setState({
-                    nombreSucursal :nombreZona
+                    nombreSucursal : nombreZona
                 })
             }
         }
-        this.props.seleccionarZona(idZona, this.state.idGrupoSeleccionado)
+        this.props.seleccionarZona(idZona, this.state.idGrupoSeleccionado, this.state.idCanalSeleccionado)
     }
 
-    seleccionarSucursal(nombreSucursalSeleccionada, idSucursalSeleccionada){
+    seleccionarSucursal(
+        nombreSucursalSeleccionada, 
+        idSucursalSeleccionada,
+        idGrupo,
+        idZona,
+        idCanal
+    ){
         this.setState({
             nombreSucursal : nombreSucursalSeleccionada,
             animacionMenuDesplegable : false,
-            idSucursalSeleccionado : idSucursalSeleccionada
+            idSucursalSeleccionado : idSucursalSeleccionada,
+            idCanalSeleccionado : idCanal,
+            idGrupoSeleccionado : idGrupo,
+            idZonaSeleccionado  : idZona
         })
 
         this.props.seleccionarSucursal(idSucursalSeleccionada)
@@ -109,21 +134,61 @@ class Filtros extends Component {
             this.setState({
                 animacionMenuDesplegable : true
             })
-          }, 500);
+        }, 500);
     }
 
     seleccionarCanal(nombreCanal, idCanalSeleccionado){
         if(this.state.idCanalSeleccionado == idCanalSeleccionado){
+            idCanalSeleccionado = 0
             this.setState({
                 nombreCanal : nombreCanal,
                 idCanalSeleccionado : 0
             })
+
+            if(this.state.idZonaSeleccionado != 0 && this.state.idGrupoSeleccionado != 0 ){
+                this.setState({
+                    nombreSucursal : this.state.nombreZona+" - "+this.state.nombreGrupo
+                })
+            }else if(this.state.idZonaSeleccionado != 0){
+                this.setState({
+                    nombreSucursal : this.state.nombreZona
+                })
+            }else if(this.state.idGrupoSeleccionado != 0){
+                this.setState({
+                    nombreSucursal : this.state.nombreGrupo
+                })
+            }else{
+                this.setState({
+                    nombreSucursal :"Sucursales"
+                })
+            }
+
         }else{
             this.setState({
                 nombreCanal : nombreCanal,
                 idCanalSeleccionado : idCanalSeleccionado
             })
+
+            if(this.state.idZonaSeleccionado != 0 && this.state.idGrupoSeleccionado != 0 ){
+                this.setState({
+                    nombreSucursal : nombreCanal+" - "+this.state.nombreZona+" - "+this.state.nombreGrupo
+                })
+            }else if(this.state.idZonaSeleccionado != 0){
+                this.setState({
+                    nombreSucursal : nombreCanal+" - "+this.state.nombreZona
+                })
+            }else if(this.state.idGrupoSeleccionado != 0){
+                this.setState({
+                    nombreSucursal : nombreCanal+" - "+this.state.nombreGrupo
+                })
+            }else{
+                this.setState({
+                    nombreSucursal : nombreCanal
+                })
+            }
         }
+
+        this.props.seleccionarZona(this.state.idZonaSeleccionado, this.state.idGrupoSeleccionado, idCanalSeleccionado)
         
     }
 
@@ -135,9 +200,17 @@ class Filtros extends Component {
                 idGrupoSeleccionado : 0
             })
 
-            if(this.state.idZonaSeleccionado != 0){
+            if(this.state.idZonaSeleccionado != 0 && this.state.idCanalSeleccionado != 0 ){
+                this.setState({
+                    nombreSucursal : this.state.nombreCanal+" - "+this.state.nombreZona
+                })
+            }else if(this.state.idZonaSeleccionado != 0){
                 this.setState({
                     nombreSucursal : this.state.nombreZona
+                })
+            }else if(this.state.idCanalSeleccionado != 0){
+                this.setState({
+                    nombreSucursal : this.state.nombreCanal
                 })
             }else{
                 this.setState({
@@ -151,9 +224,17 @@ class Filtros extends Component {
                 idGrupoSeleccionado : idGrupoSeleccionado
             })
 
-            if(this.state.idZonaSeleccionado != 0){
+            if(this.state.idZonaSeleccionado != 0 && this.state.idCanalSeleccionado != 0 ){
+                this.setState({
+                    nombreSucursal : this.state.nombreCanal+" - "+this.state.nombreZona+" - "+nombreGrupo
+                })
+            }else if(this.state.idZonaSeleccionado != 0){
                 this.setState({
                     nombreSucursal : this.state.nombreZona+" - "+nombreGrupo
+                })
+            }else if(this.state.idCanalSeleccionado != 0){
+                this.setState({
+                    nombreSucursal : this.state.nombreCanal+" - "+nombreGrupo
                 })
             }else{
                 this.setState({
@@ -162,7 +243,7 @@ class Filtros extends Component {
             }
         }
 
-        this.props.seleccionarZona(this.state.idZonaSeleccionado, idGrupoSeleccionado)
+        this.props.seleccionarZona(this.state.idZonaSeleccionado, idGrupoSeleccionado, this.state.idCanalSeleccionado)
     }
 
     render() {

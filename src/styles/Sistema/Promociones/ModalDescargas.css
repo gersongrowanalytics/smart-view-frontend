@@ -20,7 +20,7 @@
     font-weight: 900;
     font-size: 13px;
     line-height: 13px;
-    color: #000000;
+    color: #4D4D4D;
 }
 
 #Titulo-Sucursal-ModalDescargas{
@@ -48,5 +48,10 @@
     line-height: 18px;
     align-items: center;
     text-align: center;
-    color: #558CFF;
+    color: #4EB798;
+}
+
+.ant-checkbox-checked .ant-checkbox-inner {
+    background-color: #558CFF;
+    border-color: #558CFF;
 }

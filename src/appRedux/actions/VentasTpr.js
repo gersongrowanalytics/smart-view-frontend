@@ -5,9 +5,11 @@ import {
     SELECCIONAR_VISTA_VENTAS,
     REINICIAR_VENTASTPR,
     ACTUALIZAR_ESTADO_CARGA_SUCURSAL_VENTAS,
-    ACTUALIZAR_ESTADO_CARGA_ZONA_VENTAS
+    ACTUALIZAR_ESTADO_CARGA_ZONA_VENTAS,
+    OBTENER_SUCURSALES_USUARIO,
 } from "constants/SistemaTypes";
 import config from 'config'
+import {ObtenerPromocionesDescargaEspecifica} from 'appRedux/actions/Promociones'
 
 export const reiniciarVentasTprReducer = () => {
   return {
@@ -108,6 +110,28 @@ export const obtenerVentasTprReducer = (nombreSucursal) =>async (dispatch, getSt
             payload: []
         })
     });
+
+    let sucursalesUsuario = getState().sucursales.sucursalesUsuario
+    let zonas = getState().sucursales.zonas
+
+    await sucursalesUsuario.map((sucursal, posicion) => {
+        if(sucursal.sucid == idSucursalUsuarioSelec){
+            sucursalesUsuario[posicion]['sucpromociondescarga'] = true
+        }else{
+            sucursalesUsuario[posicion]['sucpromociondescarga'] = false
+        }
+    })
+
+    await dispatch({
+        type    : OBTENER_SUCURSALES_USUARIO,
+        payload : {
+            sucursalesUsuario : sucursalesUsuario,
+            zonas : zonas
+        }
+    })
+
+    dispatch(ObtenerPromocionesDescargaEspecifica())
+
 }
 
 export const seleccionarVistaVentasReducer = (accion) => {
@@ -126,7 +150,8 @@ export const obtenerVentasTprXZonaReducer = (nombreZonaSel) => async (dispatch, 
 
     const {
         zonaidseleccionado,
-        gsuidSeleccionado
+        gsuidSeleccionado,
+        casidSeleccionado
     } = getState().zonas
 
     dispatch({
@@ -137,6 +162,37 @@ export const obtenerVentasTprXZonaReducer = (nombreZonaSel) => async (dispatch, 
             "cargoSucursal" : true
         }
     })
+
+    //  -----------------
+    let sucursales = getState().sucursales.sucursalesUsuario
+    let zonas      = getState().sucursales.zonas
+
+    await sucursales.map((sucursal, posicion) => {
+        if(sucursal.zonid == zonaidseleccionado){
+            sucursales[posicion]['sucpromociondescarga'] = true
+        }else{
+            sucursales[posicion]['sucpromociondescarga'] = false
+        }
+    })
+
+    await zonas.map((zona, posicionZona) => {
+        if(zona.zonid == zonaidseleccionado){
+            zonas[posicionZona]['zonpromociondescarga'] = true
+        }else{
+            zonas[posicionZona]['zonpromociondescarga'] = false
+        }
+    })
+
+    await dispatch({
+        type    : OBTENER_SUCURSALES_USUARIO,
+        payload : {
+            sucursalesUsuario : sucursales,
+            zonas : zonas
+        }
+    })
+
+    dispatch(ObtenerPromocionesDescargaEspecifica())
+    //  -----------------
 
     await fetch(config.api+'ventas/mostrar/porzona',
         {
@@ -149,6 +205,7 @@ export const obtenerVentasTprXZonaReducer = (nombreZonaSel) => async (dispatch, 
                 dia      : "01",
                 mes      : mesFiltroSelec,
                 ano      : anoFiltroSelec,
+                casid    : casidSeleccionado
             }),
             headers: {
                 'Accept' : 'application/json',
@@ -169,9 +226,12 @@ export const obtenerVentasTprXZonaReducer = (nombreZonaSel) => async (dispatch, 
         } = getState().ventasTpr
 
         const idZonaActual = getState().zonas.zonaidseleccionado
+        const idGsuActual = getState().zonas.gsuidSeleccionado
+        const idCasActual = getState().zonas.casidSeleccionado
+
 
         if(estadoRequest == true){
-            if(idZonaActual == zonaidseleccionado){
+            if(idZonaActual == zonaidseleccionado && gsuidSeleccionado == idGsuActual && casidSeleccionado == idCasActual ){
                 if(cargoZona == false){
                     dispatch({
                         type: ACTUALIZAR_ESTADO_CARGA_ZONA_VENTAS,
@@ -209,10 +269,11 @@ export const obtenerVentasTprXZonaReducer = (nombreZonaSel) => async (dispatch, 
         }
 
     }).catch((error)=> {
-            dispatch({
-                type: OBTENER_VENTAS_TPR_FAIL,
-                payload: []
-            })
+        console.log(error)
+        dispatch({
+            type: OBTENER_VENTAS_TPR_FAIL,
+            payload: []
+        })
     });
 }
 

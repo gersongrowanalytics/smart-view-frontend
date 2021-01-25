@@ -38,8 +38,8 @@ const Promociones = () => {
     }
 
     const deseleccionarCategoria = async () => {
-        dispatch(deseleccionarPromocionReducer(true))
-        dispatch(seleccionarPromocionReducer(false))
+        // dispatch(deseleccionarPromocionReducer(true))
+        // dispatch(seleccionarPromocionReducer(false))
         dispatch(reiniciarPromocionesReducer())
     }
 

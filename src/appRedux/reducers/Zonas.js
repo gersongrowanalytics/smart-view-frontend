@@ -4,7 +4,8 @@ import {
 
 const INIT_STATE = {
     zonaidseleccionado : 0,
-    gsuidSeleccionado : 0
+    gsuidSeleccionado  : 0,
+    casidSeleccionado  : 0,
 };
 
 export default (state = INIT_STATE, action) => {
@@ -13,7 +14,8 @@ export default (state = INIT_STATE, action) => {
           return {
               ...state,
               zonaidseleccionado : action.payload.zonaidseleccionado,
-              gsuidSeleccionado : action.payload.gsuidSeleccionado
+              gsuidSeleccionado : action.payload.gsuidSeleccionado,
+              casidSeleccionado : action.payload.casidSeleccionado,
           }
       }
     default:

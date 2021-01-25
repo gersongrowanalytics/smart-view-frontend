@@ -29,8 +29,8 @@ const INIT_STATE = {
     promocionesExcelEspecifico  : [],
     mostrarModalInformativo     : true,
     scaidSeleccionado           : 0,
-
-    mostrarModalDescargas       : false
+    mostrarModalDescargas       : false,
+    reiniciandoPromociones      : false
 };
 
 export default (state = INIT_STATE, action) => {
@@ -103,12 +103,19 @@ export default (state = INIT_STATE, action) => {
         case REINICIAR_PROMOCIONES: {
             return {
                 ...state,
-                categoriasPromociones       : [],
+                // categoriasPromociones       : [],
                 obtuvoPromociones           : false,
                 canalesPromociones          : [],
                 seleccionoPromocion         : false,
                 colorSeleciconadoPromo      : 'transparent',
-                vistaPromocionSeleccionado  : false
+                vistaPromocionSeleccionado  : false,
+                deseleccionarPromocion      : false,
+                fechaActualizacionPromocion : "",
+                promocionesExcel            : [],
+                promocionesExcelEspecifico  : [],
+                scaidSeleccionado           : 0,
+
+                reiniciandoPromociones      : action.payload //OJO
             }
         }
         case OBTENER_PROMOCIONES_EXCEL: {
