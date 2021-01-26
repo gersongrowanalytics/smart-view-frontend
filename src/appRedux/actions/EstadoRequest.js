@@ -41,6 +41,8 @@ export const estadoRequestReducer = (estado) => (dispatch) => {
             type: ESTADO_REQUEST_DESCONOCIDO,
             payload: estado
         })
+
+        dispatch(userSignOut())
     }
 };
 
