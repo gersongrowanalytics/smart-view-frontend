@@ -15,7 +15,8 @@ export const ObtenerZonsReducer = () => async (dispatch, getState) => {
 			headers: {
 				'Accept' 	   : 'application/json',
 				'Content-type' : 'application/json',
-				'api_token'	   : localStorage.getItem('usutoken')
+				'api_token'	   : localStorage.getItem('usutoken'),
+				'api-token'	   : localStorage.getItem('usutoken'),
 			}
 		}
 	)

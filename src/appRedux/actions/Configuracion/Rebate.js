@@ -79,7 +79,8 @@ export const agregarNuevoRebateReducer = (
             headers: {
                 'Accept' : 'application/json',
                 'Content-type' : 'application/json',
-                'api_token': localStorage.getItem('usutoken')
+                'api_token': localStorage.getItem('usutoken'),
+                'api-token': localStorage.getItem('usutoken'),
             }
         }).then( async res => {
             await dispatch(estadoRequestReducer(res.status))
@@ -129,7 +130,8 @@ export const ActualiazrRebateReducer = (fecid) => async (dispatch, getState) => 
         headers: {
             'Accept' : 'application/json',
             'Content-type' : 'application/json',
-            'api_token': localStorage.getItem('usutoken')
+            'api_token': localStorage.getItem('usutoken'),
+            'api-token': localStorage.getItem('usutoken'),
         }
     }).then( async res => {
         await dispatch(estadoRequestReducer(res.status))
@@ -173,7 +175,8 @@ export const agregarNuevoGrupoRebateReducer = (nombreGrupoRebate) => async (disp
             headers: {
                 'Accept' : 'application/json',
                 'Content-type' : 'application/json',
-                'api_token': localStorage.getItem('usutoken')
+                'api_token': localStorage.getItem('usutoken'),
+                'api-token': localStorage.getItem('usutoken'),
             }
         }).then( async res => {
             await dispatch(estadoRequestReducer(res.status))
@@ -222,7 +225,8 @@ export const obtenerRebateReducer = () => async (dispatch, getState) => {
             headers: {
                 'Accept' : 'application/json',
                 'Content-type' : 'application/json',
-                'api_token': localStorage.getItem('usutoken')
+                'api_token': localStorage.getItem('usutoken'),
+                'api-token': localStorage.getItem('usutoken'),
             }
         }
     )
@@ -281,7 +285,8 @@ export const obtenerGrupoRebateReducer = () => async (dispatch, getState) => {
             headers: {
                 'Accept' : 'application/json',
                 'Content-type' : 'application/json',
-                'api_token': localStorage.getItem('usutoken')
+                'api_token': localStorage.getItem('usutoken'),
+                'api-token': localStorage.getItem('usutoken'),
             }
         }
     )
@@ -504,7 +509,8 @@ export const editarRebateReducer = (nuevadata) => async (dispatch, getState ) =>
             headers: {
                 'Accept' : 'application/json',
                 'Content-type' : 'application/json',
-                'api_token': localStorage.getItem('usutoken')
+                'api_token': localStorage.getItem('usutoken'),
+                'api-token': localStorage.getItem('usutoken'),
             }
         }
     )

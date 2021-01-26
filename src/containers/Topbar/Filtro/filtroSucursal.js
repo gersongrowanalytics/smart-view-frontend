@@ -7,6 +7,7 @@ import boopSfx from 'assets/video/click.mp3';
 const FiltroSucursal = (props) => {
     const [play] = useSound(boopSfx);
     const {
+
         sucursalSeleccionada, 
         sucursales, 
         seleccionarSucursal, 
@@ -23,8 +24,6 @@ const FiltroSucursal = (props) => {
         idGrupoSeleccionado
     } = props
 
-
-
     return (
     <div id="contMenuDesplegableGrande">
         <nav>
@@ -36,7 +35,7 @@ const FiltroSucursal = (props) => {
                             <div id="campoDiferencia"></div>
                             <div id="itemsMenuDesplegable">
 
-                                {/* <ul>
+                                <ul>
                                     <li><a href="#">Región</a></li>
                                     {
                                         cass.length > 0
@@ -94,7 +93,7 @@ const FiltroSucursal = (props) => {
                                         })
                                         :<li><a href="#">Regiones</a></li>
                                     }
-                                </ul> */}
+                                </ul>
 
                                 <ul>
                                     <li><a href="#">Zona</a></li>
@@ -153,7 +152,7 @@ const FiltroSucursal = (props) => {
                                     <li><a href="#">Software &amp; Accessories</a></li> */}
                                 </ul>
 
-                                {/* <ul>
+                                <ul>
                                     <li><a href="#">Grupos</a></li>
                                     {
                                         gsus.length > 0
@@ -212,7 +211,7 @@ const FiltroSucursal = (props) => {
                                         })
                                         :<li><a href="#">Grupos</a></li>
                                     }
-                                </ul> */}
+                                </ul>
 
                                 <ul>
                                     <li><a href="#">Distribuidora</a></li>

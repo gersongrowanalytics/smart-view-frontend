@@ -27,7 +27,8 @@ export const ObtenerTiposUsuariosReducer = () => async (dispatch, getState) => {
             headers: {
                 'Accept' : 'application/json',
                 'Content-type' : 'application/json',
-                'api_token': localStorage.getItem('usutoken')
+                'api_token': localStorage.getItem('usutoken'),
+                'api-token': localStorage.getItem('usutoken'),
             }
         }
     )
@@ -199,7 +200,8 @@ export const editarRebateReducer = (nuevadata) => async (dispatch, getState ) =>
             headers: {
                 'Accept' : 'application/json',
                 'Content-type' : 'application/json',
-                'api_token': localStorage.getItem('usutoken')
+                'api_token': localStorage.getItem('usutoken'),
+                'api-token': localStorage.getItem('usutoken'),
             }
         }
     )
@@ -260,7 +262,8 @@ export const ObtenerPermisosTipoUsuarioReducer = (tpuid, tpunombre) => async (di
             headers: {
                 'Accept' : 'application/json',
                 'Content-type' : 'application/json',
-                'api_token': localStorage.getItem('usutoken')
+                'api_token': localStorage.getItem('usutoken'),
+                'api-token': localStorage.getItem('usutoken'),
             }
         }
     )
@@ -326,7 +329,8 @@ export const GuardarPermisosTipoUsuarioReducer = (tpuid, nuevadata) => async (di
             headers: {
                 'Accept' : 'application/json',
                 'Content-type' : 'application/json',
-                'api_token': localStorage.getItem('usutoken')
+                'api_token': localStorage.getItem('usutoken'),
+                'api-token': localStorage.getItem('usutoken'),
             }
         }
     )

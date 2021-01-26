@@ -125,7 +125,8 @@ export const ObtenerSellOutDiaReducer = (anio, mes, dia, conMensaje) => async (d
 			headers: {
 				'Accept' 	   : 'application/json',
 				'Content-type' : 'application/json',
-				'api_token'	   : localStorage.getItem('usutoken')
+				'api_token'	   : localStorage.getItem('usutoken'),
+				'api-token'	   : localStorage.getItem('usutoken'),
 			}
 		}
 	)

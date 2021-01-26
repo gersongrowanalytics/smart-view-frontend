@@ -35,7 +35,7 @@ const BotonDescargar = () => {
 
     return (
         <>  
-            <ExcelFile 
+            {/* <ExcelFile 
                 filename="PROMOCIONES"
                 element={
                     <button 
@@ -57,8 +57,8 @@ const BotonDescargar = () => {
                     dataSet={promocionesExcel} 
                     name="Organization"
                 />
-            </ExcelFile>
-            {/* <button 
+            </ExcelFile> */}
+            <button 
                 type="button" 
                 class="ant-btn ant-btn-lg btnDescargar"
                 id="Boton-BotonDescargar"
@@ -72,7 +72,7 @@ const BotonDescargar = () => {
                     width="20px" 
                     height="20px"
                 />
-            </button> */}
+            </button>
 
             {/* <button onClick={() => {dispatch(ActivarModalDescargas(true))}} id="Boton-Personalizado-BotonDescargar" type="button" class="ant-btn ant-btn-primary ant-btn-icon-only">-</button> */}
 

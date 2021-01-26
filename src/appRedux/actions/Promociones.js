@@ -56,7 +56,8 @@ export const obtenerPromocionesReducer = () =>async (dispatch, getState) => {
         headers: {
           'Accept' : 'application/json',
           'Content-type' : 'application/json',
-          'api_token': localStorage.getItem('usutoken')
+          'api_token': localStorage.getItem('usutoken'),
+          'api-token': localStorage.getItem('usutoken'),
         }
       }
     )
@@ -145,7 +146,8 @@ export const seleccionarCategoriaReducer = (scaid, limpiarCanales) => async (dis
         headers: {
           'Accept' : 'application/json',
           'Content-type' : 'application/json',
-          'api_token': localStorage.getItem('usutoken')
+          'api_token': localStorage.getItem('usutoken'),
+          'api-token': localStorage.getItem('usutoken')
         }
       }
     )
@@ -213,21 +215,22 @@ export const aceptarEdicionPromocionReducer = (posicionCanal, posicionPromocion,
 
 
     await fetch(config.api+'promociones/editar',
-      	{
-			mode:'cors',
-			method: 'POST',
-			body: JSON.stringify({
-				usutoken    : localStorage.getItem('usutoken'),
-				cspid       : cspid,
-				valorizado  : valorizado,
-				planchas    : planchas
-			}),
-        	headers: {
-				'Accept' : 'application/json',
-				'Content-type' : 'application/json',
-				'api_token': localStorage.getItem('usutoken')
-        	}
-      	}
+      {
+        mode:'cors',
+        method: 'POST',
+        body: JSON.stringify({
+          usutoken    : localStorage.getItem('usutoken'),
+          cspid       : cspid,
+          valorizado  : valorizado,
+          planchas    : planchas
+        }),
+        headers: {
+          'Accept' : 'application/json',
+          'Content-type' : 'application/json',
+          'api_token': localStorage.getItem('usutoken'),
+          'api-token': localStorage.getItem('usutoken'),
+        }
+      }
     )
     .then( async res => {
       	await dispatch(estadoRequestReducer(res.status))
@@ -299,7 +302,8 @@ export const descargarInformacionPromocionesReducer = () => async (dispatch, get
         headers: {
           'Accept' : 'application/json',
           'Content-type' : 'application/json',
-          'api_token': localStorage.getItem('usutoken')
+          'api_token': localStorage.getItem('usutoken'),
+          'api-token': localStorage.getItem('usutoken'),
         }
       }
     )
@@ -380,7 +384,8 @@ export const guardarImagenPromocionReducer = (
 			headers: {
 				'Accept' 	   : 'application/json',
 				'Content-type' : 'application/json',
-				'api_token'	   : localStorage.getItem('usutoken')
+				'api_token'	   : localStorage.getItem('usutoken'),
+				'api-token'	   : localStorage.getItem('usutoken'),
 			}
 		}
 	)
@@ -436,7 +441,8 @@ export const GuardarImagenPromocionListaReducer = (
 			headers: {
 				'Accept' 	   : 'application/json',
 				'Content-type' : 'application/json',
-				'api_token'	   : localStorage.getItem('usutoken')
+				'api_token'	   : localStorage.getItem('usutoken'),
+				'api-token'	   : localStorage.getItem('usutoken'),
 			}
 		}
 	)
@@ -500,7 +506,8 @@ export const ObtenerPromocionesDescargaEspecifica = () => async (dispatch, getSt
       headers: {
         'Accept' : 'application/json',
         'Content-type' : 'application/json',
-        'api_token': localStorage.getItem('usutoken')
+        'api_token': localStorage.getItem('usutoken'),
+        'api-token': localStorage.getItem('usutoken'),
       }
     }
   )

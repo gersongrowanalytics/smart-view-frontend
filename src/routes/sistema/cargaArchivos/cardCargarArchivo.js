@@ -77,7 +77,8 @@ class CardCargarArchivo extends Component {
             headers: {
                 'Accept' : 'application/json',
                 'content-type': 'multipart/form-data',
-                'api_token': localStorage.getItem('usutoken')
+                'api_token': localStorage.getItem('usutoken'),
+                'api-token': localStorage.getItem('usutoken'),
             }
         })
         .then(rpta => {

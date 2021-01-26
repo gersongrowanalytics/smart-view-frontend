@@ -23,7 +23,8 @@ export const obtenerUsuariosReducer = () => async (dispatch, getState) => {
       headers: {
         'Accept' : 'application/json',
         'Content-type' : 'application/json',
-        'api_token': localStorage.getItem('usutoken')
+        'api_token': localStorage.getItem('usutoken'),
+        'api-token': localStorage.getItem('usutoken'),
       }
     }
   )
@@ -186,7 +187,8 @@ export const editarUsuarioReducer = (nuevTpuid, usuid, nuevUsua, nuevCorr, edita
       headers: {
         'Accept' : 'application/json',
         'Content-type' : 'application/json',
-        'api_token': localStorage.getItem('usutoken')
+        'api_token': localStorage.getItem('usutoken'),
+        'api-token': localStorage.getItem('usutoken'),
       }
     }
   )
@@ -211,14 +213,15 @@ export const editarUsuarioReducer = (nuevTpuid, usuid, nuevUsua, nuevCorr, edita
 export const obtenerEjecutivosReducer = () => async (dispatch, getState) => {
   	await fetch(config.api+'configuracion/usuarios/mostrar/ejecutivos',
     	{
-			mode:'cors',
-			method: 'POST',
-			body: JSON.stringify({}),
-			headers: {
-				'Accept' : 'application/json',
-				'Content-type' : 'application/json',
-				'api_token': localStorage.getItem('usutoken')
-			}
+        mode:'cors',
+        method: 'POST',
+        body: JSON.stringify({}),
+        headers: {
+          'Accept' : 'application/json',
+          'Content-type' : 'application/json',
+          'api_token': localStorage.getItem('usutoken'),
+          'api-token': localStorage.getItem('usutoken'),
+        }
     	}
   	)
   	.then( async res => {
@@ -376,7 +379,8 @@ export const crearUsuarioReducer = (data) => async (dispatch, getState) => {
       headers: {
         'Accept' : 'application/json',
         'Content-type' : 'application/json',
-        'api_token': localStorage.getItem('usutoken')
+        'api_token': localStorage.getItem('usutoken'),
+        'api-token': localStorage.getItem('usutoken'),
       }
     }
   )
@@ -412,7 +416,8 @@ export const ObtenerSucursalesXZonaReducer = () => async (dispatch, getState) =>
       headers: {
         'Accept' : 'application/json',
         'Content-type' : 'application/json',
-        'api_token': localStorage.getItem('usutoken')
+        'api_token': localStorage.getItem('usutoken'),
+        'api-token': localStorage.getItem('usutoken'),
       }
     }
   )
