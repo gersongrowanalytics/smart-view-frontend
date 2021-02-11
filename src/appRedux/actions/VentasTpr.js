@@ -163,7 +163,7 @@ export const obtenerVentasTprXZonaReducer = (nombreZonaSel) => async (dispatch, 
         casidSeleccionado
     } = getState().zonas
 
-    dispatch({
+    await dispatch({
         type: ACTUALIZAR_ESTADO_CARGA_ZONA_VENTAS,
         payload: {
             "cargoZona"     : false,
@@ -177,10 +177,22 @@ export const obtenerVentasTprXZonaReducer = (nombreZonaSel) => async (dispatch, 
     let zonas      = getState().sucursales.zonas
 
     await sucursales.map((sucursal, posicion) => {
-        if(sucursal.zonid == zonaidseleccionado){
+        sucursales[posicion]['sucpromociondescarga'] = false
+    })
+
+    await sucursales.map((sucursal, posicion) => {
+        if(sucursal.casid == casidSeleccionado){
             sucursales[posicion]['sucpromociondescarga'] = true
         }else{
-            sucursales[posicion]['sucpromociondescarga'] = false
+            // sucursales[posicion]['sucpromociondescarga'] = false
+        }
+    })
+
+    await sucursales.map((sucursal, posicion) => {
+        if(sucursal.gsuid == gsuidSeleccionado){
+            sucursales[posicion]['sucpromociondescarga'] = true
+        }else{
+            // sucursales[posicion]['sucpromociondescarga'] = false
         }
     })
 
@@ -188,7 +200,7 @@ export const obtenerVentasTprXZonaReducer = (nombreZonaSel) => async (dispatch, 
         if(zona.zonid == zonaidseleccionado){
             zonas[posicionZona]['zonpromociondescarga'] = true
         }else{
-            zonas[posicionZona]['zonpromociondescarga'] = false
+            // zonas[posicionZona]['zonpromociondescarga'] = false
         }
     })
 
@@ -200,7 +212,7 @@ export const obtenerVentasTprXZonaReducer = (nombreZonaSel) => async (dispatch, 
         }
     })
 
-    dispatch(ObtenerPromocionesDescargaEspecifica())
+    await dispatch(ObtenerPromocionesDescargaEspecifica())
     //  -----------------
 
     await fetch(config.api+'ventas/mostrar/porzona',
