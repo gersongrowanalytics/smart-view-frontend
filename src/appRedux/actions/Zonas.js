@@ -1,10 +1,19 @@
 import {
-    FILTRO_SELECCIONAR_ZONA_USUARIO
+    FILTRO_SELECCIONAR_ZONA_USUARIO,
+    SELECCIONAR_FILTRO_XZONA
 } from "constants/SistemaTypes";
 import {obtenerVentasTprXZonaReducer} from 'appRedux/actions/VentasTpr'
+import {obtenerPromocionesXZonaReducer} from 'appRedux/actions/Promociones'
 
 export const filtroSeleccionarZonaUsuarioReducer = (zonid, gsuid, casid) => async (dispatch) => {
-  
+    
+    
+
+    dispatch({
+        type    : SELECCIONAR_FILTRO_XZONA,
+        payload : true
+    })
+    
     await dispatch({
         type: FILTRO_SELECCIONAR_ZONA_USUARIO,
         payload: {
@@ -13,6 +22,7 @@ export const filtroSeleccionarZonaUsuarioReducer = (zonid, gsuid, casid) => asyn
             casidSeleccionado  : casid,
         }
     })
-
+    dispatch(obtenerPromocionesXZonaReducer(zonid, gsuid, casid))
     await dispatch(obtenerVentasTprXZonaReducer())
+    
 }

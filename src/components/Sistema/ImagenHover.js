@@ -5,7 +5,23 @@ import {Col, Row} from "antd";
 import { useSelector} from "react-redux";
 
 const ImagenHover = (props) => {
-    const {seleccionado, nombre, icono, iconoSeleccionado, fondo, colorhover, color, catimagenfondoseleccionado, caticonohover, cantidadPromociones} = props
+    const {seleccionarFiltroZona} = useSelector(({zonas}) => zonas);
+
+    const {
+        seleccionado, 
+        nombre, 
+        icono, 
+        iconoSeleccionado, 
+        fondo, 
+        colorhover, 
+        color, 
+        catimagenfondoseleccionado, 
+        caticonohover, 
+        cantidadPromociones,
+        cantidadCodigosPromocion,
+        cantidadCanales
+    } = props
+
     const {seleccionoPromocion} = useSelector(({promociones}) => promociones);
 
     return (
@@ -126,7 +142,22 @@ const ImagenHover = (props) => {
                             <span style={{fontWeight:'500'}} id="nombreCategoriaHover">
                                 {nombre}<br/>
                             </span>
-                            <span id="textoPromocionHover">Promoción: {cantidadPromociones}</span>
+                            {
+                                seleccionarFiltroZona == true
+                                ?null
+                                :<span id="textoPromocionHover">Promoción:{seleccionarFiltroZona} {cantidadPromociones}<br/></span>
+                            }
+                            {
+                                seleccionarFiltroZona == true
+                                // ?<span id="textoPromocionHover">Código de Promociones: {cantidadCodigosPromocion}<br/></span>
+                                ?<span id="textoPromocionHover">Promoción: {cantidadCodigosPromocion}<br/></span>
+                                :null
+                            }
+                            {
+                                seleccionarFiltroZona == true
+                                ?<span id="textoPromocionHover">Canales: {cantidadCanales}</span>
+                                :null
+                            }
                         </h2>
                         
                         <span style={{color:'white'}} id="saberMasHover">

@@ -124,7 +124,14 @@ const CargaArchivosPromociones = () => {
         />
       </Col>
 
-      {/* <Col xl={6} md={6}>
+      <Col xl={6} md={6}>
+        <CardCargarArchivo
+          titulo = {'Actualizar New Promociones'}
+          url    = {'cargarArchivo/promociones/actualizarNew'}
+        />
+      </Col>
+    {/*       
+      <Col xl={6} md={6}>
         <CardCargarArchivo
           titulo = {'Actualizar Canales Suc'}
           url    = {'cargarArchivo/promociones/actualizarCanalSucursal'}

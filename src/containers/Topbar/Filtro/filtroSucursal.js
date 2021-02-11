@@ -228,7 +228,11 @@ const FiltroSucursal = (props) => {
                                                                 sucursal.sucid, 
                                                                 sucursal.gsuid, 
                                                                 sucursal.zonid, 
-                                                                sucursal.casid)}
+                                                                sucursal.casid,
+                                                                sucursal.gsunombre,
+                                                                sucursal.zonnombre,
+                                                                sucursal.casnombre
+                                                            )}
                                                             key  = {sucursal.sucid} 
                                                         >
                                                         {
@@ -249,7 +253,11 @@ const FiltroSucursal = (props) => {
                                                                     sucursal.sucid, 
                                                                     sucursal.gsuid, 
                                                                     sucursal.zonid, 
-                                                                    sucursal.casid)}
+                                                                    sucursal.casid,
+                                                                    sucursal.gsunombre,
+                                                                    sucursal.zonnombre,
+                                                                    sucursal.casnombre
+                                                                )}
                                                                 key  = {sucursal.sucid} 
                                                             >
                                                             {
@@ -269,7 +277,11 @@ const FiltroSucursal = (props) => {
                                                                     sucursal.sucid, 
                                                                     sucursal.gsuid, 
                                                                     sucursal.zonid, 
-                                                                    sucursal.casid)}
+                                                                    sucursal.casid,
+                                                                    sucursal.gsunombre,
+                                                                    sucursal.zonnombre,
+                                                                    sucursal.casnombre
+                                                                )}
                                                                 key  = {sucursal.sucid} 
                                                             >
                                                             {

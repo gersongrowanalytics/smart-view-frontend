@@ -7,6 +7,7 @@ import {
     ACTUALIZAR_ESTADO_CARGA_SUCURSAL_VENTAS,
     ACTUALIZAR_ESTADO_CARGA_ZONA_VENTAS,
     OBTENER_SUCURSALES_USUARIO,
+    SELECCIONAR_FILTRO_XZONA
 } from "constants/SistemaTypes";
 import config from 'config'
 import {ObtenerPromocionesDescargaEspecifica} from 'appRedux/actions/Promociones'
@@ -19,6 +20,11 @@ export const reiniciarVentasTprReducer = () => {
 
 export const obtenerVentasTprReducer = (nombreSucursal) =>async (dispatch, getState) => {
     
+    dispatch({
+        type    : SELECCIONAR_FILTRO_XZONA,
+        payload : false
+    })
+
     const {
         diaFiltroSelec,
         mesFiltroSelec,
@@ -132,6 +138,8 @@ export const obtenerVentasTprReducer = (nombreSucursal) =>async (dispatch, getSt
     })
 
     dispatch(ObtenerPromocionesDescargaEspecifica())
+
+    return true
 
 }
 

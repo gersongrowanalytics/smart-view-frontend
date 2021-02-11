@@ -51,11 +51,12 @@ class Slide extends React.Component {
         catimagenfondoseleccionado,
         index,
         caticonohover,
-        cantidadPromociones
+        cantidadPromociones,
+        cantidadCanales,
+        cantidadCodigosPromocion
        } = this.props.slide
     const current = this.props.current
     const seleccionoPromocion  = this.props.seleccionoPromocion
-
     let classNames
     if(seleccionoPromocion == true){
       classNames = 'slidePequeno'
@@ -92,6 +93,8 @@ class Slide extends React.Component {
                 catimagenfondoseleccionado = {catimagenfondoseleccionado}
                 caticonohover = {caticonohover}
                 cantidadPromociones = {cantidadPromociones}
+                cantidadCodigosPromocion = {cantidadCodigosPromocion}
+                cantidadCanales = {cantidadCanales}
             />
         </div>
       </li>
@@ -272,7 +275,7 @@ class Slider extends React.Component {
           {slides.map((slide, posicion) => {
             return (
               <div
-                onClick={() => seleccionarCategoria(slide.scaid, posicion)}
+                onClick={() => seleccionarCategoria(slide.scaid, posicion, slide.catid)}
                 onDoubleClick = {() => deseleccionarCategoria()}
               >
                 <Slide

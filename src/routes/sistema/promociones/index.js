@@ -10,7 +10,9 @@ import {
     seleccionarPromocionReducer, 
     seleccionarVistaPromocionReducer, 
     reiniciarPromocionesReducer, 
-    deseleccionarPromocionReducer} from 'appRedux/actions/Promociones'
+    deseleccionarPromocionReducer,
+    seleccionarCategoriaXZonaReducer
+} from 'appRedux/actions/Promociones'
 import {seleccionarCargaArchivosReducer} from "appRedux/actions/CargaArchivos";
 import {seleccionarTutorialReducer} from "appRedux/actions/Tutorial";
 import {seleccionarVistaVentasReducer} from 'appRedux/actions/VentasTpr'
@@ -31,10 +33,18 @@ const Promociones = () => {
     const {tutorialSeleccionado} = useSelector(({tutorial}) => tutorial);
     const {vistaVentasSeleccionado}= useSelector(({ventasTpr}) => ventasTpr);
     const {permisos} = useSelector(({auth}) => auth);
+    const {seleccionarFiltroZona} = useSelector(({zonas}) => zonas);
+    
+    const seleccionarCategoria = async (scaid, posicion, catid) =>  {
+        console.log(seleccionarFiltroZona)
 
-    const seleccionarCategoria = async (scaid, posicion) =>  {
-        await dispatch(seleccionarPromocionReducer(true))
-        await dispatch(seleccionarCategoriaReducer(scaid, true))
+        if(seleccionarFiltroZona == true){
+            await dispatch(seleccionarPromocionReducer(true))
+            await dispatch(seleccionarCategoriaXZonaReducer(scaid, true, catid))
+        }else{
+            await dispatch(seleccionarPromocionReducer(true))
+            await dispatch(seleccionarCategoriaReducer(scaid, true))
+        }
     }
 
     const deseleccionarCategoria = async () => {
@@ -81,6 +91,7 @@ const Promociones = () => {
                     seleccionarCategoria    = {seleccionarCategoria}
                     seleccionoPromocion     = {seleccionoPromocion}
                     deseleccionarCategoria  = {deseleccionarCategoria}
+                    seleccionarFiltroZona   = {seleccionarFiltroZona}
                 />
                 <Col xl={24} md={24} sm={24} xs={24} />
                 {

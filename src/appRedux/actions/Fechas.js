@@ -8,6 +8,7 @@ import {
     REINICIAR_FECHAS
 } from "constants/SistemaTypes";
 import {obtenerVentasTprReducer} from 'appRedux/actions/VentasTpr'
+import {filtroSeleccionarZonaUsuarioReducer} from 'appRedux/actions/Zonas'
 import {obtenerPromocionesReducer} from 'appRedux/actions/Promociones'
 import config from 'config'
 import {descargarInformacionPromocionesReducer} from 'appRedux/actions/Promociones'
@@ -74,9 +75,23 @@ export const filtroSeleccionarMes = (mes) => async (dispatch, getState) => {
     type: FILTRO_SELECCIONAR_FECHA_MES,
     payload: mes
   })
-  await dispatch(obtenerVentasTprReducer())
-  await dispatch(obtenerPromocionesReducer())
-  await dispatch(descargarInformacionPromocionesReducer())
+
+  const {
+    seleccionarFiltroZona,
+    zonaidseleccionado,
+    gsuidSeleccionado,
+    casidSeleccionado,
+  } = getState().zonas
+
+  if(seleccionarFiltroZona == true){
+
+    await dispatch(filtroSeleccionarZonaUsuarioReducer(zonaidseleccionado, gsuidSeleccionado, casidSeleccionado))
+
+  }else{
+    await dispatch(obtenerVentasTprReducer())
+    await dispatch(obtenerPromocionesReducer())
+    await dispatch(descargarInformacionPromocionesReducer())
+  }
 }
 
 export const filtroSeleccionarAno = (ano) => async (dispatch, getState) => {
@@ -84,7 +99,20 @@ export const filtroSeleccionarAno = (ano) => async (dispatch, getState) => {
     type: FILTRO_SELECCIONAR_FECHA_ANO,
     payload: ano
   })
-  await dispatch(obtenerVentasTprReducer())
-  await dispatch(obtenerPromocionesReducer())
-  await dispatch(descargarInformacionPromocionesReducer())
+
+  const {
+    seleccionarFiltroZona,
+    zonaidseleccionado,
+    gsuidSeleccionado,
+    casidSeleccionado,
+  } = getState().zonas
+  
+  if(seleccionarFiltroZona == true){
+    await dispatch(filtroSeleccionarZonaUsuarioReducer(zonaidseleccionado, gsuidSeleccionado, casidSeleccionado))
+  }else{
+    await dispatch(obtenerVentasTprReducer())
+    await dispatch(obtenerPromocionesReducer())
+    await dispatch(descargarInformacionPromocionesReducer())
+  }
+
 }

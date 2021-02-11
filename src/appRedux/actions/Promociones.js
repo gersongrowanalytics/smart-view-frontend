@@ -1,23 +1,23 @@
 import { estadoRequestReducer } from "appRedux/actions/EstadoRequest"
 import {message} from "antd";
 import {
-    OBTENER_PROMOCIONES_EXITO,
-    OBTENER_PROMOCIONES_FAIL,
-    ACTUALIZAR_CATEGORIAS_DE_PROMOCIONES,
-    OBTENER_CANALES_DE_PROMOCIONES_EXITO,
-    OBTENER_CANALES_DE_PROMOCIONES_FAIL,
-    SELECCIONAR_PROMOCION,
-    ACTUALIZAR_COLOR_SELECCIONADO_PROMOCION,
-    SELECCIONAR_VISTA_PROMOCION,
-    REINICIAR_PROMOCIONES,
-    DESELECCIONAR_PROMOCION,
-    OBTENER_PROMOCIONES_EXCEL,
-    OBTENER_PROMOCIONES_EXCEL_ESPECIFICO,
-    MOSTRAR_MODAL_INFORMATIVO_PROMOCIONES,
-    ACTUALIZAR_CANALES_DE_PROMOCIONES,
-    ACTIVAR_MODAL_DESCARGAS_PROMOCIONES,
-  } from "constants/SistemaTypes";
-  import config from 'config'
+  OBTENER_PROMOCIONES_EXITO,
+  OBTENER_PROMOCIONES_FAIL,
+  ACTUALIZAR_CATEGORIAS_DE_PROMOCIONES,
+  OBTENER_CANALES_DE_PROMOCIONES_EXITO,
+  OBTENER_CANALES_DE_PROMOCIONES_FAIL,
+  SELECCIONAR_PROMOCION,
+  ACTUALIZAR_COLOR_SELECCIONADO_PROMOCION,
+  SELECCIONAR_VISTA_PROMOCION,
+  REINICIAR_PROMOCIONES,
+  DESELECCIONAR_PROMOCION,
+  OBTENER_PROMOCIONES_EXCEL,
+  OBTENER_PROMOCIONES_EXCEL_ESPECIFICO,
+  MOSTRAR_MODAL_INFORMATIVO_PROMOCIONES,
+  ACTUALIZAR_CANALES_DE_PROMOCIONES,
+  ACTIVAR_MODAL_DESCARGAS_PROMOCIONES,
+} from "constants/SistemaTypes";
+import config from 'config'
 
 export const reiniciarPromocionesReducer = () => (dispatch) => {
   console.log("reiniciar")
@@ -535,4 +535,182 @@ export const ObtenerPromocionesDescargaEspecifica = () => async (dispatch, getSt
   
 
   // console.log(objetoArray)
+}
+
+export const obtenerPromocionesXZonaReducer = (zonid, gsuid, casid) => async (dispatch, getState) => {
+    const {
+        diaFiltroSelec,
+        mesFiltroSelec,
+        anoFiltroSelec
+    } = getState().fechas
+
+  	await fetch(config.api+'promociones/mostrar/categorias/xzona',
+		{
+			mode:'cors',
+			method: 'POST',
+			body: JSON.stringify({
+				usutoken : localStorage.getItem('usutoken'),
+				zonid    : zonid,
+				gsuid    : gsuid,
+				casid    : casid,
+				dia      : diaFiltroSelec,
+				mes      : mesFiltroSelec,
+				ano      : anoFiltroSelec,
+			}),
+			headers: {
+				'Accept' : 'application/json',
+				'Content-type' : 'application/json',
+				'api_token': localStorage.getItem('usutoken'),
+				'api-token': localStorage.getItem('usutoken'),
+			}
+		}
+    )
+    .then( async res => {
+		await dispatch(estadoRequestReducer(res.status))
+		return res.json()
+    })
+    .then(data => {
+      	const estadoRequest = getState().estadoRequest.init_request
+      	if(estadoRequest === true){
+        	if(data.respuesta === true){
+				dispatch({
+					type    : REINICIAR_PROMOCIONES,
+					payload : false
+				})
+            dispatch({
+                type: OBTENER_PROMOCIONES_EXITO,
+				payload: {
+					"datos" : data.datos,
+					"fecha" : data.fechaActualiza
+                }
+            })
+        }else{
+            dispatch({
+                type: OBTENER_PROMOCIONES_FAIL,
+                payload: data.datos
+            })
+        }
+      }
+    }).catch((error)=> {
+		console.log(error)
+        dispatch({
+            type: OBTENER_PROMOCIONES_FAIL,
+            payload: []
+        })
+	});
+	
+
+}
+
+export const seleccionarCategoriaXZonaReducer = (scaid, limpiarCanales, catid) => async (dispatch, getState) => {
+
+    if(limpiarCanales == true){
+        dispatch({
+            type: OBTENER_CANALES_DE_PROMOCIONES_FAIL,
+            payload: []
+        })
+    }
+
+    let {categoriasPromociones, deseleccionarPromocion} = getState().promociones
+
+    let colorSeleccionado = '';
+
+    categoriasPromociones.map((categoria, nuevaposicion) => {
+        if(categoria.scaid === scaid){
+            categoriasPromociones[nuevaposicion]['seleccionado'] = true
+            colorSeleccionado = categoria.catcolor
+        }else{
+            categoriasPromociones[nuevaposicion]['seleccionado'] = false
+        }
+    })
+
+    dispatch({
+        type: ACTUALIZAR_CATEGORIAS_DE_PROMOCIONES,
+        payload: categoriasPromociones
+    })
+
+    dispatch({
+        type: ACTUALIZAR_COLOR_SELECCIONADO_PROMOCION,
+        payload: colorSeleccionado
+    })
+
+
+    // 
+    const {
+        diaFiltroSelec,
+        mesFiltroSelec,
+        anoFiltroSelec
+    } = getState().fechas
+
+    const {
+        zonaidseleccionado,
+        gsuidSeleccionado,
+        casidSeleccionado
+    } = getState().zonas
+    // 
+
+    await fetch(config.api+'promociones/mostrar/promociones/xzona',
+        {
+            mode:'cors',
+            method: 'POST',
+            body: JSON.stringify({
+                usutoken  : localStorage.getItem('usutoken'),
+                catid   : catid,
+                zonid   : zonaidseleccionado,
+                gsuid   : gsuidSeleccionado,
+                casid   : casidSeleccionado,
+                mes     : mesFiltroSelec,
+                ano     : anoFiltroSelec,
+                dia     : diaFiltroSelec,
+            }),
+            headers: {
+                'Accept' : 'application/json',
+                'Content-type' : 'application/json',
+                'api_token': localStorage.getItem('usutoken'),
+                'api-token': localStorage.getItem('usutoken')
+            }
+        }
+    )
+    .then( async res => {
+        await dispatch(estadoRequestReducer(res.status))
+        return res.json()
+    })
+    .then(data => {
+        const estadoRequest = getState().estadoRequest.init_request
+        const reiniciandoPromociones = getState().promociones.reiniciandoPromociones
+
+        if(estadoRequest === true){
+            if(reiniciandoPromociones == false){
+                if(data.respuesta === true){
+                    
+                    dispatch({
+                        type: OBTENER_CANALES_DE_PROMOCIONES_EXITO,
+                        payload: {
+                            canalesPromociones : data.datos,
+                            scaid              : scaid
+                        }
+                    })
+                    
+                }else{
+                    dispatch({
+                        type: editarPromocionReducer,
+                        payload: data.datos
+                    })
+                }
+            }else{
+
+                dispatch({
+                    type    : REINICIAR_PROMOCIONES,
+                    payload : false
+                })
+
+            }
+        }
+    }).catch((error)=> {
+        console.log(error)
+        dispatch({
+            type: OBTENER_CANALES_DE_PROMOCIONES_FAIL,
+            payload: []
+        })
+    });
 }
