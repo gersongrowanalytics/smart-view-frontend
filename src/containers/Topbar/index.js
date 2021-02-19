@@ -114,8 +114,8 @@ const Topbar = () => {
           <Link to="/sistema/ventas">
             <img 
               style   = {{cursor:'pointer'}}
-              alt     = '' 
-              src={LogoKim} 
+              alt     = 'logokim' 
+              src={require("assets/images/logoCompletoKim.png")} 
               width   = '72px' 
               height  = '66px' 
               id      = "logoTopbar"
