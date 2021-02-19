@@ -18,6 +18,7 @@ import {
 import {obtenerVentasTprReducer} from 'appRedux/actions/VentasTpr'
 import {obtenerPromocionesReducer, descargarInformacionPromocionesReducer} from 'appRedux/actions/Promociones'
 import './Topbar.css'
+import LogoKim from 'assets/images/logoCompletoKim.png';
 
 const {Header} = Layout;
 
@@ -113,7 +114,8 @@ const Topbar = () => {
           <Link to="/sistema/ventas">
             <img 
               style   = {{cursor:'pointer'}}
-              alt     = '' src={require('assets/images/logoCompletoKim.png')} 
+              alt     = '' 
+              src={LogoKim} 
               width   = '72px' 
               height  = '66px' 
               id      = "logoTopbar"
