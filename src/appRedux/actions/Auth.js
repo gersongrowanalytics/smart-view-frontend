@@ -62,9 +62,9 @@ export const userSignOut = () => async (dispatch) => {
     type: SIGNOUT_USER
   })
   await dispatch(reiniciarSucursalesReducer())
-  // window.location.href = window.location.href;
-
+  window.location.href = window.location.href;
 };
+
 export const userSignUpSuccess = (authUser) => {
   return {
     type: SIGNUP_USER_SUCCESS,

@@ -30,7 +30,7 @@
     /* display: flex;
     justify-content: center;
     align-items: center; */
-    background-image : url("http://backend.leadsmartview.com/Sistema/abs/img/sfondoLogin.png");
+    /* background-image : url("http://backend.leadsmartview.com/Sistema/abs/img/sfondoLogin.png"); */
     background-size: cover;
     background-repeat: no-repeat;
     /* background-position: center; */
@@ -53,7 +53,7 @@
 }
 
 .contenedorLoginSlidersCarousel{
-    background-image : url("http://backend.leadsmartview.com/Sistema/abs/img/sfondoLogin.png");
+    /* background-image : url("http://backend.leadsmartview.com/Sistema/abs/img/sfondoLogin.png"); */
     background-size: cover;
     background-repeat: no-repeat;
     width           : 100%;

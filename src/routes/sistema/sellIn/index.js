@@ -15,7 +15,7 @@ import BigBet from 'components/Sistema/Ventas/BigBet/BigBet'
 
 const SellIn = () => {
     const dispatch = useDispatch();
-    const {ventasTpr, vistaVentasSeleccionado, rebateBonus}= useSelector(({ventasTpr}) => ventasTpr);
+    const {ventasTpr, vistaVentasSeleccionado, rebateBonus, tamanioAvance}= useSelector(({ventasTpr}) => ventasTpr);
     const {cargaArchivosSeleccionado} = useSelector(({cargaArchivos}) => cargaArchivos);
     const {tutorialSeleccionado} = useSelector(({tutorial}) => tutorial);
     const {vistaPromocionSeleccionado} = useSelector(({promociones}) => promociones);
@@ -56,7 +56,6 @@ const SellIn = () => {
                                 </Col>
                                 <Col xl={24} md={24} sm={24} xs={24} />
 
-                                {/* <Col xl={15} md={24} sm={24} xs={24}> */}
                                 <div style={{width:'58%', marginRight:'2%', marginLeft:'22px'}}>
                                     <CardAvance
                                         objetivoValorizado       = {tipoPromocion.tsuvalorizadoobjetivo}
@@ -65,10 +64,10 @@ const SellIn = () => {
                                         cumplimientoPorcentaje   = {tipoPromocion.tsuporcentajecumplimiento}
                                         nombreTipoPromocion      = {tipoPromocion.tprnombre}
                                         tieneRebateTrimestral    = {tipoPromocion.tieneRebateTrimestral}
+                                        tamanioCard = {tamanioAvance}
+                                        trrs        = {tipoPromocion.trrs}
                                     />
                                 </div>
-                                {/* </Col> */}
-                                {/* <Col xl={9} md={24} sm={24} xs={24}> */}
                                 <div style={{width:'38%', }}>
                                     <CardRebate 
                                         objetivoValorizado     = {tipoPromocion.tsuvalorizadoobjetivo}
@@ -78,17 +77,18 @@ const SellIn = () => {
                                         cumplimientoPorcentaje = {tipoPromocion.tsuporcentajecumplimiento}
                                         realValorizado         = {tipoPromocion.tsuvalorizadoreal}
                                         tsu                    = {tipoPromocion}
+                                        realValorizadoSellin   = {
+                                            tipoPromocion.tprnombre.includes("Out") == true 
+                                            ?ventasTpr[posicion-1]['tsuvalorizadoreal']
+                                            :0
+                                        }
+                                        objetivoValorizadoSellIn   = {
+                                            tipoPromocion.tprnombre.includes("Out") == true 
+                                            ?ventasTpr[posicion-1]['tsuvalorizadoobjetivo']
+                                            :0
+                                        }
                                     />
                                 </div>
-                                {/* </Col> */}
-
-                                {/* <CategoriasCarousel
-                                    heading = "Example Slider"   
-                                    slides  = {tipoPromocion.categorias} 
-                                    seleccionarCategoria = {() => {}}
-                                    tprcolorbarra   = {tipoPromocion.tprcolorbarra}
-                                    tprcolortooltip = {tipoPromocion.tprcolortooltip}
-                                /> */}
                                 {
                                     tipoPromocion.categorias.map( function(categoria, posicion){
                                         return (

@@ -358,8 +358,8 @@ class SidebarItem extends React.Component {
                     funPermisosObtenidos(
                         this.props.permisos,
                         PERMISO_MODULO_TIPO_USUARIOS,
-                        <Menu.Item key="sistema/control/sellout" id="menuItemSidebar">
-                            <Link to="/sistema/control/sellout" 
+                        <Menu.Item key="sistema/controlSellOut/administracion" id="menuItemSidebar">
+                            <Link to="/sistema/controlSellOut/administracion" 
                                 onMouseEnter={() => {this.funActivarHover('menuItemControlSellOut', 'ControlSellOut')}} 
                                 onMouseLeave={() => {this.funDesactivarHover('menuItemControlSellOut', 'ControlSellOut')}}
                                 onClick={() => {this.funSeleccionarMenu('menuItemControlSellOut', 'ControlSellOut')}}

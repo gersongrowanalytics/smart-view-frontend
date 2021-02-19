@@ -7,17 +7,54 @@ import funFomratoDecimal from '../../funciones/funFormatoDecimal.js'
 
 const CardAvance = (props) => {
 
-    const { objetivoValorizado, realValorizado, togoValorizado, cumplimientoPorcentaje, nombreTipoPromocion, tieneRebateTrimestral } = props
+    const { objetivoValorizado, realValorizado, togoValorizado, cumplimientoPorcentaje, nombreTipoPromocion, tieneRebateTrimestral, tamanioCard, trrs } = props
 
     return (
-        <div style={{background:'#30C0D8', width:'100%', height: nombreTipoPromocion.includes("Out") == true ?'120px' : tieneRebateTrimestral == true ?'140px' :'120px', paddingRight:'20px', paddingTop:nombreTipoPromocion.includes("Out") == true ?'0px' : tieneRebateTrimestral == true ?'10px' : '0px',marginBottom:'20px', borderRadius:'20px', boxShadow: '9px 6px 9px -1px rgba(0, 0, 0, 0.2)'}} >
-            <Row>
+        <div style={{
+            background:'#30C0D8', 
+            width:'100%', 
+            // height: 
+            // trrs.length <= 3
+            // ?"120px"
+            // :tamanioCard+"px",
+            height: 
+            
+            tieneRebateTrimestral == true 
+                ? nombreTipoPromocion.includes("Out") == true 
+                    ?trrs.length <= 3
+                        ?"127px"
+                        :tamanioCard+"px"
+                    :trrs.length <= 3
+                        ?"143px"
+                        :tamanioCard+"px"
+                
+                // '140px' 
+                :trrs.length <= 3
+                    ?"127px"
+                    :tamanioCard+"px",
+            // height: nombreTipoPromocion.includes("Out") == true 
+            //     ?'120px' 
+            //     : tieneRebateTrimestral == true 
+            //         ?'140px' 
+            //         :'120px', 
+            paddingRight:'20px', 
+            // paddingTop: nombreTipoPromocion.includes("Out") == true 
+            //     ?'0px' 
+            //     : tieneRebateTrimestral == true 
+            //         ?'10px' 
+            //         : '0px',
+            marginBottom:'20px', 
+            borderRadius:'20px', 
+            boxShadow: '9px 6px 9px -1px rgba(0, 0, 0, 0.2)'
+        }}>
+
+            <Row style={{alignItems: "center", height: "100%"}}>
                 <Col xl={4} md={8} sm={6} xs={12}>
-                    <div style={{width:'127px', height:'120px', backgroundImage: "url('"+config.api+"Sistema/abs/img/avance-de-venta.png')", backgroundSize: 'cover', backgroundPosition:'center'}} />
+                    <div style={{width:'127px', height: "120px", backgroundImage: "url('"+config.api+"Sistema/abs/img/avance-de-venta.png')", backgroundSize: 'cover', backgroundPosition:'center'}} />
                     {/* <img src={config.api+"Sistema/abs/img/avance-de-venta.png"} width="100px" height="120px" /> */}
                 </Col>
                 <Col xl={20} md={16} sm={18} xs={12}>
-                    <Row style={{marginRight:'1px', paddingTop:'20px',}}>
+                    <Row style={{marginRight:'1px',}}>
                         <Col xl={24} md={24} sm={24} xs={24}>
                             <h2 className="gx-text-white" id="tituloAvance">Avance de Venta {nombreTipoPromocion}</h2>
                         </Col>

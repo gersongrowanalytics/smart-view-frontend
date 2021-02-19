@@ -3,7 +3,8 @@ import {
     OBTENER_ANIO_SELECCIONADO,
     OBTENER_MES_SELECCIONADO,
     OBTENER_TODO_MES,
-    CAPTURAR_MENSAJE_CONTROLSELLOUT
+    CAPTURAR_MENSAJE_CONTROLSELLOUT,
+    DESCARGAR_SELLOUT_MES_ACTUAL
 } from "constants/SistemaTypes"
 import { estadoRequestConsecuenciaReducer } from "appRedux/actions/EstadoRequest"
 import config from 'config'
@@ -240,4 +241,84 @@ export const ObtenerSellOutMensualReducer = (anio, mes) => async (dispatch, getS
         type: OBTENER_TODO_MES,
         payload: false
     })
+}
+
+export const DescargarMesActualReducer = () => async (dispatch, getState) => {
+
+    await dispatch({
+        type: DESCARGAR_SELLOUT_MES_ACTUAL,
+        payload: {
+            cargandoDescargaMesAcutal : true,
+            dataMesActualExcel : [],
+        }
+    })
+
+    await fetch(config.api+'obtenerSellOutExcelMesAcutal',
+		{
+			mode:'cors',
+			method: 'POST',
+			headers: {
+				'Accept' 	   : 'application/json',
+				'Content-type' : 'application/json',
+				'api_token'	   : localStorage.getItem('usutoken'),
+				'api-token'	   : localStorage.getItem('usutoken'),
+			}
+		}
+	)
+	.then( async res => {
+		await dispatch(estadoRequestConsecuenciaReducer(res.status, ()=>{
+            
+        }))
+		return res.json()
+	})
+	.then(async data =>  {
+
+		const estadoRequest = getState().estadoRequest.init_request
+
+		if(estadoRequest == true){
+            if(data.respuesta == true){
+                
+                await dispatch({
+                    type: DESCARGAR_SELLOUT_MES_ACTUAL,
+                    payload: {
+                        cargandoDescargaMesAcutal : false,
+                        dataMesActualExcel : data.datos,
+                    }
+                })
+
+            }else{
+                message.error(data.mensaje)
+                await dispatch({
+                    type: DESCARGAR_SELLOUT_MES_ACTUAL,
+                    payload: {
+                        cargandoDescargaMesAcutal : false,
+                        dataMesActualExcel : [],
+                    }
+                })
+            }
+		}else{
+            await dispatch({
+                type: DESCARGAR_SELLOUT_MES_ACTUAL,
+                payload: {
+                    cargandoDescargaMesAcutal : false,
+                    dataMesActualExcel : [],
+                }
+            })
+            message.error("Lo sentimos, no se pudo cargar el Sell Out del mes especifico, vuelva a intentarlo", 5)
+        }
+
+	}).catch((error)=> {
+        message.error("Error en el servidor")
+        console.log(error)
+        dispatch({
+            type: DESCARGAR_SELLOUT_MES_ACTUAL,
+            payload: {
+                cargandoDescargaMesAcutal : false,
+                dataMesActualExcel : [],
+            }
+        })
+    });
+
+
+
 }

@@ -4,7 +4,8 @@ import {
     SELECCIONAR_VISTA_VENTAS,
     REINICIAR_VENTASTPR,
     ACTUALIZAR_ESTADO_CARGA_SUCURSAL_VENTAS,
-    ACTUALIZAR_ESTADO_CARGA_ZONA_VENTAS
+    ACTUALIZAR_ESTADO_CARGA_ZONA_VENTAS,
+    CAMBIAR_TAMANIO_CARDAVANCE_VENTAS
 } from "constants/SistemaTypes";
 const INIT_STATE = {
     ventasTpr : [],
@@ -20,7 +21,8 @@ const INIT_STATE = {
     cargoZona      : true,
     cargoSucursal  : true,
     nombreZonaSel  : "",
-    nombreSucuSel  : ""
+    nombreSucuSel  : "",
+    tamanioAvance  : 0
 };
 
 export default (state = INIT_STATE, action) => {
@@ -68,6 +70,12 @@ export default (state = INIT_STATE, action) => {
                 cargoZona     : action.payload.cargoZona,
                 nombreZonaSel : action.payload.nombreZonaSel,
                 cargoSucursal : action.payload.cargoSucursal,
+            }
+        }
+        case CAMBIAR_TAMANIO_CARDAVANCE_VENTAS: {
+            return {
+                ...state,
+                tamanioAvance : action.payload
             }
         }
         default:

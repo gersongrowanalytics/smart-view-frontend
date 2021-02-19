@@ -3,7 +3,8 @@ import {
     OBTENER_ANIO_SELECCIONADO,
     OBTENER_MES_SELECCIONADO,
     OBTENER_TODO_MES,
-    CAPTURAR_MENSAJE_CONTROLSELLOUT
+    CAPTURAR_MENSAJE_CONTROLSELLOUT,
+    DESCARGAR_SELLOUT_MES_ACTUAL,
 } from "constants/SistemaTypes"
 
 const INIT_STATE = {
@@ -12,13 +13,16 @@ const INIT_STATE = {
             "seleccionado" : true,
             "anio" : (new Date()).getFullYear(),
             "mes"  : (new Date()).getMonth()+1,
-            "dias" : []
+            "dias" : [],
         }
     ],
     mesSeleccionado : (new Date()).getMonth()+1,
     anioSeleccionado : (new Date()).getFullYear(),
     cargandoTodoMes : false,
-    mensajes : []
+    mensajes : [],
+
+    cargandoDescargaMesAcutal : false,
+    dataMesActualExcel : []
 };
 
 export default (state = INIT_STATE, action) => {
@@ -52,6 +56,14 @@ export default (state = INIT_STATE, action) => {
             return {
                 ...state,
                 mensajes : action.payload
+            }
+        }
+
+        case DESCARGAR_SELLOUT_MES_ACTUAL: {
+            return {
+                ... state,
+                cargandoDescargaMesAcutal: action.payload.cargandoDescargaMesAcutal,
+                dataMesActualExcel : action.payload.dataMesActualExcel
             }
         }
         

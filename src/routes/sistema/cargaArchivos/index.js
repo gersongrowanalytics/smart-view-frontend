@@ -92,8 +92,9 @@ const CargaArchivosPromociones = () => {
       <Col xl={3} md={3} />
       <Col xl={6} md={6}>
       <CardCargarArchivo
-        titulo = {'Añadir Clientes'}
-        url    = {'cargarArchivo/clientes'}
+        titulo = {'Añadir Sucursales'}
+        // url    = {'cargarArchivo/clientes'}
+        url    = {'cargarArchivo/sucursales'}
       />
       </Col>
       <Col xl={6} md={6}>
@@ -128,6 +129,13 @@ const CargaArchivosPromociones = () => {
         <CardCargarArchivo
           titulo = {'Actualizar New Promociones'}
           url    = {'cargarArchivo/promociones/actualizarNew'}
+        />
+      </Col>
+
+      <Col xl={6} md={6}>
+        <CardCargarArchivo
+          titulo = {'Prueba soldtos'}
+          url    = {'asdasd'}
         />
       </Col>
     {/*       

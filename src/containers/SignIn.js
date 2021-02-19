@@ -11,6 +11,7 @@ import {
 import CircularProgress from "components/CircularProgress/index";
 import './login.css'
 import Login from './Login'
+import ImagenPortada from 'assets/images/portada/sfondoLogin.png';
 
 const SignIn =()=> {
 
@@ -137,6 +138,9 @@ const SignIn =()=> {
           ?"contenedorLoginSlidersCarousel"
           :"contenedorLoginSliders"
         }
+        style={{
+          backgroundImage: "url("+ImagenPortada+")"
+        }}
         // style={
         //   mostrarForm == true
         //   ? { backgroundImage: config.api+"" }

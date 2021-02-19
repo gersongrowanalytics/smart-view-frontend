@@ -20,7 +20,7 @@ const INIT_STATE = {
     cargandoNuevoGrupoRebate : false,
     obtuvoRebate             : false,
     obtuvoGrupoRebate        : false,
-    cargandoTablaRebate      : true,
+    cargandoTablaRebate      : false,
     columnasTablaRebate      : []
 }
 

@@ -4,14 +4,17 @@ import config from 'config'
 import ReactCSSTransitionGroup from 'react-transition-group'; // ES6
 // var ReactCSSTransitionGroup = require('react-transition-group'); // ES5 with npm
 // var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+import ImagenPortada from 'assets/images/portada/sfondoLogin.png';
 
 class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
       items: [
-        config.api+'Sistema/abs/img/sfondoLogin.png',
-        config.api+'Sistema/abs/img/sfondoLogin.png',
+        // config.api+'Sistema/abs/img/sfondoLogin.png',
+        // config.api+'Sistema/abs/img/sfondoLogin.png',
+        ImagenPortada,
+        ImagenPortada
       ], 
       current: 0, 
       isNext: true 

@@ -7,7 +7,8 @@ import {
     ACTUALIZAR_ESTADO_CARGA_SUCURSAL_VENTAS,
     ACTUALIZAR_ESTADO_CARGA_ZONA_VENTAS,
     OBTENER_SUCURSALES_USUARIO,
-    SELECCIONAR_FILTRO_XZONA
+    SELECCIONAR_FILTRO_XZONA,
+    CAMBIAR_TAMANIO_CARDAVANCE_VENTAS
 } from "constants/SistemaTypes";
 import config from 'config'
 import {ObtenerPromocionesDescargaEspecifica} from 'appRedux/actions/Promociones'
@@ -138,7 +139,7 @@ export const obtenerVentasTprReducer = (nombreSucursal) =>async (dispatch, getSt
     })
 
     dispatch(ObtenerPromocionesDescargaEspecifica())
-
+    dispatch(CambiarTamanioCardAvanceReducer())
     return true
 
 }
@@ -216,6 +217,7 @@ export const obtenerVentasTprXZonaReducer = (nombreZonaSel) => async (dispatch, 
     //  -----------------
 
     await fetch(config.api+'ventas/mostrar/porzona',
+    // await fetch(config.api+'ventas/mostrar/porzona/prueba',
         {
             mode:'cors',
             method: 'POST',
@@ -297,5 +299,16 @@ export const obtenerVentasTprXZonaReducer = (nombreZonaSel) => async (dispatch, 
             payload: []
         })
     });
+
+    dispatch(CambiarTamanioCardAvanceReducer())
 }
 
+export const CambiarTamanioCardAvanceReducer = () => (dispatch) => {
+    let tamanioAjustar = document.getElementById("Cont-CardAvance");
+    console.log(tamanioAjustar.clientHeight)
+    dispatch({
+        type: CAMBIAR_TAMANIO_CARDAVANCE_VENTAS,
+        payload : tamanioAjustar.clientHeight
+    })
+
+}

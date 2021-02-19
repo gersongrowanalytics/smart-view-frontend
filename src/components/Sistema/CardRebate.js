@@ -15,6 +15,8 @@ const CardRebate = (props) => {
         cumplimientoPorcentaje, 
         realValorizado, 
         objetivoValorizado,
+        objetivoValorizadoSellIn,
+        realValorizadoSellin,
     } = props
 
     const {
@@ -32,16 +34,23 @@ const CardRebate = (props) => {
 
 
     return (
-        <div style={{
+        <div 
+        id = "Cont-CardAvance"
+        style={{
             background:'#5A7DD5', 
             width:'100%',
-            height: nombreTipoPromocion.includes("Out") == true ?'120px' : tieneRebateTrimestral == true ?'140px' :'120px', 
+            // height: nombreTipoPromocion.includes("Out") == true 
+            //     ?'168px' 
+            //     : tieneRebateTrimestral == true 
+            //         ?'140px' 
+            //         :'168px', 
             marginBottom:'20px', 
             paddingRight:'15px', 
             borderRadius:'20px', 
             boxShadow: '9px 6px 9px -1px rgba(0, 0, 0, 0.2)',
             paddingLeft: '31px',
-            paddingTop:'18px'
+            paddingTop:'18px',
+            paddingBottom:'18px'
         }} >
             <Row>
                 <Col 
@@ -89,25 +98,61 @@ const CardRebate = (props) => {
                                         <div id="txtRebateData">
                                             = S/
                                             {
-                                                escala.realTotal
-                                                ? <NumberFormat value={
-                                                    funFomratoDecimal(
-                                                        escala.realTotal , 0
-                                                    )} displayType={'text'} thousandSeparator={true} />
+                                                nombreTipoPromocion.includes("Out") == true
+                                                ?escala.realTotal
+                                                    // ? <NumberFormat value={
+                                                    //     funFomratoDecimal(
+                                                    //         escala.realTotal , 0
+                                                    //     )} displayType={'text'} thousandSeparator={true} />
 
-                                                :escala.rtpporcentajehasta > 300
-                                                    ?<NumberFormat value={
+                                                    // :<NumberFormat value={
+                                                    //     funFomratoDecimal(
+                                                    //         (realValorizadoSellin * escala.rtpporcentajerebate) / 100 , 0
+                                                    // )} displayType={'text'} thousandSeparator={true} />
+                                                    ? <NumberFormat value={
                                                         funFomratoDecimal(
-                                                        (((objetivoValorizado * escala.rtpporcentajedesde)/100) * escala.rtpporcentajerebate) /100 , 0
-                                                    )} displayType={'text'} thousandSeparator={true} />
+                                                            escala.realTotal , 0
+                                                        )} displayType={'text'} thousandSeparator={true} />
+                                                    :escala.rtpporcentajehasta > 300
+                                                        ?<NumberFormat value={
+                                                            funFomratoDecimal(
+                                                            (((objetivoValorizadoSellIn * escala.rtpporcentajedesde)/100) * escala.rtpporcentajerebate) /100 , 0
+                                                        )} displayType={'text'} thousandSeparator={true} />
 
-                                                    :<NumberFormat value={
+                                                        :<NumberFormat value={
+                                                            funFomratoDecimal(
+                                                                (((objetivoValorizadoSellIn * escala.rtpporcentajehasta)/100) * escala.rtpporcentajerebate) /100 , 0
+                                                        )} displayType={'text'} thousandSeparator={true} />
+
+
+                                                    // escala.rtpporcentajehasta > 300 
+                                                        // ?<NumberFormat value={
+                                                        //     funFomratoDecimal(
+                                                        //     (((objetivoValorizadoSellIn * escala.rtpporcentajedesde)/100) * escala.rtpporcentajerebate) /100 , 0
+                                                        // )} displayType={'text'} thousandSeparator={true} />
+
+                                                        // <NumberFormat value={
+                                                        //     funFomratoDecimal(
+                                                        //         (((objetivoValorizadoSellIn * escala.rtpporcentajehasta)/100) * escala.rtpporcentajerebate) /100 , 0
+                                                        // )} displayType={'text'} thousandSeparator={true} />
+
+                                                :escala.realTotal
+                                                    ? <NumberFormat value={
                                                         funFomratoDecimal(
-                                                            (((objetivoValorizado * escala.rtpporcentajehasta)/100) * escala.rtpporcentajerebate) /100 , 0
-                                                    )} displayType={'text'} thousandSeparator={true} />
+                                                            escala.realTotal , 0
+                                                        )} displayType={'text'} thousandSeparator={true} />
+
+                                                    :escala.rtpporcentajehasta > 300
+                                                        ?<NumberFormat value={
+                                                            funFomratoDecimal(
+                                                            (((objetivoValorizado * escala.rtpporcentajedesde)/100) * escala.rtpporcentajerebate) /100 , 0
+                                                        )} displayType={'text'} thousandSeparator={true} />
+
+                                                        :<NumberFormat value={
+                                                            funFomratoDecimal(
+                                                                (((objetivoValorizado * escala.rtpporcentajehasta)/100) * escala.rtpporcentajerebate) /100 , 0
+                                                        )} displayType={'text'} thousandSeparator={true} />
                                             }
-                                            
-
                                         </div>
                                     </Col>
                                 </Row>
@@ -126,31 +171,63 @@ const CardRebate = (props) => {
                                         <Col xl={10} md={10} sm={10} xs={10} >
                                             <div id="txtRebateData">
                                                 = S/
-                                                {/* {
-                                                    cumplimientoPorcentaje >= escala.rtpporcentajedesde 
+                                            {
+                                                escala.realTotal
+                                                ? <NumberFormat value={
+                                                    funFomratoDecimal(
+                                                        escala.realTotal , 0
+                                                    )} displayType={'text'} thousandSeparator={true} />
+
+                                                :escala.rtpporcentajehasta > 300
                                                     ?<NumberFormat value={
                                                         funFomratoDecimal(
-                                                            (realValorizado * escala.rtpporcentajerebate) /100 , 0
+                                                            (((objetivoValorizado * escala.rtpporcentajedesde)/100) * escala.rtpporcentajerebate) /100 , 0
                                                         )} displayType={'text'} thousandSeparator={true} />
-                                                    :"0.0"
-                                                } */}
-
-                                            {
-                                                escala.rtpporcentajehasta > 300
-                                                ?<NumberFormat value={
-                                                    funFomratoDecimal(
-                                                        (((objetivoValorizado * escala.rtpporcentajedesde)/100) * escala.rtpporcentajerebate) /100 , 0
-                                                    )} displayType={'text'} thousandSeparator={true} />
-                                                :<NumberFormat value={
-                                                    funFomratoDecimal(
-                                                        (((objetivoValorizado * escala.rtpporcentajehasta)/100) * escala.rtpporcentajerebate) /100 , 0
-                                                    )} displayType={'text'} thousandSeparator={true} />
+                                                    :<NumberFormat value={
+                                                        funFomratoDecimal(
+                                                            (((objetivoValorizado * escala.rtpporcentajehasta)/100) * escala.rtpporcentajerebate) /100 , 0
+                                                        )} displayType={'text'} thousandSeparator={true} />
                                             }
 
                                             </div>
                                         </Col>
                                     </Row>
-                                    :null
+                                    : //REEMPLAZAR TODO EL "ROW" CON NULL PARA SOLO MOSTRAR LOS 3 ULTIMOS REBATES 
+                                    <Row>
+                                        <Col xl={14} md={14} sm={14} xs={14} >
+                                            <div id="txtRebateData">
+                                                Escala {posicion+1 +"  "} 
+                                                {escala.rtpporcentajedesde}% - 
+                                                {
+                                                    escala.rtpporcentajehasta > 300
+                                                    ?" +"
+                                                    :escala.rtpporcentajehasta
+                                                }%</div>
+                                        </Col>
+                                        <Col xl={10} md={10} sm={10} xs={10} >
+                                            <div id="txtRebateData">
+                                                = S/
+                                            {
+                                                escala.realTotal
+                                                ? <NumberFormat value={
+                                                    funFomratoDecimal(
+                                                        escala.realTotal , 0
+                                                    )} displayType={'text'} thousandSeparator={true} />
+
+                                                :escala.rtpporcentajehasta > 300
+                                                    ?<NumberFormat value={
+                                                        funFomratoDecimal(
+                                                            (((objetivoValorizado * escala.rtpporcentajedesde)/100) * escala.rtpporcentajerebate) /100 , 0
+                                                        )} displayType={'text'} thousandSeparator={true} />
+                                                    :<NumberFormat value={
+                                                        funFomratoDecimal(
+                                                            (((objetivoValorizado * escala.rtpporcentajehasta)/100) * escala.rtpporcentajerebate) /100 , 0
+                                                        )} displayType={'text'} thousandSeparator={true} />
+                                            }
+
+                                            </div>
+                                        </Col>
+                                    </Row>
                                 
                             )
                         })

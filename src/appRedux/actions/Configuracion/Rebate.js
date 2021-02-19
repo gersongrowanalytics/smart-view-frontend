@@ -210,7 +210,7 @@ export const agregarNuevoGrupoRebateReducer = (nombreGrupoRebate) => async (disp
     }
 }
 
-export const obtenerRebateReducer = () => async (dispatch, getState) => {
+export const obtenerRebateReducer = (fecha) => async (dispatch, getState) => {
 
     await dispatch({
         type    : ACTUALIZAR_OBTUVO_REBATE,
@@ -221,7 +221,9 @@ export const obtenerRebateReducer = () => async (dispatch, getState) => {
         {
             mode:'cors',
             method: 'POST',
-            body: JSON.stringify({}),
+            body: JSON.stringify({
+                "fecha" : fecha
+            }),
             headers: {
                 'Accept' : 'application/json',
                 'Content-type' : 'application/json',
@@ -330,36 +332,67 @@ export const obtenerGrupoRebateReducer = () => async (dispatch, getState) => {
 export const armarColumnasTablaRebateReducer = () => async (dispatch) => {
 
     const columnas = [
-        {
-            title: 'Año',
-            dataIndex: 'fecano',
-            key: 'fecano',
-            // width: 150
-        },
-        {
-            title: 'Fecha',
-            dataIndex: 'fecmes',
-            key: 'fecmes',
-            // width: 150,
-        }, 
-        {
-            title: 'Grupo Rebate',
-            dataIndex: 'trenombre',
-            key: 'trenombre',
-            // width: 150,
-            // sorter : (a, b) => a.length - b.length,
-        }, 
+        // {
+        //     title: 'Año',
+        //     dataIndex: 'fecano',
+        //     key: 'fecano',
+        //     // width: 150
+        // },
+        // {
+        //     title: 'Fecha',
+        //     dataIndex: 'fecmes',
+        //     key: 'fecmes',
+        //     // width: 150,
+        // }, 
         {
             title: 'Tipo de Promoción',
             dataIndex: 'tprnombre',
             key: 'tprnombre',
-            // width: 150,
+            width: 100,
+            // render: (data) => {
+            //     return {
+            //         children: <span>{data.tprnombre}</span>,
+            //         props: {
+            //             rowSpan : 3
+            //         }
+            //     }
+            // }
+        },
+        {
+            title: 'Grupos Rebate',
+            dataIndex: '',
+            key: 'trenombre',
+            width: 100,
+            render: (data) => {
+                return (
+                    data.tres.map((dat, posicion) => {
+                        return(
+                            <>
+                                <span className="gx-link">{dat}</span>
+                                <span> - </span>
+                            </>
+                        )
+                    })
+                )
+            }
         }, 
         {
-            title: 'Categoria',
-            dataIndex: 'catnombre',
+            title: 'Categorias',
+            dataIndex: '',
             key: 'catnombre',
-            // width: 150,
+            width: 250,
+            render: (data) => {
+                return (
+                    data.cats.map((dat, posicion) => {
+                        return(
+                            <>
+                                <span className="gx-link">{dat}</span>
+                                <span> - </span>
+                            </>
+                        )
+                    })
+                )
+            }
         },
         {
             title: 'Desde',
