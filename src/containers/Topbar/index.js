@@ -112,14 +112,15 @@ const Topbar = () => {
           />
 
           <Link to="/sistema/ventas">
-            <img 
+            <img alt="log" src={require("assets/images/menuRebate.png")} style={{ marginRight:'15px' }} width="25px" />
+            {/* <img 
               style   = {{cursor:'pointer'}}
               alt     = 'logokim' 
-              src={require("assets/images/logoCompletoKim.png")} 
+              // src={require("assets/images/logoCompletoKim.png")} 
               width   = '72px' 
               height  = '66px' 
               id      = "logoTopbar"
-            />
+            /> */}
           </Link>
           <Filtros
             sucursales          = {sucursalesUsuario}
