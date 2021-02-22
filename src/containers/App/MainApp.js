@@ -160,11 +160,11 @@ const MainApp = () => {
             {
               vistaPromocionSeleccionado == true
               ?<div style={{background:'transparent', width:'100%', marginBottom:'20px'}} className="gx-text-center" >
-                <img alt="" src={require("assets/images/bannerPromociones.png")} width="100%" height="100%"/>
+                <img alt="" src={require("assets/images/portada/bannerPromociones.png")} width="100%" height="100%"/>
               </div>
               :vistaVentasSeleccionado == true
                 ?<div style={{background:'transparent', width:'100%', marginBottom:'20px'}} className="gx-text-center" >
-                  <img alt="" src={require("assets/images/bannerVentas.png")} width="100%" height="100%"/>
+                  <img alt="" src={require("assets/images/portada/bannerVentas.png")} width="100%" height="100%"/>
                 </div>
                 :null
             }
@@ -186,7 +186,7 @@ const MainApp = () => {
                     © Lead Smart View 2021
                   </Col>
                   <Col xl={16} >
-                    <img alt="" width="103px" height="50px" src={require("assets/images/logofooter.png")} />
+                    <img alt="" width="103px" height="50px" src={require("assets/images/logos/logofooter.png")} />
                   </Col>
                   <Col 
                     xl={4} 
