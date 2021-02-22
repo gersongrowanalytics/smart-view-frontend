@@ -22,13 +22,13 @@ const CabeceraPerfil = (props) => {
           <div className="gx-profile-banner-top-right">
             <ul className="gx-follower-list">
               <li>
-                <span className="gx-follower-title gx-fs-lg gx-font-weight-medium">S/1,123,456</span>
+                <span className="gx-follower-title gx-fs-lg gx-font-weight-medium">S/0.00</span>
                 <span className="gx-fs-sm">Rebate Real</span></li>
               <li>
-                <span className="gx-follower-title gx-fs-lg gx-font-weight-medium">S/1,123,456</span>
+                <span className="gx-follower-title gx-fs-lg gx-font-weight-medium">S/0.00</span>
                 <span className="gx-fs-sm">Rebate Bonus</span></li>
               <li>
-                <span className="gx-follower-title gx-fs-lg gx-font-weight-medium">S/1,123,456</span>
+                <span className="gx-follower-title gx-fs-lg gx-font-weight-medium">S/</span>
                 <span className="gx-fs-sm">Rebate Trimestral</span>
               </li>
             </ul>
