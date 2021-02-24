@@ -7,7 +7,7 @@ import {seleccionarTutorialReducer, seleccionarVideoTutorialReducer} from "appRe
 import {seleccionarVistaPromocionReducer} from 'appRedux/actions/Promociones'
 import {seleccionarVistaVentasReducer} from 'appRedux/actions/VentasTpr'
 import './tutorial.css'
-
+import IconoPlay from 'assets/images/iconos/play.png'
 const Tutorial = () => {
 
     const {cargaArchivosSeleccionado} = useSelector(({cargaArchivos}) => cargaArchivos);
@@ -48,13 +48,28 @@ const Tutorial = () => {
                     </span>
                 </Col>
                 <Col xl={14} md={14} />
-                <Col xl={10} md={10} >
+                <Col xl={10} md={10} style={{position: 'relative'}} >
                     <span 
                         id="playVideo"
                         style={{cursor:'pointer'}}
                         onClick={() => dispatch(seleccionarVideoTutorialReducer(true))}
                     >
-                            PLAY VIDEO <img src={require('assets/images/iconos/play.png')} alt='' width='108px' style={{marginLeft:'-20px'}} /></span>
+                            PLAY VIDEO 
+                            <div style={{
+                                width: '108px',
+                                height: '104px',
+                                // backgroundColor: 'red',
+                                position: 'absolute',
+                                top: '-20px',
+                                backgroundImage: "url("+IconoPlay+")",
+                                backgroundSize: '100% 100%', 
+                                backgroundRepeat:'no-repeat',
+                                marginLeft:'90px',
+                                marginTop: '-22px'
+                            }} />
+                            
+                            {/* <img src={require('assets/images/iconos/play.png')} alt='' width='108px' style={{marginLeft:'-20px'}} /> */}
+                    </span>
                 </Col>
             </Row>
         </Auxiliary>
