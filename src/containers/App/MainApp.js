@@ -31,8 +31,8 @@ import { CloseOutlined } from '@ant-design/icons';
 import {setInitUrl, obtenerPermisosUsuarioReducer} from "appRedux/actions/Auth";
 import FondoTutorial from 'assets/images/portada/fondoTutorial.png';
 import FondoCargaArchivo from 'assets/images/portada/fondoCargaArchivo.png';
-import BannerVentas from 'assets/images/banner/bannerVentas.png';
-import BannerPromociones from 'assets/images/banner/bannerPromociones.png';
+import BannerVentas from 'assets/images/portada/bventas.png';
+import BannerPromociones from 'assets/images/portada/bpromo.png';
 
 const {Content, Footer} = Layout;
 
