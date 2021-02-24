@@ -165,14 +165,30 @@ const MainApp = () => {
           >
             {
               vistaPromocionSeleccionado == true
-              ?<div style={{background:'transparent', width:'100%', marginBottom:'20px'}} className="gx-text-center" >
+              ?<div 
+                style={{
+                  background:'transparent', 
+                  width:'100%', 
+                  height:"100%",
+                  marginBottom:'20px',
+                  backgroundImage: "url("+BannerPromociones+")",
+                  backgroundSize: '100% 100%', backgroundRepeat:'no-repeat'
+                }} className="gx-text-center" >
                 {/* <img alt="" src={require("assets/images/banner/bannerPromociones.png")} width="100%" height="100%"/> */}
-                <img alt="" src={BannerPromociones} width="100%" height="100%"/>
+                {/* <img alt="" src={BannerPromociones} width="100%" height="100%"/> */}
+                <div style={{height:'517px', width:'100%'}}></div>
               </div>
               :vistaVentasSeleccionado == true
-                ?<div style={{background:'transparent', width:'100%', marginBottom:'20px'}} className="gx-text-center" >
+                ?<div style={{
+                  width:'100%', 
+                  height:"100%",
+                  marginBottom:'20px',
+                  backgroundImage: "url("+BannerVentas+")",
+                  backgroundSize: '100% 100%', backgroundRepeat:'no-repeat'
+                }} className="gx-text-center" >
+                  <div style={{height:'517px', width:'100%'}}></div>
                   {/* <img alt="" src={require("assets/images/banner/bannerVentas.png")} width="100%" height="100%"/> */}
-                  <img alt="" src={BannerVentas} width="100%" height="100%"/>
+                  {/* <img alt="" src={BannerVentas} width="100%" height="100%"/> */}
                 </div>
                 :null
             }
