@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {Col, Row} from "antd"
 import Auxiliary from "util/Auxiliary"
 import Titulo from 'components/Sistema/Titulo/Titulo'
@@ -8,7 +8,7 @@ import {useSelector, useDispatch} from "react-redux"
 import {seleccionarCargaArchivosReducer} from "appRedux/actions/CargaArchivos"
 import {seleccionarTutorialReducer} from "appRedux/actions/Tutorial"
 import {seleccionarVistaPromocionReducer} from 'appRedux/actions/Promociones'
-import {seleccionarVistaVentasReducer} from 'appRedux/actions/VentasTpr'
+import {seleccionarVistaVentasReducer, CambiarTamanioCardAvanceReducer} from 'appRedux/actions/VentasTpr'
 import CardImagen from 'components/Sistema/CardImagen/CardImagen'
 import RebateBonus from 'components/Sistema/Ventas/RebateBonus/RebateBonus'
 import BigBet from 'components/Sistema/Ventas/BigBet/BigBet'
@@ -35,6 +35,10 @@ const SellIn = () => {
     if(vistaVentasSeleccionado == false){
         dispatch(seleccionarVistaVentasReducer(true))
     }
+
+    useEffect(() => {
+        dispatch(CambiarTamanioCardAvanceReducer())
+    }, [])
 
     return (
         <Auxiliary>

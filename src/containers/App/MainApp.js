@@ -31,6 +31,8 @@ import { CloseOutlined } from '@ant-design/icons';
 import {setInitUrl, obtenerPermisosUsuarioReducer} from "appRedux/actions/Auth";
 import FondoTutorial from 'assets/images/portada/fondoTutorial.png';
 import FondoCargaArchivo from 'assets/images/portada/fondoCargaArchivo.png';
+import BannerVentas from 'assets/images/banner/bannerVentas.png';
+import BannerPromociones from 'assets/images/banner/bannerPromociones.png';
 
 const {Content, Footer} = Layout;
 
@@ -164,11 +166,13 @@ const MainApp = () => {
             {
               vistaPromocionSeleccionado == true
               ?<div style={{background:'transparent', width:'100%', marginBottom:'20px'}} className="gx-text-center" >
-                <img alt="" src={require("assets/images/banner/bannerPromociones.png")} width="100%" height="100%"/>
+                {/* <img alt="" src={require("assets/images/banner/bannerPromociones.png")} width="100%" height="100%"/> */}
+                <img alt="" src={BannerPromociones} width="100%" height="100%"/>
               </div>
               :vistaVentasSeleccionado == true
                 ?<div style={{background:'transparent', width:'100%', marginBottom:'20px'}} className="gx-text-center" >
-                  <img alt="" src={require("assets/images/banner/bannerVentas.png")} width="100%" height="100%"/>
+                  {/* <img alt="" src={require("assets/images/banner/bannerVentas.png")} width="100%" height="100%"/> */}
+                  <img alt="" src={BannerVentas} width="100%" height="100%"/>
                 </div>
                 :null
             }
