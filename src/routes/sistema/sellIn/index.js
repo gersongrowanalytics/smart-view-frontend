@@ -15,7 +15,7 @@ import BigBet from 'components/Sistema/Ventas/BigBet/BigBet'
 
 const SellIn = () => {
     const dispatch = useDispatch();
-    const {ventasTpr, vistaVentasSeleccionado, rebateBonus, tamanioAvance}= useSelector(({ventasTpr}) => ventasTpr);
+    const {ventasTpr, vistaVentasSeleccionado, rebateBonus, tamanioAvanceSI, tamanioAvanceSO}= useSelector(({ventasTpr}) => ventasTpr);
     const {cargaArchivosSeleccionado} = useSelector(({cargaArchivos}) => cargaArchivos);
     const {tutorialSeleccionado} = useSelector(({tutorial}) => tutorial);
     const {vistaPromocionSeleccionado} = useSelector(({promociones}) => promociones);
@@ -64,7 +64,7 @@ const SellIn = () => {
                                         cumplimientoPorcentaje   = {tipoPromocion.tsuporcentajecumplimiento}
                                         nombreTipoPromocion      = {tipoPromocion.tprnombre}
                                         tieneRebateTrimestral    = {tipoPromocion.tieneRebateTrimestral}
-                                        tamanioCard = {tamanioAvance}
+                                        tamanioCard = {tipoPromocion.tprnombre.includes("Out") == true  ? tamanioAvanceSO : tamanioAvanceSI}
                                         trrs        = {tipoPromocion.trrs}
                                     />
                                 </div>

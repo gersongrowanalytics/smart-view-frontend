@@ -304,11 +304,26 @@ export const obtenerVentasTprXZonaReducer = (nombreZonaSel) => async (dispatch, 
 }
 
 export const CambiarTamanioCardAvanceReducer = () => (dispatch) => {
-    let tamanioAjustar = document.getElementById("Cont-CardAvance");
-    console.log(tamanioAjustar.clientHeight)
+    let tamanioAjustarSI = document.getElementById("Cont-CardRebate-SI");
+    let tamanioAjustarSO = document.getElementById("Cont-CardRebate-SO");
+
+    let tamanioSI = 0
+    let tamanioSO = 0
+
+    if(tamanioAjustarSI != null){
+        tamanioSI = tamanioAjustarSI.clientHeight
+    }
+
+    if(tamanioAjustarSO != null){
+        tamanioSO = tamanioAjustarSO.clientHeight
+    }
+
     dispatch({
         type: CAMBIAR_TAMANIO_CARDAVANCE_VENTAS,
-        payload : tamanioAjustar.clientHeight
+        payload : {
+            "tamanioAvanceSI" : tamanioSI,
+            "tamanioAvanceSO" : tamanioSO
+        }
     })
 
 }

@@ -103,7 +103,10 @@ const Topbar = () => {
         </div> : null} */}
       <div className="gx-linebar gx-mr-24" >
         <h1>
-          <i className=" icon icon-menu"
+          <img 
+            // className=" icon icon-menu"
+            src={require("assets/images/iconos/menu.png")}
+            // width='25px'
             id="iconoMenuTopbar"
             style={{cursor:'pointer', }}
             onClick={() => {

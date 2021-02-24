@@ -22,7 +22,9 @@ const INIT_STATE = {
     cargoSucursal  : true,
     nombreZonaSel  : "",
     nombreSucuSel  : "",
-    tamanioAvance  : 0
+
+    tamanioAvanceSI  : 0,
+    tamanioAvanceSO  : 0
 };
 
 export default (state = INIT_STATE, action) => {
@@ -75,7 +77,8 @@ export default (state = INIT_STATE, action) => {
         case CAMBIAR_TAMANIO_CARDAVANCE_VENTAS: {
             return {
                 ...state,
-                tamanioAvance : action.payload
+                tamanioAvanceSI : action.payload.tamanioAvanceSI,
+                tamanioAvanceSO : action.payload.tamanioAvanceSO
             }
         }
         default:

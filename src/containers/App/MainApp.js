@@ -29,6 +29,8 @@ import {useRouteMatch} from "react-router-dom";
 import Customizer from "../Customizer";
 import { CloseOutlined } from '@ant-design/icons';
 import {setInitUrl, obtenerPermisosUsuarioReducer} from "appRedux/actions/Auth";
+import FondoTutorial from 'assets/images/portada/fondoTutorial.png';
+import FondoCargaArchivo from 'assets/images/portada/fondoCargaArchivo.png';
 
 const {Content, Footer} = Layout;
 
@@ -143,13 +145,15 @@ const MainApp = () => {
               cargaArchivosSeleccionado == true 
               ?{
                 width:'100%', height:'100%', 
-                backgroundImage: `url(${config.api}Sistema/abs/img/fondoCargaArchivo.png)`, 
+                // backgroundImage: `url(${config.api}Sistema/abs/img/fondoCargaArchivo.png)`, 
+                backgroundImage: "url("+FondoCargaArchivo+")",
                 backgroundSize: '100% 100%', backgroundRepeat:'no-repeat'
               } 
               : tutorialSeleccionado == true
                 ?{
                   width:'100%', height:'100%', 
-                  backgroundImage: `url(${config.api}Sistema/abs/img/fondoTutorial1.png)`, 
+                  // backgroundImage: `url(${config.api}Sistema/abs/img/fondoTutorial1.png)`, 
+                  backgroundImage: "url("+FondoTutorial+")",
                   backgroundSize: '100% 100%', backgroundRepeat:'no-repeat'
                 } 
                 :{
@@ -160,11 +164,11 @@ const MainApp = () => {
             {
               vistaPromocionSeleccionado == true
               ?<div style={{background:'transparent', width:'100%', marginBottom:'20px'}} className="gx-text-center" >
-                <img alt="" src={require("assets/images/portada/bannerPromociones.png")} width="100%" height="100%"/>
+                <img alt="" src={require("assets/images/banner/bannerPromociones.png")} width="100%" height="100%"/>
               </div>
               :vistaVentasSeleccionado == true
                 ?<div style={{background:'transparent', width:'100%', marginBottom:'20px'}} className="gx-text-center" >
-                  <img alt="" src={require("assets/images/portada/bannerVentas.png")} width="100%" height="100%"/>
+                  <img alt="" src={require("assets/images/banner/bannerVentas.png")} width="100%" height="100%"/>
                 </div>
                 :null
             }
@@ -186,7 +190,7 @@ const MainApp = () => {
                     © Lead Smart View 2021
                   </Col>
                   <Col xl={16} >
-                    <img alt="" width="103px" height="50px" src={require("assets/images/logos/logofooter.png")} />
+                    <img alt="" width="103px" height="50px" src={require("assets/images/logos/logFooter.png")} />
                   </Col>
                   <Col 
                     xl={4} 

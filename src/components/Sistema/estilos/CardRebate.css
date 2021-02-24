@@ -74,3 +74,48 @@
 .nombreTipoPromocionRebate{
     text-transform: uppercase;
 }
+
+#contenedor-btn-interrogacion-cardRebate{
+    /* background-color: red;
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    right: 20px;
+    bottom: 8px;
+    cursor: pointer; */
+}
+
+#btn-interrogacion-cardRebate{
+    position: absolute;
+    right: 20px;
+    bottom: 8px;
+    
+    display:block;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    border: 1px solid white;
+    text-align: center;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    /* box-shadow: rgb(0 0 0 / 20%) 9px 6px 9px -1px; */
+}
+
+.ant-modal-confirm-info{
+    text-align: -webkit-center;
+    width: auto !important;
+}
+
+.ant-modal-content{
+    width: 600px;
+}
+
+#contenedor-descripcionRebate-cardRebate{
+    /* position: absolute; */
+    /* font-size: 10px; */
+    padding-top: 5px;
+    color: white;
+    font-family: Roboto;
+    /* left: 10px; */
+}

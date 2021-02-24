@@ -15,7 +15,8 @@
 #iconoMenuTopbar{
     position: absolute;
     padding-top: 23px;
-    width: 23px;
-    height: 16px;
+    width: 29px;
+    /* height: 16px; */
     margin-right: -20px;
+    color: black;
 }

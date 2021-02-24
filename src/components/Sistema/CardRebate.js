@@ -31,11 +31,44 @@ const CardRebate = (props) => {
 
     const {mesFiltroSelec} = useSelector(({fechas}) => fechas);
 
-
+    // function info() {
+    //     Modal.info({
+    //         title: 
+    //         <div style={{
+    //             position: "absolute",
+    //             left: "30px",
+    //             marginTop:'5px'
+    //         }}>
+    //             <br/>Descripción
+    //         </div>,
+    //         content: (
+    //             <div
+    //                 style={{
+    //                     height: "140px",
+    //                 }}
+    //             >
+    //                 <div
+    //                     style={{
+    //                         position: "absolute",
+    //                         left: "30px",
+    //                         marginTop: "45px",
+    //                         marginRight: "25px",
+    //                         textAlign: "left"
+    //                     }}
+    //                 >
+    //                     <p>La cuota de Sell Out se comunicará al inicio de cada mes y el pago de este rebate se calculará en base al monto neto facturado (NIV).</p>
+    //                     <p>El pago de este rebate se calculará en base al monto neto facturado (sell in)</p>
+    //                 </div>
+    //             </div>
+    //         ),
+    //         style:{height:'200px'}
+    //         // onOk() {},
+    //     });
+    // }
 
     return (
         <div 
-        id = "Cont-CardAvance"
+        id = { nombreTipoPromocion.includes("Out") == true ? "Cont-CardRebate-SO" : "Cont-CardRebate-SI"}
         style={{
             background:'#5A7DD5', 
             width:'100%',
@@ -50,7 +83,8 @@ const CardRebate = (props) => {
             boxShadow: '9px 6px 9px -1px rgba(0, 0, 0, 0.2)',
             paddingLeft: '31px',
             paddingTop:'18px',
-            paddingBottom:'18px'
+            paddingBottom: nombreTipoPromocion.includes("Out") == true ? '1px' : '18px',
+            position:'relative'
         }} >
             <Row>
                 <Col 
@@ -345,7 +379,23 @@ const CardRebate = (props) => {
                 }
                 
                 
-            </Row>        
+            </Row>
+            {
+                nombreTipoPromocion.includes("Out") == true
+                ?<div id="contenedor-descripcionRebate-cardRebate">
+                    <p>El pago de este rebate se calculará en base al monto neto facturado (sell in)</p>
+                </div>
+                :null
+            }
+            {/* {
+                nombreTipoPromocion.includes("Out") == true
+                ?<div id="contenedor-btn-interrogacion-cardRebate" onClick={() => info()}>
+                    <div id="btn-interrogacion-cardRebate" title="Descripción">
+                        ?
+                    </div>
+                </div>
+                :null
+            } */}
         </div>
     )
 }

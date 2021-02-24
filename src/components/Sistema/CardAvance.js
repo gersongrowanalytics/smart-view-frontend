@@ -13,36 +13,23 @@ const CardAvance = (props) => {
         <div style={{
             background:'#30C0D8', 
             width:'100%', 
-            // height: 
-            // trrs.length <= 3
-            // ?"120px"
-            // :tamanioCard+"px",
-            height: 
+            height: tamanioCard,
             
-            tieneRebateTrimestral == true 
-                ? nombreTipoPromocion.includes("Out") == true 
-                    ?trrs.length <= 3
-                        ?"127px"
-                        :tamanioCard+"px"
-                    :trrs.length <= 3
-                        ?"143px"
-                        :tamanioCard+"px"
+            // tieneRebateTrimestral == true 
+            //     ? nombreTipoPromocion.includes("Out") == true 
+            //         ?trrs.length <= 3
+            //             ?"127px"
+            //             :tamanioCard+"px"
+            //         :trrs.length <= 3
+            //             ?"143px"
+            //             :tamanioCard+"px"
                 
-                // '140px' 
-                :trrs.length <= 3
-                    ?"127px"
-                    :tamanioCard+"px",
-            // height: nombreTipoPromocion.includes("Out") == true 
-            //     ?'120px' 
-            //     : tieneRebateTrimestral == true 
-            //         ?'140px' 
-            //         :'120px', 
+            //     :trrs.length <= 3
+            //         ?"127px"
+            //         :tamanioCard+"px",
+            
             paddingRight:'20px', 
-            // paddingTop: nombreTipoPromocion.includes("Out") == true 
-            //     ?'0px' 
-            //     : tieneRebateTrimestral == true 
-            //         ?'10px' 
-            //         : '0px',
+            
             marginBottom:'20px', 
             borderRadius:'20px', 
             boxShadow: '9px 6px 9px -1px rgba(0, 0, 0, 0.2)'

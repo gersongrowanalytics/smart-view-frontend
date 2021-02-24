@@ -33,6 +33,7 @@ class SidebarItem extends React.Component {
             menuItemTiposUsuarios    : false,
             menuItemControlPromociones : false,
             menuItemControlSellOut   : false,
+            menuItemChat   : false,
 
             seleccionoVentas         : false,
             seleccionoPromociones    : false,
@@ -45,6 +46,7 @@ class SidebarItem extends React.Component {
             seleccionoTiposUsuarios  : false,
             seleccionoControlPromociones : false,
             seleccionoControlSellOut : false,
+            seleccionoChat : false,
         }
         this.funActivarHover = this.funActivarHover.bind(this)
         this.funSeleccionarMenu = this.funSeleccionarMenu.bind(this)
@@ -78,6 +80,7 @@ class SidebarItem extends React.Component {
             menuItemTiposUsuarios    : false,
             menuItemControlPromociones : false,
             menuItemControlSellOut   : false,
+            menuItemChat   : false,
 
             seleccionoVentas         : false,
             seleccionoPromociones    : false,
@@ -90,6 +93,7 @@ class SidebarItem extends React.Component {
             seleccionoControlVentas  : false,
             seleccionoControlPromociones : false,
             seleccionoControlSellOut : false,
+            seleccionoChat : false,
         })
 
         this.setState({
@@ -301,7 +305,8 @@ class SidebarItem extends React.Component {
                                 onMouseLeave={() => {this.funDesactivarHover('menuItemUsuarios', 'Usuarios')}}
                                 onClick={() => {this.funSeleccionarMenu('menuItemUsuarios', 'Usuarios')}}
                             >
-                            <i className="icon icon-user-o"/>
+                            {/* <i className="icon icon-user-o"/> */}
+                            <img alt="" src={require("assets/images/iconosMenu/iconUsuario.png")} style={{ marginRight:'15px' }} width="25px" />
                             <span
                                 id={
                                     this.state.menuItemUsuarios == true
@@ -382,14 +387,14 @@ class SidebarItem extends React.Component {
                         PERMISO_MODULO_TIPO_USUARIOS,
                         <Menu.Item key="sistema/chat" id="menuItemSidebar">
                             <Link to="/sistema/chat" 
-                                onMouseEnter={() => {this.funActivarHover('menuItemControlSellOut', 'ControlSellOut')}} 
-                                onMouseLeave={() => {this.funDesactivarHover('menuItemControlSellOut', 'ControlSellOut')}}
-                                onClick={() => {this.funSeleccionarMenu('menuItemControlSellOut', 'ControlSellOut')}}
+                                onMouseEnter={() => {this.funActivarHover('menuItemChat', 'Chat')}} 
+                                onMouseLeave={() => {this.funDesactivarHover('menuItemChat', 'Chat')}}
+                                onClick={() => {this.funSeleccionarMenu('menuItemChat', 'Chat')}}
                             >
                             <img alt="" src={require("assets/images/menuRebate.png")} style={{ marginRight:'15px' }} width="25px" />
                             <span
                                 id={
-                                    this.state.menuItemControlSellOut == true
+                                    this.state.menuItemChat == true
                                     ? "txtSidebarItemHover"
                                     : "txtSidebarItem"
                                 }

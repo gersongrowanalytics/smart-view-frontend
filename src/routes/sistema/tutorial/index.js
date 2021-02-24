@@ -39,7 +39,7 @@ const Tutorial = () => {
         <Auxiliary>
             <Row style={{  height:'100%' }}>
                 <Col xl={24} md={24} style={{marginTop:'100px', }}>
-                    <img src={require('assets/images/logoLeadSmartView.png')} width="213px" height="90px" alt=''/>
+                    <img src={require('assets/images/logos/logoSmart.png')} width="213px" height="90px" alt=''/>
                 </Col>
                 <Col xl={10} md={10} >
                     <span style={{ color:'#4D4D4D'}} id="txtTutorial">
@@ -54,7 +54,7 @@ const Tutorial = () => {
                         style={{cursor:'pointer'}}
                         onClick={() => dispatch(seleccionarVideoTutorialReducer(true))}
                     >
-                            PLAY VIDEO <img src={require('assets/images/play.png')} alt='' width='108px' style={{marginLeft:'-20px'}} /></span>
+                            PLAY VIDEO <img src={require('assets/images/iconos/play.png')} alt='' width='108px' style={{marginLeft:'-20px'}} /></span>
                 </Col>
             </Row>
         </Auxiliary>
