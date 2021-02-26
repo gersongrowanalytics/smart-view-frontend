@@ -7,7 +7,7 @@ import {seleccionarTutorialReducer, seleccionarVideoTutorialReducer} from "appRe
 import {seleccionarVistaPromocionReducer} from 'appRedux/actions/Promociones'
 import {seleccionarVistaVentasReducer} from 'appRedux/actions/VentasTpr'
 import './tutorial.css'
-import IconoPlay from 'assets/images/iconos/play.png'
+import IconoPlay from 'assets/images/iconos/plays.png'
 const Tutorial = () => {
 
     const {cargaArchivosSeleccionado} = useSelector(({cargaArchivos}) => cargaArchivos);
