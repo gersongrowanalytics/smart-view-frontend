@@ -3,6 +3,7 @@ import React from 'react'
 import './filtroSucursal.css'
 import useSound from 'use-sound';
 import boopSfx from 'assets/video/click.mp3';
+import logoMenu from 'assets/images/logos/menuTop.png'
 
 const FiltroSucursal = (props) => {
     const [play] = useSound(boopSfx);
@@ -300,7 +301,8 @@ const FiltroSucursal = (props) => {
                                     }
                                 </ul>
                                 <img 
-                                    src={require('assets/images/fondomenudesplegable.png')} alt=''  id="fondomenudesplegable" />
+                                    // src={require('assets/images/fondomenudesplegable.png')} alt=''  id="fondomenudesplegable" />
+                                    src={logoMenu} alt=''  id="fondomenudesplegable" />
                             </div>
                         </div>
                         :null
