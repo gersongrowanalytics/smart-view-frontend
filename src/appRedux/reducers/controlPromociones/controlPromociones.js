@@ -7,7 +7,9 @@ import {
 const INIT_STATE = {
     listaControlPromociones : [],
     columnasTablaControlPromociones : [],
-    cargandoTablaControlPromociones : false
+    cargandoTablaControlPromociones : false,
+
+    fechaSeleccionadaControlPromociones : null
 
 };
 
@@ -22,7 +24,8 @@ export default (state = INIT_STATE, action) => {
         case OBTENER_CONTROL_PROMOCIONES: {
             return {
                 ...state,
-                listaControlPromociones : action.payload,
+                listaControlPromociones : action.payload.data,
+                fechaSeleccionadaControlPromociones : action.payload.fecha,
                 cargandoTablaControlPromociones : false
             }
         }

@@ -52,13 +52,19 @@ export const ObtenerListaPromociones = (fecha, sucnombre, catsid, codigoPromocio
                 dispatch(ArmarColumnasTablaPromocionesReducer())
                 dispatch({
                     type: OBTENER_CONTROL_PROMOCIONES,
-                    payload: data.datos
+                    payload: {
+                        data : data.datos,
+                        fecha : fecha
+                    }
                 })
             }else{
                 message.error(data.mensaje) 
                 dispatch({
                     type: OBTENER_CONTROL_PROMOCIONES,
-                    payload: data.datos
+                    payload: {
+                        data : data.datos,
+                        fecha : fecha
+                    }
                 })
             }
 		}
@@ -67,12 +73,17 @@ export const ObtenerListaPromociones = (fecha, sucnombre, catsid, codigoPromocio
         message.error(error) 
 		dispatch({
 			type: OBTENER_CONTROL_PROMOCIONES,
-			payload: []
+			payload: {
+                data : [],
+                fecha : null
+            }
 		})
 	});
 }
 
 export const ArmarColumnasTablaPromocionesReducer = () => async (dispatch, getState) => {
+
+    const fechaSeleccionadaControlPromociones = getState().controlPromociones.fechaSeleccionadaControlPromociones
 
     const columnas = [
         {
@@ -146,7 +157,8 @@ export const ArmarColumnasTablaPromocionesReducer = () => async (dispatch, getSt
                         data.editar = false
                         data.prbimagen = result.nuevImgBoni
                         data.prpimagen = result.nuevaImgPro
-                        dispatch({type: "",payload: data}) 
+                        await dispatch({type: "",payload: data}) 
+                        await dispatch(ObtenerListaPromociones(fechaSeleccionadaControlPromociones, null, null, null, null))
                         dispatch(ArmarColumnasTablaPromocionesReducer())
                     }
                 }
