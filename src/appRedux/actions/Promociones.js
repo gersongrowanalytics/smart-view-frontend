@@ -428,6 +428,9 @@ export const GuardarImagenPromocionListaReducer = (
 	bonificado
 ) => async (dispatch, getState) => {
 	
+    let nuevImgBoni = "";
+    let nuevaImgPro = "";
+
   	await fetch(config.api+'promociones/editar/imagenes',
 		{
 			mode:'cors',
@@ -456,7 +459,8 @@ export const GuardarImagenPromocionListaReducer = (
       if(estadoRequest === true){
         if(data.respuesta === true){
           message.success(data.mensaje)
-          
+          nuevImgBoni = data.nuevImgBoni;
+          nuevaImgPro = data.nuevaImgPro;
         }else{
           message.error(data.mensaje)
         }
@@ -465,6 +469,11 @@ export const GuardarImagenPromocionListaReducer = (
     console.log(error)
     message.error("Lo sentimos, ocurrio un error del servidor (Frntd)") 
   });
+
+  return {
+    "nuevImgBoni" : nuevImgBoni,
+    "nuevaImgPro" : nuevaImgPro,
+  }
 
 }
 

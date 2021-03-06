@@ -142,8 +142,10 @@ export const ArmarColumnasTablaPromocionesReducer = () => async (dispatch, getSt
                 onClick = {
                     async () => 
                     {
-                        await dispatch(GuardarImagenPromocionListaReducer(data.prpid, data.prbid, data.prpimageneditar, data.prbimageneditar))
+                        var result = await dispatch(GuardarImagenPromocionListaReducer(data.prpid, data.prbid, data.prpimageneditar, data.prbimageneditar))
                         data.editar = false
+                        data.prbimagen = result.nuevImgBoni
+                        data.prpimagen = result.nuevaImgPro
                         dispatch({type: "",payload: data}) 
                         dispatch(ArmarColumnasTablaPromocionesReducer())
                     }

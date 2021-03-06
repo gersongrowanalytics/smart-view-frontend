@@ -17,6 +17,8 @@ import MainApp from "./MainApp";
 import SignIn from "../SignIn";
 import SignUp from "../SignUp";
 import Recuperar from "../Recuperar/Recuperar";
+// import 'styles/Containers/App/MainApp.css'
+// import { animateScroll as scroll} from 'react-scroll';
 
 import {setInitUrl, obtenerPermisosUsuarioReducer} from "appRedux/actions/Auth";
 import {onLayoutTypeChange, onNavStyleChange, setThemeType} from "appRedux/actions/Setting";
@@ -162,6 +164,18 @@ const App = (props) => {
                            component={MainApp}/>
         </Switch>
       </IntlProvider>
+      {/* <div id="Contenedor-BtnsFlotantes-MainApp">
+                <div id="BtnFlotante-Chat-MainApp"></div>
+                <div
+                  id="BtnFlotante-Flecha-MainApp"
+                  onClick={() => {
+                    console.log('clickk')
+                    scroll.scrollToBottom();
+                  }}
+                >
+
+                </div>
+            </div> */}
     </ConfigProvider>
   )
 };
