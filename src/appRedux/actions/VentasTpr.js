@@ -8,7 +8,15 @@ import {
     ACTUALIZAR_ESTADO_CARGA_ZONA_VENTAS,
     OBTENER_SUCURSALES_USUARIO,
     SELECCIONAR_FILTRO_XZONA,
-    CAMBIAR_TAMANIO_CARDAVANCE_VENTAS
+    CAMBIAR_TAMANIO_CARDAVANCE_VENTAS,
+    ACTIVAR_MODAL_DESCARGAS_VENTAS,
+    CARGANDO_DESCARGA_SI,
+    CARGANDO_DESCARGA_SO,
+    OBTENER_PROMOCIONES_EXCEL_ESPECIFICO,
+    OBTENER_VENTAS_SI_DESCARGA_ESPECIFICA,
+    OBTENER_VENTAS_SI_REBATE_BONUS_DESCARGA_ESPECIFICA,
+    OBTENER_VENTAS_SO_DESCARGA_ESPECIFICA,
+    CAMBIAR_NUMERO_DESCARGA_SI_SO
 } from "constants/SistemaTypes";
 import config from 'config'
 import {ObtenerPromocionesDescargaEspecifica} from 'appRedux/actions/Promociones'
@@ -326,4 +334,182 @@ export const CambiarTamanioCardAvanceReducer = () => (dispatch) => {
         }
     })
 
+}
+
+export const ActivarModalDescargas = (estado) => (dispatch) => {
+
+    dispatch({
+        type : ACTIVAR_MODAL_DESCARGAS_VENTAS,
+        payload: estado
+    })  
+}
+
+export const CargandoDescargaSISOReducer = (loadingSI, loadingSO) => (dispatch) => {
+    dispatch({
+        type : CARGANDO_DESCARGA_SI,
+        payload: loadingSI
+    })
+
+    dispatch({
+        type : CARGANDO_DESCARGA_SO,
+        payload: loadingSO
+    })
+
+    if(loadingSI == true){
+        dispatch(ObtenerVentasSIDescargaEspecifica())
+    }else if(loadingSO == true){
+        dispatch(ObtenerVentasSODescargaEspecifica())
+    }
+}
+
+export const ObtenerVentasSIDescargaEspecifica = () => async (dispatch, getState) => {
+
+    // alert('descargarinfo')
+    const {
+        diaFiltroSelec,
+        mesFiltroSelec,
+        anoFiltroSelec
+    } = getState().fechas
+  
+    const {
+        sucursalesUsuario,
+    } = getState().sucursales
+
+    const {
+        zonaidseleccionado,
+        gsuidSeleccionado,
+        casidSeleccionado
+    } = getState().zonas
+
+    const numeroDescargaSiSo = getState().ventasTpr.numeroDescargaSiSo
+    let numeroDescargaSiSoAsignada = numeroDescargaSiSo + 1
+    let buscarSo = true
+    await dispatch({
+        type: CAMBIAR_NUMERO_DESCARGA_SI_SO,
+        payload: numeroDescargaSiSoAsignada
+    })
+  
+    let objetoArray = [];
+    let rebateBonus = [];
+  
+    await fetch(config.api+'ventas/descargar/especificos/si',
+        {
+            mode:'cors',
+            method: 'POST',
+            body: JSON.stringify({
+                usutoken : localStorage.getItem('usutoken'),
+                sucs     : sucursalesUsuario,
+                dia      : diaFiltroSelec,
+                mes      : mesFiltroSelec,
+                ano      : anoFiltroSelec,
+
+                zonid    : zonaidseleccionado,
+                gsuid    : gsuidSeleccionado,
+                casid    : casidSeleccionado
+            }),
+            headers: {
+                'Accept' : 'application/json',
+                'Content-type' : 'application/json',
+                'api_token': localStorage.getItem('usutoken'),
+                'api-token': localStorage.getItem('usutoken'),
+            }
+        }
+    )
+    .then( async res => {
+        await dispatch(estadoRequestReducer(res.status))
+        return res.json()
+    })
+    .then(data => {
+        const estadoRequest = getState().estadoRequest.init_request
+        if(estadoRequest === true){
+            if(data.respuesta === true){
+                objetoArray = data.datos
+                rebateBonus = data.rebateBonus
+
+                const numeroDescargaSiSoActual = getState().ventasTpr.numeroDescargaSiSo
+                if(numeroDescargaSiSoActual == numeroDescargaSiSoAsignada){
+                    dispatch({
+                        type: OBTENER_VENTAS_SI_DESCARGA_ESPECIFICA,
+                        payload: objetoArray
+                    })
+    
+                    dispatch({
+                        type: OBTENER_VENTAS_SI_REBATE_BONUS_DESCARGA_ESPECIFICA,
+                        payload: rebateBonus
+                    })
+                }else{
+                    buscarSo = false
+                }
+            }else{
+                
+            }
+        }
+    }).catch((error)=> {
+        console.log(error)    
+    })
+
+    if(buscarSo == true){
+        dispatch(CargandoDescargaSISOReducer(false, true))
+    }
+}
+
+export const ObtenerVentasSODescargaEspecifica = () => async (dispatch, getState) => {
+
+    // alert('descargarinfo')
+    const {
+        diaFiltroSelec,
+        mesFiltroSelec,
+        anoFiltroSelec
+    } = getState().fechas
+  
+    const {
+        sucursalesUsuario,
+    } = getState().sucursales
+  
+    let objetoArray = [];
+  
+    await fetch(config.api+'ventas/descargar/especificos/so',
+        {
+            mode:'cors',
+            method: 'POST',
+            body: JSON.stringify({
+                usutoken : localStorage.getItem('usutoken'),
+                sucs     : sucursalesUsuario,
+                dia      : diaFiltroSelec,
+                mes      : mesFiltroSelec,
+                ano      : anoFiltroSelec,
+            }),
+            headers: {
+                'Accept' : 'application/json',
+                'Content-type' : 'application/json',
+                'api_token': localStorage.getItem('usutoken'),
+                'api-token': localStorage.getItem('usutoken'),
+            }
+        }
+    )
+    .then( async res => {
+        await dispatch(estadoRequestReducer(res.status))
+        return res.json()
+    })
+    .then(data => {
+        const estadoRequest = getState().estadoRequest.init_request
+        if(estadoRequest === true){
+            if(data.respuesta === true){
+                objetoArray = data.datos
+                dispatch({
+                    type: OBTENER_VENTAS_SO_DESCARGA_ESPECIFICA,
+                    payload: objetoArray
+                })
+            }else{
+                dispatch({
+                    type: OBTENER_VENTAS_SO_DESCARGA_ESPECIFICA,
+                    payload: []
+                })
+            }
+        }
+    }).catch((error)=> {
+        console.log(error)    
+    })
+
+    dispatch(CargandoDescargaSISOReducer(false, false))
 }

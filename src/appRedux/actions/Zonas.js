@@ -2,7 +2,7 @@ import {
     FILTRO_SELECCIONAR_ZONA_USUARIO,
     SELECCIONAR_FILTRO_XZONA
 } from "constants/SistemaTypes";
-import {obtenerVentasTprXZonaReducer} from 'appRedux/actions/VentasTpr'
+import {obtenerVentasTprXZonaReducer, CargandoDescargaSISOReducer} from 'appRedux/actions/VentasTpr'
 import {obtenerPromocionesXZonaReducer} from 'appRedux/actions/Promociones'
 
 export const filtroSeleccionarZonaUsuarioReducer = (zonid, gsuid, casid) => async (dispatch) => {
@@ -24,5 +24,6 @@ export const filtroSeleccionarZonaUsuarioReducer = (zonid, gsuid, casid) => asyn
     })
     dispatch(obtenerPromocionesXZonaReducer(zonid, gsuid, casid))
     await dispatch(obtenerVentasTprXZonaReducer())
+    await dispatch(CargandoDescargaSISOReducer(true, true))
     
 }

@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react'
-import {Col, Row} from "antd"
+import {Col, Row, Modal} from "antd"
 import Auxiliary from "util/Auxiliary"
 import Titulo from 'components/Sistema/Titulo/Titulo'
 import CardAvance from 'components/Sistema/CardAvance'
@@ -11,14 +11,40 @@ import {seleccionarVistaPromocionReducer} from 'appRedux/actions/Promociones'
 import {seleccionarVistaVentasReducer, CambiarTamanioCardAvanceReducer} from 'appRedux/actions/VentasTpr'
 import CardImagen from 'components/Sistema/CardImagen/CardImagen'
 import RebateBonus from 'components/Sistema/Ventas/RebateBonus/RebateBonus'
+import ModalDescargarSISO from 'components/Sistema/Ventas/ModalDescargarSISO/ModalDescargarSISO'
+import {ActivarModalDescargas} from 'appRedux/actions/VentasTpr'
+import {
+    SeleccionarSucursalDescargasReducer,
+    SeleccionarSucursalesZonaReducerReducer,
+    SeleccionarTodasSucursalesDescargasReducer
+} from 'appRedux/actions/Sucursales'
 import BigBet from 'components/Sistema/Ventas/BigBet/BigBet'
 
 const SellIn = () => {
     const dispatch = useDispatch();
-    const {ventasTpr, vistaVentasSeleccionado, rebateBonus, tamanioAvanceSI, tamanioAvanceSO}= useSelector(({ventasTpr}) => ventasTpr);
+    const {
+        ventasTpr, 
+        vistaVentasSeleccionado, 
+        rebateBonus, 
+        tamanioAvanceSI, 
+        tamanioAvanceSO,
+
+        mostrarModalDescargas,
+        excelEspecificoSi,
+        excelEspecificoSiRebateBonus,
+        excelEspecificoSo,
+
+        loadingDescargandoSi,
+        loadingDescargandoSO
+
+    }= useSelector(({ventasTpr}) => ventasTpr);
     const {cargaArchivosSeleccionado} = useSelector(({cargaArchivos}) => cargaArchivos);
     const {tutorialSeleccionado} = useSelector(({tutorial}) => tutorial);
     const {vistaPromocionSeleccionado} = useSelector(({promociones}) => promociones);
+    const { 
+        sucursalesUsuario, 
+        zonas 
+    } = useSelector(({sucursales}) => sucursales)
 
     if(cargaArchivosSeleccionado == true){
         dispatch(seleccionarCargaArchivosReducer(false))
@@ -42,7 +68,9 @@ const SellIn = () => {
 
     return (
         <Auxiliary>
+            
             <Row>
+            
                 <Col xl={24} md={24} sm={24} xs={24}>
                 {
                     ventasTpr.map((tipoPromocion, posicion) => {
@@ -150,7 +178,45 @@ const SellIn = () => {
                     :null
                 } */}
                 </Col>
+                <div 
+                    style={{
+                        // height:'50px', 
+                        // width:'100px', 
+                        width: "70px",
+                        height: "63px",
+                        position:'absolute', 
+                        marginLeft:'-16px', 
+                        cursor:'pointer',
+                        background: "#79E2C1",
+                        boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+                        borderRadius: "0px 12px 12px 0px",
+                        display: "flex",
+                        alignItems: "center",
+                        placeContent: "center"
+                    }} 
+                    onClick={() => {dispatch(ActivarModalDescargas(true))}}>
+                        <img 
+                            alt="" 
+                            src={require("assets/images/iconoDescargar.png")} 
+                            width="32px" 
+                            height="31px"
+                        />
+                </div>
             </Row>
+            <ModalDescargarSISO
+                mostrarModalDescargas = {mostrarModalDescargas}
+                ActivarModalDescargas = {ActivarModalDescargas}
+                sucursalesUsuario     = {sucursalesUsuario}
+                zonas                 = {zonas}
+                SeleccionarSucursalDescargasReducer        = {SeleccionarSucursalDescargasReducer}
+                SeleccionarSucursalesZonaReducerReducer    = {SeleccionarSucursalesZonaReducerReducer}
+                SeleccionarTodasSucursalesDescargasReducer = {SeleccionarTodasSucursalesDescargasReducer}
+                excelEspecificoSiRebateBonus = {excelEspecificoSiRebateBonus}
+                excelEspecificoSi = {excelEspecificoSi}
+                excelEspecificoSo = {excelEspecificoSo}
+                loadingDescargandoSi = {loadingDescargandoSi}
+                loadingDescargandoSO = {loadingDescargandoSO}
+            />
         </Auxiliary>
     )
 }

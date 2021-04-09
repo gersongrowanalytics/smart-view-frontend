@@ -5,7 +5,14 @@ import {
     REINICIAR_VENTASTPR,
     ACTUALIZAR_ESTADO_CARGA_SUCURSAL_VENTAS,
     ACTUALIZAR_ESTADO_CARGA_ZONA_VENTAS,
-    CAMBIAR_TAMANIO_CARDAVANCE_VENTAS
+    CAMBIAR_TAMANIO_CARDAVANCE_VENTAS,
+    ACTIVAR_MODAL_DESCARGAS_VENTAS,
+    CARGANDO_DESCARGA_SI,
+    CARGANDO_DESCARGA_SO,
+    OBTENER_VENTAS_SI_DESCARGA_ESPECIFICA,
+    OBTENER_VENTAS_SI_REBATE_BONUS_DESCARGA_ESPECIFICA,
+    OBTENER_VENTAS_SO_DESCARGA_ESPECIFICA,
+    CAMBIAR_NUMERO_DESCARGA_SI_SO
 } from "constants/SistemaTypes";
 const INIT_STATE = {
     ventasTpr : [],
@@ -24,7 +31,17 @@ const INIT_STATE = {
     nombreSucuSel  : "",
 
     tamanioAvanceSI  : 0,
-    tamanioAvanceSO  : 0
+    tamanioAvanceSO  : 0,
+
+    excelEspecificoSi  : [],
+    excelEspecificoSiRebateBonus  : [],
+    excelEspecificoSo  : [],
+    mostrarModalDescargas : false,
+
+    loadingDescargandoSi : false,
+    loadingDescargandoSO : false,
+
+    numeroDescargaSiSo : 0
 };
 
 export default (state = INIT_STATE, action) => {
@@ -79,6 +96,48 @@ export default (state = INIT_STATE, action) => {
                 ...state,
                 tamanioAvanceSI : action.payload.tamanioAvanceSI,
                 tamanioAvanceSO : action.payload.tamanioAvanceSO
+            }
+        }
+        case ACTIVAR_MODAL_DESCARGAS_VENTAS: {
+            return {
+                ...state,
+                mostrarModalDescargas : action.payload
+            }
+        }
+        case CARGANDO_DESCARGA_SI: {
+            return {
+                ...state,
+                loadingDescargandoSi : action.payload
+            }
+        }
+        case CARGANDO_DESCARGA_SO: {
+            return {
+                ...state,
+                loadingDescargandoSO : action.payload
+            }
+        }
+        case OBTENER_VENTAS_SI_DESCARGA_ESPECIFICA: {
+            return {
+                ...state,
+                excelEspecificoSi : action.payload
+            }
+        }
+        case OBTENER_VENTAS_SI_REBATE_BONUS_DESCARGA_ESPECIFICA: {
+            return {
+                ...state,
+                excelEspecificoSiRebateBonus : action.payload
+            }
+        }
+        case OBTENER_VENTAS_SO_DESCARGA_ESPECIFICA: {
+            return {
+                ...state,
+                excelEspecificoSo : action.payload
+            }
+        }
+        case CAMBIAR_NUMERO_DESCARGA_SI_SO: {
+            return {
+                ...state,
+                numeroDescargaSiSo : action.payload
             }
         }
         default:

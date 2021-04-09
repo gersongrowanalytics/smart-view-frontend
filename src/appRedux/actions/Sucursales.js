@@ -6,7 +6,7 @@ import {
     REINICIAR_SUCURSALES_USUARIO,
     OBTENER_SUCURSALES_USUARIO,
 } from "constants/SistemaTypes";
-import {obtenerVentasTprReducer} from 'appRedux/actions/VentasTpr'
+import {obtenerVentasTprReducer, CargandoDescargaSISOReducer} from 'appRedux/actions/VentasTpr'
 import {obtenerPromocionesReducer, ObtenerPromocionesDescargaEspecifica} from 'appRedux/actions/Promociones'
 import config from 'config'
 import {descargarInformacionPromocionesReducer} from 'appRedux/actions/Promociones'
@@ -99,7 +99,7 @@ export const SeleccionarSucursalDescargasReducer = (posicionSucursal, estado) =>
   })
 
   dispatch(ObtenerPromocionesDescargaEspecifica())
-
+  dispatch(CargandoDescargaSISOReducer(true, true))
 }
 
 export const SeleccionarSucursalesZonaReducerReducer = (zonid, posicionZona, estado) => async(dispatch, getState) => {
@@ -122,6 +122,8 @@ export const SeleccionarSucursalesZonaReducerReducer = (zonid, posicionZona, est
   })
 
   dispatch(ObtenerPromocionesDescargaEspecifica())
+
+  dispatch(CargandoDescargaSISOReducer(true, true))
 }
 
 export const SeleccionarTodasSucursalesDescargasReducer = (estado) => async(dispatch, getState) => {
@@ -147,4 +149,6 @@ export const SeleccionarTodasSucursalesDescargasReducer = (estado) => async(disp
   })
 
   dispatch(ObtenerPromocionesDescargaEspecifica())
+  
+  dispatch(CargandoDescargaSISOReducer(true, true))
 }

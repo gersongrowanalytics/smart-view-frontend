@@ -15,7 +15,7 @@ import {
   filtroSeleccionarMes,
   filtroSeleccionarAno
 } from "appRedux/actions/Fechas"
-import {obtenerVentasTprReducer} from 'appRedux/actions/VentasTpr'
+import {obtenerVentasTprReducer, CargandoDescargaSISOReducer} from 'appRedux/actions/VentasTpr'
 import {obtenerPromocionesReducer, descargarInformacionPromocionesReducer} from 'appRedux/actions/Promociones'
 import './Topbar.css'
 import LogoKim from 'assets/images/logoCompletoKim.png';
@@ -74,6 +74,13 @@ const Topbar = () => {
     </ul>
   );
 
+  const seleccionarZona = (valor, gsuid, casid) => {
+    dispatch(filtroSeleccionarZonaUsuarioReducer(valor, gsuid, casid))
+    // console.log(valor)
+    // console.log(gsuid)
+    // console.log(casid)
+  }
+
   useEffect(async () =>  {
     dispatch(loginReducer({
       contrasena: localStorage.getItem('contrasena'),
@@ -85,10 +92,13 @@ const Topbar = () => {
     await dispatch(obtenerVentasTprReducer())
     await dispatch(obtenerPromocionesReducer())
     await dispatch(descargarInformacionPromocionesReducer())
+    await dispatch(CargandoDescargaSISOReducer(true, true))
 
     
 
   }, [])
+
+  
 
   return (
     // <></>
@@ -131,7 +141,8 @@ const Topbar = () => {
             zonas               = {zonas}
             cass                = {cass}
             gsus                = {gsus}
-            seleccionarZona     = {(valor, gsuid, casid) => dispatch(filtroSeleccionarZonaUsuarioReducer(valor, gsuid, casid))}
+            // seleccionarZona     = {(valor, gsuid, casid) => dispatch(filtroSeleccionarZonaUsuarioReducer(valor, gsuid, casid))}
+            seleccionarZona     = {(valor, gsuid, casid) => seleccionarZona(valor, gsuid, casid)}
             seleccionarSucursal = {(valor) => dispatch(filtroSeleccionarSucursalUsuario(valor))}
             // seleccionarSucursal = {(valor) => console.log(valor)}
             seleccionarDia      = {(valor) => dispatch(filtroSeleccionarDia(valor))}
