@@ -7,7 +7,7 @@ import TooltipCardImagen from './Tooltip'
 
 const CardImagen = (props) => {
 
-    const {tipoPromocion, nombreCategoria, objetivoCategoria, realCategoria, togoCategoria, tprcolorbarra, tprcolortooltip, scaiconocategoria, catimagenfondoopaco} = props
+    const {tipoPromocion, nombreCategoria, objetivoValorizado, objetivoCategoria, realCategoria, togoCategoria, tprcolorbarra, tprcolortooltip, scaiconocategoria, catimagenfondoopaco} = props
     // const {nombreCategoria, iconoCategoria, fondoCategoria, tprcolorbarra, tprcolortooltip, scaiconocategoria, catimagenfondoopaco} = props
     // const objetivoCategoria = 100
     // const realCategoria = 0
@@ -28,7 +28,8 @@ const CardImagen = (props) => {
                                         <p className="txtCumplimiento">
                                             Cumplimiento
                                             <br/>
-                                            <p id="txt_numeroCumplimiento"><NumberFormat value={funFomratoDecimal(((100*realCategoria)/objetivoCategoria), 0)} displayType={'text'} thousandSeparator={true} />%</p>
+                                            <p id="txt_numeroCumplimiento">
+                                                {<NumberFormat value={objetivoValorizado == 0 ?0 :funFomratoDecimal(((100*realCategoria)/objetivoCategoria), 0)} displayType={'text'} thousandSeparator={true} />}%</p>
                                             
                                         </p>
                                     </div>

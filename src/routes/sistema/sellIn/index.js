@@ -134,6 +134,7 @@ const SellIn = () => {
                                                     nombreCategoria     = {categoria.catnombre}
                                                     iconoCategoria      = {categoria.caticono}
                                                     fondoCategoria      = {categoria.catimagenfondo}
+                                                    objetivoValorizado  = {tipoPromocion.tsuvalorizadoobjetivo}
                                                     objetivoCategoria   = {categoria.scavalorizadoobjetivo == 0 ?100 :categoria.scavalorizadoobjetivo}
                                                     realCategoria       = {categoria.scavalorizadoreal}
                                                     togoCategoria       = {categoria.scavalorizadotogo}
