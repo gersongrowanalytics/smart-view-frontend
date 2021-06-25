@@ -19,6 +19,7 @@ import {
     SeleccionarTodasSucursalesDescargasReducer
 } from 'appRedux/actions/Sucursales'
 import BigBet from 'components/Sistema/Ventas/BigBet/BigBet'
+import 'styles/Sistema/sellin/index.css'
 
 const SellIn = () => {
     const dispatch = useDispatch();
@@ -69,7 +70,7 @@ const SellIn = () => {
     return (
         <Auxiliary>
             
-            <Row>
+            <Row id="Contenedor-Ventas-Hoja">
             
                 <Col xl={24} md={24} sm={24} xs={24}>
                 {
@@ -179,22 +180,8 @@ const SellIn = () => {
                     :null
                 } */}
                 </Col>
-                <div 
-                    style={{
-                        // height:'50px', 
-                        // width:'100px', 
-                        width: "70px",
-                        height: "63px",
-                        position:'absolute', 
-                        marginLeft:'-16px', 
-                        cursor:'pointer',
-                        background: "#79E2C1",
-                        boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
-                        borderRadius: "0px 12px 12px 0px",
-                        display: "flex",
-                        alignItems: "center",
-                        placeContent: "center"
-                    }} 
+                <div  
+                    id="Btn-Flotante-Descarga-Ventas"
                     onClick={() => {dispatch(ActivarModalDescargas(true))}}>
                         <img 
                             alt="" 

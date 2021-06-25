@@ -1,0 +1,19 @@
+#Btn-Flotante-Descarga-Ventas{
+    width: 70px;
+    height: 63px;
+    position: fixed;
+    margin-left: -16px;
+    cursor: pointer;
+    background: #79E2C1;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 0px 12px 12px 0px;
+    display: flex;
+    align-items: center;
+    place-content: center;
+    left: 0px;
+    top: 400px;
+}
+
+#Contenedor-Ventas-Hoja{
+    position: relative;
+}

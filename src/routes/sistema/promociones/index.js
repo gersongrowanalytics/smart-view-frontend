@@ -78,7 +78,7 @@ const Promociones = () => {
     return (
         <Auxiliary>
             <ModalInformativo />
-            <Row>
+            <Row id="Contenedor-Promociones-Hoja">
                 <Col xl={24} md={24} sm={24} xs={24}>
                 </Col>
                 <Col xl={24} md={24} sm={24} xs={24} style={{marginBottom:'-5px'}}  >
