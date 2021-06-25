@@ -16,6 +16,9 @@ import {
   MOSTRAR_MODAL_INFORMATIVO_PROMOCIONES,
   ACTUALIZAR_CANALES_DE_PROMOCIONES,
   ACTIVAR_MODAL_DESCARGAS_PROMOCIONES,
+  ACTIVAR_MODAL_REPORTES_PAGOS_PROMOCIONES,
+  OBTENER_REPORTE_PAGOS_EXCEL_ESPECIFICO,
+  CARGANDO_REPORTE_PAGOS_PROMOCIONES
 } from "constants/SistemaTypes";
 import config from 'config'
 
@@ -722,4 +725,109 @@ export const seleccionarCategoriaXZonaReducer = (scaid, limpiarCanales, catid) =
             payload: []
         })
     });
+}
+
+export const ActivarModalReportePagosReducer = (estado) => async (dispatch) => {
+  dispatch({
+    type : ACTIVAR_MODAL_REPORTES_PAGOS_PROMOCIONES,
+    payload: estado
+  })
+}
+
+export const ObtenerReportesPagosDescargaEspecifica = (fechaInicio, fechaFinal) => async (dispatch, getState) => {
+
+  // alert('descargarinfo')
+  const {
+      diaFiltroSelec,
+      mesFiltroSelec,
+      anoFiltroSelec
+  } = getState().fechas
+
+  const {
+    sucursalesUsuario,
+  } = getState().sucursales
+
+  let objetoArray = [];
+  let objetoArrayrecono = [];
+  let objetoArraypromociones = [];
+
+  let url = config.api+'promociones/descargar/reporte-pagos'
+
+  if(fechaInicio != null && fechaFinal != null){
+    url = config.api+'promociones/descargar/reporte-pagos-fecha'
+  }
+
+  dispatch({
+    type : CARGANDO_REPORTE_PAGOS_PROMOCIONES,
+    payload: true
+  })
+
+  await fetch(url,
+    {
+      mode:'cors',
+      method: 'POST',
+      body: JSON.stringify({
+          usutoken : localStorage.getItem('usutoken'),
+          sucs     : sucursalesUsuario,
+          dia      : diaFiltroSelec,
+          mes      : mesFiltroSelec,
+          ano      : anoFiltroSelec,
+          fechaInicio : fechaInicio,
+          fechaFinal  : fechaFinal
+      }),
+      headers: {
+        'Accept' : 'application/json',
+        'Content-type' : 'application/json',
+        'api_token': localStorage.getItem('usutoken'),
+        'api-token': localStorage.getItem('usutoken'),
+      }
+    }
+  )
+  .then( async res => {
+    await dispatch(estadoRequestReducer(res.status))
+    return res.json()
+  })
+  .then(async data => {
+    const estadoRequest = getState().estadoRequest.init_request
+    if(estadoRequest === true){
+      if(data.respuesta === true){
+          objetoArray = data.datos
+          objetoArrayrecono = data.datosReconocimiento
+
+          objetoArraypromociones = await LimpiarArrayPromocionesLiquidadasReducer(data.datosPromociones)
+
+          dispatch({
+            type: OBTENER_REPORTE_PAGOS_EXCEL_ESPECIFICO,
+            payload: {
+              reporte : objetoArray,
+              reconocimiento : objetoArrayrecono,
+              promociones : objetoArraypromociones,
+              actualizacion : data.actualizacion
+            }
+          })
+      }else{
+          
+      }
+    }
+  }).catch((error)=> {
+    console.log(error)    
+  });   
+
+  dispatch({
+    type : CARGANDO_REPORTE_PAGOS_PROMOCIONES,
+    payload: false
+  })
+
+  // console.log(objetoArray)
+}
+
+export const LimpiarArrayPromocionesLiquidadasReducer = async (promocionesliquidadas) => {
+
+  await promocionesliquidadas[0]['data'].map((dato, posicion) => {
+    promocionesliquidadas[0]['data'][posicion].map((dat) => {
+      dat.value = dat.value == null ?"" :dat.value
+    })
+  })
+
+  return promocionesliquidadas
 }

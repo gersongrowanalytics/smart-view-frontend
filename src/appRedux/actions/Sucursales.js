@@ -7,7 +7,11 @@ import {
     OBTENER_SUCURSALES_USUARIO,
 } from "constants/SistemaTypes";
 import {obtenerVentasTprReducer, CargandoDescargaSISOReducer} from 'appRedux/actions/VentasTpr'
-import {obtenerPromocionesReducer, ObtenerPromocionesDescargaEspecifica} from 'appRedux/actions/Promociones'
+import {
+  obtenerPromocionesReducer, 
+  ObtenerPromocionesDescargaEspecifica,
+  ObtenerReportesPagosDescargaEspecifica
+} from 'appRedux/actions/Promociones'
 import config from 'config'
 import {descargarInformacionPromocionesReducer} from 'appRedux/actions/Promociones'
 
@@ -83,10 +87,17 @@ export const filtroSeleccionarSucursalUsuario = (sucid) => async (dispatch, getS
   await dispatch(descargarInformacionPromocionesReducer())
 }
 
-export const SeleccionarSucursalDescargasReducer = (posicionSucursal, estado) => async(dispatch, getState) => {
+export const SeleccionarSucursalDescargasReducer = (
+  posicionSucursal, 
+  estado, 
+  fechaIncio = null, 
+  fechaFinal = null, // FILTRO DE FECHA PARA LA DESCARGA DE PAGOS PENDIENTES
+) => async(dispatch, getState) => {
 
   let sucursales = getState().sucursales.sucursalesUsuario
   let zonas = getState().sucursales.zonas
+
+  const mostrarModalReportePagos = getState().promociones.mostrarModalReportePagos
 
   sucursales[posicionSucursal]['sucpromociondescarga'] = estado
 
@@ -98,8 +109,17 @@ export const SeleccionarSucursalDescargasReducer = (posicionSucursal, estado) =>
     }
   })
 
-  dispatch(ObtenerPromocionesDescargaEspecifica())
-  dispatch(CargandoDescargaSISOReducer(true, true))
+  
+  if(mostrarModalReportePagos == true){
+    
+    dispatch(
+      ObtenerReportesPagosDescargaEspecifica(fechaIncio, fechaFinal)
+    )
+
+  }else{
+    dispatch(ObtenerPromocionesDescargaEspecifica())
+    dispatch(CargandoDescargaSISOReducer(true, true))
+  }
 }
 
 export const SeleccionarSucursalesZonaReducerReducer = (zonid, posicionZona, estado) => async(dispatch, getState) => {
@@ -126,7 +146,7 @@ export const SeleccionarSucursalesZonaReducerReducer = (zonid, posicionZona, est
   dispatch(CargandoDescargaSISOReducer(true, true))
 }
 
-export const SeleccionarTodasSucursalesDescargasReducer = (estado) => async(dispatch, getState) => {
+export const SeleccionarTodasSucursalesDescargasReducer = (estado, fechaIncio, fechaFinal) => async(dispatch, getState) => {
   let sucursales = getState().sucursales.sucursalesUsuario
   let zonas = getState().sucursales.zonas
 
@@ -138,7 +158,7 @@ export const SeleccionarTodasSucursalesDescargasReducer = (estado) => async(disp
     zonas[posicionZona]['zonpromociondescarga'] = estado;
   })
 
-
+  const mostrarModalReportePagos = getState().promociones.mostrarModalReportePagos
 
   await dispatch({
     type    : OBTENER_SUCURSALES_USUARIO,
@@ -148,7 +168,46 @@ export const SeleccionarTodasSucursalesDescargasReducer = (estado) => async(disp
     }
   })
 
-  dispatch(ObtenerPromocionesDescargaEspecifica())
-  
-  dispatch(CargandoDescargaSISOReducer(true, true))
+  if(mostrarModalReportePagos == true){
+
+    dispatch(
+      ObtenerReportesPagosDescargaEspecifica(fechaIncio, fechaFinal)
+    )
+
+  }else{
+    dispatch(ObtenerPromocionesDescargaEspecifica())
+    dispatch(CargandoDescargaSISOReducer(true, true))
+  }
+}
+
+export const SeleccionarGrupoSucursalesDescargarReducer = (gsuid, fechaIncio = null, fechaFinal = null) => async(dispatch, getState) => {
+  let sucursales = getState().sucursales.sucursalesUsuario
+  const zonas = getState().sucursales.zonas
+
+  sucursales.map((sucursal) => {
+    sucursal.sucpromociondescarga = sucursal.gsuid == gsuid ? true :false
+  })
+
+  await dispatch({
+    type    : OBTENER_SUCURSALES_USUARIO,
+    payload : {
+      sucursalesUsuario : sucursales,
+      zonas : zonas
+    }
+  })
+
+  dispatch(ObtenerReportesPagosDescargaEspecifica(fechaIncio, fechaFinal))
+}
+
+export const AplicarFiltrosFechaResumenPagoReducer = (fechaInicio, fechaFinal) => (dispatch, getState) => {
+
+  // console.log(fechaInicio)
+  // console.log(fechaFinal)
+
+  if(fechaInicio != null && fechaFinal != null){
+    // console.log('consultar con fecha')
+    dispatch(ObtenerReportesPagosDescargaEspecifica(fechaInicio, fechaFinal))
+  }else{
+    // console.log('no consultar')
+  }
 }

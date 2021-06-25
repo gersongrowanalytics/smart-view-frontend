@@ -109,33 +109,23 @@ const CargaArchivosPromociones = () => {
         url    = {'cargarArchivo/clientes/actualizargruporebate'}
       />
       </Col>
-      <Col xl={3} md={3} />
-      <Col xl={3} md={3} />
-      <Col xl={6} md={6}>
-      <CardCargarArchivo
-        titulo = {'Desactivar Promociones'}
-        url    = {'cargarArchivo/promociones/desactivar'}
-      />
-      </Col>
+    
 
+
+      <Col xl={3} md={3} />
+      <Col xl={3} md={3} />
+      
       <Col xl={6} md={6}>
         <CardCargarArchivo
-          titulo = {'Actualizar Grupos Suc'}
-          url    = {'cargarArchivo/clientes/actualizarGrupoSucursal'}
+          titulo = {'Reconocimiento Pagos'}
+          url    = {'cargarArchivo/reconocimiento-pagos'}
         />
       </Col>
 
       <Col xl={6} md={6}>
         <CardCargarArchivo
-          titulo = {'Actualizar New Promociones'}
-          url    = {'cargarArchivo/promociones/actualizarNew'}
-        />
-      </Col>
-
-      <Col xl={6} md={6}>
-        <CardCargarArchivo
-          titulo = {'Prueba soldtos'}
-          url    = {'asdasd'}
+          titulo = {'Promociones Liquidadas'}
+          url    = {'cargarArchivo/promociones-liquidadas'}
         />
       </Col>
     {/*       

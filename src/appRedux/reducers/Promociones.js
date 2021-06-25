@@ -11,9 +11,13 @@ import {
     DESELECCIONAR_PROMOCION,
     OBTENER_PROMOCIONES_EXCEL,
     OBTENER_PROMOCIONES_EXCEL_ESPECIFICO,
+    OBTENER_REPORTE_PAGOS_EXCEL_ESPECIFICO,
     MOSTRAR_MODAL_INFORMATIVO_PROMOCIONES,
     ACTUALIZAR_CANALES_DE_PROMOCIONES,
-    ACTIVAR_MODAL_DESCARGAS_PROMOCIONES
+    ACTIVAR_MODAL_DESCARGAS_PROMOCIONES,
+
+    ACTIVAR_MODAL_REPORTES_PAGOS_PROMOCIONES,
+    CARGANDO_REPORTE_PAGOS_PROMOCIONES
 } from "constants/SistemaTypes";
 
 const INIT_STATE = {
@@ -27,10 +31,19 @@ const INIT_STATE = {
     fechaActualizacionPromocion : "",
     promocionesExcel            : [],
     promocionesExcelEspecifico  : [],
+    
+    reportePagosExcelEspecifico : [],
+    reconocimientoExcelEspecifico : [],
+    promocionesliquidacionesExcelEspecifico : [],
+    fechaActualizacionReportePago : "",
+    cargandoReportePagos : false,
+
     mostrarModalInformativo     : true,
     scaidSeleccionado           : 0,
     mostrarModalDescargas       : false,
-    reiniciandoPromociones      : false
+    reiniciandoPromociones      : false,
+
+    mostrarModalReportePagos    : false
 };
 
 export default (state = INIT_STATE, action) => {
@@ -140,6 +153,27 @@ export default (state = INIT_STATE, action) => {
             return {
                 ...state,
                 promocionesExcelEspecifico : action.payload
+            }
+        }
+        case OBTENER_REPORTE_PAGOS_EXCEL_ESPECIFICO : {
+            return {
+                ...state,
+                reportePagosExcelEspecifico : action.payload.reporte,
+                reconocimientoExcelEspecifico : action.payload.reconocimiento,
+                promocionesliquidacionesExcelEspecifico : action.payload.promociones,
+                fechaActualizacionReportePago : action.payload.actualizacion
+            }
+        }
+        case ACTIVAR_MODAL_REPORTES_PAGOS_PROMOCIONES: {
+            return {
+                ...state,
+                mostrarModalReportePagos : action.payload
+            }
+        }
+        case CARGANDO_REPORTE_PAGOS_PROMOCIONES: {
+            return {
+                ...state,
+                cargandoReportePagos : action.payload
             }
         }
         default:{

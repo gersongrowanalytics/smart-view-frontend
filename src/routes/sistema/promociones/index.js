@@ -11,12 +11,17 @@ import {
     seleccionarVistaPromocionReducer, 
     reiniciarPromocionesReducer, 
     deseleccionarPromocionReducer,
-    seleccionarCategoriaXZonaReducer
+    seleccionarCategoriaXZonaReducer,
+    ActivarModalReportePagosReducer
 } from 'appRedux/actions/Promociones'
 import {seleccionarCargaArchivosReducer} from "appRedux/actions/CargaArchivos";
 import {seleccionarTutorialReducer} from "appRedux/actions/Tutorial";
 import {seleccionarVistaVentasReducer} from 'appRedux/actions/VentasTpr'
 import ModalInformativo from './ModalInformativo'
+import 'styles/Sistema/Promociones/index.css'
+import IconoRerportePagos from 'assets/images/iconos/reportePagos.png'
+import funPermiso from 'funciones/funPermiso.js'
+import {PERMISO_BOTON_DESCARGAR_REPORTE_PAGOS} from 'constants/PermisosTypes'
 
 const Promociones = () => {
     const dispatch = useDispatch();
@@ -27,7 +32,8 @@ const Promociones = () => {
         colorSeleciconadoPromo, 
         vistaPromocionSeleccionado, 
         deseleccionarPromocion, 
-        fechaActualizacionPromocion
+        fechaActualizacionPromocion,
+        mostrarModalReportePagos
     } = useSelector(({promociones}) => promociones);
     const {cargaArchivosSeleccionado} = useSelector(({cargaArchivos}) => cargaArchivos);
     const {tutorialSeleccionado} = useSelector(({tutorial}) => tutorial);
@@ -114,6 +120,20 @@ const Promociones = () => {
                     ?<div style={{marginBottom:'0px', height:'0px'}} />
                     :<div style={{marginBottom:'50px', height:'50px'}} />
                 }
+
+                {
+                    funPermiso(
+                        PERMISO_BOTON_DESCARGAR_REPORTE_PAGOS, 
+                        <div 
+                            onClick={() => dispatch(ActivarModalReportePagosReducer(!mostrarModalReportePagos))}
+                            className="hvr-buzz-out floating" 
+                            id="Contenedor-Btn-Flotante-Reporte-Pagos-Promociones"
+                        >
+                            <img id="Icono-Flotante-Reporte-Pagos-Promociones" src={IconoRerportePagos} />
+                        </div>
+                    )
+                }
+                
             </Row>
         </Auxiliary>
     )
