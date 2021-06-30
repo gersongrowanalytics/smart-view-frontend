@@ -128,6 +128,13 @@ const CargaArchivosPromociones = () => {
           url    = {'cargarArchivo/promociones-liquidadas'}
         />
       </Col>
+
+      {/* <Col xl={6} md={6}>
+        <CardCargarArchivo
+          titulo = {'Actualizar zonas'}
+          url    = {'cargarArchivo/clientes/acutalizarzonas'}
+        />
+      </Col> */}
     {/*       
       <Col xl={6} md={6}>
         <CardCargarArchivo

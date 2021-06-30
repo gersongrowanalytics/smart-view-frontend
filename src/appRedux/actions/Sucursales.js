@@ -5,6 +5,8 @@ import {
     FILTRO_SELECCIONAR_SUCURSAL_USUARIO,
     REINICIAR_SUCURSALES_USUARIO,
     OBTENER_SUCURSALES_USUARIO,
+
+    SELECCIONAR_ZONA_FILTRAR_REPORTE_PAGOS
 } from "constants/SistemaTypes";
 import {obtenerVentasTprReducer, CargandoDescargaSISOReducer} from 'appRedux/actions/VentasTpr'
 import {
@@ -122,7 +124,7 @@ export const SeleccionarSucursalDescargasReducer = (
   }
 }
 
-export const SeleccionarSucursalesZonaReducerReducer = (zonid, posicionZona, estado) => async(dispatch, getState) => {
+export const SeleccionarSucursalesZonaReducerReducer = (zonid, posicionZona, estado, fechaIncio, fechaFinal) => async(dispatch, getState) => {
   let sucursales = getState().sucursales.sucursalesUsuario
   let zonas = getState().sucursales.zonas
   zonas[posicionZona]['zonpromociondescarga'] = estado
@@ -141,9 +143,23 @@ export const SeleccionarSucursalesZonaReducerReducer = (zonid, posicionZona, est
     }
   })
 
-  dispatch(ObtenerPromocionesDescargaEspecifica())
 
-  dispatch(CargandoDescargaSISOReducer(true, true))
+  dispatch({
+    type: SELECCIONAR_ZONA_FILTRAR_REPORTE_PAGOS,
+    payload : zonid
+  })
+
+  const mostrarModalReportePagos = getState().promociones.mostrarModalReportePagos
+  if(mostrarModalReportePagos == true){
+
+    dispatch(
+      ObtenerReportesPagosDescargaEspecifica(fechaIncio, fechaFinal, zonid)
+    )
+
+  }else{
+    dispatch(ObtenerPromocionesDescargaEspecifica())
+    dispatch(CargandoDescargaSISOReducer(true, true))
+  }
 }
 
 export const SeleccionarTodasSucursalesDescargasReducer = (estado, fechaIncio, fechaFinal) => async(dispatch, getState) => {

@@ -12,7 +12,9 @@ import {
     OBTENER_VENTAS_SI_DESCARGA_ESPECIFICA,
     OBTENER_VENTAS_SI_REBATE_BONUS_DESCARGA_ESPECIFICA,
     OBTENER_VENTAS_SO_DESCARGA_ESPECIFICA,
-    CAMBIAR_NUMERO_DESCARGA_SI_SO
+    CAMBIAR_NUMERO_DESCARGA_SI_SO,
+
+    SELECCIONAR_ZONA_FILTRAR_REPORTE_PAGOS
 } from "constants/SistemaTypes";
 const INIT_STATE = {
     ventasTpr : [],
@@ -41,7 +43,9 @@ const INIT_STATE = {
     loadingDescargandoSi : false,
     loadingDescargandoSO : false,
 
-    numeroDescargaSiSo : 0
+    numeroDescargaSiSo : 0,
+
+    zonaidseleccionado : 0
 };
 
 export default (state = INIT_STATE, action) => {
@@ -138,6 +142,12 @@ export default (state = INIT_STATE, action) => {
             return {
                 ...state,
                 numeroDescargaSiSo : action.payload
+            }
+        }
+        case SELECCIONAR_ZONA_FILTRAR_REPORTE_PAGOS: {
+            return {
+                ...state,
+                zonaidseleccionado : action.payload
             }
         }
         default:

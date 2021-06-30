@@ -189,7 +189,7 @@ const ModalReporetePagos = (props) => {
                                 <p id="Titulo-Zona-ModalDescargas">
                                     <Checkbox 
                                         checked={zona.zonpromociondescarga} 
-                                        onClick={(e) => dispatch(props.SeleccionarSucursalesZonaReducerReducer(zona.zonid, posicion, e.target.checked))}></Checkbox>
+                                        onClick={(e) => dispatch(props.SeleccionarSucursalesZonaReducerReducer(zona.zonid, posicion, e.target.checked, fechaIncio, fechaFinal))}></Checkbox>
                                     <span id="Checkbox-Zona-ModalDescargas">{zona.zonnombre}</span></p>
                                 {
                                     props.sucursalesUsuario.map((sucursal, posicionSucursal) => {

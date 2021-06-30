@@ -734,9 +734,11 @@ export const ActivarModalReportePagosReducer = (estado) => async (dispatch) => {
   })
 }
 
-export const ObtenerReportesPagosDescargaEspecifica = (fechaInicio, fechaFinal) => async (dispatch, getState) => {
+export const ObtenerReportesPagosDescargaEspecifica = (fechaInicio, fechaFinal, zonid) => async (dispatch, getState) => {
 
   // alert('descargarinfo')
+  let fueerror = false
+
   const {
       diaFiltroSelec,
       mesFiltroSelec,
@@ -789,35 +791,88 @@ export const ObtenerReportesPagosDescargaEspecifica = (fechaInicio, fechaFinal) 
   })
   .then(async data => {
     const estadoRequest = getState().estadoRequest.init_request
+
+    console.log("estatus: ")
+    console.log(estadoRequest)
+    console.log(data.status)
+
     if(estadoRequest === true){
       if(data.respuesta === true){
-          objetoArray = data.datos
-          objetoArrayrecono = data.datosReconocimiento
 
-          objetoArraypromociones = await LimpiarArrayPromocionesLiquidadasReducer(data.datosPromociones)
 
-          dispatch({
-            type: OBTENER_REPORTE_PAGOS_EXCEL_ESPECIFICO,
-            payload: {
-              reporte : objetoArray,
-              reconocimiento : objetoArrayrecono,
-              promociones : objetoArraypromociones,
-              actualizacion : data.actualizacion
+          if(zonid != null){
+            const zonaidseleccionado = getState().ventasTpr.zonaidseleccionado
+            if(zonaidseleccionado == zonid){
+              objetoArray = data.datos
+              objetoArrayrecono = data.datosReconocimiento
+
+              objetoArraypromociones = await LimpiarArrayPromocionesLiquidadasReducer(data.datosPromociones)
+
+              dispatch({
+                type: OBTENER_REPORTE_PAGOS_EXCEL_ESPECIFICO,
+                payload: {
+                  reporte : objetoArray,
+                  reconocimiento : objetoArrayrecono,
+                  promociones : objetoArraypromociones,
+                  actualizacion : data.actualizacion
+                }
+              })
+
+            }else{
+
             }
-          })
+
+          }else{
+            objetoArray = data.datos
+            objetoArrayrecono = data.datosReconocimiento
+
+            objetoArraypromociones = await LimpiarArrayPromocionesLiquidadasReducer(data.datosPromociones)
+
+            dispatch({
+              type: OBTENER_REPORTE_PAGOS_EXCEL_ESPECIFICO,
+              payload: {
+                reporte : objetoArray,
+                reconocimiento : objetoArrayrecono,
+                promociones : objetoArraypromociones,
+                actualizacion : data.actualizacion
+              }
+            })
+          }
+          
       }else{
           
       }
+    }else{
+      fueerror = true
+      dispatch(ObtenerReportesPagosDescargaEspecifica(fechaInicio, fechaFinal, zonid))
     }
+
   }).catch((error)=> {
     console.log(error)    
+    fueerror = true
   });   
 
-  dispatch({
-    type : CARGANDO_REPORTE_PAGOS_PROMOCIONES,
-    payload: false
-  })
+  if(fueerror == true){
+    
+  }else{
+    if(zonid != null){
+      const zonaidseleccionado = getState().ventasTpr.zonaidseleccionado
+      if(zonaidseleccionado == zonid){
+        dispatch({
+          type : CARGANDO_REPORTE_PAGOS_PROMOCIONES,
+          payload: false
+        })
+      }
+      
+    }else{
+      dispatch({
+        type : CARGANDO_REPORTE_PAGOS_PROMOCIONES,
+        payload: false
+      })
+    }
+  }
 
+  
   // console.log(objetoArray)
 }
 
