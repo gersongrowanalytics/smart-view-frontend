@@ -24,3 +24,4 @@ export * from './Mostrar/Cats';
 export * from './controlPromociones/controlPromociones';
 export * from './ControlSellOut/ControlSellOut';
 export * from './Perfil/Perfil';
+export * from './ControlProductos/ControlProductos';

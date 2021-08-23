@@ -367,7 +367,9 @@ class Slide extends React.Component {
                                                 id="imagenProducto"/>
                                               {/* <i className="icon icon-edit" id="iconoEditarProducto"/> */}
                                             </div>
-                                            :<img src={producto.prpimagen} width="105px" height="59px"/>
+                                            :<>
+                                              <img src={producto.prpimagen} width="105px" height="59px"/>                                            
+                                            </>
                                           }
                                           
                                           
@@ -432,7 +434,9 @@ class Slide extends React.Component {
                                               />
                                               {/* <i className="icon icon-edit" id="iconoEditarProducto"/> */}
                                             </div>
-                                            :<img src={productoBonificado.prbimagen} width="105px" height="59px"/>
+                                            :<>
+                                              <img src={productoBonificado.prbimagen} width="105px" height="59px"/>
+                                            </>
                                           }
                                             
                                             

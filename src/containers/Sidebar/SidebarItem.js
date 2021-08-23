@@ -34,6 +34,7 @@ class SidebarItem extends React.Component {
             menuItemControlPromociones : false,
             menuItemControlSellOut   : false,
             menuItemChat   : false,
+            menuItemControlProductos : false,
 
             seleccionoVentas         : false,
             seleccionoPromociones    : false,
@@ -47,6 +48,7 @@ class SidebarItem extends React.Component {
             seleccionoControlPromociones : false,
             seleccionoControlSellOut : false,
             seleccionoChat : false,
+            seleccionoControlProductos : false,
         }
         this.funActivarHover = this.funActivarHover.bind(this)
         this.funSeleccionarMenu = this.funSeleccionarMenu.bind(this)
@@ -81,6 +83,7 @@ class SidebarItem extends React.Component {
             menuItemControlPromociones : false,
             menuItemControlSellOut   : false,
             menuItemChat   : false,
+            menuItemControlProductos : false,
 
             seleccionoVentas         : false,
             seleccionoPromociones    : false,
@@ -94,6 +97,7 @@ class SidebarItem extends React.Component {
             seleccionoControlPromociones : false,
             seleccionoControlSellOut : false,
             seleccionoChat : false,
+            seleccionoControlProductos : false,
         })
 
         this.setState({
@@ -209,6 +213,29 @@ class SidebarItem extends React.Component {
                                         }
                                     >Carga de archivo</span>
                             </Link>
+                        </Menu.Item>
+                    )
+                }
+
+
+                {
+                    funPermisosObtenidos(
+                        this.props.permisos,
+                        PERMISO_MODULO_TIPO_USUARIOS,
+                        <Menu.Item key="sistema/control-productos" id="menuItemSidebar">
+                            <Link to="/sistema/control-productos" 
+                                onMouseEnter={() => {this.funActivarHover('menuItemControlProductos', 'ControlProductos')}} 
+                                onMouseLeave={() => {this.funDesactivarHover('menuItemControlProductos', 'ControlProductos')}}
+                                onClick={() => {this.funSeleccionarMenu('menuItemControlProductos', 'ControlProductos')}}
+                            >
+                            <img alt="" src={require("assets/images/menuRebate.png")} style={{ marginRight:'15px' }} width="25px" />
+                            <span
+                                id={
+                                    this.state.menuItemControlProductos == true
+                                    ? "txtSidebarItemHover"
+                                    : "txtSidebarItem"
+                                }
+                            >Control de Productos</span></Link>
                         </Menu.Item>
                     )
                 }

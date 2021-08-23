@@ -11,6 +11,7 @@ import Tutorial from "./tutorial"
 import Configuracion from "./configuracion/index"
 import ControlPromociones from "./controlPromociones/index"
 import ControlSellOut from "./ControlSellOut/index"
+import ControlProductos from "./ControlProductos/ControlProductos"
 
 const Sistema = ({match}) => (
   <Switch>
@@ -26,6 +27,7 @@ const Sistema = ({match}) => (
     <Route path={`${match.url}/configuracion`} component={Configuracion}/>
     {/* <Route path={`${match.url}/control/sellout`} component={ControlSellOut}/> */}
     <Route path={`${match.url}/controlSellOut`} component={ControlSellOut}/>
+    <Route path={`${match.url}/control-productos`} component={ControlProductos}/>
   </Switch>
 );
 
