@@ -13,7 +13,8 @@ import {
     PERMISO_MODULO_USUARIOS,
     PERMISO_MODULO_REBATE,
     PERMISO_MODULO_TIPO_USUARIOS,
-    PERMISO_MODULO_CONTROL_VENTAS
+    PERMISO_MODULO_CONTROL_VENTAS,
+    PERMISO_MODULO_CONTROL_PRODUCTOS
 } from "constants/PermisosTypes"
 
 const MenuItemGroup = Menu.ItemGroup;
@@ -221,7 +222,7 @@ class SidebarItem extends React.Component {
                 {
                     funPermisosObtenidos(
                         this.props.permisos,
-                        PERMISO_MODULO_TIPO_USUARIOS,
+                        PERMISO_MODULO_CONTROL_PRODUCTOS,
                         <Menu.Item key="sistema/control-productos" id="menuItemSidebar">
                             <Link to="/sistema/control-productos" 
                                 onMouseEnter={() => {this.funActivarHover('menuItemControlProductos', 'ControlProductos')}} 
