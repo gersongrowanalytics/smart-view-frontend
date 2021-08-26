@@ -7,7 +7,11 @@ import TooltipCardImagen from './Tooltip'
 
 const CardImagen = (props) => {
 
-    const {tipoPromocion, nombreCategoria, objetivoValorizado, objetivoCategoria, realCategoria, togoCategoria, tprcolorbarra, tprcolortooltip, scaiconocategoria, catimagenfondoopaco} = props
+    const {
+        tipoPromocion, nombreCategoria, objetivoValorizado, objetivoCategoria, realCategoria, 
+        togoCategoria, tprcolorbarra, tprcolortooltip, scaiconocategoria, catimagenfondoopaco,
+        scavalorizadorealniv, scavalorizadotogoniv, mostrarNiv
+    } = props
     // const {nombreCategoria, iconoCategoria, fondoCategoria, tprcolorbarra, tprcolortooltip, scaiconocategoria, catimagenfondoopaco} = props
     // const objetivoCategoria = 100
     // const realCategoria = 0
@@ -29,7 +33,12 @@ const CardImagen = (props) => {
                                             Cumplimiento
                                             <br/>
                                             <p id="txt_numeroCumplimiento">
-                                                {<NumberFormat value={objetivoValorizado == 0 ?0 :funFomratoDecimal(((100*realCategoria)/objetivoCategoria), 0)} displayType={'text'} thousandSeparator={true} />}%</p>
+                                                {
+                                                    mostrarNiv == false
+                                                    ?<div><NumberFormat value={objetivoValorizado == 0 ?0 :funFomratoDecimal(((100*realCategoria)/objetivoCategoria), 0)} displayType={'text'} thousandSeparator={true} />%</div>
+                                                    :<div><NumberFormat value={objetivoValorizado == 0 ?0 :funFomratoDecimal(((100*scavalorizadorealniv)/objetivoCategoria), 0)} displayType={'text'} thousandSeparator={true} />%</div>
+                                                }
+                                            </p>
                                             
                                         </p>
                                     </div>
@@ -49,8 +58,16 @@ const CardImagen = (props) => {
                             esSellIn        = {tipoPromocion == "Sell In" ? true : false}
                             tprcolortooltip = {tprcolortooltip}
                             titulo          = {"Real S/"}
-                            cantidad        = {funFomratoDecimal(realCategoria , 0)}
-                            porcumplimiento = {funFomratoDecimal(((100*realCategoria)/objetivoCategoria), 0)}
+                            cantidad        = {
+                                mostrarNiv == false
+                                ?funFomratoDecimal(realCategoria , 0)
+                                :funFomratoDecimal(scavalorizadorealniv , 0)
+                            }
+                            porcumplimiento = {
+                                mostrarNiv == false
+                                ?funFomratoDecimal(((100*realCategoria)/objetivoCategoria), 0)
+                                :funFomratoDecimal(((100*scavalorizadorealniv)/objetivoCategoria), 0)
+                            }
                         />
                     </div>  
                 </Col>
@@ -62,8 +79,16 @@ const CardImagen = (props) => {
                         esSellIn        = {tipoPromocion == "Sell In" ? true : false}
                         titulo          = {"Por Facturar S/"}
                         // cantidad        = {funFomratoDecimal(togoCategoria , 0)}
-                        cantidad        = {funFomratoDecimal(objetivoCategoria-realCategoria , 0)}
-                        porcumplimiento = {funFomratoDecimal(((100*realCategoria)/objetivoCategoria), 0)}
+                        cantidad        = {
+                            mostrarNiv == false
+                            ?funFomratoDecimal(objetivoCategoria - realCategoria , 0)
+                            :funFomratoDecimal(objetivoCategoria - scavalorizadorealniv , 0)
+                        }
+                        porcumplimiento = {
+                            mostrarNiv == false
+                            ?funFomratoDecimal(((100*realCategoria)/objetivoCategoria), 0)
+                            :funFomratoDecimal(((100*scavalorizadorealniv)/objetivoCategoria), 0)
+                        }
                     />
                 </Col>
                 {/* <div style={{height:'40px'}}>d</div> */}
@@ -77,29 +102,52 @@ const CardImagen = (props) => {
                         className={``}
                         style={
                             // torealCategoria >= 
-                            parseInt(realCategoria) >= parseInt(objetivoCategoria )
-                            ?{
-                                background: 'linear-gradient('+tprcolorbarra+')',
-                                width: '100%',
-                                height: '15px',
-                                borderRadius: 50
-                            }
-                            :{
-                                background: 'linear-gradient('+tprcolorbarra+')',
-                                width: ((100*realCategoria)/objetivoCategoria)+'%',
-                                height: '15px',
-                                borderRadius: 50
-                            }
+                            mostrarNiv == false
+                            ?parseInt(realCategoria) >= parseInt(objetivoCategoria )
+                                ?{
+                                    background: 'linear-gradient('+tprcolorbarra+')',
+                                    width: '100%',
+                                    height: '15px',
+                                    borderRadius: 50
+                                }
+                                :{
+                                    background: 'linear-gradient('+tprcolorbarra+')',
+                                    width: ((100*realCategoria)/objetivoCategoria)+'%',
+                                    height: '15px',
+                                    borderRadius: 50
+                                }
+                            :parseInt(scavalorizadorealniv) >= parseInt(objetivoCategoria )
+                                ?{
+                                    background: 'linear-gradient('+tprcolorbarra+')',
+                                    width: '100%',
+                                    height: '15px',
+                                    borderRadius: 50
+                                }
+                                :{
+                                    background: 'linear-gradient('+tprcolorbarra+')',
+                                    width: ((100*scavalorizadorealniv)/objetivoCategoria)+'%',
+                                    height: '15px',
+                                    borderRadius: 50
+                                }
                         }
                     >
                         <div 
                             className={``} 
-                            style={{ 
-                                background:'transparent', 
-                                width: (togoCategoria*100)/realCategoria+'%', 
-                                height: 15, 
-                                marginLeft:'100%'
-                            }} />
+                            style={
+                                mostrarNiv == false
+                                ?{ 
+                                    background:'transparent', 
+                                    width: (togoCategoria*100)/realCategoria+'%', 
+                                    height: 15, 
+                                    marginLeft:'100%'
+                                }
+                                :{ 
+                                    background:'transparent', 
+                                    width: (scavalorizadotogoniv*100)/scavalorizadorealniv+'%', 
+                                    height: 15, 
+                                    marginLeft:'100%'
+                                }
+                            } />
                     </div>
                 </div>
             </div>
@@ -111,13 +159,22 @@ const CardImagen = (props) => {
                             <span className="objetivoCategoria" >
                                 Objetivo S/. 
                                 {
-                                    objetivoCategoria == 0 && realCategoria == 0 && togoCategoria == 0
-                                    ?0
-                                    :objetivoCategoria == 100 && realCategoria == 0 && togoCategoria == 0
+                                    mostrarNiv == false
+                                    ?objetivoCategoria == 0 && realCategoria == 0 && togoCategoria == 0
                                         ?0
-                                        :objetivoCategoria == 100
+                                        :objetivoCategoria == 100 && realCategoria == 0 && togoCategoria == 0
                                             ?0
-                                            :<NumberFormat value={funFomratoDecimal(objetivoCategoria, 0)} displayType={'text'} thousandSeparator={true} />
+                                            :objetivoCategoria == 100
+                                                ?0
+                                                :<NumberFormat value={funFomratoDecimal(objetivoCategoria, 0)} displayType={'text'} thousandSeparator={true} />
+
+                                    :objetivoCategoria == 0 && scavalorizadorealniv == 0 && scavalorizadotogoniv == 0
+                                        ?0
+                                        :objetivoCategoria == 100 && scavalorizadorealniv == 0 && scavalorizadotogoniv == 0
+                                            ?0
+                                            :objetivoCategoria == 100
+                                                ?0
+                                                :<NumberFormat value={funFomratoDecimal(objetivoCategoria, 0)} displayType={'text'} thousandSeparator={true} />
                                 }
                             </span>
                         </div>

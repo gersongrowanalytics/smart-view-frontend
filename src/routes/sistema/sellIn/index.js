@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import {Col, Row, Modal} from "antd"
 import Auxiliary from "util/Auxiliary"
 import Titulo from 'components/Sistema/Titulo/Titulo'
@@ -67,6 +67,8 @@ const SellIn = () => {
         dispatch(CambiarTamanioCardAvanceReducer())
     }, [])
 
+    const [mostrarNiv, setMostrarNiv] = useState(false)
+
     return (
         <Auxiliary>
             
@@ -99,17 +101,31 @@ const SellIn = () => {
                                         tieneRebateTrimestral    = {tipoPromocion.tieneRebateTrimestral}
                                         tamanioCard = {tipoPromocion.tprnombre.includes("Out") == true  ? tamanioAvanceSO : tamanioAvanceSI}
                                         trrs        = {tipoPromocion.trrs}
+
+                                        // REAL NIV
+                                        realValorizadoNiv = {tipoPromocion.tsuvalorizadorealniv}
+                                        togoValorizadoNiv = {tipoPromocion.tsuvalorizadotogoniv}
+                                        cumplimientoPorcentajeNiv = {tipoPromocion.tsuporcentajecumplimientoniv}
+                                        mostrarNiv = {tipoPromocion.tprnombre.includes("Out") ?mostrarNiv : false}
+                                        setMostrarNiv = {(e) => setMostrarNiv(e)}
                                     />
                                 </div>
                                 <div style={{width:'38%', }}>
                                     <CardRebate 
                                         objetivoValorizado     = {tipoPromocion.tsuvalorizadoobjetivo}
-                                        rebateValorizado       = {tipoPromocion.tsuvalorizadorebate}
+                                        rebateValorizado       = {
+                                            tipoPromocion.tprnombre.includes("Out")
+                                            ?mostrarNiv == false
+                                                ?tipoPromocion.tsuvalorizadorebate
+                                                :tipoPromocion.tsuvalorizadorebateniv
+                                            :tipoPromocion.tsuvalorizadorebate
+                                        }
                                         nombreTipoPromocion    = {tipoPromocion.tprnombre}
                                         trrs                   = {tipoPromocion.trrs}
                                         cumplimientoPorcentaje = {tipoPromocion.tsuporcentajecumplimiento}
                                         realValorizado         = {tipoPromocion.tsuvalorizadoreal}
                                         tsu                    = {tipoPromocion}
+                                        
                                         realValorizadoSellin   = {
                                             tipoPromocion.tprnombre.includes("Out") == true 
                                             ?ventasTpr[posicion-1]['tsuvalorizadoreal']
@@ -120,6 +136,8 @@ const SellIn = () => {
                                             ?ventasTpr[posicion-1]['tsuvalorizadoobjetivo']
                                             :0
                                         }
+
+
                                     />
                                 </div>
                                 {
@@ -145,6 +163,11 @@ const SellIn = () => {
                                                     scaiconocategoria   = {categoria.scaiconocategoria}
                                                     catimagenfondoopaco = {categoria.catimagenfondoopaco}
                                                     tipoPromocion       = {tipoPromocion.tprnombre}
+
+                                                    scavalorizadorealniv = {categoria.scavalorizadotogoniv}
+                                                    scavalorizadotogoniv = {categoria.scavalorizadotogoniv}
+                                                    mostrarNiv = {tipoPromocion.tprnombre.includes("Out") ?mostrarNiv : false}
+                                                    // mostrarNiv = {mostrarNiv}
                                                 />
                                             </div>
                                             

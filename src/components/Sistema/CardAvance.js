@@ -1,5 +1,5 @@
 import React from 'react'
-import {Col, Row} from "antd";
+import {Col, Row, Switch} from "antd";
 import './estilos/CardAvance.css'
 import config from 'config'
 import NumberFormat from 'react-number-format';
@@ -7,33 +7,41 @@ import funFomratoDecimal from '../../funciones/funFormatoDecimal.js'
 
 const CardAvance = (props) => {
 
-    const { objetivoValorizado, realValorizado, togoValorizado, cumplimientoPorcentaje, nombreTipoPromocion, tieneRebateTrimestral, tamanioCard, trrs } = props
+    const { 
+        objetivoValorizado, realValorizado, togoValorizado, cumplimientoPorcentaje, 
+        nombreTipoPromocion, tieneRebateTrimestral, tamanioCard, trrs ,
+        realValorizadoNiv, togoValorizadoNiv, cumplimientoPorcentajeNiv, mostrarNiv, setMostrarNiv
+    } = props
 
     return (
         <div style={{
             background:'#30C0D8', 
             width:'100%', 
             height: tamanioCard,
-            
-            // tieneRebateTrimestral == true 
-            //     ? nombreTipoPromocion.includes("Out") == true 
-            //         ?trrs.length <= 3
-            //             ?"127px"
-            //             :tamanioCard+"px"
-            //         :trrs.length <= 3
-            //             ?"143px"
-            //             :tamanioCard+"px"
-                
-            //     :trrs.length <= 3
-            //         ?"127px"
-            //         :tamanioCard+"px",
-            
             paddingRight:'20px', 
-            
             marginBottom:'20px', 
             borderRadius:'20px', 
-            boxShadow: '9px 6px 9px -1px rgba(0, 0, 0, 0.2)'
+            boxShadow: '9px 6px 9px -1px rgba(0, 0, 0, 0.2)',
+            position:'relative'
         }}>
+            
+            <div
+                style={{
+                    position:'absolute',
+                    right:'10px',
+                    top:'10px'
+                }}
+            >
+                {
+                    nombreTipoPromocion.includes("Out") == true
+                    ?<Switch 
+                        className="Switch-Niv"
+                        checkedChildren="Real" unCheckedChildren="NIV" 
+                        onChange={(e) => setMostrarNiv(e)}
+                    />
+                    :null
+                }
+            </div>
 
             <Row style={{alignItems: "center", height: "100%"}}>
                 <Col xl={4} md={8} sm={6} xs={12}>
@@ -51,8 +59,15 @@ const CardAvance = (props) => {
                             </p>
                         </Col>
                         <Col xl={6} md={6} sm={6} xs={24} className="gx-text-center gx-text-white" style={{ borderRightStyle:'solid', borderRightColor:'white', paddingRight:'20px', alignSelf:'center'}}>
-                            <p id=""><span id="tituloDatosAvance">REAL</span><br/>
-                                <span id="datosAvance">S/<NumberFormat value={funFomratoDecimal(realValorizado, 0)} displayType={'text'} thousandSeparator={true} /></span>
+                            <p id="">
+                                <span id="tituloDatosAvance">{mostrarNiv == false ?"REAL" :"NIV"}</span><br/>
+                                {
+                                    mostrarNiv == false
+                                    ?<span id="datosAvance">S/<NumberFormat value={funFomratoDecimal(realValorizado, 0)} displayType={'text'} thousandSeparator={true} /></span>
+                                    :<span id="datosAvance">S/<NumberFormat value={funFomratoDecimal(realValorizadoNiv, 0)} displayType={'text'} thousandSeparator={true} /></span>
+                                }
+                                
+                                
                             </p>
                         </Col>
                         <Col xl={6} md={6} sm={6} xs={24} className="gx-text-center gx-text-white" style={{ borderRightStyle:'solid', borderRightColor:'white', paddingRight:'20px', alignSelf:'center'}}>
@@ -62,15 +77,25 @@ const CardAvance = (props) => {
                                     // parseInt(realValorizado-objetivoValorizado)  > 0
                                     togoValorizado < 0
                                     ?<span id="datosAvance">S/0</span>
-                                    // :<span id="datosAvance">S/<NumberFormat value={funFomratoDecimal((realValorizado-objetivoValorizado), 0)} displayType={'text'} thousandSeparator={true} /></span>
-                                    :<span id="datosAvance">S/<NumberFormat value={funFomratoDecimal(togoValorizado, 0)} displayType={'text'} thousandSeparator={true} /></span>
+                                    :<div>
+                                        {
+                                            mostrarNiv == false
+                                            ?<span id="datosAvance">S/<NumberFormat value={funFomratoDecimal(togoValorizado, 0)} displayType={'text'} thousandSeparator={true} /></span>
+                                            :<span id="datosAvance">S/<NumberFormat value={funFomratoDecimal(togoValorizadoNiv, 0)} displayType={'text'} thousandSeparator={true} /></span>
+                                        }
+                                    </div>
+                                    
                                 }
                                 
                             </p>
                         </Col>
                         <Col xl={6} md={6} sm={6} xs={24} className="gx-text-center gx-text-white" >
                             <p id=""><span id="tituloDatosAvance">CUMPLIMIENTO</span><br/> 
-                                <span id="datosAvance"><NumberFormat value={funFomratoDecimal( ((100*realValorizado)/objetivoValorizado), 0)} displayType={'text'} thousandSeparator={true} />%</span>
+                                {
+                                    mostrarNiv == false
+                                    ?<span id="datosAvance"><NumberFormat value={funFomratoDecimal( ((100*realValorizado)/objetivoValorizado), 0)} displayType={'text'} thousandSeparator={true} />%</span>
+                                    :<span id="datosAvance"><NumberFormat value={funFomratoDecimal( ((100*realValorizadoNiv)/objetivoValorizado), 0)} displayType={'text'} thousandSeparator={true} />%</span>
+                                }
                             </p>
                             {/* <p id="datosAvance">CUMPLIMIENTO<br/>% {funFomratoDecimal(cumplimientoPorcentaje, 0)}</p> */}
                         </Col>

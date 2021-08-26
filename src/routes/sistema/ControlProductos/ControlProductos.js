@@ -11,7 +11,9 @@ import IconoConfirmado from 'assets/images/ControlProductos/confirmado.png'
 import IconoCalendario from 'assets/images/ControlProductos/calendario.png'
 import IconoSeleccionarImagen from 'assets/images/ControlProductos/seleccionarImagen.png'
 import FileImgProducto from '../../../components/Sistema/ControlProductos/FileImgProducto';
-
+import {seleccionarCargaArchivosReducer} from "appRedux/actions/CargaArchivos";
+import {seleccionarVistaPromocionReducer} from 'appRedux/actions/Promociones'
+import {seleccionarVistaVentasReducer} from 'appRedux/actions/VentasTpr'
 
 const ControlProductos = () => {
 
@@ -22,9 +24,25 @@ const ControlProductos = () => {
     } = useSelector(({controlProductos}) => controlProductos);
 
     const dispatch = useDispatch();
+
+    const {cargaArchivosSeleccionado} = useSelector(({cargaArchivos}) => cargaArchivos);
+    const {vistaPromocionSeleccionado} = useSelector(({promociones}) => promociones);
+    const {vistaVentasSeleccionado}= useSelector(({ventasTpr}) => ventasTpr);
     
     useEffect(() => {
         
+        if(cargaArchivosSeleccionado == true){
+            dispatch(seleccionarCargaArchivosReducer(false))
+        }
+    
+        if(vistaPromocionSeleccionado == true){
+            dispatch(seleccionarVistaPromocionReducer(false))
+        }
+    
+        if(vistaVentasSeleccionado == true){
+            dispatch(seleccionarVistaVentasReducer(false))
+        }
+
         dispatch(ObtenerProductosReducer())
 
     }, [])

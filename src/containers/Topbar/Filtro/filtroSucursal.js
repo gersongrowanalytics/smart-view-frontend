@@ -26,7 +26,7 @@ const FiltroSucursal = (props) => {
     } = props
 
     return (
-    <div id="contMenuDesplegableGrande">
+    <div id="contMenuDesplegableGrande" >
         <nav>
             <ul id="menu">
                 <li><a href="#" id="sucursalTexto">{sucursalSeleccionada}</a>
