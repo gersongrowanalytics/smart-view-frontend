@@ -36,7 +36,7 @@ const CardAvance = (props) => {
                     nombreTipoPromocion.includes("Out") == true
                     ?<Switch 
                         className="Switch-Niv"
-                        checkedChildren="Real" unCheckedChildren="NIV" 
+                        checkedChildren="NIV" unCheckedChildren="Real" 
                         onChange={(e) => setMostrarNiv(e)}
                     />
                     :null

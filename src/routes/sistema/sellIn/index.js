@@ -155,8 +155,21 @@ const SellIn = () => {
                                                     fondoCategoria      = {categoria.catimagenfondo}
                                                     objetivoValorizado  = {tipoPromocion.tsuvalorizadoobjetivo}
                                                     objetivoCategoria   = {categoria.scavalorizadoobjetivo == 0 ?100 :categoria.scavalorizadoobjetivo}
-                                                    realCategoria       = {categoria.scavalorizadoreal}
-                                                    togoCategoria       = {categoria.scavalorizadotogo}
+
+                                                    realCategoria       = {
+                                                        tipoPromocion.tprnombre.includes("Out") 
+                                                        ?mostrarNiv == false
+                                                            ?categoria.scavalorizadoreal
+                                                            :categoria.scavalorizadorealniv
+                                                        :categoria.scavalorizadoreal
+                                                    }
+                                                    togoCategoria       = {
+                                                        tipoPromocion.tprnombre.includes("Out") 
+                                                        ?mostrarNiv == false
+                                                            ?categoria.scavalorizadotogo
+                                                            :categoria.scavalorizadotogoniv
+                                                        :categoria.scavalorizadotogo
+                                                    }
 
                                                     tprcolorbarra       = {tipoPromocion.tprcolorbarra}
                                                     tprcolortooltip     = {tipoPromocion.tprcolortooltip}

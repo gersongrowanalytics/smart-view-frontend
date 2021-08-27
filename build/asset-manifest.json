@@ -1,21 +1,21 @@
 {
   "files": {
     "main.css": "/static/css/main.35faf836.chunk.css",
-    "main.js": "/static/js/main.d681f2d6.chunk.js?ver=4",
-    "main.js.map": "/static/js/main.d681f2d6.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.fced0e5d.js?ver=4",
+    "main.js": "/static/js/main.48ceda88.chunk.js?ver=2",
+    "main.js.map": "/static/js/main.48ceda88.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.fced0e5d.js?ver=2",
     "runtime-main.js.map": "/static/js/runtime-main.fced0e5d.js.map",
     "static/css/2.bc3e163e.chunk.css": "/static/css/2.bc3e163e.chunk.css",
-    "static/js/2.4494c216.chunk.js": "/static/js/2.4494c216.chunk.js?ver=4",
-    "static/js/2.4494c216.chunk.js.map": "/static/js/2.4494c216.chunk.js.map",
-    "static/js/3.0eead084.chunk.js": "/static/js/3.0eead084.chunk.js?ver=4",
+    "static/js/2.b644fdc9.chunk.js": "/static/js/2.b644fdc9.chunk.js?ver=2",
+    "static/js/2.b644fdc9.chunk.js.map": "/static/js/2.b644fdc9.chunk.js.map",
+    "static/js/3.0eead084.chunk.js": "/static/js/3.0eead084.chunk.js?ver=2",
     "static/js/3.0eead084.chunk.js.map": "/static/js/3.0eead084.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.59a717cb7a41843acad5b6fee8053f6c.js": "/precache-manifest.59a717cb7a41843acad5b6fee8053f6c.js?ver=4",
-    "service-worker.js": "/service-worker.js?ver=4",
+    "precache-manifest.2d6bc921deaa2ac1851523a6c0e12861.js": "/precache-manifest.2d6bc921deaa2ac1851523a6c0e12861.js?ver=2",
+    "service-worker.js": "/service-worker.js?ver=2",
     "static/css/2.bc3e163e.chunk.css.map": "/static/css/2.bc3e163e.chunk.css.map",
     "static/css/main.35faf836.chunk.css.map": "/static/css/main.35faf836.chunk.css.map",
-    "static/js/2.4494c216.chunk.js.LICENSE.txt": "/static/js/2.4494c216.chunk.js.LICENSE.txt",
+    "static/js/2.b644fdc9.chunk.js.LICENSE.txt": "/static/js/2.b644fdc9.chunk.js.LICENSE.txt",
     "static/js/3.0eead084.chunk.js.LICENSE.txt": "/static/js/3.0eead084.chunk.js.LICENSE.txt",
     "static/media/DescargaEspecifica.png": "/static/media/DescargaEspecifica.70b46141.png",
     "static/media/styles.css": "/static/media/gaxon.b1a63de8.svg",
@@ -41,10 +41,10 @@
     "static/media/sprite-flags-24x24.css": "/static/media/sprite-flags-24x24.7ed12ca4.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.fced0e5d.js?ver=4",
+    "static/js/runtime-main.fced0e5d.js?ver=2",
     "static/css/2.bc3e163e.chunk.css",
-    "static/js/2.4494c216.chunk.js?ver=4",
+    "static/js/2.b644fdc9.chunk.js?ver=2",
     "static/css/main.35faf836.chunk.css",
-    "static/js/main.d681f2d6.chunk.js?ver=4"
+    "static/js/main.48ceda88.chunk.js?ver=2"
   ]
 }
