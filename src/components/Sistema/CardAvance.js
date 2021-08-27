@@ -4,6 +4,11 @@ import './estilos/CardAvance.css'
 import config from 'config'
 import NumberFormat from 'react-number-format';
 import funFomratoDecimal from '../../funciones/funFormatoDecimal.js'
+import {useSelector} from "react-redux";
+import {funPermisosObtenidos} from 'funciones/funPermiso.js'
+import {
+    PERMISO_MOSTRAR_BTN_SWITCH_NIV_REAL_VENTAS
+} from "constants/PermisosTypes"
 
 const CardAvance = (props) => {
 
@@ -12,6 +17,8 @@ const CardAvance = (props) => {
         nombreTipoPromocion, tieneRebateTrimestral, tamanioCard, trrs ,
         realValorizadoNiv, togoValorizadoNiv, cumplimientoPorcentajeNiv, mostrarNiv, setMostrarNiv
     } = props
+
+    const {permisos} = useSelector(({auth}) => auth);
 
     return (
         <div style={{
@@ -25,23 +32,31 @@ const CardAvance = (props) => {
             position:'relative'
         }}>
             
-            <div
-                style={{
-                    position:'absolute',
-                    right:'10px',
-                    top:'10px'
-                }}
-            >
-                {
-                    nombreTipoPromocion.includes("Out") == true
-                    ?<Switch 
-                        className="Switch-Niv"
-                        checkedChildren="NIV" unCheckedChildren="Real" 
-                        onChange={(e) => setMostrarNiv(e)}
-                    />
-                    :null
-                }
-            </div>
+
+            {
+                funPermisosObtenidos(
+                    permisos,
+                    PERMISO_MOSTRAR_BTN_SWITCH_NIV_REAL_VENTAS,
+                    <div
+                        style={{
+                            position:'absolute',
+                            right:'10px',
+                            top:'10px'
+                        }}
+                    >
+                        {
+                            nombreTipoPromocion.includes("Out") == true
+                            ?<Switch 
+                                className="Switch-Niv"
+                                checkedChildren="NIV" unCheckedChildren="Real" 
+                                onChange={(e) => setMostrarNiv(e)}
+                                defaultChecked={mostrarNiv}
+                            />
+                            :null
+                        }
+                    </div>
+                )
+            }
 
             <Row style={{alignItems: "center", height: "100%"}}>
                 <Col xl={4} md={8} sm={6} xs={12}>

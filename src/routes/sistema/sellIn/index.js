@@ -67,7 +67,7 @@ const SellIn = () => {
         dispatch(CambiarTamanioCardAvanceReducer())
     }, [])
 
-    const [mostrarNiv, setMostrarNiv] = useState(false)
+    const [mostrarNiv, setMostrarNiv] = useState(true)
 
     return (
         <Auxiliary>
@@ -103,8 +103,8 @@ const SellIn = () => {
                                         trrs        = {tipoPromocion.trrs}
 
                                         // REAL NIV
-                                        realValorizadoNiv = {tipoPromocion.tsuvalorizadorealniv}
-                                        togoValorizadoNiv = {tipoPromocion.tsuvalorizadotogoniv}
+                                        realValorizadoNiv = {tipoPromocion.tsuvalorizadorealniv ?tipoPromocion.tsuvalorizadorealniv :0}
+                                        togoValorizadoNiv = {tipoPromocion.tsuvalorizadotogoniv ?tipoPromocion.tsuvalorizadotogoniv : 0}
                                         cumplimientoPorcentajeNiv = {tipoPromocion.tsuporcentajecumplimientoniv}
                                         mostrarNiv = {tipoPromocion.tprnombre.includes("Out") ?mostrarNiv : false}
                                         setMostrarNiv = {(e) => setMostrarNiv(e)}
@@ -161,6 +161,8 @@ const SellIn = () => {
                                                         ?mostrarNiv == false
                                                             ?categoria.scavalorizadoreal
                                                             :categoria.scavalorizadorealniv
+                                                                ?categoria.scavalorizadorealniv
+                                                                :0
                                                         :categoria.scavalorizadoreal
                                                     }
                                                     togoCategoria       = {
@@ -168,6 +170,8 @@ const SellIn = () => {
                                                         ?mostrarNiv == false
                                                             ?categoria.scavalorizadotogo
                                                             :categoria.scavalorizadotogoniv
+                                                                ?categoria.scavalorizadotogoniv
+                                                                :0
                                                         :categoria.scavalorizadotogo
                                                     }
 
@@ -177,7 +181,7 @@ const SellIn = () => {
                                                     catimagenfondoopaco = {categoria.catimagenfondoopaco}
                                                     tipoPromocion       = {tipoPromocion.tprnombre}
 
-                                                    scavalorizadorealniv = {categoria.scavalorizadotogoniv}
+                                                    scavalorizadorealniv = {categoria.scavalorizadorealniv}
                                                     scavalorizadotogoniv = {categoria.scavalorizadotogoniv}
                                                     mostrarNiv = {tipoPromocion.tprnombre.includes("Out") ?mostrarNiv : false}
                                                     // mostrarNiv = {mostrarNiv}

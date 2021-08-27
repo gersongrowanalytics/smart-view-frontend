@@ -21,3 +21,4 @@ export const PERMISO_BOTON_DESCARGAR_REPORTE_PAGOS_CUADRADO = 'modulo.promocion.
 // PERMISOS DE FILTRO
 export const PERMISO_MOSTRAR_COD_SOLDTO_FILTRO = 'modulo.filtro.mostrar.codsoldto'
 
+export const PERMISO_MOSTRAR_BTN_SWITCH_NIV_REAL_VENTAS = 'modulo.ventas.mostrar.botonswitch.nivreal'

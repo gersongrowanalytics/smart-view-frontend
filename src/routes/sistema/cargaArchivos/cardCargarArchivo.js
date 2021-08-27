@@ -213,9 +213,12 @@ class CardCargarArchivo extends Component {
                                         this.props.titulo.length > 26
                                         ?<Row className="">
                                             
-                                            <Col xl={2} md={2} style={{marginLeft:'10px', }}>
+                                            <Col xl={2} md={2} style={{marginLeft:'10px', cursor:'pointer'}}>
                                                 <Button
-                                                    style={{background:'#52B893', border:'none', marginTop:'10px',}}
+                                                    style={{
+                                                        background:'#52B893', border:'none', marginTop:'10px',
+                                                        cursor: "pointer", zIndex: "1"
+                                                    }}
                                                     shape="circle" 
                                                     icon={<PlusOutlined style={{"color" : 'white'}} />} 
                                                     onClick={this.seleccionarFile}
