@@ -80,9 +80,11 @@ class FileImgProducto extends React.Component {
                                     onClick = {() => this.seleccionarImagenProducto()} 
                                     className="Imagen-Producto-Control-Productos" 
                                     src={
-                                        this.state.imagenPreviewProducto == null
+                                        // this.state.imagenPreviewProducto == null
+                                        this.props.imagen == null
                                         ? IconoSeleccionarImagen
-                                        : this.state.imagenPreviewProducto
+                                        // : this.state.imagenPreviewProducto
+                                        : this.props.imagen
                                     } 
                                     alt="" />
 

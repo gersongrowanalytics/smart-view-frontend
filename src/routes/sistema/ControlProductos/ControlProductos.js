@@ -209,7 +209,12 @@ const ControlProductos = () => {
                                         {/* <td>{"productos.catnombre"}</td> */}
                                         <td>{dia} de {mes} del {anio}</td>
                                         <td>
-                                            <img src={productos.proimagen} className="Imagen-Producto-Control-Productos" />
+                                            <FileImgProducto 
+                                                productos = {productos}
+                                                imagen    = {productos.proimagen}
+                                                AsignarImagen = {(imagen) => AsignarImagen(productos.prosku, imagen)}
+                                            />
+                                            {/* <img src={productos.proimagen} className="Imagen-Producto-Control-Productos" /> */}
                                         </td>
                                     </tr>
                                 :null

@@ -369,6 +369,13 @@ class Slide extends React.Component {
                                             </div>
                                             :<>
                                               <img src={producto.prpimagen} width="105px" height="59px"/>                                            
+                                              {
+                                                funPermisosObtenidos(
+                                                  permisosUsuario,
+                                                  "promociones.mostrar.sku.promocion",
+                                                  <div>{producto.prosku}</div>
+                                                )
+                                              }
                                             </>
                                           }
                                           
@@ -436,6 +443,14 @@ class Slide extends React.Component {
                                             </div>
                                             :<>
                                               <img src={productoBonificado.prbimagen} width="105px" height="59px"/>
+                                              {/* miomio */}
+                                              {
+                                                funPermisosObtenidos(
+                                                  permisosUsuario,
+                                                  "promociones.mostrar.sku.promocion",
+                                                  <div>{productoBonificado.prosku}</div>
+                                                )
+                                              }
                                             </>
                                           }
                                             
