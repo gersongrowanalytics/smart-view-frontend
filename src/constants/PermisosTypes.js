@@ -17,6 +17,7 @@ export const PERMISO_BOTON_EDITAR_PROMOCION      = 'modulo.promocion.boton.edita
 export const PERMISO_CODIGO_PROMOCION            = 'modulo.promocion.codigo.promocion'
 export const PERMISO_BOTON_DESCARGAR_REPORTE_PAGOS = 'modulo.promocion.boton.descargar.reportepagos'
 export const PERMISO_BOTON_DESCARGAR_REPORTE_PAGOS_CUADRADO = 'modulo.promocion.boton.descargar.reportepagos.cuadrado'
+export const PERMISO_BOTON_CAMBIAR_DISENIO = 'PERMISO_BOTON_CAMBIAR_DISENIO'
 
 // PERMISOS DE FILTRO
 export const PERMISO_MOSTRAR_COD_SOLDTO_FILTRO = 'modulo.filtro.mostrar.codsoldto'

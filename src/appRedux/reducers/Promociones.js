@@ -17,7 +17,8 @@ import {
     ACTIVAR_MODAL_DESCARGAS_PROMOCIONES,
 
     ACTIVAR_MODAL_REPORTES_PAGOS_PROMOCIONES,
-    CARGANDO_REPORTE_PAGOS_PROMOCIONES
+    CARGANDO_REPORTE_PAGOS_PROMOCIONES,
+    CAMBIAR_DISENIO_PROMOCIONES
 } from "constants/SistemaTypes";
 
 const INIT_STATE = {
@@ -43,7 +44,8 @@ const INIT_STATE = {
     mostrarModalDescargas       : false,
     reiniciandoPromociones      : false,
 
-    mostrarModalReportePagos    : false
+    mostrarModalReportePagos    : false,
+    mostrarDisenioPromocionesPrincipal : true
 };
 
 export default (state = INIT_STATE, action) => {
@@ -174,6 +176,12 @@ export default (state = INIT_STATE, action) => {
             return {
                 ...state,
                 cargandoReportePagos : action.payload
+            }
+        }
+        case CAMBIAR_DISENIO_PROMOCIONES: {
+            return {
+                ...state,
+                mostrarDisenioPromocionesPrincipal : action.payload
             }
         }
         default:{

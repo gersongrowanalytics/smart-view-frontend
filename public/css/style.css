@@ -39718,35 +39718,36 @@ textarea.gx-chat-textarea {
   }
 }
 
+
 ::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
+  width: 13px;
+  height: 13px;
 }
 ::-webkit-scrollbar-button {
   width: 0px;
   height: 0px;
 }
 ::-webkit-scrollbar-thumb {
-  background: #bababa;
+  background: #c4c4c4;
   border: 0px none #ffffff;
-  border-radius: 37px;
+  border-radius: 100px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #bababa;
+  background: #c4c4c4;
 }
 ::-webkit-scrollbar-thumb:active {
-  background: #000000;
+  background: #c4c4c4;
 }
 ::-webkit-scrollbar-track {
   background: #ffffff;
   border: 0px none #ffffff;
-  border-radius: 41px;
+  border-radius: 6px;
 }
 ::-webkit-scrollbar-track:hover {
   background: #ffffff;
 }
 ::-webkit-scrollbar-track:active {
-  background: #141414;
+  background: #ffffff;
 }
 ::-webkit-scrollbar-corner {
   background: transparent;

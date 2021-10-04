@@ -3,14 +3,19 @@ import {Col, Row, Spin} from "antd"
 import './Estilos/Titulo.css'
 import config from 'config'
 import BotonDescargar from './BotonDescargar'
+import BotonCambioDisenioPromociones from './BotonCambioDisenioPromociones'
 import funPermiso from 'funciones/funPermiso.js'
 import {
-    PERMISO_BOTON_DESCARGAR_PROMOCIONES
+    PERMISO_BOTON_DESCARGAR_PROMOCIONES,
+    PERMISO_BOTON_CAMBIAR_DISENIO
 } from "constants/PermisosTypes"
 import {useDispatch, useSelector} from "react-redux"
+import {CambiarDisenioPromocionesReducer} from '../../../appRedux/actions/Promociones'
 
 const Titulo = (props) => {
     
+    const dispatch = useDispatch()
+
     const {tieneFecha, tieneTitulo, tieneBotonDescargar, tieneIcono, titulo, tprid, fechaActual} = props;
     const {
         cargoZona,
@@ -18,6 +23,10 @@ const Titulo = (props) => {
         nombreZonaSel,
         nombreSucuSel
     }= useSelector(({ventasTpr}) => ventasTpr);
+
+    const {
+        mostrarDisenioPromocionesPrincipal,
+    }= useSelector(({promociones}) => promociones);
 
     const newDate = new Date()
     const dia = newDate.getDate();
@@ -74,8 +83,21 @@ const Titulo = (props) => {
                         :null
                     }
                     {
+                        tieneBotonDescargar == true
+                        ?funPermiso(
+                            PERMISO_BOTON_CAMBIAR_DISENIO, 
+                            <BotonCambioDisenioPromociones 
+                                mostrarDisenioPromocionesPrincipal = {mostrarDisenioPromocionesPrincipal}
+                                CambiarDisenioPromocionesReducer = {() => dispatch(CambiarDisenioPromocionesReducer())}
+                            />
+                        )
+                        :null
+                    }
+                    {
                         tieneTitulo
-                        ?<div id={ tprid == 1 ?"tituloModuloVentasSellIn" :"tituloModuloVentas"}> {titulo.toUpperCase()}</div>
+                        ?<div 
+                            id={ tprid == 1 ?"tituloModuloVentasSellIn" :"tituloModuloVentas"}
+                        > {titulo.toUpperCase()}</div>
                         :null
                     }
 

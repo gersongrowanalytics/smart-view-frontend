@@ -18,7 +18,8 @@ import {
   ACTIVAR_MODAL_DESCARGAS_PROMOCIONES,
   ACTIVAR_MODAL_REPORTES_PAGOS_PROMOCIONES,
   OBTENER_REPORTE_PAGOS_EXCEL_ESPECIFICO,
-  CARGANDO_REPORTE_PAGOS_PROMOCIONES
+  CARGANDO_REPORTE_PAGOS_PROMOCIONES,
+  CAMBIAR_DISENIO_PROMOCIONES
 } from "constants/SistemaTypes";
 import config from 'config'
 
@@ -885,4 +886,16 @@ export const LimpiarArrayPromocionesLiquidadasReducer = async (promocionesliquid
   })
 
   return promocionesliquidadas
+}
+
+export const CambiarDisenioPromocionesReducer = () => (dispatch, getState) => {
+
+  const {
+    mostrarDisenioPromocionesPrincipal
+  } = getState().promociones
+
+  dispatch({
+    type: CAMBIAR_DISENIO_PROMOCIONES,
+    payload: !mostrarDisenioPromocionesPrincipal
+  })
 }
