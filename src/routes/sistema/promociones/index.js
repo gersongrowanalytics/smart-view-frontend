@@ -185,7 +185,7 @@ const Promociones = () => {
                                                                 promocion = {promocion}
                                                                 posicionPromocion = {posicionPromocion}
                                                                 colorSeleciconadoPromo = {
-                                                                    promocion.cspid == 0
+                                                                    promocion.cspid == 0 || promocion.prmmecanica == ""
                                                                     ?"red"
                                                                     :colorSeleciconadoPromo
                                                                 }
@@ -194,7 +194,7 @@ const Promociones = () => {
                                                             promocion = {promocion}
                                                             posicionPromocion = {posicionPromocion}
                                                             colorSeleciconadoPromo = {
-                                                                promocion.cspid == 0
+                                                                promocion.cspid == 0 || promocion.prmmecanica == ""
                                                                 ?"red"
                                                                 :colorSeleciconadoPromo
                                                             }
@@ -331,7 +331,7 @@ class CardPromocionClass extends React.Component {
                 }}
             >
                 {
-                    promocion.cspid == 0
+                    promocion.cspid == 0 || promocion.prmmecanica == ""
                     ?<div
                         style={{
                             height: "100%",
