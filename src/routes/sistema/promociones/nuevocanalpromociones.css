@@ -58,13 +58,64 @@
     box-sizing: border-box;
     border-radius: 20px;
     position: relative;
+    overflow: hidden;
 }
 
+.Card-Fecha-Vigencia-Promocion{
 
+    width: 95px;
+    height: 31px;
+    /* background: #E41A37; */
+    border-radius: 9px 0px 0px 9px;
+    position: absolute;
+    right: -1px;
+    top: 17px;
+    display: flex;
 
+    transform: translateX(55px);
+    transition-duration: 500ms;
+}
 
+.Card-Fecha-Vigencia-Promocion:hover{
+    /* right: -1px; */
+    transform: translateX(-0px);
+    transition-duration: 500ms;
+}
 
+.Icono-Calendario-Promocion{
+    width: 26px;
+    /* height: 18px; */
+}
 
+.Primera-Parte-Fecha-Vigencia-Promocion{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Segunda-Parte-Fecha-Vigencia-Promocion{
+    width: 50%;
+    align-self: center;
+}
+
+.Fecha-Inicio-Vigencia-Promocion{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 10px;
+    line-height: 12px;
+    color: #FFFFFF;
+}
+
+.Fecha-Final-Vigencia-Promocion{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 10px;
+    line-height: 12px;
+    color: #FFFFFF;
+}
 
 
 

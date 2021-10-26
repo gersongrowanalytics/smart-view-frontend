@@ -27,6 +27,8 @@ import funFomratoDecimal from '../../../funciones/funFormatoDecimal'
 import NumberFormat from 'react-number-format';
 import { wait } from '@testing-library/dom'
 import IconoNoPromocion from '../../../assets/images/nopromocion.png'
+import IconoCalendarioPromocion from '../../../assets/images/promociones/calendario.png'
+
 
 const Promociones = () => {
     const dispatch = useDispatch();
@@ -330,6 +332,20 @@ class CardPromocionClass extends React.Component {
                     border: "1px solid "+colorSeleciconadoPromo
                 }}
             >
+                <div 
+                    style={{
+                        background:colorSeleciconadoPromo
+                    }}
+                    className="Card-Fecha-Vigencia-Promocion"
+                >
+                    <div className="Primera-Parte-Fecha-Vigencia-Promocion">
+                        <img src={IconoCalendarioPromocion} className="Icono-Calendario-Promocion" />
+                    </div>
+                    <div className="Segunda-Parte-Fecha-Vigencia-Promocion">
+                        <div className="Fecha-Inicio-Vigencia-Promocion">Ini {promocion.fechainicio ?promocion.fechainicio :"01/10"}</div>
+                        <div className="Fecha-Final-Vigencia-Promocion">Fin {promocion.fechafinal ?promocion.fechafinal :"30/10"}</div>
+                    </div>
+                </div>
                 {
                     promocion.cspid == 0 || promocion.prmmecanica == ""
                     ?<div
