@@ -1,6 +1,6 @@
 import React,{useEffect} from 'react'
 import { Modal, Button, Row, Col, Checkbox} from 'antd';
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import { CloseOutlined } from '@ant-design/icons';
 import 'styles/Sistema/Promociones/ModalDescargas.css'
 import ReactExport from 'react-data-export';
@@ -10,6 +10,8 @@ const ExcelSheet = ReactExport.ExcelFile.ExcelSheet;
 const ModalDescargas = (props) => {
 
     const dispatch = useDispatch();
+    
+    const {mesFiltroSelec, anoFiltroSelec, diaFiltroSelec} = useSelector(({fechas}) => fechas);
 
     useEffect(() =>  {
         console.log('click')
@@ -28,7 +30,7 @@ const ModalDescargas = (props) => {
                     </Button>,
 
                     <ExcelFile 
-                        filename="PROMOCIONES"
+                        filename={"Promociones Kimberly "+mesFiltroSelec+" "+anoFiltroSelec}
                         element={
                             <Button key="submit" type="primary" >
                                 Descargar
@@ -51,7 +53,7 @@ const ModalDescargas = (props) => {
                         }>
                         <ExcelSheet 
                             dataSet={props.promocionesExcelEspecifico} 
-                            name="Organization"
+                            name={"Promociones "+" "+mesFiltroSelec+" "+anoFiltroSelec}
                         />
                     </ExcelFile>
                 ]}

@@ -8,6 +8,7 @@ import {
   PERMISO_CODIGO_PROMOCION
 } from "constants/PermisosTypes"
 import {funPermisosObtenidos} from 'funciones/funPermiso.js'
+import IconoCalendarioPromocion from '../../assets/images/promociones/calendario.png'
 
 // =========================
 // Slide
@@ -202,7 +203,9 @@ class Slide extends React.Component {
       cspcantidadplancha,
       cargando,
       cspgratis,
-      cspnuevo
+      cspnuevo,
+      fechainicio,
+      fechafinal
     } = this.props.slide
     
     const permisosUsuario                = this.props.permisos
@@ -234,6 +237,21 @@ class Slide extends React.Component {
               height: '270px',
               border:'1px solid '+colorSeleciconadoPromo, 
             }}>
+              <div 
+                    style={{
+                        background:colorSeleciconadoPromo
+                    }}
+                    className="Card-Fecha-Vigencia-Promocion-nuevo"
+                >
+                    <div className="Primera-Parte-Fecha-Vigencia-Promocion">
+                        <img src={IconoCalendarioPromocion} className="Icono-Calendario-Promocion" />
+                    </div>
+                    <div className="Segunda-Parte-Fecha-Vigencia-Promocion">
+                        <div className="Fecha-Inicio-Vigencia-Promocion">Ini {fechainicio ?fechainicio :"01/10"}</div>
+                        <div className="Fecha-Final-Vigencia-Promocion">Fin {fechafinal ?fechafinal :"30/10"}</div>
+                    </div>
+                </div>
+
               {
                 funPermisosObtenidos(
                   permisosUsuario,

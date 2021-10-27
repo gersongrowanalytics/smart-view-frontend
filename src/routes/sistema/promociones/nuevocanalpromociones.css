@@ -68,7 +68,8 @@
     /* background: #E41A37; */
     border-radius: 9px 0px 0px 9px;
     position: absolute;
-    right: -1px;
+    /* right: -1px; */
+    right: 54px;
     top: 17px;
     display: flex;
 
@@ -76,11 +77,25 @@
     transition-duration: 500ms;
 }
 
-.Card-Fecha-Vigencia-Promocion:hover{
-    /* right: -1px; */
-    transform: translateX(-0px);
+.Card-Fecha-Vigencia-Promocion-nuevo{
+
+    width: 95px;
+    height: 31px;
+    /* background: #E41A37; */
+    border-radius: 9px 0px 0px 9px;
+    position: absolute;
+    right: 53px;
+    top: 17px;
+    display: flex;
+
+    transform: translateX(55px);
     transition-duration: 500ms;
 }
+
+/* .Card-Fecha-Vigencia-Promocion:hover{
+    transform: translateX(-0px);
+    transition-duration: 500ms;
+} */
 
 .Icono-Calendario-Promocion{
     width: 26px;
