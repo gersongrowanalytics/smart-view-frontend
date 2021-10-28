@@ -40,7 +40,8 @@ const BotonDescargar = () => {
         reconocimientoExcelEspecifico,
         promocionesliquidacionesExcelEspecifico,
         fechaActualizacionReportePago,
-        cargandoReportePagos
+        cargandoReportePagos,
+        cargando_descarga_excel_promociones
     }= useSelector(({promociones}) => promociones);
 
     const { 
@@ -123,6 +124,7 @@ const BotonDescargar = () => {
                 SeleccionarSucursalesZonaReducerReducer    = {SeleccionarSucursalesZonaReducerReducer}
                 SeleccionarTodasSucursalesDescargasReducer = {SeleccionarTodasSucursalesDescargasReducer}
                 promocionesExcelEspecifico = {promocionesExcelEspecifico}
+                cargando_descarga_excel_promociones = {cargando_descarga_excel_promociones}
             />
 
             <ModalReporetePagos

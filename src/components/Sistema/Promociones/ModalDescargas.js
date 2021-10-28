@@ -30,9 +30,9 @@ const ModalDescargas = (props) => {
                     </Button>,
 
                     <ExcelFile 
-                        filename={"Promociones Kimberly "+mesFiltroSelec+" "+anoFiltroSelec}
+                        filename={"Promociones Kimberly ("+mesFiltroSelec+" "+anoFiltroSelec+")"}
                         element={
-                            <Button key="submit" type="primary" >
+                            <Button key="submit" type="primary" loading={props.cargando_descarga_excel_promociones} >
                                 Descargar
                             </Button>
                             // <button 

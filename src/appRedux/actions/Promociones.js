@@ -505,6 +505,11 @@ export const ObtenerPromocionesDescargaEspecifica = () => async (dispatch, getSt
 
   let objetoArray = [];
 
+  dispatch({
+    type: "CARGANDO_EXCEL_PROMOCIONES",
+    payload: true
+  })
+
   await fetch(config.api+'promociones/descargar/especificos',
     {
       mode:'cors',
@@ -543,7 +548,12 @@ export const ObtenerPromocionesDescargaEspecifica = () => async (dispatch, getSt
     }
   }).catch((error)=> {
     console.log(error)    
-  });   
+  });
+
+  dispatch({
+    type: "CARGANDO_EXCEL_PROMOCIONES",
+    payload: false
+  })
 
   
 

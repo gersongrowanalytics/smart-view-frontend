@@ -45,7 +45,9 @@ const INIT_STATE = {
     reiniciandoPromociones      : false,
 
     mostrarModalReportePagos    : false,
-    mostrarDisenioPromocionesPrincipal : true
+    mostrarDisenioPromocionesPrincipal : true,
+
+    cargando_descarga_excel_promociones : false
 };
 
 export default (state = INIT_STATE, action) => {
@@ -182,6 +184,12 @@ export default (state = INIT_STATE, action) => {
             return {
                 ...state,
                 mostrarDisenioPromocionesPrincipal : action.payload
+            }
+        }
+        case "CARGANDO_EXCEL_PROMOCIONES": {
+            return {
+                ...state,
+                cargando_descarga_excel_promociones : action.payload
             }
         }
         default:{
