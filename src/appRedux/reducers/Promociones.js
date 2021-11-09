@@ -45,7 +45,7 @@ const INIT_STATE = {
     reiniciandoPromociones      : false,
 
     mostrarModalReportePagos    : false,
-    mostrarDisenioPromocionesPrincipal : true,
+    mostrarDisenioPromocionesPrincipal : false,
 
     cargando_descarga_excel_promociones : false
 };
