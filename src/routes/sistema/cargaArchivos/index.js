@@ -55,21 +55,12 @@ const CargaArchivosPromociones = () => {
         url    = {'cargarArchivo/ventas/sellin'}
       />
       </Col>
-      <Col xl={6} md={6}>
+      {/* <Col xl={6} md={6}>
         <CardCargarArchivo
           titulo = {'Añadir Sell Out'}
           url    = {'cargarArchivo/ventas/sellout'}
         />
-      </Col>
-      <Col xl={6} md={6}>
-        <CardCargarArchivo
-          titulo = {'Añadir Mecánica Promocional (excel)'}
-          url    = {'cargarArchivo/promociones'}
-        />
-      </Col>
-      <Col xl={3} md={3} />
-
-      <Col xl={3} md={3} />
+      </Col> */}
       <Col xl={6} md={6}>
       <CardCargarArchivo
         titulo = {'Añadir Objetivos Sell In'}
@@ -82,39 +73,45 @@ const CargaArchivosPromociones = () => {
         url    = {'cargarArchivo/ventas/obejtivossellout'}
       />
       </Col>
+
+      <Col xl={3} md={3} />
+      <Col xl={3} md={3} />
+
+      <Col xl={6} md={6}>
+        <CardCargarArchivo
+          titulo = {'Añadir Mecánica Promocional (excel)'}
+          url    = {'cargarArchivo/promociones'}
+        />
+      </Col>
+      <Col xl={6} md={6}>
+        <CardCargarArchivo
+          titulo = {'Añadir Rebate'}
+          url    = {'cargarArchivo/ventas/rebate'}
+        />
+      </Col>
       <Col xl={6} md={6}>
       <CardCargarArchivo
-        titulo = {'Añadir Plan de Trade (ppt)      '}
-        url    = {'cargarArchivo/promociones/planTrade'}
+        titulo = {'Actualizar Productos'}
+        url    = {'cargarArchivo/productos'}
       />
       </Col>
+
       <Col xl={3} md={3} />
       <Col xl={3} md={3} />
-      <Col xl={6} md={6}>
+      {/* <Col xl={6} md={6}>
       <CardCargarArchivo
         titulo = {'Añadir Sucursales'}
         // url    = {'cargarArchivo/clientes'}
         url    = {'cargarArchivo/sucursales'}
       />
-      </Col>
+      </Col> */}
+      
       <Col xl={6} md={6}>
       <CardCargarArchivo
-        titulo = {'Añadir Productos'}
-        url    = {'cargarArchivo/productos'}
-      />
-      </Col>
-      <Col xl={6} md={6}>
-      <CardCargarArchivo
-        titulo = {'Actualizar Clientes'}
+        titulo = {'Actualizar Distribuidoras'}
         url    = {'cargarArchivo/clientes'}
       />
       </Col>
-    
-
-
-      <Col xl={3} md={3} />
-      <Col xl={3} md={3} />
-      
       <Col xl={6} md={6}>
         <CardCargarArchivo
           titulo = {'Reconocimiento Pagos'}
@@ -128,6 +125,12 @@ const CargaArchivosPromociones = () => {
           url    = {'cargarArchivo/promociones-liquidadas'}
         />
       </Col>
+
+
+      <Col xl={3} md={3} />
+      <Col xl={3} md={3} />
+      
+      
 
       {/* <Col xl={6} md={6}>
         <CardCargarArchivo
