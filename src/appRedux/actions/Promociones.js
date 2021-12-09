@@ -19,9 +19,11 @@ import {
   ACTIVAR_MODAL_REPORTES_PAGOS_PROMOCIONES,
   OBTENER_REPORTE_PAGOS_EXCEL_ESPECIFICO,
   CARGANDO_REPORTE_PAGOS_PROMOCIONES,
-  CAMBIAR_DISENIO_PROMOCIONES
+  CAMBIAR_DISENIO_PROMOCIONES,
+  CARGANDO_VER_PDF_PROMOCIONES
 } from "constants/SistemaTypes";
 import config from 'config'
+import { TransactionOutlined } from "@ant-design/icons";
 
 export const reiniciarPromocionesReducer = () => (dispatch) => {
   console.log("reiniciar")
@@ -108,7 +110,7 @@ export const obtenerPromocionesReducer = () =>async (dispatch, getState) => {
     });
 }
 
-export const seleccionarCategoriaReducer = (scaid, limpiarCanales) => async (dispatch, getState) => {
+export const seleccionarCategoriaReducer = (scaid, limpiarCanales, posicion) => async (dispatch, getState) => {
 
     if(limpiarCanales == true){
       dispatch({
@@ -139,6 +141,8 @@ export const seleccionarCategoriaReducer = (scaid, limpiarCanales) => async (dis
         payload: colorSeleccionado
     })
 
+    let canalesObtenidos = []
+
     await fetch(config.api+'promociones/mostrar/promociones',
       {
         mode:'cors',
@@ -166,7 +170,7 @@ export const seleccionarCategoriaReducer = (scaid, limpiarCanales) => async (dis
       if(estadoRequest === true){
         if(reiniciandoPromociones == false){
           if(data.respuesta === true){
-              
+              canalesObtenidos = data.datos
               dispatch({
                   type: OBTENER_CANALES_DE_PROMOCIONES_EXITO,
                   payload: {
@@ -196,6 +200,14 @@ export const seleccionarCategoriaReducer = (scaid, limpiarCanales) => async (dis
             payload: []
         })
     });
+
+    categoriasPromociones[posicion]['canales'] = canalesObtenidos
+
+    dispatch({
+      type: ACTUALIZAR_CATEGORIAS_DE_PROMOCIONES,
+      payload: categoriasPromociones
+    })
+
 }
 
 export const editarPromocionReducer = (posicionCanal, posicionPromocion) => async (dispatch, getState) => {
@@ -622,6 +634,7 @@ export const obtenerPromocionesXZonaReducer = (zonid, gsuid, casid) => async (di
         })
 	});
 	
+  return true
 
 }
 
@@ -746,6 +759,155 @@ export const ActivarModalReportePagosReducer = (estado) => async (dispatch) => {
 }
 
 export const ObtenerReportesPagosDescargaEspecifica = (fechaInicio, fechaFinal, zonid) => async (dispatch, getState) => {
+  dispatch(ObtenerReportesPagosDescargaEspecificaReducer(fechaInicio, fechaFinal, zonid))
+//   // alert('descargarinfo')
+//   let fueerror = false
+
+//   const {
+//       diaFiltroSelec,
+//       mesFiltroSelec,
+//       anoFiltroSelec
+//   } = getState().fechas
+
+//   const {
+//     sucursalesUsuario,
+//   } = getState().sucursales
+
+//   let objetoArray = [];
+//   let objetoArrayrecono = [];
+//   let objetoArraypromociones = [];
+
+//   let url = config.api+'promociones/descargar/reporte-pagos'
+
+//   if(fechaInicio != null && fechaFinal != null){
+//     url = config.api+'promociones/descargar/reporte-pagos-fecha'
+//   }
+
+//   dispatch({
+//     type : CARGANDO_REPORTE_PAGOS_PROMOCIONES,
+//     payload: true
+//   })
+
+//   await fetch(url,
+//     {
+//       mode:'cors',
+//       method: 'POST',
+//       body: JSON.stringify({
+//           usutoken : localStorage.getItem('usutoken'),
+//           sucs     : sucursalesUsuario,
+//           dia      : diaFiltroSelec,
+//           mes      : mesFiltroSelec,
+//           ano      : anoFiltroSelec,
+//           fechaInicio : fechaInicio,
+//           fechaFinal  : fechaFinal
+//       }),
+//       headers: {
+//         'Accept' : 'application/json',
+//         'Content-type' : 'application/json',
+//         'api_token': localStorage.getItem('usutoken'),
+//         'api-token': localStorage.getItem('usutoken'),
+//       }
+//     }
+//   )
+//   .then( async res => {
+//     await dispatch(estadoRequestReducer(res.status))
+//     return res.json()
+//   })
+//   .then(async data => {
+//     const estadoRequest = getState().estadoRequest.init_request
+
+//     console.log("estatus: ")
+//     console.log(estadoRequest)
+//     console.log(data.status)
+
+//     if(estadoRequest === true){
+//       if(data.respuesta === true){
+
+
+//           if(zonid != null){
+//             const zonaidseleccionado = getState().ventasTpr.zonaidseleccionado
+//             if(zonaidseleccionado == zonid){
+//               // objetoArray = data.datos
+//               // objetoArrayrecono = data.datosReconocimiento
+
+//               objetoArraypromociones = await LimpiarArrayPromocionesLiquidadasReducer(data.datosPromociones)
+//               objetoArrayrecono = await LimpiarArrayPromocionesLiquidadasReducer(data.datosReconocimiento)
+
+//               dispatch({
+//                 type: OBTENER_REPORTE_PAGOS_EXCEL_ESPECIFICO,
+//                 payload: {
+//                   reporte : objetoArrayrecono,
+//                   reconocimiento : objetoArrayrecono,
+//                   promociones : objetoArraypromociones,
+//                   actualizacion : data.actualizacion
+//                 }
+//               })
+
+//             }else{
+
+//             }
+
+//           }else{
+//             // objetoArray = data.datos
+//             // objetoArrayrecono = data.datosReconocimiento
+
+//             objetoArraypromociones = await LimpiarArrayPromocionesLiquidadasReducer(data.datosPromociones)
+//             objetoArrayrecono = await LimpiarArrayPromocionesLiquidadasReducer(data.datosReconocimiento)
+
+//             dispatch({
+//               type: OBTENER_REPORTE_PAGOS_EXCEL_ESPECIFICO,
+//               payload: {
+//                 reporte : objetoArrayrecono,
+//                 reconocimiento : objetoArrayrecono,
+//                 promociones : objetoArraypromociones,
+//                 actualizacion : data.actualizacion
+//               }
+//             })
+//           }
+          
+//       }else{
+          
+//       }
+//     }else{
+//       fueerror = true
+//       dispatch(ObtenerReportesPagosDescargaEspecifica(fechaInicio, fechaFinal, zonid))
+//     }
+
+//   }).catch((error)=> {
+//     console.log(error)    
+//     fueerror = true
+//   });   
+
+//   if(fueerror == true){
+    
+//   }else{
+//     if(zonid != null){
+//       const zonaidseleccionado = getState().ventasTpr.zonaidseleccionado
+//       if(zonaidseleccionado == zonid){
+//         dispatch({
+//           type : CARGANDO_REPORTE_PAGOS_PROMOCIONES,
+//           payload: false
+//         })
+//       }
+      
+//     }else{
+//       dispatch({
+//         type : CARGANDO_REPORTE_PAGOS_PROMOCIONES,
+//         payload: false
+//       })
+//     }
+//   }
+
+  
+//   // console.log(objetoArray)
+}
+
+
+
+
+
+
+export const ObtenerReportesPagosDescargaEspecificaReducer = (fechaInicio, fechaFinal, zonid) => async (dispatch, getState) => {
 
   // alert('descargarinfo')
   let fueerror = false
@@ -767,7 +929,7 @@ export const ObtenerReportesPagosDescargaEspecifica = (fechaInicio, fechaFinal, 
   let url = config.api+'promociones/descargar/reporte-pagos'
 
   if(fechaInicio != null && fechaFinal != null){
-    url = config.api+'promociones/descargar/reporte-pagos-fecha'
+    url = config.api+'promociones/descargar/reporte-pagos-unicamente-fecha'
   }
 
   dispatch({
@@ -814,16 +976,127 @@ export const ObtenerReportesPagosDescargaEspecifica = (fechaInicio, fechaFinal, 
           if(zonid != null){
             const zonaidseleccionado = getState().ventasTpr.zonaidseleccionado
             if(zonaidseleccionado == zonid){
-              objetoArray = data.datos
-              objetoArrayrecono = data.datosReconocimiento
+              
+              objetoArrayrecono = await LimpiarArrayPromocionesLiquidadasReducer(data.datosReconocimiento)
+
+              dispatch({
+                type: "OBTENER_REPORTE_PAGOS_PROMOCIONES",
+                payload: {
+                  reporte : objetoArrayrecono,
+                  reconocimiento : objetoArrayrecono
+                }
+              })
+
+            }else{
+
+            }
+
+          }else{
+
+            objetoArrayrecono = await LimpiarArrayPromocionesLiquidadasReducer(data.datosReconocimiento)
+
+            dispatch({
+              type: "OBTENER_REPORTE_PAGOS_PROMOCIONES",
+              payload: {
+                reporte : objetoArrayrecono,
+                reconocimiento : objetoArrayrecono
+              }
+            })
+          }
+
+          dispatch(ObtenerPromocionesLiquidadasReducer(fechaInicio, fechaFinal, zonid))
+
+          
+      }else{
+          
+      }
+    }else{
+      fueerror = true
+      dispatch(ObtenerReportesPagosDescargaEspecificaReducer(fechaInicio, fechaFinal, zonid))
+    }
+
+  }).catch((error)=> {
+    console.log(error)    
+    fueerror = true
+  });   
+
+  
+  console.log(objetoArray)
+}
+
+
+
+export const ObtenerPromocionesLiquidadasReducer = (fechaInicio, fechaFinal, zonid) => async (dispatch, getState) => {
+
+  // alert('descargarinfo')
+  let fueerror = false
+
+  const {
+      diaFiltroSelec,
+      mesFiltroSelec,
+      anoFiltroSelec
+  } = getState().fechas
+
+  const {
+    sucursalesUsuario,
+  } = getState().sucursales
+
+  let objetoArray = [];
+  let objetoArrayrecono = [];
+  let objetoArraypromociones = [];
+
+  let url = config.api+'promociones/descargar/reporte-promociones-liquidadas-fecha'
+
+  // dispatch({
+  //   type : CARGANDO_REPORTE_PAGOS_PROMOCIONES,
+  //   payload: true
+  // })
+
+  await fetch(url,
+    {
+      mode:'cors',
+      method: 'POST',
+      body: JSON.stringify({
+          usutoken : localStorage.getItem('usutoken'),
+          sucs     : sucursalesUsuario,
+          dia      : diaFiltroSelec,
+          mes      : mesFiltroSelec,
+          ano      : anoFiltroSelec,
+          fechaInicio : fechaInicio,
+          fechaFinal  : fechaFinal
+      }),
+      headers: {
+        'Accept' : 'application/json',
+        'Content-type' : 'application/json',
+        'api_token': localStorage.getItem('usutoken'),
+        'api-token': localStorage.getItem('usutoken'),
+      }
+    }
+  )
+  .then( async res => {
+    await dispatch(estadoRequestReducer(res.status))
+    return res.json()
+  })
+  .then(async data => {
+    const estadoRequest = getState().estadoRequest.init_request
+
+    console.log("estatus: ")
+    console.log(estadoRequest)
+    console.log(data.status)
+
+    if(estadoRequest === true){
+      if(data.respuesta === true){
+
+
+          if(zonid != null){
+            const zonaidseleccionado = getState().ventasTpr.zonaidseleccionado
+            if(zonaidseleccionado == zonid){
 
               objetoArraypromociones = await LimpiarArrayPromocionesLiquidadasReducer(data.datosPromociones)
 
               dispatch({
-                type: OBTENER_REPORTE_PAGOS_EXCEL_ESPECIFICO,
+                type: "OBTENER_PROMOCIONES_LIQUIDADAS_PROMOCIONES",
                 payload: {
-                  reporte : objetoArray,
-                  reconocimiento : objetoArrayrecono,
                   promociones : objetoArraypromociones,
                   actualizacion : data.actualizacion
                 }
@@ -834,16 +1107,12 @@ export const ObtenerReportesPagosDescargaEspecifica = (fechaInicio, fechaFinal, 
             }
 
           }else{
-            objetoArray = data.datos
-            objetoArrayrecono = data.datosReconocimiento
 
             objetoArraypromociones = await LimpiarArrayPromocionesLiquidadasReducer(data.datosPromociones)
 
             dispatch({
-              type: OBTENER_REPORTE_PAGOS_EXCEL_ESPECIFICO,
+              type: "OBTENER_PROMOCIONES_LIQUIDADAS_PROMOCIONES",
               payload: {
-                reporte : objetoArray,
-                reconocimiento : objetoArrayrecono,
                 promociones : objetoArraypromociones,
                 actualizacion : data.actualizacion
               }
@@ -855,7 +1124,7 @@ export const ObtenerReportesPagosDescargaEspecifica = (fechaInicio, fechaFinal, 
       }
     }else{
       fueerror = true
-      dispatch(ObtenerReportesPagosDescargaEspecifica(fechaInicio, fechaFinal, zonid))
+      dispatch(ObtenerPromocionesLiquidadasReducer(fechaInicio, fechaFinal, zonid))
     }
 
   }).catch((error)=> {
@@ -887,6 +1156,8 @@ export const ObtenerReportesPagosDescargaEspecifica = (fechaInicio, fechaFinal, 
   // console.log(objetoArray)
 }
 
+
+
 export const LimpiarArrayPromocionesLiquidadasReducer = async (promocionesliquidadas) => {
 
   await promocionesliquidadas[0]['data'].map((dato, posicion) => {
@@ -908,4 +1179,278 @@ export const CambiarDisenioPromocionesReducer = () => (dispatch, getState) => {
     type: CAMBIAR_DISENIO_PROMOCIONES,
     payload: !mostrarDisenioPromocionesPrincipal
   })
+}
+
+
+export const ObtenerCanlesPDFPromocionesReducer = (posicion, envioCategorias = false, categoriasEnviadas = []) => async (dispatch, getState) => {
+
+  let respuesta = false
+
+  let {categoriasPromociones} = getState().promociones
+  
+  let categoriasRecibidasEnviadas = []
+
+  if(envioCategorias == true){
+    categoriasRecibidasEnviadas = categoriasEnviadas
+  }else{
+    categoriasRecibidasEnviadas = categoriasPromociones
+  }
+
+  let canalesObtenidos = []
+
+  dispatch({
+    type: CARGANDO_VER_PDF_PROMOCIONES,
+    payload: true
+  })
+
+  if(categoriasRecibidasEnviadas.length > 0){
+    
+    let scaid = categoriasRecibidasEnviadas[posicion]['scaid']
+
+    await fetch(config.api+'promociones/mostrar/promociones',
+      {
+        mode:'cors',
+        method: 'POST',
+        body: JSON.stringify({
+            usutoken  : localStorage.getItem('usutoken'),
+            scaid     : scaid,
+        }),
+        headers: {
+          'Accept' : 'application/json',
+          'Content-type' : 'application/json',
+          'api_token': localStorage.getItem('usutoken'),
+          'api-token': localStorage.getItem('usutoken')
+        }
+      }
+    )
+    .then( async res => {
+      await dispatch(estadoRequestReducer(res.status))
+      return res.json()
+    })
+    .then(data => {
+      const estadoRequest = getState().estadoRequest.init_request
+
+      if(estadoRequest === true){
+        if(data.respuesta === true){
+              
+
+          }else{
+              
+          }
+
+          canalesObtenidos = data.datos
+          respuesta = true
+
+          categoriasRecibidasEnviadas[posicion]['canales'] = canalesObtenidos
+
+          if(envioCategorias == true){
+
+          }else{
+            dispatch({
+              type: ACTUALIZAR_CATEGORIAS_DE_PROMOCIONES,
+              payload: categoriasRecibidasEnviadas
+            })
+          }
+
+          if(posicion < categoriasRecibidasEnviadas.length-1){
+            dispatch(ObtenerCanlesPDFPromocionesReducer(posicion+1, true, categoriasRecibidasEnviadas))
+          }else{
+            dispatch(ObtenerPdfPromocionesReducer(true, categoriasRecibidasEnviadas))
+          }
+
+      }
+    }).catch((error)=> {
+        
+    });
+  }
+
+  return respuesta
+
+}
+
+export const ObtenerPdfPromocionesReducer = (envioCategorias = false, categoriasEnviadas = []) => async (dispatch, getState) => {
+
+  dispatch({
+    type: CARGANDO_VER_PDF_PROMOCIONES,
+    payload: TransactionOutlined
+  })
+
+  let {categoriasPromociones} = getState().promociones
+
+  let categoriasRecibidasEnviadas = []
+
+  if(envioCategorias == true){
+    categoriasRecibidasEnviadas = categoriasEnviadas
+  }else{
+    categoriasRecibidasEnviadas = categoriasPromociones
+  }
+
+  await fetch(config.api+'promociones/mostrar/pdf-generar',
+      {
+        mode:'cors',
+        method: 'POST',
+        body: JSON.stringify({
+          // categorias : categoriasPromociones
+          categorias : categoriasRecibidasEnviadas
+        }),
+        headers: {
+          'Accept' : 'application/json',
+          'Content-type' : 'application/json',
+          'api_token': localStorage.getItem('usutoken'),
+          'api-token': localStorage.getItem('usutoken')
+        }
+      }
+    )
+    .then( async res => {
+      await dispatch(estadoRequestReducer(res.status))
+      return res.json()
+    })
+    .then(data => {
+      const estadoRequest = getState().estadoRequest.init_request
+
+      if(estadoRequest === true){
+        if(data.respuesta === true){
+              
+
+          }else{
+              
+          }
+
+      }
+    }).catch((error)=> {
+        
+    });
+
+  dispatch({
+    type: CARGANDO_VER_PDF_PROMOCIONES,
+    payload: false
+  })
+
+}
+
+export const obtenerPromocionesXGrupoReducer = (gsuid) => async (dispatch, getState) => {
+
+  const {
+      diaFiltroSelec,
+      mesFiltroSelec,
+      anoFiltroSelec
+  } = getState().fechas
+
+  let datos = []
+
+  await fetch(config.api+'promociones/mostrar/categorias/xzona',
+  {
+    mode:'cors',
+    method: 'POST',
+    body: JSON.stringify({
+      usutoken : localStorage.getItem('usutoken'),
+      zonid    : 0,
+      gsuid    : gsuid,
+      casid    : 0,
+      dia      : diaFiltroSelec,
+      mes      : mesFiltroSelec,
+      ano      : anoFiltroSelec,
+    }),
+    headers: {
+      'Accept' : 'application/json',
+      'Content-type' : 'application/json',
+      'api_token': localStorage.getItem('usutoken'),
+      'api-token': localStorage.getItem('usutoken'),
+    }
+  })
+  .then( async res => {
+      await dispatch(estadoRequestReducer(res.status))
+      return res.json()
+  })
+  .then(data => {
+      const estadoRequest = getState().estadoRequest.init_request
+      if(estadoRequest === true){
+        if(data.respuesta === true){
+          
+          dispatch(ObtenerCanalesXGrupoPromocionesReducer(0, data.datos, gsuid))
+          datos = data.datos
+          
+        }else{
+            
+        }
+    }
+  }).catch((error)=> {
+      console.log(error)
+      
+});
+
+return datos
+
+}
+
+export const ObtenerCanalesXGrupoPromocionesReducer = (posicion, categoriasEnviadas, gsuidSeleccionado) => async(dispatch, getState) => {
+
+  let categoriasPromociones = categoriasEnviadas
+
+  let catid = categoriasPromociones[posicion]['catid']
+
+  // 
+  const {
+      diaFiltroSelec,
+      mesFiltroSelec,
+      anoFiltroSelec
+  } = getState().fechas
+  // 
+
+  let canalesObtenidos = []
+  let respuesta = true
+  
+  await fetch(config.api+'promociones/mostrar/promociones/xzona',
+      {
+          mode:'cors',
+          method: 'POST',
+          body: JSON.stringify({
+              usutoken  : localStorage.getItem('usutoken'),
+              catid   : catid,
+              zonid   : 0,
+              gsuid   : gsuidSeleccionado,
+              casid   : 0,
+              mes     : mesFiltroSelec,
+              ano     : anoFiltroSelec,
+              dia     : diaFiltroSelec,
+          }),
+          headers: {
+              'Accept' : 'application/json',
+              'Content-type' : 'application/json',
+              'api_token': localStorage.getItem('usutoken'),
+              'api-token': localStorage.getItem('usutoken')
+          }
+      }
+  )
+  .then( async res => {
+      await dispatch(estadoRequestReducer(res.status))
+      return res.json()
+  })
+  .then(data => {
+      const estadoRequest = getState().estadoRequest.init_request
+      
+
+      if(estadoRequest === true){
+          if(data.respuesta === true){
+
+              canalesObtenidos = data.datos
+              respuesta = true
+
+              categoriasPromociones[posicion]['canales'] = canalesObtenidos
+
+              if(posicion < categoriasPromociones.length-1){
+                dispatch(ObtenerCanalesXGrupoPromocionesReducer(posicion+1, categoriasPromociones, gsuidSeleccionado))
+              }else{
+                dispatch(ObtenerPdfPromocionesReducer(true, categoriasPromociones))
+              }
+              
+          }else{
+              
+          }
+      }
+  }).catch((error)=> {
+      console.log(error)
+      
+  });
+
 }

@@ -18,7 +18,8 @@ import {
 
     ACTIVAR_MODAL_REPORTES_PAGOS_PROMOCIONES,
     CARGANDO_REPORTE_PAGOS_PROMOCIONES,
-    CAMBIAR_DISENIO_PROMOCIONES
+    CAMBIAR_DISENIO_PROMOCIONES,
+    CARGANDO_VER_PDF_PROMOCIONES
 } from "constants/SistemaTypes";
 
 const INIT_STATE = {
@@ -47,7 +48,9 @@ const INIT_STATE = {
     mostrarModalReportePagos    : false,
     mostrarDisenioPromocionesPrincipal : false,
 
-    cargando_descarga_excel_promociones : false
+    cargando_descarga_excel_promociones : false,
+
+    cargando_generar_pdf_promociones : true
 };
 
 export default (state = INIT_STATE, action) => {
@@ -168,6 +171,23 @@ export default (state = INIT_STATE, action) => {
                 fechaActualizacionReportePago : action.payload.actualizacion
             }
         }
+
+        case "OBTENER_REPORTE_PAGOS_PROMOCIONES" : {
+            return {
+                ...state,
+                reportePagosExcelEspecifico : action.payload.reporte,
+                reconocimientoExcelEspecifico : action.payload.reconocimiento,
+            }
+        }
+
+        case "OBTENER_PROMOCIONES_LIQUIDADAS_PROMOCIONES" : {
+            return {
+                ...state,
+                promocionesliquidacionesExcelEspecifico : action.payload.promociones,
+                fechaActualizacionReportePago : action.payload.actualizacion
+            }
+        }
+
         case ACTIVAR_MODAL_REPORTES_PAGOS_PROMOCIONES: {
             return {
                 ...state,
@@ -190,6 +210,12 @@ export default (state = INIT_STATE, action) => {
             return {
                 ...state,
                 cargando_descarga_excel_promociones : action.payload
+            }
+        }
+        case CARGANDO_VER_PDF_PROMOCIONES: {
+            return{
+                ...state,
+                cargando_generar_pdf_promociones : action.payload
             }
         }
         default:{

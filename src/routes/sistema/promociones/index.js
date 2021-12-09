@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Auxiliary from "util/Auxiliary"
 import {Col, Row} from "antd"
 import Slide from './carousel'
@@ -28,7 +28,9 @@ import NumberFormat from 'react-number-format';
 import { wait } from '@testing-library/dom'
 import IconoNoPromocion from '../../../assets/images/nopromocion.png'
 import IconoCalendarioPromocion from '../../../assets/images/promociones/calendario.png'
-
+import ModalGenerarPdf from '../../../components/Sistema/Promociones/ModalGenerarPdf'
+import { EditOutlined } from '@ant-design/icons';
+import ModalEditarPdf from '../../../components/Sistema/Promociones/ModalEditarPdf'
 
 const Promociones = () => {
     const dispatch = useDispatch();
@@ -41,14 +43,21 @@ const Promociones = () => {
         deseleccionarPromocion, 
         fechaActualizacionPromocion,
         mostrarModalReportePagos,
-        mostrarDisenioPromocionesPrincipal
+        mostrarDisenioPromocionesPrincipal,
+        cargando_generar_pdf_promociones
     } = useSelector(({promociones}) => promociones);
     const {cargaArchivosSeleccionado} = useSelector(({cargaArchivos}) => cargaArchivos);
     const {tutorialSeleccionado} = useSelector(({tutorial}) => tutorial);
     const {vistaVentasSeleccionado}= useSelector(({ventasTpr}) => ventasTpr);
     const {permisos} = useSelector(({auth}) => auth);
     const {seleccionarFiltroZona} = useSelector(({zonas}) => zonas);
-    
+
+    const { 
+        sucursalesUsuario, 
+        zonas,
+        gsus
+    } = useSelector(({sucursales}) => sucursales)
+
     const seleccionarCategoria = async (scaid, posicion, catid) =>  {
         console.log(seleccionarFiltroZona)
 
@@ -57,7 +66,7 @@ const Promociones = () => {
             await dispatch(seleccionarCategoriaXZonaReducer(scaid, true, catid))
         }else{
             await dispatch(seleccionarPromocionReducer(true))
-            await dispatch(seleccionarCategoriaReducer(scaid, true))
+            await dispatch(seleccionarCategoriaReducer(scaid, true, posicion))
         }
     }
 
@@ -83,9 +92,12 @@ const Promociones = () => {
         dispatch(seleccionarVistaVentasReducer(false))
     }
 
+    const [mostrarModalGenerarPdf, setMostrarModalGenerarPdf] = useState(false)
+    const [mostrarModalEditarPdf, setMostrarModalEditarPdf] = useState(false)
+
     return (
         <Auxiliary>
-            <ModalInformativo />
+            {/* <ModalInformativo /> */}
             <Row id="Contenedor-Promociones-Hoja">
                 <Col xl={24} md={24} sm={24} xs={24}>
                 </Col>
@@ -182,7 +194,16 @@ const Promociones = () => {
                                                     return(
                                                         posicionPromocion+1 == canal.promocionesOrdenadas.length
                                                         ?promocion.cspid == 0
-                                                            ?null
+                                                            // ?null
+                                                            ?<CardPromocionClass 
+                                                                promocion = {promocion}
+                                                                posicionPromocion = {posicionPromocion}
+                                                                colorSeleciconadoPromo = {
+                                                                    promocion.cspid == 0 || promocion.prmmecanica == ""
+                                                                    ?"red"
+                                                                    :colorSeleciconadoPromo
+                                                                }
+                                                            />
                                                             :<CardPromocionClass 
                                                                 promocion = {promocion}
                                                                 posicionPromocion = {posicionPromocion}
@@ -268,7 +289,52 @@ const Promociones = () => {
                         </div>
                     )
                 }
+
+                {
+                    funPermiso(
+                        PERMISO_BOTON_DESCARGAR_REPORTE_PAGOS, 
+                        <div 
+                            
+                            className="hvr-buzz-out floating" 
+                            id="Contenedor-Btn-Flotante-Pdf-Promociones"
+                        >
+                            <img
+                                onClick={() => {
+                                    setMostrarModalGenerarPdf(true)
+                                }} 
+                                id="Icono-Flotante-Reporte-Pagos-Promociones" src={IconoRerportePagos} />
+                            <div
+                                onClick={() => {
+                                    setMostrarModalEditarPdf(true)
+                                }} 
+                                className="Editar-Pdf-Generador-Promociones" style={{width: "40px"}}>
+                                <EditOutlined style={{fontSize:'20px'}} />
+                            </div>
+                        </div>
+                    )
+                }
+
+                {
+                    mostrarModalGenerarPdf == true
+                    ?<ModalGenerarPdf
+                        mostrarModal    = {mostrarModalGenerarPdf}
+                        setMostrarModal = {(estado) => setMostrarModalGenerarPdf(estado)}
+                        categorias = {categoriasPromociones}
+                        cargandoBtnUno = {cargando_generar_pdf_promociones}
+                    />
+                    :null
+                }
                 
+                {
+                    mostrarModalEditarPdf == true
+                    ?<ModalEditarPdf 
+                        mostrarModal    = {mostrarModalEditarPdf}
+                        setMostrarModal = {(estado) => setMostrarModalEditarPdf(estado)}
+                        zonas           = {zonas}
+                        gsus            = {gsus}
+                    />
+                    :null
+                }
             </Row>
         </Auxiliary>
     )
